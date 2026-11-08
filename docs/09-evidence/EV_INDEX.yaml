@@ -1,0 +1,1312 @@
+version: '0.11'
+description: 'Evidenzindex: tatsächlich erzeugte Projektevidenz (EV) mit Verweis auf das Nachweisartefakt und die geprüften Testfälle. Vorgesehene Nachweisarten einer RR (RR_MEASURE_CATALOG.yaml) sind keine EV.'
+evidence:
+- id: EV-001
+  title:
+    de: Automatisierter Testlauf Block 5
+    en: Automated test run block 5
+  type: AUTOMATED_TEST_RUN
+  date: '2026-09-27'
+  performed:
+    de: unittest-Suiten tools/ und tests/ gegen den Arbeitsstand von Block 5.
+    en: unittest suites tools/ and tests/ against the block 5 working state.
+  artifact: docs/09-evidence/EV-001_AUTOMATED_TEST_RUN.md
+  test_cases:
+  - TC-001
+  - TC-002
+  - TC-003
+  - TC-004
+  - TC-005
+  - TC-006
+  - TC-007
+  - TC-008
+  - TC-009
+  - TC-010
+  - TC-011
+  - TC-012
+  - TC-013
+  - TC-014
+  - TC-015
+  - TC-016
+  - TC-017
+  - TC-018
+  - TC-019
+  - TC-020
+  - TC-021
+  - TC-022
+  - TC-023
+  - TC-024
+  - TC-025
+  - TC-026
+  - TC-027
+  - TC-028
+  - TC-030
+  - TC-031
+  - TC-032
+  - TC-033
+  - TC-034
+  - TC-035
+  - TC-036
+  - TC-037
+  - TC-038
+  - TC-039
+  - TC-040
+  results:
+    TC-001: PASS
+    TC-002: PASS
+    TC-003: PASS
+    TC-004: PASS
+    TC-005: PASS
+    TC-006: PASS
+    TC-007: PASS
+    TC-008: PASS
+    TC-009: PASS
+    TC-010: PASS
+    TC-011: PASS
+    TC-012: PASS
+    TC-013: PASS
+    TC-014: PASS
+    TC-015: PASS
+    TC-016: PASS
+    TC-017: PASS
+    TC-018: PASS
+    TC-019: PASS
+    TC-020: PASS
+    TC-021: PASS
+    TC-022: PASS
+    TC-023: PASS
+    TC-024: PASS
+    TC-025: PASS
+    TC-026: PASS
+    TC-027: PASS
+    TC-028: PASS
+    TC-030: PASS
+    TC-031: PASS
+    TC-032: PASS
+    TC-033: PASS
+    TC-034: PASS
+    TC-035: PASS
+    TC-036: PASS
+    TC-037: PASS
+    TC-038: PASS
+    TC-039: PASS
+    TC-040: PASS
+  catalog_versions: &id001
+    rr_catalog: '0.26'
+    rul_catalog: '0.2'
+    sr_catalog: '0.3'
+    rr_applicability: '0.4'
+    data_model: '0.4'
+    rr_measure: '0.1'
+  assessment:
+    de: Alle automatisierten Testfälle bestanden.
+    en: All automated test cases passed.
+- id: EV-002
+  title:
+    de: Validatorlauf Block 5
+    en: Validator run block 5
+  type: VALIDATOR_RUN
+  date: '2026-09-27'
+  performed:
+    de: Alle Validatoren unter tools/ einschließlich Traceability-Prüfung.
+    en: All validators under tools/ including the traceability check.
+  artifact: docs/09-evidence/EV-002_VALIDATOR_RUN.md
+  test_cases:
+  - TC-029
+  - TC-030
+  - TC-035
+  results:
+    TC-029: PASS
+    TC-030: PASS
+    TC-035: PASS
+  catalog_versions: *id001
+  assessment:
+    de: Alle Validatoren PASS.
+    en: All validators PASS.
+- id: EV-003
+  title:
+    de: Manuelle Herleitung der Referenzfälle
+    en: Manual derivation of the reference cases
+  type: MANUAL_REFERENCE
+  date: '2026-09-27'
+  performed:
+    de: Manuelle Adjudikation der Soll-Ergebnisse aus Regel- und Zuordnungsstand vor dem ersten automatisierten Abgleich.
+    en: Manual adjudication of the expected results from rule and mapping state before the first automated comparison.
+  artifact: docs/09-evidence/EV-003_GOLDEN_REFERENCE_DERIVATION.md
+  test_cases:
+  - TC-036
+  - TC-037
+  - TC-038
+  - TC-039
+  results:
+    TC-036: PASS
+    TC-037: PASS
+    TC-038: PASS
+    TC-039: PASS
+  catalog_versions: *id001
+  assessment:
+    de: Referenzen hergeleitet; automatisierter Abgleich in EV-001 ohne Abweichung.
+    en: References derived; automated comparison in EV-001 without deviation.
+- id: EV-004
+  title:
+    de: Automatisierter Testlauf Block-5-Abschluss
+    en: Automated test run block 5 closure
+  type: AUTOMATED_TEST_RUN
+  date: '2026-09-27'
+  performed:
+    de: unittest-Suiten tools/ und tests/ nach Ergänzung von TC-041 und rr_measure_version.
+    en: unittest suites tools/ and tests/ after adding TC-041 and rr_measure_version.
+  artifact: docs/09-evidence/EV-004_AUTOMATED_TEST_RUN_DELTA.md
+  test_cases:
+  - TC-028
+  - TC-041
+  results:
+    TC-028: PASS
+    TC-041: PASS
+  catalog_versions:
+    rr_catalog: '0.26'
+    rul_catalog: '0.2'
+    sr_catalog: '0.3'
+    rr_applicability: '0.4'
+    data_model: '0.5'
+    rr_measure: '0.1'
+  assessment:
+    de: TC-041 und die erweiterte Versionsbindung (TC-028) bestanden.
+    en: TC-041 and the extended version binding (TC-028) passed.
+- id: EV-005
+  title:
+    de: Automatisierter Testlauf Demonstrator D1 (Assessment-/Gap-Kern)
+    en: Automated test run demonstrator D1 (assessment/gap core)
+  type: AUTOMATED_TEST_RUN
+  date: '2026-09-27'
+  performed:
+    de: Vollständige unittest-Suiten tools/ und tests/ nach Umsetzung des Assessment-/Gap-Kerns (Regression aller automatisierten TC, da Applicability-Domainobjekte in den gemeinsamen Kern verlegt wurden).
+    en: Complete unittest suites tools/ and tests/ after implementing the assessment/gap core (regression of all automated TC, since applicability domain objects were moved into the shared kernel).
+  artifact: docs/09-evidence/EV-005_AUTOMATED_TEST_RUN_D1.md
+  test_cases:
+  - TC-001
+  - TC-002
+  - TC-003
+  - TC-004
+  - TC-005
+  - TC-006
+  - TC-007
+  - TC-008
+  - TC-009
+  - TC-010
+  - TC-011
+  - TC-012
+  - TC-013
+  - TC-014
+  - TC-015
+  - TC-016
+  - TC-017
+  - TC-018
+  - TC-019
+  - TC-020
+  - TC-021
+  - TC-022
+  - TC-023
+  - TC-024
+  - TC-025
+  - TC-026
+  - TC-027
+  - TC-028
+  - TC-030
+  - TC-031
+  - TC-032
+  - TC-033
+  - TC-034
+  - TC-035
+  - TC-036
+  - TC-037
+  - TC-038
+  - TC-039
+  - TC-040
+  - TC-041
+  - TC-042
+  - TC-043
+  - TC-044
+  - TC-045
+  - TC-046
+  results:
+    TC-001: PASS
+    TC-002: PASS
+    TC-003: PASS
+    TC-004: PASS
+    TC-005: PASS
+    TC-006: PASS
+    TC-007: PASS
+    TC-008: PASS
+    TC-009: PASS
+    TC-010: PASS
+    TC-011: PASS
+    TC-012: PASS
+    TC-013: PASS
+    TC-014: PASS
+    TC-015: PASS
+    TC-016: PASS
+    TC-017: PASS
+    TC-018: PASS
+    TC-019: PASS
+    TC-020: PASS
+    TC-021: PASS
+    TC-022: PASS
+    TC-023: PASS
+    TC-024: PASS
+    TC-025: PASS
+    TC-026: PASS
+    TC-027: PASS
+    TC-028: PASS
+    TC-030: PASS
+    TC-031: PASS
+    TC-032: PASS
+    TC-033: PASS
+    TC-034: PASS
+    TC-035: PASS
+    TC-036: PASS
+    TC-037: PASS
+    TC-038: PASS
+    TC-039: PASS
+    TC-040: PASS
+    TC-041: PASS
+    TC-042: PASS
+    TC-043: PASS
+    TC-044: PASS
+    TC-045: PASS
+    TC-046: PASS
+  catalog_versions:
+    rr_catalog: '0.26'
+    rul_catalog: '0.2'
+    sr_catalog: '0.4'
+    rr_applicability: '0.4'
+    data_model: '0.6'
+    rr_measure: '0.1'
+  assessment:
+    de: Alle automatisierten TC einschließlich TC-042 bis TC-046 und der Referenzfälle TC-036 bis TC-039 über den Assessment-Kern bestanden.
+    en: All automated TC including TC-042 to TC-046 and the reference cases TC-036 to TC-039 via the assessment core passed.
+- id: EV-006
+  title:
+    de: Automatisierter Testlauf Demonstrator D2 (Persistenz, Revisionen, Audit)
+    en: Automated test run demonstrator D2 (persistence, revisions, audit)
+  type: AUTOMATED_TEST_RUN
+  date: '2026-09-27'
+  performed:
+    de: Vollständige unittest-Suiten tools/ und tests/ nach Umsetzung von Persistenz, Anwendungseinstieg, Revisionen, Audit und Bestätigungspflicht wieder anwendbarer Bewertungen (Regression aller automatisierten TC).
+    en: Complete unittest suites tools/ and tests/ after implementing persistence, application entry point, revisions, audit and confirmation of assessments applicable again (regression of all automated TC).
+  artifact: docs/09-evidence/EV-006_AUTOMATED_TEST_RUN_D2.md
+  test_cases:
+  - TC-001
+  - TC-002
+  - TC-003
+  - TC-004
+  - TC-005
+  - TC-006
+  - TC-007
+  - TC-008
+  - TC-009
+  - TC-010
+  - TC-011
+  - TC-012
+  - TC-013
+  - TC-014
+  - TC-015
+  - TC-016
+  - TC-017
+  - TC-018
+  - TC-019
+  - TC-020
+  - TC-021
+  - TC-022
+  - TC-023
+  - TC-024
+  - TC-025
+  - TC-026
+  - TC-027
+  - TC-028
+  - TC-030
+  - TC-031
+  - TC-032
+  - TC-033
+  - TC-034
+  - TC-035
+  - TC-036
+  - TC-037
+  - TC-038
+  - TC-039
+  - TC-040
+  - TC-041
+  - TC-042
+  - TC-043
+  - TC-044
+  - TC-045
+  - TC-046
+  - TC-047
+  - TC-048
+  - TC-049
+  - TC-050
+  results:
+    TC-001: PASS
+    TC-002: PASS
+    TC-003: PASS
+    TC-004: PASS
+    TC-005: PASS
+    TC-006: PASS
+    TC-007: PASS
+    TC-008: PASS
+    TC-009: PASS
+    TC-010: PASS
+    TC-011: PASS
+    TC-012: PASS
+    TC-013: PASS
+    TC-014: PASS
+    TC-015: PASS
+    TC-016: PASS
+    TC-017: PASS
+    TC-018: PASS
+    TC-019: PASS
+    TC-020: PASS
+    TC-021: PASS
+    TC-022: PASS
+    TC-023: PASS
+    TC-024: PASS
+    TC-025: PASS
+    TC-026: PASS
+    TC-027: PASS
+    TC-028: PASS
+    TC-030: PASS
+    TC-031: PASS
+    TC-032: PASS
+    TC-033: PASS
+    TC-034: PASS
+    TC-035: PASS
+    TC-036: PASS
+    TC-037: PASS
+    TC-038: PASS
+    TC-039: PASS
+    TC-040: PASS
+    TC-041: PASS
+    TC-042: PASS
+    TC-043: PASS
+    TC-044: PASS
+    TC-045: PASS
+    TC-046: PASS
+    TC-047: PASS
+    TC-048: PASS
+    TC-049: PASS
+    TC-050: PASS
+  catalog_versions:
+    rr_catalog: '0.26'
+    rul_catalog: '0.2'
+    sr_catalog: '0.5'
+    rr_applicability: '0.4'
+    data_model: '0.7'
+    rr_measure: '0.1'
+  assessment:
+    de: Alle automatisierten TC einschließlich TC-047 bis TC-050, der erweiterten TC-043/TC-044 und der Referenzfälle TC-036 bis TC-039 bestanden.
+    en: All automated TC including TC-047 to TC-050, the extended TC-043/TC-044 and the reference cases TC-036 to TC-039 passed.
+- id: EV-007
+  title:
+    de: Automatisierter Testlauf Demonstrator D3 (Reporting, PDF, i18n)
+    en: Automated test run demonstrator D3 (reporting, PDF, i18n)
+  type: AUTOMATED_TEST_RUN
+  date: '2026-09-27'
+  performed:
+    de: Vollständige unittest-Suiten tools/ und tests/ nach Umsetzung von Berichtsmodell, HTML- und PDF-Bericht und zentraler Sprachausgabe (Regression aller automatisierten TC).
+    en: Complete unittest suites tools/ and tests/ after implementing the report model, HTML and PDF report and central language output (regression of all automated TC).
+  artifact: docs/09-evidence/EV-007_AUTOMATED_TEST_RUN_D3.md
+  test_cases:
+  - TC-001
+  - TC-002
+  - TC-003
+  - TC-004
+  - TC-005
+  - TC-006
+  - TC-007
+  - TC-008
+  - TC-009
+  - TC-010
+  - TC-011
+  - TC-012
+  - TC-013
+  - TC-014
+  - TC-015
+  - TC-016
+  - TC-017
+  - TC-018
+  - TC-019
+  - TC-020
+  - TC-021
+  - TC-022
+  - TC-023
+  - TC-024
+  - TC-025
+  - TC-026
+  - TC-027
+  - TC-028
+  - TC-030
+  - TC-031
+  - TC-032
+  - TC-033
+  - TC-034
+  - TC-035
+  - TC-036
+  - TC-037
+  - TC-038
+  - TC-039
+  - TC-040
+  - TC-041
+  - TC-042
+  - TC-043
+  - TC-044
+  - TC-045
+  - TC-046
+  - TC-047
+  - TC-048
+  - TC-049
+  - TC-050
+  - TC-051
+  - TC-052
+  - TC-053
+  - TC-054
+  results:
+    TC-001: PASS
+    TC-002: PASS
+    TC-003: PASS
+    TC-004: PASS
+    TC-005: PASS
+    TC-006: PASS
+    TC-007: PASS
+    TC-008: PASS
+    TC-009: PASS
+    TC-010: PASS
+    TC-011: PASS
+    TC-012: PASS
+    TC-013: PASS
+    TC-014: PASS
+    TC-015: PASS
+    TC-016: PASS
+    TC-017: PASS
+    TC-018: PASS
+    TC-019: PASS
+    TC-020: PASS
+    TC-021: PASS
+    TC-022: PASS
+    TC-023: PASS
+    TC-024: PASS
+    TC-025: PASS
+    TC-026: PASS
+    TC-027: PASS
+    TC-028: PASS
+    TC-030: PASS
+    TC-031: PASS
+    TC-032: PASS
+    TC-033: PASS
+    TC-034: PASS
+    TC-035: PASS
+    TC-036: PASS
+    TC-037: PASS
+    TC-038: PASS
+    TC-039: PASS
+    TC-040: PASS
+    TC-041: PASS
+    TC-042: PASS
+    TC-043: PASS
+    TC-044: PASS
+    TC-045: PASS
+    TC-046: PASS
+    TC-047: PASS
+    TC-048: PASS
+    TC-049: PASS
+    TC-050: PASS
+    TC-051: PASS
+    TC-052: PASS
+    TC-053: PASS
+    TC-054: PASS
+  catalog_versions:
+    rr_catalog: '0.26'
+    rul_catalog: '0.2'
+    sr_catalog: '0.5'
+    rr_applicability: '0.4'
+    data_model: '0.8'
+    rr_measure: '0.1'
+  assessment:
+    de: Alle automatisierten TC einschließlich TC-051 bis TC-054 bestanden; PDF-Smoke-Test und i18n-Schlüsselprüfung enthalten.
+    en: All automated TC including TC-051 to TC-054 passed; PDF smoke test and i18n key check included.
+- id: EV-008
+  title:
+    de: Automatisierter Testlauf Demonstrator D4 (Anwendungs-API, Fragebogen, Sichten)
+    en: Automated test run demonstrator D4 (application API, questionnaire, views)
+  type: AUTOMATED_TEST_RUN
+  date: '2026-09-27'
+  performed:
+    de: Vollständige unittest-Suiten tools/ und tests/ nach Umsetzung von adaptivem Fragebogen, Sichten, Anwendungs-API und lokalem Server (API-Ebene der Web-Abnahmeszenarien TC-055 bis TC-059; Regression aller automatisierten TC).
+    en: Complete unittest suites tools/ and tests/ after implementing the adaptive questionnaire, views, application API and local server (API level of the web acceptance scenarios TC-055 to TC-059; regression of all automated TC).
+  artifact: docs/09-evidence/EV-008_AUTOMATED_TEST_RUN_D4_API.md
+  test_cases:
+  - TC-001
+  - TC-002
+  - TC-003
+  - TC-004
+  - TC-005
+  - TC-006
+  - TC-007
+  - TC-008
+  - TC-009
+  - TC-010
+  - TC-011
+  - TC-012
+  - TC-013
+  - TC-014
+  - TC-015
+  - TC-016
+  - TC-017
+  - TC-018
+  - TC-019
+  - TC-020
+  - TC-021
+  - TC-022
+  - TC-023
+  - TC-024
+  - TC-025
+  - TC-026
+  - TC-027
+  - TC-028
+  - TC-030
+  - TC-031
+  - TC-032
+  - TC-033
+  - TC-034
+  - TC-035
+  - TC-036
+  - TC-037
+  - TC-038
+  - TC-039
+  - TC-040
+  - TC-041
+  - TC-042
+  - TC-043
+  - TC-044
+  - TC-045
+  - TC-046
+  - TC-047
+  - TC-048
+  - TC-049
+  - TC-050
+  - TC-051
+  - TC-052
+  - TC-053
+  - TC-054
+  - TC-055
+  - TC-056
+  - TC-057
+  - TC-058
+  - TC-059
+  results:
+    TC-001: PASS
+    TC-002: PASS
+    TC-003: PASS
+    TC-004: PASS
+    TC-005: PASS
+    TC-006: PASS
+    TC-007: PASS
+    TC-008: PASS
+    TC-009: PASS
+    TC-010: PASS
+    TC-011: PASS
+    TC-012: PASS
+    TC-013: PASS
+    TC-014: PASS
+    TC-015: PASS
+    TC-016: PASS
+    TC-017: PASS
+    TC-018: PASS
+    TC-019: PASS
+    TC-020: PASS
+    TC-021: PASS
+    TC-022: PASS
+    TC-023: PASS
+    TC-024: PASS
+    TC-025: PASS
+    TC-026: PASS
+    TC-027: PASS
+    TC-028: PASS
+    TC-030: PASS
+    TC-031: PASS
+    TC-032: PASS
+    TC-033: PASS
+    TC-034: PASS
+    TC-035: PASS
+    TC-036: PASS
+    TC-037: PASS
+    TC-038: PASS
+    TC-039: PASS
+    TC-040: PASS
+    TC-041: PASS
+    TC-042: PASS
+    TC-043: PASS
+    TC-044: PASS
+    TC-045: PASS
+    TC-046: PASS
+    TC-047: PASS
+    TC-048: PASS
+    TC-049: PASS
+    TC-050: PASS
+    TC-051: PASS
+    TC-052: PASS
+    TC-053: PASS
+    TC-054: PASS
+    TC-055: PASS
+    TC-056: PASS
+    TC-057: PASS
+    TC-058: PASS
+    TC-059: PASS
+  catalog_versions:
+    rr_catalog: '0.26'
+    rul_catalog: '0.2'
+    sr_catalog: '0.6'
+    rr_applicability: '0.4'
+    data_model: '0.8'
+    rr_measure: '0.1'
+  assessment:
+    de: Alle automatisierten TC bestanden; für TC-055 bis TC-059 belegt dieser Lauf die API- und Serverebene, die Browser-Ebene belegt EV-009.
+    en: All automated TC passed; for TC-055 to TC-059 this run covers the API and server level, the browser level is covered by EV-009.
+- id: EV-009
+  title:
+    de: Automatisierter Testlauf Demonstrator D4 (vollständig, einschließlich Browser)
+    en: Automated test run demonstrator D4 (complete, including browser)
+  type: AUTOMATED_TEST_RUN
+  date: '2026-09-27'
+  performed:
+    de: Vollständige unittest-Suiten tools/ und tests/, alle Validatoren, Produktionsbuild, Vitest-Komponententests und Playwright-Browser-Tests (Abnahmeablauf, Darstellung, Barrierefreiheit, Responsive) gegen den lokalen Server mit synthetischen Testdaten.
+    en: Complete unittest suites tools/ and tests/, all validators, production build, Vitest component tests and Playwright browser tests (acceptance flow, presentation, accessibility, responsiveness) against the local server with synthetic test data.
+  artifact: docs/09-evidence/EV-009_AUTOMATED_TEST_RUN_D4_WEB.md
+  test_cases:
+  - TC-001
+  - TC-002
+  - TC-003
+  - TC-004
+  - TC-005
+  - TC-006
+  - TC-007
+  - TC-008
+  - TC-009
+  - TC-010
+  - TC-011
+  - TC-012
+  - TC-013
+  - TC-014
+  - TC-015
+  - TC-016
+  - TC-017
+  - TC-018
+  - TC-019
+  - TC-020
+  - TC-021
+  - TC-022
+  - TC-023
+  - TC-024
+  - TC-025
+  - TC-026
+  - TC-027
+  - TC-028
+  - TC-030
+  - TC-031
+  - TC-032
+  - TC-033
+  - TC-034
+  - TC-035
+  - TC-036
+  - TC-037
+  - TC-038
+  - TC-039
+  - TC-040
+  - TC-041
+  - TC-042
+  - TC-043
+  - TC-044
+  - TC-045
+  - TC-046
+  - TC-047
+  - TC-048
+  - TC-049
+  - TC-050
+  - TC-051
+  - TC-052
+  - TC-053
+  - TC-054
+  - TC-055
+  - TC-056
+  - TC-057
+  - TC-058
+  - TC-059
+  - TC-060
+  results:
+    TC-001: PASS
+    TC-002: PASS
+    TC-003: PASS
+    TC-004: PASS
+    TC-005: PASS
+    TC-006: PASS
+    TC-007: PASS
+    TC-008: PASS
+    TC-009: PASS
+    TC-010: PASS
+    TC-011: PASS
+    TC-012: PASS
+    TC-013: PASS
+    TC-014: PASS
+    TC-015: PASS
+    TC-016: PASS
+    TC-017: PASS
+    TC-018: PASS
+    TC-019: PASS
+    TC-020: PASS
+    TC-021: PASS
+    TC-022: PASS
+    TC-023: PASS
+    TC-024: PASS
+    TC-025: PASS
+    TC-026: PASS
+    TC-027: PASS
+    TC-028: PASS
+    TC-030: PASS
+    TC-031: PASS
+    TC-032: PASS
+    TC-033: PASS
+    TC-034: PASS
+    TC-035: PASS
+    TC-036: PASS
+    TC-037: PASS
+    TC-038: PASS
+    TC-039: PASS
+    TC-040: PASS
+    TC-041: PASS
+    TC-042: PASS
+    TC-043: PASS
+    TC-044: PASS
+    TC-045: PASS
+    TC-046: PASS
+    TC-047: PASS
+    TC-048: PASS
+    TC-049: PASS
+    TC-050: PASS
+    TC-051: PASS
+    TC-052: PASS
+    TC-053: PASS
+    TC-054: PASS
+    TC-055: PASS
+    TC-056: PASS
+    TC-057: PASS
+    TC-058: PASS
+    TC-059: PASS
+    TC-060: PASS
+  catalog_versions:
+    rr_catalog: '0.26'
+    rul_catalog: '0.2'
+    sr_catalog: '0.6'
+    rr_applicability: '0.4'
+    data_model: '0.8'
+    rr_measure: '0.1'
+  assessment:
+    de: Alle automatisierten TC bestanden; Web-Abnahmeszenarien TC-055 bis TC-060 auf API-, Komponenten- und Browserebene; axe-core ohne Verstöße; kein horizontaler Überlauf; nur Google Chrome geprüft.
+    en: All automated TC passed; web acceptance scenarios TC-055 to TC-060 at API, component and browser level; axe-core without violations; no horizontal overflow; only Google Chrome tested.
+- id: EV-010
+  title:
+    de: Designevidenz Demonstrator D4 (Screenshots und Sichtprüfung)
+    en: Design evidence demonstrator D4 (screenshots and visual review)
+  type: MANUAL_REFERENCE
+  date: '2026-09-27'
+  performed:
+    de: Gezielte Screenshots aller Hauptansichten in Hell, Dunkel, hohem Kontrast, Englisch und mobil aus synthetischen Testdaten; Sichtprüfung im Rahmen der Umsetzung.
+    en: Targeted screenshots of all main views in light, dark, high contrast, English and mobile from synthetic test data; visual review during implementation.
+  artifact: docs/09-evidence/EV-010_DESIGN_EVIDENCE_D4.md
+  test_cases:
+  - TC-060
+  results:
+    TC-060: PASS
+  catalog_versions:
+    rr_catalog: '0.26'
+    rul_catalog: '0.2'
+    sr_catalog: '0.6'
+    rr_applicability: '0.4'
+    data_model: '0.8'
+    rr_measure: '0.1'
+  assessment:
+    de: Sichtprüfung ohne offene Befunde; keine unabhängige Gestaltungs- oder Nutzerbewertung.
+    en: Visual review without open findings; no independent design or user evaluation.
+- id: EV-011
+  title:
+    de: Eingefrorene Referenzbewertung der Fallstudie (vor dem Evaluationslauf)
+    en: Frozen reference assessment of the case study (before the evaluation run)
+  type: MANUAL_REFERENCE
+  date: '2026-09-28'
+  performed:
+    de: Referenzstatus aller 959 RR und Gap-Referenz-Umfang von 32 RR für die Fallstudie auf Basis von TC-036, abgeleitet aus der adjudizierten Schicht (EV-003) und der dokumentierten Anwendbarkeitssemantik, validiert und mit SHA-256 vor dem Systemlauf eingefroren.
+    en: Reference status of all 959 RR and gap reference scope of 32 RR for the case study based on TC-036, derived from the adjudicated layer (EV-003) and the documented applicability semantics, validated and frozen with SHA-256 before the system run.
+  artifact: docs/09-evidence/EV-011_CASE_STUDY_REFERENCE_FREEZE.md
+  test_cases:
+  - TC-036
+  results:
+    TC-036: PASS
+  catalog_versions:
+    rr_catalog: '0.26'
+    rul_catalog: '0.2'
+    sr_catalog: '0.6'
+    rr_applicability: '0.4'
+    data_model: '0.8'
+    rr_measure: '0.1'
+  assessment:
+    de: Referenz vollständig und konsistent mit der manuell adjudizierten Schicht; kein unabhängiger Goldstandard.
+    en: Reference complete and consistent with the manually adjudicated layer; no independent gold standard.
+- id: EV-012
+  title:
+    de: Evaluationslauf R1 der Fallstudie (vor Korrektur)
+    en: Case study evaluation run R1 (before correction)
+  type: AUTOMATED_TEST_RUN
+  date: '2026-09-28'
+  performed:
+    de: Fallstudie über die lokale Anwendungs-API gegen die eingefrorene Referenz; Primärlauf, 10 Leistungsmessungen, 20 Wiederholungen.
+    en: Case study through the local application API against the frozen reference; primary run, 10 performance measurements, 20 repetitions.
+  artifact: docs/09-evidence/EV-012_EVALUATION_RUN_R1.md
+  test_cases:
+  - TC-061
+  results:
+    TC-061: FAIL
+  catalog_versions:
+    rr_catalog: '0.26'
+    rul_catalog: '0.2'
+    sr_catalog: '0.6'
+    rr_applicability: '0.4'
+    data_model: '0.8'
+    rr_measure: '0.1'
+  assessment:
+    de: Anwendbarkeit 959/959 und Gap 32/32, aber Berichtsdokument ohne Kennungen 0/20 reproduzierbar (Befund F-2); Ergebnis unverändert erhalten.
+    en: Applicability 959/959 and gap 32/32, but report document without identifiers reproducible 0/20 (finding F-2); result kept unchanged.
+- id: EV-013
+  title:
+    de: Evaluationslauf R2 der Fallstudie – Soll/Ist-Vergleich
+    en: Case study evaluation run R2 – reference versus system
+  type: AUTOMATED_TEST_RUN
+  date: '2026-09-28'
+  performed:
+    de: Evaluation Revision R2 nach den Korrekturen F-2 und F-3 – Korrektheit, Vollständigkeit, Nachvollziehbarkeit und Leistung gegen die unveränderte Referenz.
+    en: Evaluation revision R2 after corrections F-2 and F-3 – correctness, completeness, traceability and performance against the unchanged reference.
+  artifact: docs/09-evidence/EV-013_EVALUATION_RUN_R2.md
+  test_cases:
+  - TC-061
+  results:
+    TC-061: PASS
+  catalog_versions:
+    rr_catalog: '0.26'
+    rul_catalog: '0.2'
+    sr_catalog: '0.6'
+    rr_applicability: '0.4'
+    data_model: '0.8'
+    rr_measure: '0.1'
+  assessment:
+    de: Anwendbarkeit 959/959, Gap 32/32, Vollständigkeit 542/542 bzw. 32/32, Nachvollziehbarkeit 116 PASS / 4 NA / 1 FAIL (dokumentierter Befund F-4).
+    en: Applicability 959/959, gap 32/32, completeness 542/542 and 32/32, traceability 116 PASS / 4 N/A / 1 FAIL (documented finding F-4).
+- id: EV-014
+  title:
+    de: Reproduzierbarkeit der Fallstudie (R2, 20 Wiederholungen)
+    en: Reproducibility of the case study (R2, 20 repetitions)
+  type: AUTOMATED_TEST_RUN
+  date: '2026-09-28'
+  performed:
+    de: 20 vollständige Wiederholungen über den adaptiven HTTP-Pfad; Vergleich der fachlichen Sicht ohne Kennungen und Zeitstempel; ergänzend Fingerprint bei festen Nachweiskennungen.
+    en: 20 complete repetitions through the adaptive HTTP path; comparison of the domain view without identifiers and timestamps; additionally fingerprint with fixed evidence identifiers.
+  artifact: docs/09-evidence/EV-014_REPRODUCIBILITY_R2.md
+  test_cases:
+  - TC-061
+  results:
+    TC-061: PASS
+  catalog_versions:
+    rr_catalog: '0.26'
+    rul_catalog: '0.2'
+    sr_catalog: '0.6'
+    rr_applicability: '0.4'
+    data_model: '0.8'
+    rr_measure: '0.1'
+  assessment:
+    de: 20/20 identische fachliche Ergebnisse einschließlich Berichtsdokument; Roh-Fingerprint abhängig von vergebenen Kennungen (F-1), mit festen Kennungen 20/20 identisch.
+    en: 20/20 identical domain results including report document; raw fingerprint depends on assigned identifiers (F-1), identical 20/20 with fixed identifiers.
+- id: EV-015
+  title:
+    de: DE/EN- und Web/PDF-Konsistenz sowie Verständlichkeitsprüfung (R2)
+    en: DE/EN and web/PDF consistency and comprehensibility check (R2)
+  type: AUTOMATED_TEST_RUN
+  date: '2026-09-28'
+  performed:
+    de: Vergleich sprachneutraler Werte zwischen DE- und EN-Bericht, Textabgleich Web-Berichtsdokument gegen HTML und PDF, kriteriengestützte Artefaktprüfung K1–K9.
+    en: Comparison of language-neutral values between DE and EN report, text matching of the web report document against HTML and PDF, criteria-based artefact check K1–K9.
+  artifact: docs/09-evidence/EV-015_CONSISTENCY_R2.md
+  test_cases:
+  - TC-061
+  results:
+    TC-061: PASS
+  catalog_versions:
+    rr_catalog: '0.26'
+    rul_catalog: '0.2'
+    sr_catalog: '0.6'
+    rr_applicability: '0.4'
+    data_model: '0.8'
+    rr_measure: '0.1'
+  assessment:
+    de: DE/EN 14/14 Abschnitte identisch, Web/PDF 33 107/33 107 Texte; Verständlichkeit 7 PASS, 2 PARTIAL; kein unabhängiges Review.
+    en: DE/EN 14/14 sections identical, web/PDF 33,107/33,107 texts; comprehensibility 7 PASS, 2 PARTIAL; no independent review.
+- id: EV-016
+  title:
+    de: Browser-Durchlauf der Fallstudie und Screenshots (R2)
+    en: Browser run of the case study and screenshots (R2)
+  type: AUTOMATED_TEST_RUN
+  date: '2026-09-29'
+  performed:
+    de: Fallstudie vollständig über die Oberfläche erfasst und mit dem API-Lauf verglichen; Browser-Leistungsmessung; sieben gezielte Screenshots.
+    en: Case study fully entered through the user interface and compared with the API run; browser performance measurement; seven targeted screenshots.
+  artifact: docs/09-evidence/EV-016_BROWSER_CASE_STUDY_R2.md
+  test_cases:
+  - TC-061
+  results:
+    TC-061: PASS
+  catalog_versions:
+    rr_catalog: '0.26'
+    rul_catalog: '0.2'
+    sr_catalog: '0.6'
+    rr_applicability: '0.4'
+    data_model: '0.8'
+    rr_measure: '0.1'
+  assessment:
+    de: 956/956 vergleichbare RR und Summen identisch zum API-Lauf; nur Google Chrome.
+    en: 956/956 comparable RR and totals identical to the API run; Google Chrome only.
+- id: EV-017
+  title:
+    de: Automatisierter Testlauf Block 6 (vollständig, einschließlich Browser)
+    en: Automated test run block 6 (complete, including browser)
+  type: AUTOMATED_TEST_RUN
+  date: '2026-09-29'
+  performed:
+    de: Vollständige unittest-Suiten tools/ und tests/ einschließlich TC-061, alle Validatoren einschließlich Referenzvalidator, Produktionsbuild, Vitest-Komponententests und Playwright-Browser-Tests gegen den lokalen Server mit synthetischen Testdaten.
+    en: Complete unittest suites tools/ and tests/ including TC-061, all validators including the reference validator, production build, Vitest component tests and Playwright browser tests against the local server with synthetic test data.
+  artifact: docs/09-evidence/EV-017_AUTOMATED_TEST_RUN_B6.md
+  test_cases:
+  - TC-001
+  - TC-002
+  - TC-003
+  - TC-004
+  - TC-005
+  - TC-006
+  - TC-007
+  - TC-008
+  - TC-009
+  - TC-010
+  - TC-011
+  - TC-012
+  - TC-013
+  - TC-014
+  - TC-015
+  - TC-016
+  - TC-017
+  - TC-018
+  - TC-019
+  - TC-020
+  - TC-021
+  - TC-022
+  - TC-023
+  - TC-024
+  - TC-025
+  - TC-026
+  - TC-027
+  - TC-028
+  - TC-030
+  - TC-031
+  - TC-032
+  - TC-033
+  - TC-034
+  - TC-035
+  - TC-036
+  - TC-037
+  - TC-038
+  - TC-039
+  - TC-040
+  - TC-041
+  - TC-042
+  - TC-043
+  - TC-044
+  - TC-045
+  - TC-046
+  - TC-047
+  - TC-048
+  - TC-049
+  - TC-050
+  - TC-051
+  - TC-052
+  - TC-053
+  - TC-054
+  - TC-055
+  - TC-056
+  - TC-057
+  - TC-058
+  - TC-059
+  - TC-060
+  - TC-061
+  results:
+    TC-001: PASS
+    TC-002: PASS
+    TC-003: PASS
+    TC-004: PASS
+    TC-005: PASS
+    TC-006: PASS
+    TC-007: PASS
+    TC-008: PASS
+    TC-009: PASS
+    TC-010: PASS
+    TC-011: PASS
+    TC-012: PASS
+    TC-013: PASS
+    TC-014: PASS
+    TC-015: PASS
+    TC-016: PASS
+    TC-017: PASS
+    TC-018: PASS
+    TC-019: PASS
+    TC-020: PASS
+    TC-021: PASS
+    TC-022: PASS
+    TC-023: PASS
+    TC-024: PASS
+    TC-025: PASS
+    TC-026: PASS
+    TC-027: PASS
+    TC-028: PASS
+    TC-030: PASS
+    TC-031: PASS
+    TC-032: PASS
+    TC-033: PASS
+    TC-034: PASS
+    TC-035: PASS
+    TC-036: PASS
+    TC-037: PASS
+    TC-038: PASS
+    TC-039: PASS
+    TC-040: PASS
+    TC-041: PASS
+    TC-042: PASS
+    TC-043: PASS
+    TC-044: PASS
+    TC-045: PASS
+    TC-046: PASS
+    TC-047: PASS
+    TC-048: PASS
+    TC-049: PASS
+    TC-050: PASS
+    TC-051: PASS
+    TC-052: PASS
+    TC-053: PASS
+    TC-054: PASS
+    TC-055: PASS
+    TC-056: PASS
+    TC-057: PASS
+    TC-058: PASS
+    TC-059: PASS
+    TC-060: PASS
+    TC-061: PASS
+  catalog_versions:
+    rr_catalog: '0.26'
+    rul_catalog: '0.2'
+    sr_catalog: '0.6'
+    rr_applicability: '0.4'
+    data_model: '0.8'
+    rr_measure: '0.1'
+  assessment:
+    de: Alle 60 automatisierten TC bestanden; keine Regression durch die Korrekturen F-2 und F-3.
+    en: All 60 automated TC passed; no regression from corrections F-2 and F-3.
+- id: EV-018
+  title:
+    de: Validator- und Testlauf nach RR_MEASURE 0.2 (Thesis-Endstand)
+    en: Validator and test run after RR_MEASURE 0.2 (thesis final state)
+  type: AUTOMATED_TEST_RUN
+  date: '2026-09-29'
+  performed:
+    de: Alle Validatoren einschließlich Maßnahmen- und Referenzvalidator sowie unittest-Suiten tools/ und tests/ mit RR_MEASURE_CATALOG 0.2; TC-061 gegen die eingefrorene Fassung 0.1; kein Frontend-Lauf, da kein Frontend-Code geändert wurde.
+    en: All validators including the measure and reference validators and the unittest suites tools/ and tests/ with RR_MEASURE_CATALOG 0.2; TC-061 against the frozen version 0.1; no frontend run because no frontend code changed.
+  artifact: docs/09-evidence/EV-018_AUTOMATED_TEST_RUN_RR_MEASURE_0_2.md
+  test_cases:
+  - TC-001
+  - TC-002
+  - TC-003
+  - TC-004
+  - TC-005
+  - TC-006
+  - TC-007
+  - TC-008
+  - TC-009
+  - TC-010
+  - TC-011
+  - TC-012
+  - TC-013
+  - TC-014
+  - TC-015
+  - TC-016
+  - TC-017
+  - TC-018
+  - TC-019
+  - TC-020
+  - TC-021
+  - TC-022
+  - TC-023
+  - TC-024
+  - TC-025
+  - TC-026
+  - TC-027
+  - TC-028
+  - TC-030
+  - TC-031
+  - TC-032
+  - TC-033
+  - TC-034
+  - TC-035
+  - TC-036
+  - TC-037
+  - TC-038
+  - TC-039
+  - TC-040
+  - TC-041
+  - TC-042
+  - TC-043
+  - TC-044
+  - TC-045
+  - TC-046
+  - TC-047
+  - TC-048
+  - TC-049
+  - TC-050
+  - TC-051
+  - TC-052
+  - TC-053
+  - TC-054
+  - TC-055
+  - TC-056
+  - TC-057
+  - TC-058
+  - TC-059
+  - TC-060
+  - TC-061
+  results:
+    TC-001: PASS
+    TC-002: PASS
+    TC-003: PASS
+    TC-004: PASS
+    TC-005: PASS
+    TC-006: PASS
+    TC-007: PASS
+    TC-008: PASS
+    TC-009: PASS
+    TC-010: PASS
+    TC-011: PASS
+    TC-012: PASS
+    TC-013: PASS
+    TC-014: PASS
+    TC-015: PASS
+    TC-016: PASS
+    TC-017: PASS
+    TC-018: PASS
+    TC-019: PASS
+    TC-020: PASS
+    TC-021: PASS
+    TC-022: PASS
+    TC-023: PASS
+    TC-024: PASS
+    TC-025: PASS
+    TC-026: PASS
+    TC-027: PASS
+    TC-028: PASS
+    TC-030: PASS
+    TC-031: PASS
+    TC-032: PASS
+    TC-033: PASS
+    TC-034: PASS
+    TC-035: PASS
+    TC-036: PASS
+    TC-037: PASS
+    TC-038: PASS
+    TC-039: PASS
+    TC-040: PASS
+    TC-041: PASS
+    TC-042: PASS
+    TC-043: PASS
+    TC-044: PASS
+    TC-045: PASS
+    TC-046: PASS
+    TC-047: PASS
+    TC-048: PASS
+    TC-049: PASS
+    TC-050: PASS
+    TC-051: PASS
+    TC-052: PASS
+    TC-053: PASS
+    TC-054: PASS
+    TC-055: PASS
+    TC-056: PASS
+    TC-057: PASS
+    TC-058: PASS
+    TC-059: PASS
+    TC-060: PASS
+    TC-061: PASS
+  catalog_versions:
+    rr_catalog: '0.26'
+    rul_catalog: '0.2'
+    sr_catalog: '0.6'
+    rr_applicability: '0.4'
+    data_model: '0.8'
+    rr_measure: '0.2'
+  assessment:
+    de: Alle 60 automatisierten TC auf API- bzw. Kernebene bestanden; 959 von 959 RR mit Maßnahme und Nachweisart; Evaluationskennzahlen gegen RR_MEASURE 0.1 unverändert.
+    en: All 60 automated TC passed at API or core level; 959 of 959 RR with measure and evidence type; evaluation figures against RR_MEASURE 0.1 unchanged.
+- id: EV-019
+  title:
+    de: Gezielte Anhang-III-Übergangskorrektur nach R01-4.6-F01
+    en: Targeted Annex III transitional correction for R01-4.6-F01
+  type: AUTOMATED_TEST_RUN
+  date: '2026-11-04'
+  performed:
+    de: 'TC-062: 14 automatisierte Tests zu Übergang, Routen, Frageführung und historischem Versionsschutz; keine neue Fallstudienevaluation.'
+    en: 'TC-062: 14 automated tests for transition, routes, questionnaire and historical version protection; no new case-study evaluation.'
+  artifact: docs/09-evidence/EV-019_ANNEX_III_TRANSITION_FIX.md
+  test_cases:
+  - TC-062
+  results:
+    TC-062: PASS
+  catalog_versions:
+    rr_catalog: '0.26'
+    rul_catalog: '0.3'
+    sr_catalog: '0.6'
+    rr_applicability: '0.5'
+    data_model: '0.8'
+    rr_measure: '0.2'
+  assessment:
+    de: Gezielte Regression bestanden; historische R1/R2-Kataloge und Ergebnisse unverändert. Keine unabhängige regulatorische Validierung.
+    en: Targeted regression passed; historical R1/R2 catalogs and results unchanged. No independent regulatory validation.
+change_history:
+- version: '0.1'
+  change: 'Erstfassung: EV-001 (automatisierter Testlauf), EV-002 (Validatorlauf), EV-003 (manuelle Herleitung der Referenzfälle).'
+- version: '0.2'
+  change: 'EV-004 ergänzt: Testlauf zum Block-5-Abschluss (TC-028, TC-041).'
+- version: '0.3'
+  change: 'EV-005 ergänzt: vollständiger Testlauf Demonstrator D1 (alle automatisierten TC, neu TC-042 bis TC-046).'
+- version: '0.4'
+  change: 'EV-006 ergänzt: vollständiger Testlauf Demonstrator D2 (alle automatisierten TC, neu TC-047 bis TC-050).'
+- version: '0.5'
+  change: 'EV-007 ergänzt: vollständiger Testlauf Demonstrator D3 (alle automatisierten TC, neu TC-051 bis TC-054).'
+- version: '0.6'
+  change: 'EV-008 ergänzt: vollständiger Testlauf Demonstrator D4 auf API-Ebene (alle automatisierten TC, neu TC-055 bis TC-059).'
+- version: '0.7'
+  change: 'EV-009 (vollständiger Testlauf D4 einschließlich Browser, alle automatisierten TC, neu TC-060) und EV-010 (Designevidenz D4: Screenshots und Sichtprüfung) ergänzt.'
+- version: '0.8'
+  change: 'EV-011 ergänzt: eingefrorene Referenzbewertung der Fallstudie (Block 6, Phase A).'
+- version: '0.9'
+  change: 'EV-012 bis EV-017 ergänzt: Evaluationsläufe R1 (vor Korrektur, TC-061 FAIL) und R2, Reproduzierbarkeit, DE/EN- und Web/PDF-Konsistenz, Browser-Durchlauf der Fallstudie, vollständiger Testlauf Block 6.'
+- version: '0.10'
+  change: 'EV-018 ergänzt: Validator- und Testlauf nach RR_MEASURE_CATALOG 0.2 (Schließung B-1 des Thesis-Audits).'
+- version: '0.11'
+  change: 'EV-019 ergänzt: tatsächlich ausgeführte gezielte Regression der Anhang-III-Übergangskorrektur, TC-062. EV-001 bis EV-018 unverändert.'

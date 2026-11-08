@@ -1,0 +1,17 @@
+{
+  "command": [
+    "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-t",
+    "."
+  ],
+  "exit_code": 0,
+  "seconds": 486.286,
+  "python": "3.13.15",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O"
+}

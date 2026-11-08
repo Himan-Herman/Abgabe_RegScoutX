@@ -1,0 +1,959 @@
+{
+ "revision": "R2",
+ "started": "2026-09-28T22:13:55Z",
+ "environment": {
+  "python": "3.13.15",
+  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "machine": "Apple M4 Max",
+  "commit": "219134c1dc51e2f4ef3996fd047cec1860057f8d",
+  "reference_sha256": "45cf843e993eb7c9fc17dfeb810541b667087bbbd3effc726188d04f6ad2fc66"
+ },
+ "run": {
+  "assessment_id": "0faf35c7-ec36-434c-83ee-f84307cba12b",
+  "fingerprint": "52ebd2bfc814506fc1722a9d1cea8caf66978eb2852cd53b5b1aa688968b9de1",
+  "counts": {
+   "total": 959,
+   "applicable": 542,
+   "not_applicable": 128,
+   "unresolved": 289,
+   "fulfilled": 4,
+   "partially_fulfilled": 4,
+   "not_fulfilled": 4,
+   "not_assessed": 523,
+   "evidence_review_required": 7,
+   "gaps": 15,
+   "mapping_review_required": 284,
+   "answers_review_required": 0
+  },
+  "adaptive_path": [
+   "is_software",
+   "special_route",
+   "data_action_type",
+   "individual_patient_benefit",
+   "own_medical_purpose",
+   "ivdr_information_purpose",
+   "drives_or_influences_device",
+   "provides_information_for_diagnostic_or_therapeutic_decisions",
+   "decision_impact_death_or_irreversible_deterioration",
+   "decision_impact_serious_deterioration_or_surgery",
+   "used_for_contraception_or_sti_prevention",
+   "therapeutic_with_integrated_diagnostic_function",
+   "drives_substance_administration_or_removal_device",
+   "further_unmodelled_rule_possibly_applicable",
+   "ai_system_status",
+   "scope_nexus",
+   "scope_exclusion",
+   "annex_i_product_relation",
+   "third_party_ca_required",
+   "third_party_ca_only_non_health_safety",
+   "assessment_date",
+   "market_or_service_date",
+   "annex_iii_use_case",
+   "lay_use",
+   "investigational_device",
+   "custom_made_device",
+   "implantable_device",
+   "eifu_provision",
+   "iso13485_clause1_exclusion_claimed",
+   "qms_software_used",
+   "outsourced_processes",
+   "purchasing_performed",
+   "software_safety_class",
+   "iec62304_route",
+   "soup_used",
+   "software_change",
+   "software_problem_reported",
+   "iec62366_ui_route",
+   "usability_test_planned",
+   "training_required_for_safe_use",
+   "safety_information_as_risk_control"
+  ],
+  "profile_keys_not_asked": [],
+  "report_files": {
+   "html_de": {
+    "content_hash": "958a88f233fb12b23961490bf7cb18966cd2e4d325eeae45df0cc18e7526724d",
+    "sha256": "05d65249017fb82366fdb4f5e112c9347cdb06daa8e1aca49568d77be748d90e",
+    "size": 1840975
+   },
+   "pdf_de": {
+    "content_hash": "958a88f233fb12b23961490bf7cb18966cd2e4d325eeae45df0cc18e7526724d",
+    "sha256": "12c2275d48271a48b8929718aaf29d68b114ee8753cb70478d9bb5a0183cb9c5",
+    "size": 1376557
+   },
+   "html_en": {
+    "content_hash": "fdfb9862fa527cb756e1c53ba52af89001eeab6dfabf86236e08424d34558ba2",
+    "sha256": "721f09eeb3f5d2365853d331f1bc4ce91f2a8350864fb1765ee6e22afd72d2f7",
+    "size": 1725031
+   },
+   "pdf_en": {
+    "content_hash": "fdfb9862fa527cb756e1c53ba52af89001eeab6dfabf86236e08424d34558ba2",
+    "sha256": "d919221be91bfc4a3c7e9021fac477976552c7bf0677158b34cd401b7efe62d9",
+    "size": 1281537
+   }
+  },
+  "report_document_content_hash": {
+   "de": "958a88f233fb12b23961490bf7cb18966cd2e4d325eeae45df0cc18e7526724d",
+   "en": "fdfb9862fa527cb756e1c53ba52af89001eeab6dfabf86236e08424d34558ba2"
+  },
+  "seconds": 45.75,
+  "requests": 173
+ },
+ "applicability": {
+  "total": 959,
+  "correct": 959,
+  "share_correct": 1.0,
+  "deviations": 0,
+  "deviations_by_reference_status": {},
+  "confusion": {
+   "APPLICABLE": {
+    "APPLICABLE": 542,
+    "NOT_APPLICABLE": 0,
+    "APPLICABILITY_UNRESOLVED": 0
+   },
+   "NOT_APPLICABLE": {
+    "APPLICABLE": 0,
+    "NOT_APPLICABLE": 128,
+    "APPLICABILITY_UNRESOLVED": 0
+   },
+   "APPLICABILITY_UNRESOLVED": {
+    "APPLICABLE": 0,
+    "NOT_APPLICABLE": 0,
+    "APPLICABILITY_UNRESOLVED": 289
+   }
+  },
+  "applicable": {
+   "tp": 542,
+   "fp": 0,
+   "fn": 0,
+   "fp_from_unresolved": 0,
+   "fn_to_unresolved": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "reason_codes": {
+   "compared": 959,
+   "agreeing": 959,
+   "deviations": []
+  },
+  "deviation_list": []
+ },
+ "gap": {
+  "total": 32,
+  "match": 32,
+  "share": 1.0,
+  "deviations": [],
+  "by_category": {
+   "FULFILLED": {
+    "reference": 4,
+    "match": 4
+   },
+   "PARTIALLY_FULFILLED": {
+    "reference": 4,
+    "match": 4
+   },
+   "NOT_FULFILLED": {
+    "reference": 4,
+    "match": 4
+   },
+   "EVIDENCE_REVIEW_REQUIRED": {
+    "reference": 7,
+    "match": 7
+   },
+   "NOT_ASSESSED": {
+    "reference": 10,
+    "match": 10
+   },
+   "APPLICABILITY_UNRESOLVED": {
+    "reference": 2,
+    "match": 2
+   },
+   "NOT_APPLICABLE": {
+    "reference": 1,
+    "match": 1
+   }
+  },
+  "secondary": {
+   "gap_reason_match": {
+    "match": 32,
+    "total": 32
+   },
+   "is_gap_match": {
+    "match": 32,
+    "total": 32
+   },
+   "answer_state_match": {
+    "match": 32,
+    "total": 32
+   },
+   "evidence_state_match": {
+    "match": 32,
+    "total": 32
+   }
+  },
+  "items": [
+   {
+    "requirement_id": "RR-082",
+    "reference": "FULFILLED",
+    "system": "FULFILLED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-123",
+    "reference": "PARTIALLY_FULFILLED",
+    "system": "PARTIALLY_FULFILLED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-081",
+    "reference": "NOT_FULFILLED",
+    "system": "NOT_FULFILLED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-384",
+    "reference": "EVIDENCE_REVIEW_REQUIRED",
+    "system": "EVIDENCE_REVIEW_REQUIRED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-094",
+    "reference": "NOT_ASSESSED",
+    "system": "NOT_ASSESSED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-076",
+    "reference": "EVIDENCE_REVIEW_REQUIRED",
+    "system": "EVIDENCE_REVIEW_REQUIRED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-160",
+    "reference": "FULFILLED",
+    "system": "FULFILLED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-064",
+    "reference": "PARTIALLY_FULFILLED",
+    "system": "PARTIALLY_FULFILLED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-074",
+    "reference": "NOT_FULFILLED",
+    "system": "NOT_FULFILLED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-165",
+    "reference": "EVIDENCE_REVIEW_REQUIRED",
+    "system": "EVIDENCE_REVIEW_REQUIRED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-096",
+    "reference": "NOT_ASSESSED",
+    "system": "NOT_ASSESSED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-135",
+    "reference": "EVIDENCE_REVIEW_REQUIRED",
+    "system": "EVIDENCE_REVIEW_REQUIRED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-302",
+    "reference": "FULFILLED",
+    "system": "FULFILLED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-539",
+    "reference": "PARTIALLY_FULFILLED",
+    "system": "PARTIALLY_FULFILLED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-172",
+    "reference": "NOT_FULFILLED",
+    "system": "NOT_FULFILLED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-448",
+    "reference": "EVIDENCE_REVIEW_REQUIRED",
+    "system": "EVIDENCE_REVIEW_REQUIRED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-084",
+    "reference": "NOT_ASSESSED",
+    "system": "NOT_ASSESSED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-189",
+    "reference": "EVIDENCE_REVIEW_REQUIRED",
+    "system": "EVIDENCE_REVIEW_REQUIRED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-892",
+    "reference": "FULFILLED",
+    "system": "FULFILLED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-163",
+    "reference": "PARTIALLY_FULFILLED",
+    "system": "PARTIALLY_FULFILLED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-593",
+    "reference": "NOT_FULFILLED",
+    "system": "NOT_FULFILLED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-692",
+    "reference": "EVIDENCE_REVIEW_REQUIRED",
+    "system": "EVIDENCE_REVIEW_REQUIRED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-083",
+    "reference": "NOT_ASSESSED",
+    "system": "NOT_ASSESSED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-162",
+    "reference": "NOT_ASSESSED",
+    "system": "NOT_ASSESSED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-065",
+    "reference": "NOT_ASSESSED",
+    "system": "NOT_ASSESSED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-075",
+    "reference": "NOT_ASSESSED",
+    "system": "NOT_ASSESSED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-097",
+    "reference": "NOT_ASSESSED",
+    "system": "NOT_ASSESSED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-085",
+    "reference": "NOT_ASSESSED",
+    "system": "NOT_ASSESSED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-164",
+    "reference": "NOT_ASSESSED",
+    "system": "NOT_ASSESSED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-001",
+    "reference": "APPLICABILITY_UNRESOLVED",
+    "system": "APPLICABILITY_UNRESOLVED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-034",
+    "reference": "APPLICABILITY_UNRESOLVED",
+    "system": "APPLICABILITY_UNRESOLVED",
+    "match": true
+   },
+   {
+    "requirement_id": "RR-205",
+    "reference": "NOT_APPLICABLE",
+    "system": "NOT_APPLICABLE",
+    "match": true
+   }
+  ]
+ },
+ "gap_completeness": {
+  "total": 32,
+  "complete": 32,
+  "share": 1.0,
+  "incomplete": []
+ },
+ "traceability": {
+  "sample": 11,
+  "summary": {
+   "PASS": 116,
+   "NOT_APPLICABLE": 4,
+   "FAIL": 1
+  },
+  "items": [
+   {
+    "requirement_id": "RR-082",
+    "criteria": {
+     "T1": "PASS",
+     "T2": "PASS",
+     "T3": "PASS",
+     "T4": "PASS",
+     "T5": "PASS",
+     "T6": "PASS",
+     "T7": "NOT_APPLICABLE",
+     "T8": "PASS",
+     "T9": "PASS",
+     "T10": "PASS",
+     "T11": "PASS"
+    },
+    "in_report": true
+   },
+   {
+    "requirement_id": "RR-094",
+    "criteria": {
+     "T1": "PASS",
+     "T2": "PASS",
+     "T3": "PASS",
+     "T4": "PASS",
+     "T5": "PASS",
+     "T6": "PASS",
+     "T7": "PASS",
+     "T8": "PASS",
+     "T9": "PASS",
+     "T10": "PASS",
+     "T11": "PASS"
+    },
+    "in_report": true
+   },
+   {
+    "requirement_id": "RR-076",
+    "criteria": {
+     "T1": "PASS",
+     "T2": "PASS",
+     "T3": "PASS",
+     "T4": "PASS",
+     "T5": "PASS",
+     "T6": "PASS",
+     "T7": "PASS",
+     "T8": "PASS",
+     "T9": "PASS",
+     "T10": "PASS",
+     "T11": "PASS"
+    },
+    "in_report": true
+   },
+   {
+    "requirement_id": "RR-064",
+    "criteria": {
+     "T1": "PASS",
+     "T2": "PASS",
+     "T3": "PASS",
+     "T4": "PASS",
+     "T5": "PASS",
+     "T6": "PASS",
+     "T7": "PASS",
+     "T8": "PASS",
+     "T9": "PASS",
+     "T10": "PASS",
+     "T11": "PASS"
+    },
+    "in_report": true
+   },
+   {
+    "requirement_id": "RR-074",
+    "criteria": {
+     "T1": "PASS",
+     "T2": "PASS",
+     "T3": "PASS",
+     "T4": "PASS",
+     "T5": "PASS",
+     "T6": "PASS",
+     "T7": "PASS",
+     "T8": "PASS",
+     "T9": "PASS",
+     "T10": "PASS",
+     "T11": "PASS"
+    },
+    "in_report": true
+   },
+   {
+    "requirement_id": "RR-096",
+    "criteria": {
+     "T1": "PASS",
+     "T2": "PASS",
+     "T3": "PASS",
+     "T4": "PASS",
+     "T5": "PASS",
+     "T6": "PASS",
+     "T7": "PASS",
+     "T8": "PASS",
+     "T9": "PASS",
+     "T10": "PASS",
+     "T11": "PASS"
+    },
+    "in_report": true
+   },
+   {
+    "requirement_id": "RR-172",
+    "criteria": {
+     "T1": "PASS",
+     "T2": "PASS",
+     "T3": "PASS",
+     "T4": "PASS",
+     "T5": "PASS",
+     "T6": "PASS",
+     "T7": "NOT_APPLICABLE",
+     "T8": "PASS",
+     "T9": "PASS",
+     "T10": "PASS",
+     "T11": "PASS"
+    },
+    "in_report": true
+   },
+   {
+    "requirement_id": "RR-189",
+    "criteria": {
+     "T1": "PASS",
+     "T2": "PASS",
+     "T3": "PASS",
+     "T4": "PASS",
+     "T5": "PASS",
+     "T6": "PASS",
+     "T7": "NOT_APPLICABLE",
+     "T8": "PASS",
+     "T9": "PASS",
+     "T10": "PASS",
+     "T11": "PASS"
+    },
+    "in_report": true
+   },
+   {
+    "requirement_id": "RR-001",
+    "criteria": {
+     "T1": "PASS",
+     "T2": "PASS",
+     "T3": "PASS",
+     "T4": "PASS",
+     "T5": "PASS",
+     "T6": "PASS",
+     "T7": "PASS",
+     "T8": "PASS",
+     "T9": "PASS",
+     "T10": "PASS",
+     "T11": "PASS"
+    },
+    "in_report": true
+   },
+   {
+    "requirement_id": "RR-034",
+    "criteria": {
+     "T1": "PASS",
+     "T2": "PASS",
+     "T3": "PASS",
+     "T4": "PASS",
+     "T5": "PASS",
+     "T6": "PASS",
+     "T7": "PASS",
+     "T8": "PASS",
+     "T9": "PASS",
+     "T10": "PASS",
+     "T11": "PASS"
+    },
+    "in_report": true
+   },
+   {
+    "requirement_id": "RR-205",
+    "criteria": {
+     "T1": "PASS",
+     "T2": "PASS",
+     "T3": "PASS",
+     "T4": "PASS",
+     "T5": "PASS",
+     "T6": "FAIL",
+     "T7": "NOT_APPLICABLE",
+     "T8": "PASS",
+     "T9": "PASS",
+     "T10": "PASS",
+     "T11": "PASS"
+    },
+    "in_report": true
+   }
+  ]
+ },
+ "consistency": {
+  "languages": {
+   "same_sections": true,
+   "same_rr_ids": true,
+   "rr_ids": 959,
+   "same_cover_identifiers": true,
+   "sections": {
+    "identification": {
+     "identical": true,
+     "values": 2,
+     "first_difference": null
+    },
+    "versions": {
+     "identical": true,
+     "values": 7,
+     "first_difference": null
+    },
+    "profile": {
+     "identical": true,
+     "values": 42,
+     "first_difference": null
+    },
+    "classification": {
+     "identical": true,
+     "values": 38,
+     "first_difference": null
+    },
+    "summary": {
+     "identical": true,
+     "values": 15,
+     "first_difference": null
+    },
+    "gap_summary": {
+     "identical": true,
+     "values": 10,
+     "first_difference": null
+    },
+    "by_theme": {
+     "identical": true,
+     "values": 17,
+     "first_difference": null
+    },
+    "by_lifecycle": {
+     "identical": true,
+     "values": 15,
+     "first_difference": null
+    },
+    "requirements": {
+     "identical": true,
+     "values": 4293,
+     "first_difference": null
+    },
+    "measures": {
+     "identical": true,
+     "values": 29,
+     "first_difference": null
+    },
+    "open_points": {
+     "identical": true,
+     "values": 5,
+     "first_difference": null
+    },
+    "method": {
+     "identical": true,
+     "values": 5,
+     "first_difference": null
+    },
+    "disclaimer": {
+     "identical": true,
+     "values": 3,
+     "first_difference": null
+    },
+    "revisions": {
+     "identical": true,
+     "values": 2,
+     "first_difference": null
+    }
+   },
+   "all_sections_identical": true
+  },
+  "formats": {
+   "de": {
+    "content_hash_document": "958a88f233fb12b23961490bf7cb18966cd2e4d325eeae45df0cc18e7526724d",
+    "content_hash_pdf": "958a88f233fb12b23961490bf7cb18966cd2e4d325eeae45df0cc18e7526724d",
+    "content_hash_html": "958a88f233fb12b23961490bf7cb18966cd2e4d325eeae45df0cc18e7526724d",
+    "same_content_hash": true,
+    "texts": 33107,
+    "in_pdf": 33107,
+    "in_html": 33106,
+    "sections": {
+     "cover": {
+      "texts": 13,
+      "in_pdf": 13,
+      "in_html": 13,
+      "missing_in_pdf": []
+     },
+     "identification": {
+      "texts": 23,
+      "in_pdf": 23,
+      "in_html": 23,
+      "missing_in_pdf": []
+     },
+     "versions": {
+      "texts": 17,
+      "in_pdf": 17,
+      "in_html": 17,
+      "missing_in_pdf": []
+     },
+     "profile": {
+      "texts": 129,
+      "in_pdf": 129,
+      "in_html": 129,
+      "missing_in_pdf": []
+     },
+     "classification": {
+      "texts": 118,
+      "in_pdf": 118,
+      "in_html": 118,
+      "missing_in_pdf": []
+     },
+     "summary": {
+      "texts": 43,
+      "in_pdf": 43,
+      "in_html": 42,
+      "missing_in_pdf": []
+     },
+     "gap_summary": {
+      "texts": 34,
+      "in_pdf": 34,
+      "in_html": 34,
+      "missing_in_pdf": []
+     },
+     "by_theme": {
+      "texts": 112,
+      "in_pdf": 112,
+      "in_html": 112,
+      "missing_in_pdf": []
+     },
+     "by_lifecycle": {
+      "texts": 100,
+      "in_pdf": 100,
+      "in_html": 100,
+      "missing_in_pdf": []
+     },
+     "requirements": {
+      "texts": 32325,
+      "in_pdf": 32325,
+      "in_html": 32325,
+      "missing_in_pdf": []
+     },
+     "measures": {
+      "texts": 137,
+      "in_pdf": 137,
+      "in_html": 137,
+      "missing_in_pdf": []
+     },
+     "open_points": {
+      "texts": 31,
+      "in_pdf": 31,
+      "in_html": 31,
+      "missing_in_pdf": []
+     },
+     "method": {
+      "texts": 6,
+      "in_pdf": 6,
+      "in_html": 6,
+      "missing_in_pdf": []
+     },
+     "disclaimer": {
+      "texts": 4,
+      "in_pdf": 4,
+      "in_html": 4,
+      "missing_in_pdf": []
+     },
+     "revisions": {
+      "texts": 15,
+      "in_pdf": 15,
+      "in_html": 15,
+      "missing_in_pdf": []
+     }
+    }
+   },
+   "en": {
+    "content_hash_document": "fdfb9862fa527cb756e1c53ba52af89001eeab6dfabf86236e08424d34558ba2",
+    "content_hash_pdf": "fdfb9862fa527cb756e1c53ba52af89001eeab6dfabf86236e08424d34558ba2",
+    "content_hash_html": "fdfb9862fa527cb756e1c53ba52af89001eeab6dfabf86236e08424d34558ba2",
+    "same_content_hash": true,
+    "texts": 33107,
+    "in_pdf": 33107,
+    "in_html": 33106,
+    "sections": {
+     "cover": {
+      "texts": 13,
+      "in_pdf": 13,
+      "in_html": 13,
+      "missing_in_pdf": []
+     },
+     "identification": {
+      "texts": 23,
+      "in_pdf": 23,
+      "in_html": 23,
+      "missing_in_pdf": []
+     },
+     "versions": {
+      "texts": 17,
+      "in_pdf": 17,
+      "in_html": 17,
+      "missing_in_pdf": []
+     },
+     "profile": {
+      "texts": 129,
+      "in_pdf": 129,
+      "in_html": 129,
+      "missing_in_pdf": []
+     },
+     "classification": {
+      "texts": 118,
+      "in_pdf": 118,
+      "in_html": 118,
+      "missing_in_pdf": []
+     },
+     "summary": {
+      "texts": 43,
+      "in_pdf": 43,
+      "in_html": 42,
+      "missing_in_pdf": []
+     },
+     "gap_summary": {
+      "texts": 34,
+      "in_pdf": 34,
+      "in_html": 34,
+      "missing_in_pdf": []
+     },
+     "by_theme": {
+      "texts": 112,
+      "in_pdf": 112,
+      "in_html": 112,
+      "missing_in_pdf": []
+     },
+     "by_lifecycle": {
+      "texts": 100,
+      "in_pdf": 100,
+      "in_html": 100,
+      "missing_in_pdf": []
+     },
+     "requirements": {
+      "texts": 32325,
+      "in_pdf": 32325,
+      "in_html": 32325,
+      "missing_in_pdf": []
+     },
+     "measures": {
+      "texts": 137,
+      "in_pdf": 137,
+      "in_html": 137,
+      "missing_in_pdf": []
+     },
+     "open_points": {
+      "texts": 31,
+      "in_pdf": 31,
+      "in_html": 31,
+      "missing_in_pdf": []
+     },
+     "method": {
+      "texts": 6,
+      "in_pdf": 6,
+      "in_html": 6,
+      "missing_in_pdf": []
+     },
+     "disclaimer": {
+      "texts": 4,
+      "in_pdf": 4,
+      "in_html": 4,
+      "missing_in_pdf": []
+     },
+     "revisions": {
+      "texts": 15,
+      "in_pdf": 15,
+      "in_html": 15,
+      "missing_in_pdf": []
+     }
+    }
+   }
+  },
+  "api_rows_language_neutral": true
+ },
+ "comprehension_checks": {
+  "de": {
+   "duplicate_labels_within_enum": {},
+   "evidence_labels_distinct_from_fulfilment": true,
+   "unresolved_label_applicability": "Anwendbarkeit ungeklärt",
+   "unresolved_label_gap": "Anwendbarkeit ungeklärt"
+  },
+  "en": {
+   "duplicate_labels_within_enum": {},
+   "evidence_labels_distinct_from_fulfilment": true,
+   "unresolved_label_applicability": "applicability unresolved",
+   "unresolved_label_gap": "applicability unresolved"
+  },
+  "rows_with_separate_applicability_and_gap": true,
+  "scope_details_with_primary_source": 32,
+  "scope_details_with_lifecycle": 32,
+  "scope_details": 32,
+  "unresolved_count_visible": 289
+ },
+ "performance": {
+  "assessment_create_full_profile": {
+   "n": 10,
+   "median_s": 0.3499,
+   "min_s": 0.3297,
+   "max_s": 0.3573
+  },
+  "requirement_list": {
+   "n": 10,
+   "median_s": 0.1097,
+   "min_s": 0.1091,
+   "max_s": 0.1293
+  },
+  "requirement_detail": {
+   "n": 10,
+   "median_s": 0.1109,
+   "min_s": 0.1101,
+   "max_s": 0.1212
+  },
+  "report_model_and_document_de": {
+   "n": 10,
+   "median_s": 0.1941,
+   "min_s": 0.1838,
+   "max_s": 0.2018
+  },
+  "report_html_de": {
+   "n": 10,
+   "median_s": 0.1839,
+   "min_s": 0.1815,
+   "max_s": 0.1951
+  },
+  "report_pdf_de": {
+   "n": 10,
+   "median_s": 2.4416,
+   "min_s": 2.4033,
+   "max_s": 2.479
+  }
+ },
+ "reproducibility": {
+  "repetitions": 20,
+  "identical_fact_views": 20,
+  "per_aspect_identical": {
+   "requirements": 20,
+   "applicability": 20,
+   "gap": 20,
+   "decisions_and_rules": 20,
+   "counts": 20,
+   "blocks": 20,
+   "adaptive_path": 20,
+   "details": 20,
+   "report_document_de": 20,
+   "report_document_en": 20
+  },
+  "distinct_raw_fingerprints": 20,
+  "distinct_raw_content_hashes_de": 20,
+  "note": "Rohwerte von Fingerprint und Inhaltshash enthalten die je Lauf neu vergebenen Bewertungs- bzw. Nachweiskennungen und sind deshalb je Lauf verschieden; verglichen wird die fachliche Sicht ohne Kennungen und Zeitstempel."
+ },
+ "reproducibility_fixed_identifiers": {
+  "repetitions": 20,
+  "distinct_fingerprints": 1,
+  "fingerprint": "288a9dab1fbef73106bb01174b625158a5f881f720edd101234f0eef18bd7d73"
+ },
+ "finished": "2026-09-28T22:31:47Z"
+}

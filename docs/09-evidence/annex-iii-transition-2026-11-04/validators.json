@@ -1,0 +1,124 @@
+[
+  {
+    "command": [
+      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "-B",
+      "tools/validate_data_model.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.076,
+    "stdout": "Data model validation: PASS\nversion: 0.8\nentities: 10\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "-B",
+      "tools/validate_reference_assessment.py"
+    ],
+    "exit_code": 0,
+    "seconds": 2.207,
+    "stdout": "Reference assessment validation: PASS\nsha256: 45cf843e993eb7c9fc17dfeb810541b667087bbbd3effc726188d04f6ad2fc66\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "-B",
+      "tools/validate_rr_applicability.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.998,
+    "stdout": "RR applicability validation: PASS\nversion: 0.5\nrequirements: 959 CONDITIONAL=629 NOT_STATED=61 REGULAR=269\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "-B",
+      "tools/validate_rr_catalog.py"
+    ],
+    "exit_code": 0,
+    "seconds": 1.017,
+    "stdout": "RR catalog validation: PASS\nversion: 0.26\nrequirements: 959\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "-B",
+      "tools/validate_rr_measures.py"
+    ],
+    "exit_code": 0,
+    "seconds": 1.494,
+    "stdout": "RR measure catalog validation: PASS\nversion: 0.2\nmeasures: 17; evidence types: 17; adjudication rules: 16\nrequirements: MAPPED=959\nmapping basis: PROJECT_DERIVED=581 SOURCE_EXPLICIT=378\nmapping rule: ADJ=504 TRIGGER=455 (adjudication overriding a trigger match: 2)\nby theme:\n  Data Governance: PROJECT_DERIVED=21\n  Gebrauchstauglichkeit: SOURCE_EXPLICIT=37 PROJECT_DERIVED=69\n  Menschliche Aufsicht: PROJECT_DERIVED=10\n  Post-Market-Monitoring: SOURCE_EXPLICIT=69 PROJECT_DERIVED=69\n  Qualitäts- und Risikomanagement: SOURCE_EXPLICIT=115 PROJECT_DERIVED=248\n  Robustheit: SOURCE_EXPLICIT=1 PROJECT_DERIVED=15\n  Software-Lebenszyklus: SOURCE_EXPLICIT=66 PROJECT_DERIVED=141\n  Transparenz: SOURCE_EXPLICIT=90 PROJECT_DERIVED=8\nby primary source:\n  SRC-001: SOURCE_EXPLICIT=113 PROJECT_DERIVED=88\n  SRC-002: SOURCE_EXPLICIT=24 PROJECT_DERIVED=91\n  SRC-005: SOURCE_EXPLICIT=77 PROJECT_DERIVED=132\n  SRC-006: SOURCE_EXPLICIT=47 PROJECT_DERIVED=58\n  SRC-007: SOURCE_EXPLICIT=54 PROJECT_DERIVED=126\n  SRC-008: SOURCE_EXPLICIT=23 PROJECT_DERIVED=65\n  SRC-009: SOURCE_EXPLICIT=40 PROJECT_DERIVED=21\nby lifecycle phase:\n  Entwicklung und Realisierung: SOURCE_EXPLICIT=161 PROJECT_DERIVED=283\n  Inverkehrbringen, Inbetriebnahme und Betrieb: SOURCE_EXPLICIT=150 PROJECT_DERIVED=122\n  Konformitätsbewertung: SOURCE_EXPLICIT=29 PROJECT_DERIVED=72\n  Planung und Konzeption: SOURCE_EXPLICIT=112 PROJECT_DERIVED=227\n  Post-Market-Überwachung: SOURCE_EXPLICIT=90 PROJECT_DERIVED=167\n  Verifikation und Validierung: SOURCE_EXPLICIT=74 PROJECT_DERIVED=202\n  Änderung und Wartung: SOURCE_EXPLICIT=198 PROJECT_DERIVED=291\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "-B",
+      "tools/validate_rul_catalog.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.163,
+    "stdout": "RUL catalog validation: PASS\nversion: 0.3\nrules: 47\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "-B",
+      "tools/validate_sr_catalog.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.576,
+    "stdout": "SR catalog validation: PASS\nversion: 0.6\nrequirements: 43\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "-B",
+      "tools/validate_standards_mapping.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.684,
+    "stdout": "Standards mapping validation: PASS\nversion: 1.1\ncandidates: 594 CROSSWALK_ONLY=2 CROSS_NORM_MERGE=15 EXISTING_RR_SUPPORT=1 NEW_UNIQUE_RR=576\nmerges: 6; new RR: 582; relations: 6\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "-B",
+      "tools/validate_test_catalog.py"
+    ],
+    "exit_code": 0,
+    "seconds": 1.373,
+    "stdout": "Test catalog validation: PASS\ntest cases: 62 AUTOMATED=61 VALIDATOR=1 golden=4\nevidence: 19\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "-B",
+      "tools/traceability.py"
+    ],
+    "exit_code": 0,
+    "seconds": 1.674,
+    "stdout": "Traceability check: PASS\nlinks: 5396\n  ALLOCATED_TO: 104\n  APPLICABILITY_BLOCK: 959\n  BLOCK_SCOPE: 27\n  CONDITION_SOURCE: 58\n  DECISION_OUTCOME: 8\n  DEPENDS_ON: 68\n  DERIVED_FROM: 60\n  EV_OF_TC: 440\n  GUIDANCE_ANCHOR: 30\n  LOCAL_CONDITION: 660\n  MEASURE_EVIDENCE_TYPE: 17\n  NORMATIVE_DEPENDENCY: 3\n  PREDICATE_PART: 16\n  PRIMARY_LEGAL_ANCHOR: 75\n  PRODUCES: 85\n  PROFILE_INPUT: 41\n  RR_MEASURE: 959\n  RR_SOURCE_PRIMARY: 963\n  RR_SOURCE_SUPPLEMENTARY: 286\n  SOURCE_SUPPORT: 3\n  TC_COVERS_RR: 153\n  TC_VERIFIES_SR: 194\n  VERIFIES: 187\nRUL verified by test cases: 47 of 47\nSR verified by test cases: 42 of 43\nRR measure mapping: MAPPED 959\nRR measure mapping basis: PROJECT_DERIVED 581, SOURCE_EXPLICIT 378\nRR with source, lifecycle phase, measure and evidence type: 959 of 959\nSR per architecture module: APPLICABILITY_ENGINE 10, APPLICATION_API 4, ASSESSMENT_REPOSITORY 3, ASSESSMENT_SERVICE 10, AUDIT_LOG 3, CATALOG_REPOSITORY 7, EVIDENCE_SERVICE 6, GAP_ENGINE 13, I18N 5, PRESENTATION 9, REPORTING 15, REQUIREMENT_SERVICE 5, RULE_ENGINE 14\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "-B",
+      "tools/derive_case_reference.py",
+      "--check"
+    ],
+    "exit_code": 0,
+    "seconds": 1.531,
+    "stdout": "",
+    "stderr": ""
+  }
+]

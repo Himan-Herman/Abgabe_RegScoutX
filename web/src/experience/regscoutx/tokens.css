@@ -1,0 +1,145 @@
+/*
+ * Experience Profile „RegScoutX“ – nicht-farbliche Design-Tokens
+ * (UI_UX_DESIGN_SYSTEM.md Abschnitte 11, 12A, 20). Farben: palette.ts über die Theme Engine.
+ * Alle Größen in rem: nutzerseitige Schriftgröße (data-text-size) und Browser-Zoom skalieren alles.
+ */
+
+@font-face {
+  font-family: "RegScoutX Sans";
+  src: url("/fonts/IBMPlexSansVar-Roman.woff2") format("woff2-variations"),
+       url("/fonts/IBMPlexSansVar-Roman.woff2") format("woff2");
+  font-weight: 100 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "RegScoutX Sans";
+  src: url("/fonts/IBMPlexSansVar-Italic.woff2") format("woff2-variations"),
+       url("/fonts/IBMPlexSansVar-Italic.woff2") format("woff2");
+  font-weight: 100 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "RegScoutX Mono";
+  src: url("/fonts/IBMPlexMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "RegScoutX Mono";
+  src: url("/fonts/IBMPlexMono-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+:root {
+  /* Schriftfamilien */
+  --font-sans: "RegScoutX Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "RegScoutX Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* Typografie: Größen (fluid, begrenzt), Gewichte, Zeilenhöhen, Laufweite */
+  --type-display: clamp(1.75rem, 1.45rem + 1.1vw, 2.375rem);
+  --type-title: clamp(1.4rem, 1.25rem + 0.6vw, 1.75rem);
+  --type-section: 1.25rem;
+  --type-subsection: 1.0625rem;
+  --type-body-md: 1rem;
+  --type-body-sm: 0.9375rem;
+  --type-meta: 0.8125rem;
+  --type-mono: 0.875rem;
+  --type-mono-sm: 0.8125rem;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-body: 1.55;
+  --leading-reading: 1.65;
+  --tracking-heading: -0.012em;
+  --tracking-meta: 0.01em;
+  --measure-reading: 72ch;
+
+  /* Abstände: 4er-Raster */
+  --space-0-5: 0.125rem;
+  --space-1: 0.25rem;
+  --space-1-5: 0.375rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --gutter: clamp(1rem, 0.6rem + 1.6vw, 2rem);
+  --section-gap: clamp(1.75rem, 1.4rem + 1.2vw, 2.75rem);
+
+  /* Radien, Linien, Elevation */
+  --radius-control: 0.375rem;
+  --radius-card: 0.5rem;
+  --radius-panel: 0.75rem;
+  --radius-pill: 999px;
+  --border-width: 1px;
+  --border-width-strong: 2px;
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --shadow-popover: 0 0.5rem 1.5rem rgb(0 0 0 / 0.14), 0 0 0 1px var(--color-border);
+  --shadow-drawer: -0.75rem 0 2rem rgb(0 0 0 / 0.16);
+
+  /* Bedienelemente und Symbole */
+  --control-height: 2.5rem;
+  --control-height-sm: 2rem;
+  --touch-target: 2.75rem;
+  --icon-size: 1.125rem;
+  --icon-size-sm: 0.875rem;
+
+  /* Bewegung */
+  --motion-fast: 120ms;
+  --motion-base: 200ms;
+  --motion-slow: 280ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Ebenen */
+  --layer-header: 20;
+  --layer-rail: 30;
+  --layer-overlay: 60;
+  --layer-drawer: 70;
+  --layer-popover: 80;
+  --layer-toast: 90;
+
+  /* Layout */
+  --rail-width: 5.5rem;
+  --content-max: 88rem;
+  --drawer-width: min(34rem, 100vw);
+}
+
+/* Nutzerseitige Schriftgröße (Präferenz, keine fachliche Wirkung) */
+:root[data-text-size="large"] { font-size: 112.5%; }
+:root[data-text-size="xlarge"] { font-size: 131.25%; }
+
+/* Dichte: kompakt nur für Tabellen/Listen, Touch-Ziele bleiben erhalten */
+:root[data-density="compact"] {
+  --control-height: 2.25rem;
+  --space-row: var(--space-2);
+}
+:root { --space-row: var(--space-3); }
+
+/* Reduzierte Bewegung: Präferenz oder Systemeinstellung */
+:root[data-motion="reduced"] {
+  --motion-fast: 0ms;
+  --motion-base: 0ms;
+  --motion-slow: 0ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion="normal"]) {
+    --motion-fast: 0ms;
+    --motion-base: 0ms;
+    --motion-slow: 0ms;
+  }
+}
+
+@media (pointer: coarse) {
+  :root { --control-height: var(--touch-target); }
+}

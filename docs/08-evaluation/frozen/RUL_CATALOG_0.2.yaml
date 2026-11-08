@@ -1,0 +1,1886 @@
+version: "0.2"
+
+entry_points:
+  - "RUL-001"
+  - "RUL-021"
+  - "RUL-024"
+  - "RUL-027"
+
+class_order:
+  - "I"
+  - "IIa"
+  - "IIb"
+  - "III"
+
+outputs:
+  NOT_COVERED_BY_SRC004:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Kein Software-Pfad nach SRC-004; eine Erfassung durch die Medizinprodukteverordnungen ist damit nicht ausgeschlossen"
+      en: "No software path under SRC-004; coverage by the medical devices regulations is not thereby excluded"
+  MEDICAL_DEVICES_REGULATION_SPECIAL_ROUTE:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Sonderroute: Anhang-XVI-Produkt, Zubehör oder Software, die ein Medizinprodukt steuert oder beeinflusst; kein eigenständiger MDSW-Pfad"
+      en: "Special route: Annex XVI product, accessory or software driving or influencing a medical device; no stand-alone MDSW path"
+  NOT_MDSW:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Keine Medizinproduktesoftware (MDSW)"
+      en: "Not medical device software (MDSW)"
+  MDSW:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Medizinproduktesoftware (MDSW); MDR/IVDR-Abgrenzung folgt"
+      en: "Medical device software (MDSW); MDR/IVDR boundary follows"
+  MDR_MDSW:
+    type: "RESULT"
+    class: null
+    label:
+      de: "MDSW im Anwendungsbereich der MDR"
+      en: "MDSW within the scope of the MDR"
+  OUT_OF_SCOPE_IVDR:
+    type: "RESULT"
+    class: null
+    label:
+      de: "IVDR-Route; außerhalb des derzeitigen RegScoutX-Scopes, keine MDR-Gap-Auswertung"
+      en: "IVDR route; outside the current RegScoutX scope, no MDR gap evaluation"
+  BOUNDARY_REVIEW_REQUIRED:
+    type: "REVIEW"
+    class: null
+    label:
+      de: "Abgrenzungsprüfung erforderlich: MDR/IVDR-Zuordnung mit den verfügbaren Eingaben nicht belastbar entscheidbar"
+      en: "Boundary review required: MDR/IVDR allocation cannot be reliably decided from the available inputs"
+  CLASS_OF_DRIVEN_OR_INFLUENCED_DEVICE:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Klasse des gesteuerten bzw. beeinflussten Produkts"
+      en: "Class of the driven or influenced device"
+  OWN_CLASSIFICATION_NOT_BELOW_DRIVEN_DEVICE_CLASS:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Eigene Klassifizierung nach der eigenen Zweckbestimmung; Klasse nach Guidance-Auslegung nicht niedriger als die Klasse des gesteuerten Produkts"
+      en: "Own classification by own intended purpose; class not lower than the class of the driven device according to guidance interpretation"
+  CLASS_I_CANDIDATE:
+    type: "CLASS_CANDIDATE"
+    class: "I"
+    label:
+      de: "Klassenkandidat I"
+      en: "Class candidate I"
+  CLASS_IIA_CANDIDATE:
+    type: "CLASS_CANDIDATE"
+    class: "IIa"
+    label:
+      de: "Klassenkandidat IIa"
+      en: "Class candidate IIa"
+  CLASS_IIB_CANDIDATE:
+    type: "CLASS_CANDIDATE"
+    class: "IIb"
+    label:
+      de: "Klassenkandidat IIb"
+      en: "Class candidate IIb"
+  CLASS_III_CANDIDATE:
+    type: "CLASS_CANDIDATE"
+    class: "III"
+    label:
+      de: "Klassenkandidat III"
+      en: "Class candidate III"
+  RULE_12_HARDWARE_AND_3_3_PATH:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Hardware nach Regel 12 zu klassifizieren; Software über Anhang VIII Abschnitt 3.3"
+      en: "Hardware to be classified under Rule 12; software via Annex VIII section 3.3"
+  FINAL_MDR_CLASS:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Finale MDR-Klasse: strengster belastbar ermittelter Klassenkandidat (nur ohne Review-Ausgang auf dem Pfad)"
+      en: "Final MDR class: strictest reliably determined class candidate (only without a review outcome on the path)"
+  ADDITIONAL_CLASSIFICATION_REVIEW_REQUIRED:
+    type: "REVIEW"
+    class: null
+    label:
+      de: "Zusätzliche Klassifizierungsprüfung erforderlich: möglicherweise anwendbare Regel im Kernbaum nicht vollständig modelliert"
+      en: "Additional classification review required: possibly applicable rule not fully modelled in the core tree"
+  MDSW_MODULE:
+    type: "RESULT"
+    class: null
+    label:
+      de: "MDSW-Modul: eigenständige Qualifizierung und risikobasierte Klassifizierung nach eigener medizinischer Zweckbestimmung"
+      en: "MDSW module: own qualification and risk-based classification by its own medical purpose"
+  NON_MEDICAL_MODULE_NOT_REGULATED_AS_MDSW:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Nicht-medizinisches Modul; nicht als MDSW reguliert"
+      en: "Non-medical module; not regulated as MDSW"
+  NON_MEDICAL_BUT_ASSESSMENT_RELEVANT:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Nicht-medizinisches Modul, aber bewertungsrelevant (Architektur, Schnittstellen, Sicherheit, Leistung, Interdependenzen); nicht automatisch MDSW"
+      en: "Non-medical module but assessment-relevant (architecture, interfaces, safety, performance, interdependencies); not automatically MDSW"
+  INTEGRATED_PRODUCT_ASSESSMENT_REQUIRED:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Integriertes Gesamtprodukt: Zweckbestimmung, Gesamtarchitektur und alle anwendbaren Regeln zusätzlich auf das Gesamtprodukt anwenden"
+      en: "Integrated overall product: additionally apply intended purpose, overall architecture and all applicable rules to the overall product"
+  MODULE_OWN_PURPOSE_CLASSIFICATION:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Medizinische Module werden nach ihrer eigenen Zweckbestimmung und ihrem Risiko klassifiziert; keine allgemeine Gesamtklassenregel"
+      en: "Medical modules are classified by their own intended purpose and risk; no general overall-class rule"
+  REASSESS_QUALIFICATION_CLASSIFICATION:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Erneute Prüfung von Qualifizierung und Klassifizierung erforderlich; keine automatische Änderung der Klasse"
+      en: "Reassessment of qualification and classification required; no automatic change of class"
+  NO_SRC004_REASSESSMENT_TRIGGER:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Kein Auslöser einer erneuten Prüfung nach SRC-004"
+      en: "No SRC-004-based reassessment trigger"
+
+  AI_ACT_NOT_APPLICABLE:
+    type: "RESULT"
+    class: null
+    label:
+      de: "AI Act nicht anwendbar (kein KI-System, kein Art.-2-Anknüpfungspunkt oder einschlägige Art.-2-Ausnahme)"
+      en: "AI Act not applicable (no AI system, no Article 2 nexus or relevant Article 2 exclusion)"
+  AI_ACT_APPLICABLE_NOT_HIGH_RISK:
+    type: "RESULT"
+    class: null
+    label:
+      de: "AI Act anwendbar, kein Hochrisiko-KI-System (Art.-6(1)-Route negativ und Art.-6(2)-Route negativ oder Art.-6(3)-Ausnahme festgestellt)"
+      en: "AI Act applicable, not a high-risk AI system (Article 6(1) route negative and Article 6(2) route negative or Article 6(3) derogation established)"
+  AI_ACT_HIGH_RISK:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Hochrisiko-KI-System; Hochrisiko-Anforderungen wirksam"
+      en: "High-risk AI system; high-risk requirements in effect"
+  AI_ACT_NOT_YET_APPLICABLE:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Hochrisiko-Anforderungsblock noch nicht anwendbar (Anwendungsbeginn nach Art. 113 noch nicht erreicht); betrifft nicht den gesamten AI Act"
+      en: "High-risk requirement block not yet applicable (Article 113 date of application not reached); does not concern the entire AI Act"
+  AI_ACT_HIGH_RISK_LEGACY_TRANSITION:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Hochrisiko-KI-System im Übergang nach Art. 111 Abs. 2 (vor dem Anwendungsbeginn in Verkehr gebracht oder in Betrieb genommen)"
+      en: "High-risk AI system in transition under Article 111(2) (placed on the market or put into service before the date of application)"
+  AI_ACT_APPLICABILITY_REVIEW_REQUIRED:
+    type: "REVIEW"
+    class: null
+    label:
+      de: "Prüfung der AI-Act-Anwendbarkeit erforderlich: Eingaben nicht determinierbar oder ein Hochrisiko-Weg ungeklärt"
+      en: "AI Act applicability review required: inputs not determinable or a high-risk route unresolved"
+  ART6_1_ROUTE_FALSE:
+    type: "RESULT"
+    class: null
+    aggregates_to: "AI_ACT_APPLICABLE_NOT_HIGH_RISK"
+    label:
+      de: "Art.-6(1)-Produktroute: kein Hochrisiko"
+      en: "Article 6(1) product route: not high-risk"
+  ART6_1_REVIEW_REQUIRED:
+    type: "RESULT"
+    class: null
+    aggregates_to: "AI_ACT_APPLICABILITY_REVIEW_REQUIRED"
+    label:
+      de: "Art.-6(1)-Produktroute: Eingabe nicht determinierbar"
+      en: "Article 6(1) product route: input not determinable"
+  ART6_1_NOT_YET_APPLICABLE:
+    type: "RESULT"
+    class: null
+    aggregates_to: "AI_ACT_NOT_YET_APPLICABLE"
+    applicable_from: "2028-08-02"
+    label:
+      de: "Art.-6(1)-Produktroute: Hochrisiko-Anforderungen ab 02.08.2028"
+      en: "Article 6(1) product route: high-risk requirements from 2 August 2028"
+  ART6_1_HIGH_RISK:
+    type: "RESULT"
+    class: null
+    aggregates_to: "AI_ACT_HIGH_RISK"
+    applicable_from: "2028-08-02"
+    label:
+      de: "Art.-6(1)-Produktroute: Hochrisiko wirksam (frühestens ab 02.08.2028)"
+      en: "Article 6(1) product route: high-risk in effect (from 2 August 2028 at the earliest)"
+  ART6_1_HIGH_RISK_PUBLIC_AUTHORITY:
+    type: "RESULT"
+    class: null
+    aggregates_to: "AI_ACT_HIGH_RISK"
+    applicable_from: "2030-08-02"
+    label:
+      de: "Art.-6(1)-Produktroute: bestehendes Hochrisiko-System zur Nutzung durch Behörden, Hochrisiko wirksam ab 02.08.2030"
+      en: "Article 6(1) product route: existing high-risk system intended for public authorities, high-risk in effect from 2 August 2030"
+  ART6_1_LEGACY_TRANSITION:
+    type: "RESULT"
+    class: null
+    aggregates_to: "AI_ACT_HIGH_RISK_LEGACY_TRANSITION"
+    label:
+      de: "Art.-6(1)-Produktroute: Übergang nach Art. 111 Abs. 2 ohne signifikante Konzeptionsänderung"
+      en: "Article 6(1) product route: transition under Article 111(2) without significant design change"
+  ART6_1_LEGACY_TRANSITION_PUBLIC_AUTHORITY:
+    type: "RESULT"
+    class: null
+    aggregates_to: "AI_ACT_HIGH_RISK_LEGACY_TRANSITION"
+    flags: ["ART111_2_PUBLIC_AUTHORITY_COMPLIANCE_BY_2030_08_02"]
+    label:
+      de: "Art.-6(1)-Produktroute: Übergang nach Art. 111 Abs. 2 für ein zur Nutzung durch Behörden bestimmtes System mit Frist 02.08.2030"
+      en: "Article 6(1) product route: transition under Article 111(2) for a system intended for public authorities with deadline 2 August 2030"
+  ANNEX_III_MATCH:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Anhang-III-Anwendungsfall liegt vor; Art.-6(3)-Prüfung folgt"
+      en: "Annex III use case present; Article 6(3) check follows"
+  ANNEX_III_HIGH_RISK_CANDIDATE:
+    type: "RESULT"
+    class: null
+    label:
+      de: "Anhang-III-Hochrisiko-Kandidat; zeitliche Prüfung nach Art. 113 folgt"
+      en: "Annex III high-risk candidate; temporal check under Article 113 follows"
+  ART6_2_ROUTE_FALSE:
+    type: "RESULT"
+    class: null
+    aggregates_to: "AI_ACT_APPLICABLE_NOT_HIGH_RISK"
+    label:
+      de: "Art.-6(2)-Route: kein Anhang-III-Anwendungsfall"
+      en: "Article 6(2) route: no Annex III use case"
+  ART6_2_REVIEW_REQUIRED:
+    type: "RESULT"
+    class: null
+    aggregates_to: "AI_ACT_APPLICABILITY_REVIEW_REQUIRED"
+    label:
+      de: "Art.-6(2)-Route: Anhang-III- bzw. Art.-6(3)-Sachverhalt nicht determinierbar"
+      en: "Article 6(2) route: Annex III or Article 6(3) facts not determinable"
+  ART6_3_NON_HIGH_RISK:
+    type: "RESULT"
+    class: null
+    aggregates_to: "AI_ACT_APPLICABLE_NOT_HIGH_RISK"
+    flags: ["ART6_4_SELF_ASSESSMENT_OBLIGATIONS_APPLY"]
+    label:
+      de: "Art.-6(3)-Ausnahme: Anhang-III-System nicht hochriskant; Pflichten nach Art. 6 Abs. 4"
+      en: "Article 6(3) derogation: Annex III system not high-risk; obligations under Article 6(4)"
+  ART6_2_NOT_YET_APPLICABLE:
+    type: "RESULT"
+    class: null
+    aggregates_to: "AI_ACT_NOT_YET_APPLICABLE"
+    applicable_from: "2027-12-02"
+    label:
+      de: "Art.-6(2)-Route: Hochrisiko-Anforderungen ab 02.12.2027"
+      en: "Article 6(2) route: high-risk requirements from 2 December 2027"
+  ART6_2_HIGH_RISK:
+    type: "RESULT"
+    class: null
+    aggregates_to: "AI_ACT_HIGH_RISK"
+    applicable_from: "2027-12-02"
+    label:
+      de: "Art.-6(2)-Route: Hochrisiko wirksam ab 02.12.2027"
+      en: "Article 6(2) route: high-risk in effect from 2 December 2027"
+
+flags:
+  ART6_4_SELF_ASSESSMENT_OBLIGATIONS_APPLY:
+    label:
+      de: "Art. 6 Abs. 4: Bewertung vor dem Inverkehrbringen oder der Inbetriebnahme dokumentieren, Registrierungspflicht nach Art. 49 Abs. 2 erfüllen, Dokumentation auf Verlangen der zuständigen nationalen Behörden vorlegen. Routing-/Compliance-Hinweis, kein Erfüllungsstatus."
+      en: "Article 6(4): document the assessment before placing on the market or putting into service, comply with the registration obligation under Article 49(2), provide the documentation upon request of national competent authorities. Routing/compliance note, not a fulfilment status."
+    primary_legal_anchor:
+      - "SRC-002#Art.6/Abs.4"
+      - "SRC-002#Art.49/Abs.2"
+  ART111_2_PUBLIC_AUTHORITY_COMPLIANCE_BY_2030_08_02:
+    label:
+      de: "Art. 111 Abs. 2: Für zur Nutzung durch Behörden bestimmte Hochrisiko-KI-Systeme sind die erforderlichen Compliance-Schritte spätestens bis 02.08.2030 vorzunehmen. Routing-/Compliance-Hinweis, kein Erfüllungsstatus."
+      en: "Article 111(2): for high-risk AI systems intended for use by public authorities the necessary compliance steps must be taken by 2 August 2030 at the latest. Routing/compliance note, not a fulfilment status."
+    primary_legal_anchor:
+      - "SRC-002#Art.111/Abs.2/Satz.2"
+
+rules:
+  - id: "RUL-001"
+    status: "aktiv"
+    category: "QUALIFICATION"
+    title:
+      de: "Software im Sinne der Guidance"
+      en: "Software within the meaning of the guidance"
+    question:
+      de: "Ist das Produkt Software, also ein Satz von Anweisungen, der Eingabedaten verarbeitet und Ausgabedaten erzeugt?"
+      en: "Is the product software, i.e. a set of instructions that processes input data and creates output data?"
+    input_key: "is_software"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "Nur Software durchläuft den Qualifikationsbaum nach SRC-004 Figure 1. NEIN bedeutet ausschließlich, dass der Software-Pfad von SRC-004 nicht einschlägig ist; eine Erfassung durch MDR oder IVDR ist damit nicht ausgeschlossen."
+    branches:
+      - when: true
+        next: "RUL-002"
+      - when: false
+        result: "NOT_COVERED_BY_SRC004"
+    primary_legal_anchor:
+      - "SRC-001#Art.2/Nr.1"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 2"
+      - "SRC-004#Abschnitt 3.3"
+    guidance_detail: "Softwaredefinition in Abschnitt 2; Figure 1, Decision step 1 (Entscheidungsschritte in Abschnitt 3.3)"
+    guidance_role: "INTERPRETATIVE"
+    rationale: "SRC-001 Art. 2 Nr. 1 nennt Software als mögliches Medizinprodukt. Die operative Softwaredefinition stammt aus der Guidance und ist Guidance-Interpretation, keine eigenständige MDR-Definition."
+    dependencies: []
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-002"
+    status: "aktiv"
+    category: "QUALIFICATION"
+    title:
+      de: "Sonderroute Anhang XVI, Zubehör oder steuernde/beeinflussende Software"
+      en: "Special route Annex XVI, accessory or driving/influencing software"
+    question:
+      de: "Trifft eine der folgenden Konstellationen zu: Die Software ist ein Produkt nach Anhang XVI MDR, sie ist Zubehör eines Medizinprodukts, oder sie steuert ein (Hardware-)Medizinprodukt bzw. beeinflusst dessen Anwendung?"
+      en: "Does one of the following apply: the software is an MDR Annex XVI product, it is an accessory for a medical device, or it drives a (hardware) medical device or influences its use?"
+    input_key: "special_route"
+    input_type: "enum"
+    allowed_values: ["ANNEX_XVI", "ACCESSORY", "DRIVES_INFLUENCES", "NONE"]
+    value_labels:
+      ANNEX_XVI:
+        de: "Produkt nach Anhang XVI MDR"
+        en: "MDR Annex XVI product"
+      ACCESSORY:
+        de: "Zubehör eines Medizinprodukts"
+        en: "Accessory for a medical device"
+      DRIVES_INFLUENCES:
+        de: "Software, die ein Medizinprodukt steuert oder dessen Anwendung beeinflusst"
+        en: "Software driving or influencing the use of a medical device"
+      NONE:
+        de: "Keine dieser Konstellationen"
+        en: "None of these"
+    decision_logic: "ANNEX_XVI, ACCESSORY und DRIVES_INFLUENCES führen in die Sonderroute MEDICAL_DEVICES_REGULATION_SPECIAL_ROUTE; die Software wird im Regulierungsprozess des betreffenden Produkts bzw. als Zubehör betrachtet und nicht in den MDSW-Pfad der Schritte 3 bis 5 gezwungen. Die Klassifizierung steuernder oder beeinflussender Software im MDR-Regime erfolgt über RUL-009. NONE führt zu RUL-003."
+    branches:
+      - when: "ANNEX_XVI"
+        result: "MEDICAL_DEVICES_REGULATION_SPECIAL_ROUTE"
+      - when: "ACCESSORY"
+        result: "MEDICAL_DEVICES_REGULATION_SPECIAL_ROUTE"
+      - when: "DRIVES_INFLUENCES"
+        result: "MEDICAL_DEVICES_REGULATION_SPECIAL_ROUTE"
+      - when: "NONE"
+        next: "RUL-003"
+    primary_legal_anchor:
+      - "SRC-001#Art.1/Abs.2"
+      - "SRC-001#Anh.XVI"
+      - "SRC-001#Art.2/Nr.2"
+      - "SRC-001#Anh.VIII/Kap.II/Abschn.3.3/Satz.1"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 3.3"
+    guidance_detail: "Figure 1, Decision step 2"
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Nach SRC-004 Figure 1 Step 2 kann solche Software unabhängig von den Schritten 3 bis 5 unter die Medizinprodukteverordnungen fallen; sie ist als Teil des Produkts bzw. als Zubehör zu betrachten. Dieser Pfad bleibt vom MDSW-Kernpfad getrennt."
+    dependencies: ["RUL-001"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-003"
+    status: "aktiv"
+    category: "QUALIFICATION"
+    title:
+      de: "Datenverarbeitung über Basisfunktionen hinaus"
+      en: "Data processing beyond basic functions"
+    question:
+      de: "Führt die Software mit Daten mehr aus als Speichern, Archivieren, Kommunizieren, einfache Suche oder verlustfreie Kompression? Eine Suchfunktion, die zur Erreichung eines medizinischen Zwecks beiträgt, gilt dabei nicht als einfache Suche."
+      en: "Does the software do more with data than storage, archival, communication, simple search or lossless compression? A search function that contributes to achieving a medical purpose does not count as simple search."
+    input_key: "data_action_type"
+    input_type: "enum"
+    allowed_values: ["BASIC_ONLY", "BEYOND_BASIC"]
+    value_labels:
+      BASIC_ONLY:
+        de: "Nur Speichern, Archivieren, Kommunizieren, einfache Suche oder verlustfreie Kompression"
+        en: "Only storage, archival, communication, simple search or lossless compression"
+      BEYOND_BASIC:
+        de: "Datenverarbeitung darüber hinaus"
+        en: "Data processing beyond that"
+    decision_logic: "BASIC_ONLY führt zu NOT_MDSW, BEYOND_BASIC zu RUL-004. Maßgeblich ist die Funktion, nicht die verwendete Technologie: Eine Suchfunktion, die zu einem medizinischen Zweck beiträgt, ist BEYOND_BASIC; der Einsatz einer bestimmten Technik (z. B. NLP) allein entscheidet nicht."
+    branches:
+      - when: "BASIC_ONLY"
+        result: "NOT_MDSW"
+      - when: "BEYOND_BASIC"
+        next: "RUL-004"
+    primary_legal_anchor:
+      - "SRC-001#Art.2/Nr.1"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 3.1"
+      - "SRC-004#Abschnitt 3.3"
+    guidance_detail: "Figure 1, Decision step 3"
+    guidance_role: "INTERPRETATIVE"
+    rationale: "SRC-001 Art. 2 Nr. 1 bildet den rechtlichen Qualifikationsrahmen; die operative Abgrenzung rein technischer Datenhaltung und -übertragung stammt aus der Guidance."
+    dependencies: ["RUL-002"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-004"
+    status: "aktiv"
+    category: "QUALIFICATION"
+    title:
+      de: "Nutzen für individuelle Patientinnen und Patienten"
+      en: "Benefit of individual patients"
+    question:
+      de: "Erfolgt diese Datenverarbeitung zum Nutzen einzelner Patientinnen und Patienten – und nicht nur zur Aggregation von Populationsdaten, für allgemeine Diagnose- oder Behandlungspfade, Literatur, Atlanten, Modelle, Vorlagen, epidemiologische Studien oder Register?"
+      en: "Is this data processing performed for the benefit of individual patients – and not only to aggregate population data, for generic diagnostic or treatment pathways, literature, atlases, models, templates, epidemiological studies or registers?"
+    input_key: "individual_patient_benefit"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "NEIN führt zu NOT_MDSW, JA zu RUL-005."
+    branches:
+      - when: true
+        next: "RUL-005"
+      - when: false
+        result: "NOT_MDSW"
+    primary_legal_anchor:
+      - "SRC-001#Art.2/Nr.1"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 3.3"
+    guidance_detail: "Figure 1, Decision step 4"
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Der Patientenbezug operationalisiert die medizinischen Zwecke nach SRC-001 Art. 2 Nr. 1; die Negativbeispiele stammen aus der Guidance."
+    dependencies: ["RUL-003"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-005"
+    status: "aktiv"
+    category: "QUALIFICATION"
+    title:
+      de: "Eigener medizinischer Zweck"
+      en: "Own medical purpose"
+    question:
+      de: "Soll die Software selbst einen der in der MDR genannten medizinischen Zwecke erfüllen – z. B. Diagnose, Vorhersage, Überwachung oder Behandlung einer Krankheit?"
+      en: "Is the software itself intended to fulfil one of the medical purposes set out in the MDR – e.g. diagnosis, prediction, monitoring or treatment of a disease?"
+    input_key: "own_medical_purpose"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "JA ergibt MDSW und führt zur MDR/IVDR-Abgrenzung (RUL-006); NEIN ergibt NOT_MDSW. Maßgeblich ist die Zweckbestimmung des Herstellers, nicht der Einsatzort."
+    branches:
+      - when: true
+        result: "MDSW"
+        next: "RUL-006"
+      - when: false
+        result: "NOT_MDSW"
+    primary_legal_anchor:
+      - "SRC-001#Art.2/Nr.1"
+      - "SRC-001#Art.2/Nr.12"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 3.1"
+      - "SRC-004#Abschnitt 3.3"
+    guidance_detail: "Figure 1, Decision step 5"
+    guidance_role: "CLARIFIES"
+    rationale: "Zentraler MDSW-Qualifikationsschritt: medizinischer Zweck nach SRC-001 Art. 2 Nr. 1 auf Grundlage der Zweckbestimmung nach Art. 2 Nr. 12."
+    dependencies: ["RUL-004"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-006"
+    status: "aktiv"
+    category: "BOUNDARY"
+    title:
+      de: "Informationszweck im Sinne der IVD-Definition"
+      en: "Information purpose within the IVD definition"
+    question:
+      de: "Liefert die Software Informationen im Sinne der Definition des In-vitro-Diagnostikums, also zu physiologischen oder pathologischen Prozessen oder Zuständen, kongenitalen körperlichen oder geistigen Beeinträchtigungen, der Prädisposition für einen Gesundheitszustand oder eine Krankheit, der Unbedenklichkeit und Verträglichkeit bei potenziellen Empfängern, der voraussichtlichen Wirkung einer Behandlung oder Reaktionen darauf oder zur Festlegung oder Überwachung therapeutischer Maßnahmen?"
+      en: "Does the software provide information within the definition of an in vitro diagnostic medical device, i.e. concerning physiological or pathological processes or states, congenital physical or mental impairments, the predisposition to a medical condition or disease, safety and compatibility with potential recipients, predicted treatment response or reactions, or the definition or monitoring of therapeutic measures?"
+    input_key: "ivdr_information_purpose"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "Beginnt erst nach festgestellter MDSW. NEIN ergibt MDR_MDSW und führt zur Klassifizierung (RUL-009); JA führt zu RUL-007."
+    branches:
+      - when: true
+        next: "RUL-007"
+      - when: false
+        result: "MDR_MDSW"
+        next: "RUL-009"
+    primary_legal_anchor:
+      - "SRC-010#Art.2/Nr.2"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 3.4"
+    guidance_detail: "Figure 2, Decision step 1"
+    guidance_role: "CROSSWALK"
+    rationale: "Die sechs Informationskategorien stammen aus der rechtsverbindlichen IVD-Definition in SRC-010 Art. 2 Nr. 2; SRC-004 verknüpft sie in Figure 2 mit der MDSW-Qualifikation."
+    dependencies: ["RUL-005"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-007"
+    status: "aktiv"
+    category: "BOUNDARY"
+    title:
+      de: "Information ausschließlich aus IVD-Daten"
+      en: "Information based solely on IVD data"
+    question:
+      de: "Beruht die von der Software erzeugte Information ausschließlich auf Daten, die mit In-vitro-Diagnostika gewonnen wurden?"
+      en: "Is the information created by the software based solely on data obtained by in vitro diagnostic medical devices?"
+    input_key: "information_solely_from_ivd_data"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "JA ergibt OUT_OF_SCOPE_IVDR; NEIN (gemischte Datenquellen aus In-vitro-Diagnostika und Medizinprodukten) führt zu RUL-008."
+    branches:
+      - when: true
+        result: "OUT_OF_SCOPE_IVDR"
+      - when: false
+        next: "RUL-008"
+    primary_legal_anchor:
+      - "SRC-010#Art.2/Nr.2"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 3.4"
+    guidance_detail: "Figure 2, Decision step 2"
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Software, deren Information ausschließlich auf IVD-Daten beruht, ist nach SRC-004 IVD-MDSW; die rechtsverbindliche Grundlage ist die IVD-Definition in SRC-010 Art. 2 Nr. 2."
+    dependencies: ["RUL-006"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-008"
+    status: "aktiv"
+    category: "BOUNDARY"
+    title:
+      de: "Dominante Datenquelle bei gemischten Daten"
+      en: "Dominant data source for mixed data"
+    question:
+      de: "Welche Datenquelle bestimmt die Zweckbestimmung der Software wesentlich, gemessen an der Bedeutung der jeweiligen Information für das Erreichen dieser Zweckbestimmung?"
+      en: "Which data source substantially drives the intended purpose of the software, judged by the significance of the respective information for achieving that intended purpose?"
+    input_key: "dominant_data_source"
+    input_type: "enum"
+    allowed_values: ["IVD_DOMINANT", "MDR_DOMINANT", "UNCLEAR"]
+    value_labels:
+      IVD_DOMINANT:
+        de: "Wesentlich durch Daten aus In-vitro-Diagnostika bestimmt"
+        en: "Substantially driven by data from in vitro diagnostic medical devices"
+      MDR_DOMINANT:
+        de: "Wesentlich durch Daten aus Medizinprodukten bestimmt"
+        en: "Substantially driven by data from medical devices"
+      UNCLEAR:
+        de: "Belastbare Gewichtung nicht möglich"
+        en: "Reliable weighting not possible"
+    decision_logic: "Qualitative Gewichtung der Datenquellen nach ihrem Beitrag zur Zweckbestimmung. IVD_DOMINANT ergibt OUT_OF_SCOPE_IVDR, MDR_DOMINANT ergibt MDR_MDSW und führt zur Klassifizierung (RUL-009), UNCLEAR ergibt BOUNDARY_REVIEW_REQUIRED. Es wird kein numerischer Schwellenwert verwendet."
+    branches:
+      - when: "IVD_DOMINANT"
+        result: "OUT_OF_SCOPE_IVDR"
+      - when: "MDR_DOMINANT"
+        result: "MDR_MDSW"
+        next: "RUL-009"
+      - when: "UNCLEAR"
+        result: "BOUNDARY_REVIEW_REQUIRED"
+        review_cause:
+          de: "Die Gewichtung der IVD- und MDR-Datenquellen für die Zweckbestimmung ist nicht belastbar bestimmbar; SRC-004 gibt bewusst keinen numerischen Schwellenwert vor."
+          en: "The weighting of IVD and MDR data sources for the intended purpose cannot be reliably determined; SRC-004 deliberately provides no numerical threshold."
+    primary_legal_anchor:
+      - "SRC-010#Art.2/Nr.2"
+      - "SRC-001#Art.2/Nr.1"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 3.4"
+    guidance_detail: "Figure 2, Decision step 3; qualitative Gewichtung nach Fußnote 26"
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Bei gemischten Daten erfüllt die Ausgabe sowohl die MDR- als auch die IVD-Definition; die Guidance verlangt eine qualitative Gewichtung. Ohne belastbare Gewichtung wird nicht geraten."
+    dependencies: ["RUL-007"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-009"
+    status: "aktiv"
+    category: "CLASSIFICATION"
+    title:
+      de: "Steuernde oder beeinflussende Software nach Anhang VIII Abschnitt 3.3"
+      en: "Driving or influencing software under Annex VIII section 3.3"
+    question:
+      de: "Steuert die Software ein (Hardware-)Medizinprodukt oder beeinflusst sie dessen Anwendung – und wenn ja, hat sie daneben einen eigenen medizinischen Zweck?"
+      en: "Does the software drive a (hardware) medical device or influence its use – and if so, does it additionally have its own medical purpose?"
+    input_key: "drives_or_influences_device"
+    input_type: "enum"
+    allowed_values: ["NONE", "WITHOUT_OWN_MEDICAL_PURPOSE", "WITH_OWN_MEDICAL_PURPOSE"]
+    value_labels:
+      NONE:
+        de: "Steuert oder beeinflusst kein Medizinprodukt"
+        en: "Does not drive or influence a medical device"
+      WITHOUT_OWN_MEDICAL_PURPOSE:
+        de: "Steuert oder beeinflusst ein Medizinprodukt, ohne eigenen medizinischen Zweck"
+        en: "Drives or influences a medical device, without its own medical purpose"
+      WITH_OWN_MEDICAL_PURPOSE:
+        de: "Steuert oder beeinflusst ein Medizinprodukt und hat einen eigenen medizinischen Zweck"
+        en: "Drives or influences a medical device and has its own medical purpose"
+    decision_logic: "Einstieg in die MDR-Klassifizierung nach MDR_MDSW; zugleich Klassifizierungspunkt für Software im MDR-Regime, die ein Medizinprodukt steuert oder beeinflusst. NONE führt zu Regel 11 (RUL-010). WITHOUT_OWN_MEDICAL_PURPOSE: Die Software fällt in dieselbe Klasse wie das gesteuerte bzw. beeinflusste Produkt; da dessen Klasse nach Regeln bestimmt wird, die im Kernbaum nicht vollständig modelliert sind, wird keine finale Klasse ausgegeben. WITH_OWN_MEDICAL_PURPOSE: eigene Klassifizierung nach der eigenen Zweckbestimmung (weiter mit RUL-010); nach Guidance-Auslegung soll die resultierende Klasse nicht niedriger sein als die Klasse des Hardwareprodukts (max(Klasse aus eigener Zweckbestimmung, Klasse des gesteuerten Produkts)); diese max-Operationalisierung ist GUIDANCE_INTERPRETATION. Weil die Hardwareklasse nicht modelliert ist, wird der Review-Ausgang bis zur Aggregation mitgeführt."
+    branches:
+      - when: "NONE"
+        next: "RUL-010"
+      - when: "WITHOUT_OWN_MEDICAL_PURPOSE"
+        result: "CLASS_OF_DRIVEN_OR_INFLUENCED_DEVICE"
+        review: "ADDITIONAL_CLASSIFICATION_REVIEW_REQUIRED"
+        review_cause:
+          de: "Die Klasse des gesteuerten bzw. beeinflussten Produkts ergibt sich aus den für dieses Produkt anwendbaren Regeln (z. B. Regeln 9, 10 oder 12), die im horizontalen Kernbaum nicht vollständig modelliert sind."
+          en: "The class of the driven or influenced device follows from the rules applicable to that device (e.g. Rules 9, 10 or 12), which are not fully modelled in the horizontal core tree."
+      - when: "WITH_OWN_MEDICAL_PURPOSE"
+        result: "OWN_CLASSIFICATION_NOT_BELOW_DRIVEN_DEVICE_CLASS"
+        next: "RUL-010"
+        basis: "GUIDANCE_INTERPRETATION"
+        review: "ADDITIONAL_CLASSIFICATION_REVIEW_REQUIRED"
+        review_cause:
+          de: "Die Untergrenze aus der Klasse des gesteuerten Hardwareprodukts (Guidance-Auslegung zu Anhang VIII Abschnitt 3.3) kann nicht bestimmt werden, weil die Hardwareklassifizierung im Kernbaum nicht vollständig modelliert ist."
+          en: "The floor given by the class of the driven hardware device (guidance interpretation of Annex VIII section 3.3) cannot be determined because hardware classification is not fully modelled in the core tree."
+    primary_legal_anchor:
+      - "SRC-001#Anh.VIII/Kap.II/Abschn.3.3/Satz.1"
+      - "SRC-001#Anh.VIII/Kap.II/Abschn.3.3/Satz.2"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 4.1"
+    guidance_detail: null
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Anhang VIII Abschnitt 3.3 Satz 1 ordnet steuernde oder beeinflussende Software der Klasse des Produkts zu; Satz 2 verlangt für unabhängige Software eine eigene Klassifizierung. Die Untergrenze aus der Hardwareklasse bei eigenem medizinischem Zweck ist Guidance-Auslegung und kein wörtlicher Primärrechtstext."
+    dependencies: ["RUL-002", "RUL-006", "RUL-008"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-010"
+    status: "aktiv"
+    category: "CLASSIFICATION"
+    title:
+      de: "Regel 11a: Informationen für diagnostische oder therapeutische Entscheidungen"
+      en: "Rule 11a: information for diagnostic or therapeutic decisions"
+    question:
+      de: "Liefert die Software Informationen, die für Entscheidungen zu diagnostischen oder therapeutischen Zwecken herangezogen werden?"
+      en: "Does the software provide information which is used to take decisions with diagnostic or therapeutic purposes?"
+    input_key: "provides_information_for_diagnostic_or_therapeutic_decisions"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "JA führt zur Schweregradprüfung (RUL-011); NEIN führt zu Regel 11b (RUL-013). Monitoring-Software, die Informationen für diagnostische oder therapeutische Entscheidungen liefert, fällt bereits hier unter 11a."
+    branches:
+      - when: true
+        next: "RUL-011"
+      - when: false
+        next: "RUL-013"
+    primary_legal_anchor:
+      - "SRC-001#Anh.VIII/Kap.III/Abschn.6.3/Regel.11/UAbs.1"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 4.2.1"
+    guidance_detail: "Rule 11 subrule (a)"
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Die Guidance zerlegt Regel 11 in die Unterregeln 11a, 11b und 11c; das Ergebnis ist zunächst nur ein Klassenkandidat."
+    dependencies: ["RUL-009"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-011"
+    status: "aktiv"
+    category: "CLASSIFICATION"
+    title:
+      de: "Regel 11a: Tod oder irreversible Verschlechterung"
+      en: "Rule 11a: death or irreversible deterioration"
+    question:
+      de: "Können Entscheidungen auf Grundlage dieser Informationen Auswirkungen haben, die den Tod oder eine irreversible Verschlechterung des Gesundheitszustands einer Person verursachen können?"
+      en: "Can decisions based on this information have an impact that may cause death or an irreversible deterioration of a person's state of health?"
+    input_key: "decision_impact_death_or_irreversible_deterioration"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "JA ergibt Klassenkandidat III; NEIN führt zu RUL-012. Danach werden die weiteren Regeln geprüft (RUL-016)."
+    branches:
+      - when: true
+        result: "CLASS_III_CANDIDATE"
+        next: "RUL-016"
+      - when: false
+        next: "RUL-012"
+    primary_legal_anchor:
+      - "SRC-001#Anh.VIII/Kap.III/Abschn.6.3/Regel.11/UAbs.1"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 4.2.1"
+    guidance_detail: "Rule 11 subrule (a)"
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Die Guidance konkretisiert die Eskalation über die Bedeutung der Information und die möglichen Auswirkungen einer auf fehlerhafter Information beruhenden Entscheidung."
+    dependencies: ["RUL-010"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-012"
+    status: "aktiv"
+    category: "CLASSIFICATION"
+    title:
+      de: "Regel 11a: schwerwiegende Verschlechterung oder chirurgischer Eingriff"
+      en: "Rule 11a: serious deterioration or surgical intervention"
+    question:
+      de: "Können Entscheidungen auf Grundlage dieser Informationen Auswirkungen haben, die eine schwerwiegende Verschlechterung des Gesundheitszustands einer Person oder einen chirurgischen Eingriff verursachen können?"
+      en: "Can decisions based on this information have an impact that may cause a serious deterioration of a person's state of health or a surgical intervention?"
+    input_key: "decision_impact_serious_deterioration_or_surgery"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "JA ergibt Klassenkandidat IIb, NEIN Klassenkandidat IIa; danach RUL-016."
+    branches:
+      - when: true
+        result: "CLASS_IIB_CANDIDATE"
+        next: "RUL-016"
+      - when: false
+        result: "CLASS_IIA_CANDIDATE"
+        next: "RUL-016"
+    primary_legal_anchor:
+      - "SRC-001#Anh.VIII/Kap.III/Abschn.6.3/Regel.11/UAbs.1"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 4.2.1"
+    guidance_detail: "Rule 11 subrule (a)"
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Zweite Eskalationsstufe von Regel 11 Unterabsatz 1; ohne Eskalation gilt Klasse IIa als Kandidat."
+    dependencies: ["RUL-011"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-013"
+    status: "aktiv"
+    category: "CLASSIFICATION"
+    title:
+      de: "Regel 11b: ausschließlich Überwachung physiologischer Prozesse"
+      en: "Rule 11b: monitoring of physiological processes only"
+    question:
+      de: "Dient die Software ausschließlich der Überwachung physiologischer Prozesse?"
+      en: "Is the software intended only to monitor physiological processes?"
+    input_key: "monitors_physiological_processes_only"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "Wird nur erreicht, wenn 11a nicht greift. JA führt zu RUL-014; NEIN führt zu Regel 11c (RUL-015)."
+    branches:
+      - when: true
+        next: "RUL-014"
+      - when: false
+        next: "RUL-015"
+    primary_legal_anchor:
+      - "SRC-001#Anh.VIII/Kap.III/Abschn.6.3/Regel.11/UAbs.2"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 4.2.1"
+    guidance_detail: "Rule 11 subrule (b)"
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Nach der Guidance ist 11b insbesondere für Software relevant, die nur Monitoringzwecke verfolgt; Monitoring mit Informationen für diagnostische oder therapeutische Entscheidungen fällt bereits unter 11a."
+    dependencies: ["RUL-010"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-014"
+    status: "aktiv"
+    category: "CLASSIFICATION"
+    title:
+      de: "Regel 11b: vitale Parameter mit unmittelbarer Gefahr"
+      en: "Rule 11b: vital parameters with immediate danger"
+    question:
+      de: "Überwacht die Software vitale physiologische Parameter, bei denen die Art der Änderung zu einer unmittelbaren Gefahr für die Patientin oder den Patienten führen könnte?"
+      en: "Does the software monitor vital physiological parameters where the nature of variations could result in immediate danger to the patient?"
+    input_key: "vital_parameters_with_immediate_danger"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "JA ergibt Klassenkandidat IIb, NEIN Klassenkandidat IIa; danach RUL-016. Die Beispiele vitaler Prozesse in der Guidance (u. a. Atmung, Herzfrequenz, Hirnfunktionen, Blutgase, Blutdruck, Körpertemperatur) sind keine abschließende Positivliste."
+    branches:
+      - when: true
+        result: "CLASS_IIB_CANDIDATE"
+        next: "RUL-016"
+      - when: false
+        result: "CLASS_IIA_CANDIDATE"
+        next: "RUL-016"
+    primary_legal_anchor:
+      - "SRC-001#Anh.VIII/Kap.III/Abschn.6.3/Regel.11/UAbs.2"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 4.2.1"
+    guidance_detail: "Rule 11 subrule (b)"
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Regel 11 Unterabsatz 2 unterscheidet zwischen Überwachung physiologischer Prozesse (IIa) und Kontrolle vitaler Parameter mit möglicher unmittelbarer Gefahr (IIb)."
+    dependencies: ["RUL-013"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-015"
+    status: "aktiv"
+    category: "CLASSIFICATION"
+    title:
+      de: "Regel 11c: sämtliche andere Software"
+      en: "Rule 11c: all other software"
+    question:
+      de: "Keine Nutzerfrage; ergibt sich aus RUL-010 und RUL-013."
+      en: "No user question; follows from RUL-010 and RUL-013."
+    input_key: "rule_11_residual_case"
+    input_type: "derived"
+    allowed_values: [true]
+    value_labels: null
+    decision_logic: "Wird erreicht, wenn weder 11a (RUL-010 NEIN) noch 11b (RUL-013 NEIN) greift; der abgeleitete Wert ist dann stets true. Ergebnis ist Klassenkandidat I; danach RUL-016."
+    branches:
+      - when: true
+        result: "CLASS_I_CANDIDATE"
+        next: "RUL-016"
+    primary_legal_anchor:
+      - "SRC-001#Anh.VIII/Kap.III/Abschn.6.3/Regel.11/UAbs.3"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 4.2.1"
+    guidance_detail: "Rule 11 subrule (c)"
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Regel 11 Unterabsatz 3 ordnet sämtliche andere Software der Klasse I zu; der Wert bleibt ein Klassenkandidat, bis die übrigen Regeln und Abschnitt 3.5 geprüft sind."
+    dependencies: ["RUL-013"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-016"
+    status: "aktiv"
+    category: "CLASSIFICATION"
+    title:
+      de: "Regel 15: Empfängnisverhütung oder Schutz vor sexuell übertragbaren Krankheiten"
+      en: "Rule 15: contraception or prevention of sexually transmitted diseases"
+    question:
+      de: "Soll die Software zur Empfängnisverhütung oder zum Schutz vor der Übertragung sexuell übertragbarer Krankheiten eingesetzt werden?"
+      en: "Is the software intended to be used for contraception or prevention of the transmission of sexually transmitted diseases?"
+    input_key: "used_for_contraception_or_sti_prevention"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "JA ergibt zusätzlich Klassenkandidat IIb; NEIN ergibt keinen Kandidaten. In beiden Fällen weiter mit RUL-017. Unterstützung der Empfängnis ist keine Empfängnisverhütung."
+    branches:
+      - when: true
+        result: "CLASS_IIB_CANDIDATE"
+        next: "RUL-017"
+      - when: false
+        next: "RUL-017"
+    primary_legal_anchor:
+      - "SRC-001#Anh.VIII/Kap.III/Abschn.7.2/Regel.15"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 4.2.4"
+    guidance_detail: null
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Nach der Guidance wird Software zur Empfängnisverhütung der Klasse IIb zugeordnet. Die Klasse-III-Ausnahme von Regel 15 für implantierbare oder langzeitig angewendete invasive Produkte ist für Software nicht modelliert."
+    dependencies: ["RUL-011", "RUL-012", "RUL-014", "RUL-015"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-017"
+    status: "aktiv"
+    category: "CLASSIFICATION"
+    title:
+      de: "Regel 22: therapeutisches Produkt mit integrierter diagnostischer Funktion"
+      en: "Rule 22: therapeutic device with integrated diagnostic function"
+    question:
+      de: "Ist die Software Teil eines aktiven therapeutischen Produkts mit integrierter oder eingebauter diagnostischer Funktion, die das Patientenmanagement durch das Produkt erheblich bestimmt, etwa eines geschlossenen Regelsystems?"
+      en: "Is the software part of an active therapeutic device with an integrated or incorporated diagnostic function which significantly determines the patient management by the device, such as a closed loop system?"
+    input_key: "therapeutic_with_integrated_diagnostic_function"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "JA ergibt zusätzlich Klassenkandidat III; NEIN ergibt keinen Kandidaten. In beiden Fällen weiter mit RUL-018."
+    branches:
+      - when: true
+        result: "CLASS_III_CANDIDATE"
+        next: "RUL-018"
+      - when: false
+        next: "RUL-018"
+    primary_legal_anchor:
+      - "SRC-001#Anh.VIII/Kap.III/Abschn.7.9/Regel.22"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 4.2.5"
+    guidance_detail: null
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Regel 22 kann das Ergebnis von Regel 11 übersteuern; über Abschnitt 3.5 gilt die strengste Klasse."
+    dependencies: ["RUL-016"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-018"
+    status: "aktiv"
+    category: "CLASSIFICATION"
+    title:
+      de: "Regel 12 und Abschnitt 3.3: Steuerung eines Produkts zur Stoffabgabe oder -entfernung"
+      en: "Rule 12 and section 3.3: driving a device administering or removing substances"
+    question:
+      de: "Steuert die Software ein aktives Produkt, das Arzneimittel, Körperflüssigkeiten oder andere Stoffe an den Körper abgibt oder aus ihm entfernt, oder beeinflusst sie dessen Anwendung?"
+      en: "Does the software drive, or influence the use of, an active device intended to administer and/or remove medicinal products, body liquids or other substances to or from the body?"
+    input_key: "drives_substance_administration_or_removal_device"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "Software selbst kann keine Stoffe physisch abgeben oder entfernen. JA: Die Hardware ist nach Regel 12 zu klassifizieren, die Software über Abschnitt 3.3; da die Hardwareklassifizierung im Kernbaum nicht modelliert ist, wird der Review-Ausgang bis zur Aggregation mitgeführt. Es wird keine künstliche Regel-12-Klasse für unabhängige Software erzeugt. In beiden Fällen weiter mit RUL-019."
+    branches:
+      - when: true
+        result: "RULE_12_HARDWARE_AND_3_3_PATH"
+        next: "RUL-019"
+        review: "ADDITIONAL_CLASSIFICATION_REVIEW_REQUIRED"
+        review_cause:
+          de: "Hardware-Konstellation: Die Klasse des Produkts nach Regel 12 und die daraus nach Abschnitt 3.3 folgende Softwareklasse sind im Kernbaum nicht vollständig modelliert."
+          en: "Hardware constellation: the class of the device under Rule 12 and the resulting software class under section 3.3 are not fully modelled in the core tree."
+      - when: false
+        next: "RUL-019"
+    primary_legal_anchor:
+      - "SRC-001#Anh.VIII/Kap.III/Abschn.6.4/Regel.12"
+      - "SRC-001#Anh.VIII/Kap.II/Abschn.3.3/Satz.1"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 4.2.2"
+    guidance_detail: null
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Regel 12 wird für Software insbesondere relevant, wenn sie ein entsprechendes Hardwareprodukt steuert oder beeinflusst."
+    dependencies: ["RUL-017"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-019"
+    status: "aktiv"
+    category: "CLASSIFICATION"
+    title:
+      de: "Regel 13: alle anderen aktiven Produkte"
+      en: "Rule 13: all other active devices"
+    question:
+      de: "Keine Nutzerfrage; ergibt sich aus dem bisherigen Regelpfad."
+      en: "No user question; follows from the preceding rule path."
+    input_key: "other_active_device_rule_applicable"
+    input_type: "derived"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "Der abgeleitete Wert ist true, wenn auf dem Pfad bereits eine andere Regel für aktive Produkte einen Klassenkandidaten oder einen Hardwarepfad ergeben hat (im Kernbaum stets Regel 11); dann entsteht kein weiterer Kandidat. Nur wenn keine andere Regel greift (false), ergibt Regel 13 Klassenkandidat I. In beiden Fällen weiter mit RUL-020."
+    branches:
+      - when: true
+        next: "RUL-020"
+      - when: false
+        result: "CLASS_I_CANDIDATE"
+        next: "RUL-020"
+    primary_legal_anchor:
+      - "SRC-001#Anh.VIII/Kap.III/Abschn.6.5/Regel.13"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 4.2.3"
+    guidance_detail: null
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Regel 13 ist Auffangregel für sonstige aktive Produkte und führt regelmäßig zu keiner Verschärfung gegenüber 11c."
+    dependencies: ["RUL-018"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-020"
+    status: "aktiv"
+    category: "CLASSIFICATION"
+    title:
+      de: "Aggregation nach Anhang VIII Abschnitt 3.5"
+      en: "Aggregation under Annex VIII section 3.5"
+    question:
+      de: "Können für das Produkt weitere MDR-Klassifizierungsregeln anwendbar sein, die hier nicht abgefragt wurden – etwa Regeln 9 oder 10 bei Hardware- oder Kombinationsprodukten?"
+      en: "Could further MDR classification rules not asked here apply to the product – for example Rules 9 or 10 for hardware or combination products?"
+    input_key: "further_unmodelled_rule_possibly_applicable"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "JA ergibt ADDITIONAL_CLASSIFICATION_REVIEW_REQUIRED. NEIN: Wurde auf dem Pfad ein Review-Ausgang mitgeführt, ist das Ergebnis ADDITIONAL_CLASSIFICATION_REVIEW_REQUIRED; andernfalls ist die finale MDR-Klasse der strengste Klassenkandidat des Pfads nach class_order (FINAL_MDR_CLASS). Mehrere Kandidaten überschreiben sich nicht gegenseitig."
+    branches:
+      - when: true
+        result: "ADDITIONAL_CLASSIFICATION_REVIEW_REQUIRED"
+        review_cause:
+          de: "Eine möglicherweise anwendbare MDR-Klassifizierungsregel (z. B. Regel 9 oder 10 bei Hardware- oder Kombinationsprodukten) ist im horizontalen Kernbaum nicht vollständig modelliert."
+          en: "A possibly applicable MDR classification rule (e.g. Rule 9 or 10 for hardware or combination products) is not fully modelled in the horizontal core tree."
+      - when: false
+        result: "FINAL_MDR_CLASS"
+    primary_legal_anchor:
+      - "SRC-001#Anh.VIII/Kap.II/Abschn.3.5"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 4.1"
+      - "SRC-004#Abschnitt 4.2"
+    guidance_detail: null
+    guidance_role: "CLARIFIES"
+    rationale: "Nach Anhang VIII Abschnitt 3.5 gilt bei mehreren anwendbaren Regeln oder Unterregeln die strengste, sodass das Produkt in die höchste Klasse eingestuft wird. Die Guidance weist darauf hin, dass für aktive Produkte die Regeln 9, 10, 11, 12, 13, 15 und 22 zu berücksichtigen sein können; Regeln 9 und 10 werden nicht als horizontaler Software-Kernbaum modelliert."
+    dependencies: ["RUL-019"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-021"
+    status: "aktiv"
+    category: "MODULES"
+    title:
+      de: "Modul mit eigenem medizinischem Zweck"
+      en: "Module with its own medical purpose"
+    question:
+      de: "Soll dieses Modul selbst einen medizinischen Zweck erfüllen?"
+      en: "Is this module itself intended to fulfil a medical purpose?"
+    input_key: "module_has_own_medical_purpose"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "Je Modul zu beantworten. JA ergibt MDSW_MODULE: Das Modul wird selbst über den Qualifikationsbaum (ab RUL-001) qualifiziert und nach seiner eigenen Zweckbestimmung klassifiziert; weiter mit RUL-023. NEIN führt zu RUL-022."
+    branches:
+      - when: true
+        result: "MDSW_MODULE"
+        next: "RUL-023"
+      - when: false
+        next: "RUL-022"
+    primary_legal_anchor:
+      - "SRC-001#Art.2/Nr.1"
+      - "SRC-001#Art.2/Nr.12"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 7"
+    guidance_detail: null
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Module mit medizinischem Zweck fallen in den Anwendungsbereich der Medizinprodukteverordnungen; Module ohne medizinischen Zweck nicht."
+    dependencies: []
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-022"
+    status: "aktiv"
+    category: "MODULES"
+    title:
+      de: "Bewertungsrelevanz nicht-medizinischer Module"
+      en: "Assessment relevance of non-medical modules"
+    question:
+      de: "Ist das nicht-medizinische Modul für den Betrieb der medizinischen Software erforderlich, oder kann es deren Sicherheit oder Leistung beeinflussen?"
+      en: "Is the non-medical module required for the operation of the medical software, or can it affect its safety or performance?"
+    input_key: "non_medical_module_required_or_affects_safety_performance"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "JA ergibt NON_MEDICAL_BUT_ASSESSMENT_RELEVANT: Das Modul wird dadurch nicht automatisch MDSW, ist aber in Beschreibung, Architektur-, Schnittstellen-, Sicherheits-, Leistungs- und Interdependenzbewertung zu berücksichtigen. NEIN ergibt NON_MEDICAL_MODULE_NOT_REGULATED_AS_MDSW."
+    branches:
+      - when: true
+        result: "NON_MEDICAL_BUT_ASSESSMENT_RELEVANT"
+      - when: false
+        result: "NON_MEDICAL_MODULE_NOT_REGULATED_AS_MDSW"
+    primary_legal_anchor:
+      - "SRC-001#Art.2/Nr.1"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 7"
+    guidance_detail: null
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Nach der Guidance muss die Gesamtkonfiguration einschließlich Schnittstellen nachweislich sicher sein und darf die Leistung der MDSW nicht beeinträchtigen; der Hersteller bewertet Architektur, Eingangsdatenwege, Ausgabedarstellung und Interdependenzen."
+    dependencies: ["RUL-021"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-023"
+    status: "aktiv"
+    category: "MODULES"
+    title:
+      de: "Integriertes Gesamtprodukt aus medizinischen Modulen"
+      en: "Integrated overall product of medical modules"
+    question:
+      de: "Werden die medizinischen Module gemeinsam als ein integriertes Produkt in Verkehr gebracht?"
+      en: "Are the medical modules placed on the market together as one integrated product?"
+    input_key: "medical_modules_placed_on_market_as_integrated_product"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "JA ergibt INTEGRATED_PRODUCT_ASSESSMENT_REQUIRED: Zweckbestimmung, Gesamtarchitektur und alle anwendbaren Regeln werden zusätzlich auf das Gesamtprodukt angewendet, einschließlich Anhang VIII Abschnitt 3.5. NEIN ergibt MODULE_OWN_PURPOSE_CLASSIFICATION. Es gibt keine allgemeine Regel, nach der die Gesamtklasse der höchsten Modulklasse entspricht."
+    branches:
+      - when: true
+        result: "INTEGRATED_PRODUCT_ASSESSMENT_REQUIRED"
+      - when: false
+        result: "MODULE_OWN_PURPOSE_CLASSIFICATION"
+    primary_legal_anchor:
+      - "SRC-001#Art.2/Nr.12"
+      - "SRC-001#Anh.VIII/Kap.II/Abschn.3.1"
+      - "SRC-001#Anh.VIII/Kap.II/Abschn.3.5"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 7"
+    guidance_detail: null
+    guidance_role: "INTERPRETATIVE"
+    rationale: "SRC-004 enthält keine allgemeine Regel, nach der die Gesamtsoftwareklasse der höchsten Modulklasse entspricht; für ein als ein Medizinprodukt in Verkehr gebrachtes Gesamtprodukt sind dessen Zweckbestimmung, die anwendbaren Regeln und Abschnitt 3.5 maßgeblich."
+    dependencies: ["RUL-021"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-024"
+    status: "aktiv"
+    category: "CHANGE_REASSESSMENT"
+    title:
+      de: "Änderung an Funktion, Zweckbestimmung, wesentlichem Design oder Herstellungsmerkmalen"
+      en: "Change to function, intended purpose, essential design or manufacturing characteristics"
+    question:
+      de: "Betrifft die Änderung die Funktion, die Zweckbestimmung, das wesentliche Design oder Herstellungsmerkmale der Software?"
+      en: "Does the change affect the function, intended purpose, essential design or manufacturing characteristics of the software?"
+    input_key: "change_affects_function_purpose_design_or_manufacturing"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "JA ergibt REASSESS_QUALIFICATION_CLASSIFICATION (Qualifikationsbaum, bei Bedarf MDR/IVDR-Abgrenzung und Klassifizierung erneut durchlaufen); NEIN führt zu RUL-025. Die erneute Prüfung bedeutet keine automatische Änderung von Qualifikation oder Klasse. Die wesentliche Änderung nach dem AI Act ist davon getrennt und wird hier nicht abgeleitet."
+    branches:
+      - when: true
+        result: "REASSESS_QUALIFICATION_CLASSIFICATION"
+      - when: false
+        next: "RUL-025"
+    primary_legal_anchor:
+      - "SRC-001#Art.2/Nr.1"
+      - "SRC-001#Art.2/Nr.12"
+      - "SRC-001#Anh.VIII/Kap.II/Abschn.3.1"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 8"
+    guidance_detail: null
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Nach SRC-004 Abschnitt 8 bewerten Hersteller die Auswirkungen von Änderungen an Funktion, Zweckbestimmung, wesentlichem Design und Herstellungsmerkmalen auf Qualifikation und Klassifikation; Qualifikation und Klassifizierung richten sich nach der Zweckbestimmung."
+    dependencies: []
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-025"
+    status: "aktiv"
+    category: "CHANGE_REASSESSMENT"
+    title:
+      de: "Neue oder geänderte Funktionalität oder neues Modul"
+      en: "New or modified functionality or new module"
+    question:
+      de: "Wird eine Funktionalität hinzugefügt oder geändert, oder wird ein Modul hinzugefügt oder geändert?"
+      en: "Is functionality added or modified, or is a module added or modified?"
+    input_key: "functionality_or_module_added_or_modified"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "JA ergibt REASSESS_QUALIFICATION_CLASSIFICATION; NEIN führt zu RUL-026. Keine automatische Änderung von Qualifikation oder Klasse."
+    branches:
+      - when: true
+        result: "REASSESS_QUALIFICATION_CLASSIFICATION"
+      - when: false
+        next: "RUL-026"
+    primary_legal_anchor:
+      - "SRC-001#Art.2/Nr.1"
+      - "SRC-001#Anh.VIII/Kap.II/Abschn.3.1"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 8"
+    guidance_detail: null
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Nach SRC-004 Abschnitt 8 kann eine geänderte oder hinzugefügte Funktionalität zur Qualifikation als MDSW oder zu einer geänderten Klassifizierung führen; ein hinzugefügtes Modul kann selbst MDSW sein."
+    dependencies: ["RUL-024"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-026"
+    status: "aktiv"
+    category: "CHANGE_REASSESSMENT"
+    title:
+      de: "Geänderte Kombination mit einem anderen Medizinprodukt"
+      en: "Changed combination with another medical device"
+    question:
+      de: "Ändert sich die Kombination der Software mit einem anderen Medizinprodukt?"
+      en: "Does the combination of the software with another medical device change?"
+    input_key: "medical_device_combination_changed"
+    input_type: "boolean"
+    allowed_values: [true, false]
+    value_labels: null
+    decision_logic: "JA ergibt REASSESS_QUALIFICATION_CLASSIFICATION: Die neue Kombination wird nach ihrer Zweckbestimmung und Funktionalität erneut klassifiziert. NEIN ergibt NO_SRC004_REASSESSMENT_TRIGGER. Keine automatische Änderung der Klasse."
+    branches:
+      - when: true
+        result: "REASSESS_QUALIFICATION_CLASSIFICATION"
+      - when: false
+        result: "NO_SRC004_REASSESSMENT_TRIGGER"
+    primary_legal_anchor:
+      - "SRC-001#Anh.VIII/Kap.II/Abschn.3.1"
+      - "SRC-001#Anh.VIII/Kap.II/Abschn.3.2/Satz.1"
+    guidance_anchor:
+      - "SRC-004#Abschnitt 8"
+    guidance_detail: null
+    guidance_role: "INTERPRETATIVE"
+    rationale: "Nach SRC-004 Abschnitt 8 sind für die Risikoklasse einer Kombination aus geänderter MDSW und Medizinprodukt Zweckbestimmung und Funktionalität der neuen Kombination maßgeblich; die Klassifizierungsregeln werden auf jedes kombinierte Produkt gesondert angewendet."
+    dependencies: ["RUL-025"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-027"
+    status: "aktiv"
+    category: "AI_ACT_APPLICABILITY"
+    title:
+      de: "KI-System nach Art. 3 Nr. 1"
+      en: "AI system under Article 3(1)"
+    question:
+      de: "Erfüllt das System die Definition eines KI-Systems?"
+      en: "Does the system meet the definition of an AI system?"
+    input_key: "ai_system_status"
+    input_type: "enum"
+    allowed_values: ["YES", "NO", "UNCLEAR"]
+    value_labels:
+      "YES": {de: "Ja", en: "Yes"}
+      "NO": {de: "Nein", en: "No"}
+      UNCLEAR: {de: "Unklar", en: "Unclear"}
+    decision_logic: "YES führt zu RUL-028; NO ergibt AI_ACT_NOT_APPLICABLE; UNCLEAR ergibt AI_ACT_APPLICABILITY_REVIEW_REQUIRED. Ohne KI-System kein AI-Act-KI-System-Routing."
+    branches:
+      - when: "YES"
+        next: "RUL-028"
+      - when: "NO"
+        result: "AI_ACT_NOT_APPLICABLE"
+      - when: "UNCLEAR"
+        result: "AI_ACT_APPLICABILITY_REVIEW_REQUIRED"
+        review_cause:
+          de: "Ob das System die Definition eines KI-Systems nach Art. 3 Nr. 1 erfüllt, ist nicht determinierbar."
+          en: "Whether the system meets the definition of an AI system under Article 3(1) cannot be determined."
+    primary_legal_anchor:
+      - "SRC-002#Art.3/Nr.1"
+    guidance_anchor: []
+    guidance_detail: null
+    guidance_role: null
+    rationale: "Art. 3 Nr. 1 definiert das KI-System als maschinenbasiertes System mit variierendem Autonomiegrad, das für explizite oder implizite Ziele aus Eingaben ableitet, wie es Ausgaben erzeugt, die physische oder virtuelle Umgebungen beeinflussen können."
+    dependencies: []
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-028"
+    status: "aktiv"
+    category: "AI_ACT_APPLICABILITY"
+    title:
+      de: "Anknüpfungspunkt nach Art. 2 Abs. 1"
+      en: "Nexus under Article 2(1)"
+    question:
+      de: "Besteht ein räumlicher bzw. akteursbezogener Anknüpfungspunkt nach Art. 2 Abs. 1?"
+      en: "Is there a territorial or operator nexus under Article 2(1)?"
+    input_key: "scope_nexus"
+    input_type: "enum"
+    allowed_values: ["EU_PROVIDER", "EU_DEPLOYER", "THIRD_COUNTRY_OUTPUT_USED_IN_EU", "IMPORTER_DISTRIBUTOR", "PRODUCT_MANUFACTURER", "AUTH_REP", "NONE", "UNCLEAR"]
+    value_labels:
+      EU_PROVIDER: {de: "Anbieter, der das KI-System in der Union in Verkehr bringt oder in Betrieb nimmt", en: "Provider placing the AI system on the market or putting it into service in the Union"}
+      EU_DEPLOYER: {de: "Betreiber mit Sitz oder Standort in der Union", en: "Deployer established or located in the Union"}
+      THIRD_COUNTRY_OUTPUT_USED_IN_EU: {de: "Anbieter oder Betreiber in einem Drittland, dessen Ausgabe in der Union verwendet wird", en: "Provider or deployer in a third country whose output is used in the Union"}
+      IMPORTER_DISTRIBUTOR: {de: "Einführer oder Händler", en: "Importer or distributor"}
+      PRODUCT_MANUFACTURER: {de: "Produkthersteller, der das KI-System zusammen mit seinem Produkt unter eigenem Namen oder eigener Marke in Verkehr bringt oder in Betrieb nimmt", en: "Product manufacturer placing the AI system on the market or putting it into service together with its product under its own name or trademark"}
+      AUTH_REP: {de: "Bevollmächtigter eines nicht in der Union niedergelassenen Anbieters", en: "Authorised representative of a provider not established in the Union"}
+      NONE: {de: "Kein Anknüpfungspunkt", en: "No nexus"}
+      UNCLEAR: {de: "Unklar", en: "Unclear"}
+    decision_logic: "Jede benannte Kategorie führt zu RUL-029; NONE ergibt AI_ACT_NOT_APPLICABLE; UNCLEAR ergibt AI_ACT_APPLICABILITY_REVIEW_REQUIRED."
+    branches:
+      - when: "EU_PROVIDER"
+        next: "RUL-029"
+      - when: "EU_DEPLOYER"
+        next: "RUL-029"
+      - when: "THIRD_COUNTRY_OUTPUT_USED_IN_EU"
+        next: "RUL-029"
+      - when: "IMPORTER_DISTRIBUTOR"
+        next: "RUL-029"
+      - when: "PRODUCT_MANUFACTURER"
+        next: "RUL-029"
+      - when: "AUTH_REP"
+        next: "RUL-029"
+      - when: "NONE"
+        result: "AI_ACT_NOT_APPLICABLE"
+      - when: "UNCLEAR"
+        result: "AI_ACT_APPLICABILITY_REVIEW_REQUIRED"
+        review_cause:
+          de: "Der Anknüpfungspunkt nach Art. 2 Abs. 1 ist nicht determinierbar."
+          en: "The nexus under Article 2(1) cannot be determined."
+    primary_legal_anchor:
+      - "SRC-002#Art.2/Abs.1"
+    guidance_anchor: []
+    guidance_detail: null
+    guidance_role: null
+    rationale: "Art. 2 Abs. 1 bestimmt den persönlichen und räumlichen Anwendungsbereich."
+    dependencies: ["RUL-027"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-029"
+    status: "aktiv"
+    category: "AI_ACT_APPLICABILITY"
+    title:
+      de: "Ausnahmen nach Art. 2"
+      en: "Exclusions under Article 2"
+    question:
+      de: "Greift eine für RegScoutX relevante Ausnahme nach Art. 2?"
+      en: "Does a relevant Article 2 exclusion apply?"
+    input_key: "scope_exclusion"
+    input_type: "enum"
+    allowed_values: ["NONE", "MILITARY_DEFENCE_NATIONAL_SECURITY", "SOLE_SCIENTIFIC_R_AND_D", "PRE_MARKET_R_AND_D_NOT_REAL_WORLD", "OTHER_REVIEW"]
+    value_labels:
+      NONE: {de: "Keine Ausnahme", en: "No exclusion"}
+      MILITARY_DEFENCE_NATIONAL_SECURITY: {de: "Militär, Verteidigung oder nationale Sicherheit", en: "Military, defence or national security"}
+      SOLE_SCIENTIFIC_R_AND_D: {de: "Ausschließlich wissenschaftliche Forschung und Entwicklung", en: "Sole purpose of scientific research and development"}
+      PRE_MARKET_R_AND_D_NOT_REAL_WORLD: {de: "Forschung, Test oder Entwicklung vor dem Inverkehrbringen, nicht unter Realbedingungen", en: "Research, testing or development before placing on the market, not under real-world conditions"}
+      OTHER_REVIEW: {de: "Andere mögliche Ausnahme; Prüfung erforderlich", en: "Other possible exclusion; review required"}
+    decision_logic: "NONE führt zu RUL-030; eine eindeutige Ausnahme ergibt AI_ACT_NOT_APPLICABLE; OTHER_REVIEW ergibt AI_ACT_APPLICABILITY_REVIEW_REQUIRED."
+    branches:
+      - when: "NONE"
+        next: "RUL-030"
+      - when: "MILITARY_DEFENCE_NATIONAL_SECURITY"
+        result: "AI_ACT_NOT_APPLICABLE"
+      - when: "SOLE_SCIENTIFIC_R_AND_D"
+        result: "AI_ACT_NOT_APPLICABLE"
+      - when: "PRE_MARKET_R_AND_D_NOT_REAL_WORLD"
+        result: "AI_ACT_NOT_APPLICABLE"
+      - when: "OTHER_REVIEW"
+        result: "AI_ACT_APPLICABILITY_REVIEW_REQUIRED"
+        review_cause:
+          de: "Eine andere Ausnahme nach Art. 2 ist möglich und nicht determinierbar."
+          en: "Another Article 2 exclusion is possible and cannot be determined."
+    primary_legal_anchor:
+      - "SRC-002#Art.2/Abs.3"
+      - "SRC-002#Art.2/Abs.6"
+      - "SRC-002#Art.2/Abs.8"
+    guidance_anchor: []
+    guidance_detail: null
+    guidance_role: null
+    rationale: "Diese Fälle können den Anwendungsbereich vor der Hochrisiko-Prüfung ausschließen."
+    dependencies: ["RUL-028"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-030"
+    status: "aktiv"
+    category: "AI_ACT_APPLICABILITY"
+    title:
+      de: "Bezug zum MDR-Produkt nach Anhang I Abschnitt A Nr. 11"
+      en: "Relation to the MDR product under Annex I Section A point 11"
+    question:
+      de: "Wie ist das KI-System dem MDR-Produkt nach Anhang I Abschnitt A Nr. 11 zugeordnet?"
+      en: "How is the AI system related to the MDR product listed in Annex I Section A point 11?"
+    input_key: "annex_i_product_relation"
+    input_type: "enum"
+    allowed_values: ["AI_SYSTEM_IS_PRODUCT", "AI_COMPONENT_OF_PRODUCT", "NEITHER", "UNCLEAR"]
+    value_labels:
+      AI_SYSTEM_IS_PRODUCT: {de: "Das KI-System ist selbst das MDR-Produkt", en: "The AI system is itself the MDR product"}
+      AI_COMPONENT_OF_PRODUCT: {de: "Das KI-System ist Bestandteil eines MDR-Produkts", en: "The AI system is a component of an MDR product"}
+      NEITHER: {de: "Weder noch", en: "Neither"}
+      UNCLEAR: {de: "Unklar", en: "Unclear"}
+    decision_logic: "Beginn der Art.-6(1)-Produktroute. AI_SYSTEM_IS_PRODUCT führt zu RUL-032 (Produktalternative nach Art. 6 Abs. 1 Buchst. a; Abs. 1a/1b nicht erforderlich); AI_COMPONENT_OF_PRODUCT führt zu RUL-031; NEITHER ergibt ART6_1_ROUTE_FALSE; UNCLEAR ergibt ART6_1_REVIEW_REQUIRED. Jedes Routenergebnis führt zur Art.-6(2)-Route (RUL-038)."
+    branches:
+      - when: "AI_SYSTEM_IS_PRODUCT"
+        next: "RUL-032"
+      - when: "AI_COMPONENT_OF_PRODUCT"
+        next: "RUL-031"
+      - when: "NEITHER"
+        result: "ART6_1_ROUTE_FALSE"
+        next: "RUL-038"
+      - when: "UNCLEAR"
+        result: "ART6_1_REVIEW_REQUIRED"
+        next: "RUL-038"
+    primary_legal_anchor:
+      - "SRC-002#Art.6/Abs.1/Buchst.a"
+      - "SRC-002#Anh.I/Abschn.A/Nr.11"
+    guidance_anchor: []
+    guidance_detail: null
+    guidance_role: null
+    rationale: "Art. 6 Abs. 1 Buchst. a enthält zwei alternative Wege: das KI-System ist selbst ein Produkt nach Anhang-I-Recht oder Sicherheitsbauteil eines solchen Produkts. Die MDR steht in Anhang I Abschnitt A Nr. 11."
+    dependencies: ["RUL-029"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-031"
+    status: "aktiv"
+    category: "AI_ACT_APPLICABILITY"
+    title:
+      de: "Sicherheitsbauteil nach Art. 6 Abs. 1a und 1b"
+      en: "Safety component under Article 6(1a) and (1b)"
+    question:
+      de: "Qualifiziert die KI-Komponente als Sicherheitsbauteil?"
+      en: "Does the AI component qualify as a safety component?"
+    input_key: "safety_component_assessment"
+    input_type: "enum"
+    allowed_values: ["FAILURE_ENDANGERS_HEALTH_OR_SAFETY", "SOLE_NON_SAFETY_PURPOSE", "OTHER_SAFETY_COMPONENT", "NOT_SAFETY_COMPONENT", "UNCLEAR"]
+    value_labels:
+      FAILURE_ENDANGERS_HEALTH_OR_SAFETY: {de: "Ausfall oder Fehlfunktion führt zu einer Gefährdung von Gesundheit oder Sicherheit (Abs. 1b)", en: "Failure or malfunction leads to a risk to health or safety (paragraph 1b)"}
+      SOLE_NON_SAFETY_PURPOSE: {de: "Dient ausschließlich nicht sicherheitsbezogenen Aspekten wie Nutzerunterstützung, Leistungsoptimierung, Serviceeffizienz, Automatisierung, Komfort oder Qualitätskontrolle, ohne Gefährdung nach Abs. 1b (Abs. 1a)", en: "Serves exclusively non-safety aspects such as user assistance, performance optimisation, service efficiency, automation, comfort or quality control, without a risk under paragraph 1b (paragraph 1a)"}
+      OTHER_SAFETY_COMPONENT: {de: "Sonstiges Sicherheitsbauteil", en: "Other safety component"}
+      NOT_SAFETY_COMPONENT: {de: "Kein Sicherheitsbauteil", en: "Not a safety component"}
+      UNCLEAR: {de: "Unklar", en: "Unclear"}
+    decision_logic: "Kontrollierte Kodierung der Entscheidungstabelle aus der Adjudikation mit Vorrang von Abs. 1b vor Abs. 1a: FAILURE_ENDANGERS_HEALTH_OR_SAFETY führt zu RUL-032; SOLE_NON_SAFETY_PURPOSE (ausschließlich nicht sicherheitsbezogen und keine Gefährdung) ergibt ART6_1_ROUTE_FALSE; OTHER_SAFETY_COMPONENT führt zu RUL-032; NOT_SAFETY_COMPONENT ergibt ART6_1_ROUTE_FALSE, weil die Bauteilalternative des Art. 6 Abs. 1 Buchst. a nicht erfüllt ist; UNCLEAR ergibt ART6_1_REVIEW_REQUIRED. Routenergebnisse führen zu RUL-038."
+    branches:
+      - when: "FAILURE_ENDANGERS_HEALTH_OR_SAFETY"
+        next: "RUL-032"
+      - when: "SOLE_NON_SAFETY_PURPOSE"
+        result: "ART6_1_ROUTE_FALSE"
+        next: "RUL-038"
+      - when: "OTHER_SAFETY_COMPONENT"
+        next: "RUL-032"
+      - when: "NOT_SAFETY_COMPONENT"
+        result: "ART6_1_ROUTE_FALSE"
+        next: "RUL-038"
+      - when: "UNCLEAR"
+        result: "ART6_1_REVIEW_REQUIRED"
+        next: "RUL-038"
+    primary_legal_anchor:
+      - "SRC-002#Art.6/Abs.1a"
+      - "SRC-002#Art.6/Abs.1b"
+    guidance_anchor: []
+    guidance_detail: null
+    guidance_role: null
+    rationale: "Abs. 1a nimmt ausschließlich nicht sicherheitsbezogene KI-Systeme vom Begriff des Sicherheitsbauteils aus; Abs. 1b geht dieser Ausschlusswirkung vor, wenn Ausfall oder Fehlfunktion Gesundheit oder Sicherheit gefährdet."
+    dependencies: ["RUL-030"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-032"
+    status: "aktiv"
+    category: "AI_ACT_APPLICABILITY"
+    title:
+      de: "Dritt-Konformitätsbewertung nach Art. 6 Abs. 1 Buchst. b"
+      en: "Third-party conformity assessment under Article 6(1)(b)"
+    question:
+      de: "Muss das MDR-Produkt für Inverkehrbringen oder Inbetriebnahme eine Dritt-Konformitätsbewertung durchlaufen?"
+      en: "Is third-party conformity assessment required for the MDR product for placing on the market or putting into service?"
+    input_key: "third_party_ca_required"
+    input_type: "enum"
+    allowed_values: ["YES", "NO", "UNCLEAR"]
+    value_labels:
+      "YES": {de: "Ja", en: "Yes"}
+      "NO": {de: "Nein", en: "No"}
+      UNCLEAR: {de: "Unklar", en: "Unclear"}
+    decision_logic: "YES führt zu RUL-033; NO ergibt ART6_1_ROUTE_FALSE; UNCLEAR ergibt ART6_1_REVIEW_REQUIRED. Routenergebnisse führen zu RUL-038."
+    branches:
+      - when: "YES"
+        next: "RUL-033"
+      - when: "NO"
+        result: "ART6_1_ROUTE_FALSE"
+        next: "RUL-038"
+      - when: "UNCLEAR"
+        result: "ART6_1_REVIEW_REQUIRED"
+        next: "RUL-038"
+    primary_legal_anchor:
+      - "SRC-002#Art.6/Abs.1/Buchst.b"
+    guidance_anchor: []
+    guidance_detail: null
+    guidance_role: null
+    rationale: "Zweite kumulative Bedingung des Art. 6 Abs. 1."
+    dependencies: ["RUL-030", "RUL-031"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-033"
+    status: "aktiv"
+    category: "AI_ACT_APPLICABILITY"
+    title:
+      de: "Drittprüfung ausschließlich wegen anderer Risiken nach Art. 6 Abs. 1c"
+      en: "Third-party assessment solely due to other risks under Article 6(1c)"
+    question:
+      de: "Ist diese Drittprüfung ausschließlich wegen Risiken erforderlich, die nicht Gesundheit oder Sicherheit betreffen?"
+      en: "Is that third-party assessment required solely because of risks unrelated to health and safety?"
+    input_key: "third_party_ca_only_non_health_safety"
+    input_type: "enum"
+    allowed_values: ["YES", "NO", "UNCLEAR"]
+    value_labels:
+      "YES": {de: "Ja", en: "Yes"}
+      "NO": {de: "Nein", en: "No"}
+      UNCLEAR: {de: "Unklar", en: "Unclear"}
+    decision_logic: "YES ergibt ART6_1_ROUTE_FALSE, weil Buchst. b dann ausdrücklich nicht erfüllt ist; NO führt zu RUL-034; UNCLEAR ergibt ART6_1_REVIEW_REQUIRED. Routenergebnisse führen zu RUL-038."
+    branches:
+      - when: "YES"
+        result: "ART6_1_ROUTE_FALSE"
+        next: "RUL-038"
+      - when: "NO"
+        next: "RUL-034"
+      - when: "UNCLEAR"
+        result: "ART6_1_REVIEW_REQUIRED"
+        next: "RUL-038"
+    primary_legal_anchor:
+      - "SRC-002#Art.6/Abs.1c"
+    guidance_anchor: []
+    guidance_detail: null
+    guidance_role: null
+    rationale: "Nach Abs. 1c erfüllt eine Drittprüfung, die ausschließlich wegen anderer Risiken als Gesundheits- oder Sicherheitsrisiken erforderlich ist, Art. 6 Abs. 1 Buchst. b nicht."
+    dependencies: ["RUL-032"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-034"
+    status: "aktiv"
+    category: "AI_ACT_APPLICABILITY"
+    title:
+      de: "Anwendungsbeginn für Art.-6(1)-Systeme"
+      en: "Date of application for Article 6(1) systems"
+    question:
+      de: "Auf welches Datum bezieht sich die Bewertung (Stichtag 02.08.2028 für Art.-6(1)-Systeme)?"
+      en: "To which date does the assessment refer (reference date 2 August 2028 for Article 6(1) systems)?"
+    input_key: "assessment_date"
+    input_type: "date"
+    allowed_values: []
+    value_labels: null
+    decision_logic: "Vor 2028-08-02 ergibt ART6_1_NOT_YET_APPLICABLE (bezogen ausschließlich auf den Art.-6(1)-Hochrisiko-Anforderungsblock, nicht auf den gesamten AI Act) und führt zu RUL-038; ab 2028-08-02 führt zu RUL-035."
+    branches:
+      - when: {before: "2028-08-02"}
+        result: "ART6_1_NOT_YET_APPLICABLE"
+        next: "RUL-038"
+      - when: {on_or_after: "2028-08-02"}
+        next: "RUL-035"
+    primary_legal_anchor:
+      - "SRC-002#Art.113/Buchst.c/Ziff.ii"
+    guidance_anchor: []
+    guidance_detail: null
+    guidance_role: null
+    rationale: "Kapitel III Abschnitte 1 bis 3 gelten für Art.-6(1)/Anhang-I-Systeme ab 02.08.2028."
+    dependencies: ["RUL-033"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-035"
+    status: "aktiv"
+    category: "AI_ACT_APPLICABILITY"
+    title:
+      de: "Inverkehrbringen oder Inbetriebnahme vor dem Anwendungsbeginn"
+      en: "Placing on the market or putting into service before the date of application"
+    question:
+      de: "Wann wurde das Hochrisiko-System in Verkehr gebracht oder in Betrieb genommen (Stichtag 02.08.2028)?"
+      en: "When was the high-risk system placed on the market or put into service (reference date 2 August 2028)?"
+    input_key: "market_or_service_date"
+    input_type: "date"
+    allowed_values: ["UNKNOWN"]
+    value_labels: null
+    decision_logic: "Ab 2028-08-02 ergibt ART6_1_HIGH_RISK; vor 2028-08-02 führt zu RUL-036 (Art. 111 Abs. 2); UNKNOWN ergibt ART6_1_REVIEW_REQUIRED. Routenergebnisse führen zu RUL-038."
+    branches:
+      - when: {on_or_after: "2028-08-02"}
+        result: "ART6_1_HIGH_RISK"
+        next: "RUL-038"
+      - when: {before: "2028-08-02"}
+        next: "RUL-036"
+      - when: "UNKNOWN"
+        result: "ART6_1_REVIEW_REQUIRED"
+        next: "RUL-038"
+    primary_legal_anchor:
+      - "SRC-002#Art.111/Abs.2"
+    guidance_anchor: []
+    guidance_detail: null
+    guidance_role: null
+    rationale: "Art. 111 Abs. 2 enthält die Übergangslogik für Hochrisiko-Systeme, die vor dem Anwendungsbeginn in Verkehr gebracht oder in Betrieb genommen wurden."
+    dependencies: ["RUL-034"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-036"
+    status: "aktiv"
+    category: "AI_ACT_APPLICABILITY"
+    title:
+      de: "Signifikante Konzeptionsänderung ab 02.08.2028"
+      en: "Significant design change from 2 August 2028"
+    question:
+      de: "Unterlag das bestehende System ab 02.08.2028 signifikanten Änderungen seiner Konzeption?"
+      en: "Has the existing system been subject to significant changes in its design as from 2 August 2028?"
+    input_key: "significant_design_change_after_application_date"
+    input_type: "enum"
+    allowed_values: ["YES", "NO", "UNCLEAR"]
+    value_labels:
+      "YES": {de: "Ja", en: "Yes"}
+      "NO": {de: "Nein", en: "No"}
+      UNCLEAR: {de: "Unklar", en: "Unclear"}
+    decision_logic: "YES ergibt ART6_1_HIGH_RISK; NO führt zu RUL-037; UNCLEAR ergibt ART6_1_REVIEW_REQUIRED. Routenergebnisse führen zu RUL-038."
+    branches:
+      - when: "YES"
+        result: "ART6_1_HIGH_RISK"
+        next: "RUL-038"
+      - when: "NO"
+        next: "RUL-037"
+      - when: "UNCLEAR"
+        result: "ART6_1_REVIEW_REQUIRED"
+        next: "RUL-038"
+    primary_legal_anchor:
+      - "SRC-002#Art.111/Abs.2/Satz.1"
+    guidance_anchor: []
+    guidance_detail: null
+    guidance_role: null
+    rationale: "Für bereits vorher in Verkehr gebrachte oder in Betrieb genommene Systeme greift die Verordnung grundsätzlich nur bei signifikanten Konzeptionsänderungen ab diesem Datum."
+    dependencies: ["RUL-035"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-037"
+    status: "aktiv"
+    category: "AI_ACT_APPLICABILITY"
+    title:
+      de: "Bestehendes Hochrisiko-System zur Nutzung durch Behörden"
+      en: "Existing high-risk system intended for public authorities"
+    question:
+      de: "Ist das bestehende Hochrisiko-System zur Nutzung durch Behörden bestimmt?"
+      en: "Is the existing high-risk system intended for use by public authorities?"
+    input_key: "public_authority_intended_use"
+    input_type: "enum"
+    allowed_values: ["YES", "NO", "UNCLEAR"]
+    value_labels:
+      "YES": {de: "Ja", en: "Yes"}
+      "NO": {de: "Nein", en: "No"}
+      UNCLEAR: {de: "Unklar", en: "Unclear"}
+    decision_logic: "NO ergibt ART6_1_LEGACY_TRANSITION; YES mit Bewertungsdatum vor 2030-08-02 ergibt ART6_1_LEGACY_TRANSITION_PUBLIC_AUTHORITY (Übergang mit Frist 02.08.2030); YES mit Bewertungsdatum ab 2030-08-02 ergibt ART6_1_HIGH_RISK_PUBLIC_AUTHORITY; UNCLEAR ergibt ART6_1_REVIEW_REQUIRED. Routenergebnisse führen zu RUL-038."
+    branches:
+      - when: "NO"
+        result: "ART6_1_LEGACY_TRANSITION"
+        next: "RUL-038"
+      - when: "YES"
+        date_condition: {input_key: "assessment_date", before: "2030-08-02"}
+        result: "ART6_1_LEGACY_TRANSITION_PUBLIC_AUTHORITY"
+        next: "RUL-038"
+      - when: "YES"
+        date_condition: {input_key: "assessment_date", on_or_after: "2030-08-02"}
+        result: "ART6_1_HIGH_RISK_PUBLIC_AUTHORITY"
+        next: "RUL-038"
+      - when: "UNCLEAR"
+        result: "ART6_1_REVIEW_REQUIRED"
+        next: "RUL-038"
+    primary_legal_anchor:
+      - "SRC-002#Art.111/Abs.2/Satz.2"
+    guidance_anchor: []
+    guidance_detail: null
+    guidance_role: null
+    rationale: "Für zur Nutzung durch Behörden bestimmte Hochrisiko-Systeme ist die Compliance spätestens bis 02.08.2030 erforderlich."
+    dependencies: ["RUL-036"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-038"
+    status: "aktiv"
+    category: "AI_ACT_APPLICABILITY"
+    title:
+      de: "Anhang-III-Anwendungsfall nach Art. 6 Abs. 2"
+      en: "Annex III use case under Article 6(2)"
+    question:
+      de: "Ist das KI-System für einen der für RegScoutX relevanten Anwendungsfälle aus Anhang III bestimmt?"
+      en: "Is the AI system intended for any Annex III use case relevant to the RegScoutX MDSW scope?"
+    input_key: "annex_iii_use_case"
+    input_type: "enum"
+    allowed_values: ["REMOTE_BIOMETRIC_IDENTIFICATION", "SENSITIVE_BIOMETRIC_CATEGORISATION", "EMOTION_RECOGNITION", "PUBLIC_HEALTHCARE_ELIGIBILITY", "HEALTH_INSURANCE_RISK_PRICING", "EMERGENCY_CALL_CLASSIFICATION", "EMERGENCY_SERVICE_DISPATCH_PRIORITY", "EMERGENCY_HEALTHCARE_TRIAGE", "NONE", "OTHER_ANNEX_III_POSSIBLE", "UNCLEAR"]
+    value_labels:
+      REMOTE_BIOMETRIC_IDENTIFICATION: {de: "Biometrische Fernidentifizierung (nicht bloße 1:1-Verifizierung)", en: "Remote biometric identification (not mere 1:1 verification)"}
+      SENSITIVE_BIOMETRIC_CATEGORISATION: {de: "Biometrische Kategorisierung nach sensiblen oder geschützten Merkmalen auf Grundlage abgeleiteter Merkmale", en: "Biometric categorisation according to sensitive or protected attributes based on inferred attributes"}
+      EMOTION_RECOGNITION: {de: "Emotionserkennung", en: "Emotion recognition"}
+      PUBLIC_HEALTHCARE_ELIGIBILITY: {de: "Bewertung der Anspruchsberechtigung natürlicher Personen für wesentliche öffentliche Unterstützungsleistungen einschließlich Gesundheitsleistungen", en: "Evaluation of the eligibility of natural persons for essential public assistance benefits including healthcare services"}
+      HEALTH_INSURANCE_RISK_PRICING: {de: "Risikobewertung und Preisbildung in der Lebens- und Krankenversicherung", en: "Risk assessment and pricing in life and health insurance"}
+      EMERGENCY_CALL_CLASSIFICATION: {de: "Bewertung und Klassifizierung von Notrufen", en: "Evaluation and classification of emergency calls"}
+      EMERGENCY_SERVICE_DISPATCH_PRIORITY: {de: "Disposition und Priorisierung von Notfalldiensten", en: "Dispatch and prioritisation of emergency services"}
+      EMERGENCY_HEALTHCARE_TRIAGE: {de: "Triage von Patientinnen und Patienten in der Notfallversorgung", en: "Emergency healthcare patient triage"}
+      NONE: {de: "Kein Anhang-III-Anwendungsfall", en: "No Annex III use case"}
+      OTHER_ANNEX_III_POSSIBLE: {de: "Anderer, auch nicht-medizinischer bzw. dualer Anhang-III-Anwendungsfall möglich", en: "Other, including non-medical or dual-use, Annex III use case possible"}
+      UNCLEAR: {de: "Unklar", en: "Unclear"}
+    decision_logic: "Beginn der Art.-6(2)-Route; wird nach jedem Art.-6(1)-Routenergebnis ausgeführt. Konkreter Treffer ergibt ANNEX_III_MATCH und führt zu RUL-040 (Zuordnung: REMOTE_BIOMETRIC_IDENTIFICATION Anh. III Nr. 1 Buchst. a; SENSITIVE_BIOMETRIC_CATEGORISATION Nr. 1 Buchst. b; EMOTION_RECOGNITION Nr. 1 Buchst. c; PUBLIC_HEALTHCARE_ELIGIBILITY Nr. 5 Buchst. a; HEALTH_INSURANCE_RISK_PRICING Nr. 5 Buchst. c; EMERGENCY_CALL_CLASSIFICATION, EMERGENCY_SERVICE_DISPATCH_PRIORITY und EMERGENCY_HEALTHCARE_TRIAGE Nr. 5 Buchst. d). NONE ergibt ART6_2_ROUTE_FALSE; OTHER_ANNEX_III_POSSIBLE und UNCLEAR ergeben ART6_2_REVIEW_REQUIRED, weil nicht-medizinische bzw. duale Anhang-III-Bereiche nicht pauschal verneint werden. Diese beiden Routenergebnisse führen zu RUL-043."
+    branches:
+      - when: "REMOTE_BIOMETRIC_IDENTIFICATION"
+        result: "ANNEX_III_MATCH"
+        next: "RUL-040"
+      - when: "SENSITIVE_BIOMETRIC_CATEGORISATION"
+        result: "ANNEX_III_MATCH"
+        next: "RUL-040"
+      - when: "EMOTION_RECOGNITION"
+        result: "ANNEX_III_MATCH"
+        next: "RUL-040"
+      - when: "PUBLIC_HEALTHCARE_ELIGIBILITY"
+        result: "ANNEX_III_MATCH"
+        next: "RUL-040"
+      - when: "HEALTH_INSURANCE_RISK_PRICING"
+        result: "ANNEX_III_MATCH"
+        next: "RUL-040"
+      - when: "EMERGENCY_CALL_CLASSIFICATION"
+        result: "ANNEX_III_MATCH"
+        next: "RUL-040"
+      - when: "EMERGENCY_SERVICE_DISPATCH_PRIORITY"
+        result: "ANNEX_III_MATCH"
+        next: "RUL-040"
+      - when: "EMERGENCY_HEALTHCARE_TRIAGE"
+        result: "ANNEX_III_MATCH"
+        next: "RUL-040"
+      - when: "NONE"
+        result: "ART6_2_ROUTE_FALSE"
+        next: "RUL-043"
+      - when: "OTHER_ANNEX_III_POSSIBLE"
+        result: "ART6_2_REVIEW_REQUIRED"
+        next: "RUL-043"
+      - when: "UNCLEAR"
+        result: "ART6_2_REVIEW_REQUIRED"
+        next: "RUL-043"
+    primary_legal_anchor:
+      - "SRC-002#Art.6/Abs.2"
+      - "SRC-002#Anh.III/Nr.1/Buchst.a"
+      - "SRC-002#Anh.III/Nr.1/Buchst.b"
+      - "SRC-002#Anh.III/Nr.1/Buchst.c"
+      - "SRC-002#Anh.III/Nr.5/Buchst.a"
+      - "SRC-002#Anh.III/Nr.5/Buchst.c"
+      - "SRC-002#Anh.III/Nr.5/Buchst.d"
+    guidance_anchor: []
+    guidance_detail: null
+    guidance_role: null
+    rationale: "Art. 6 Abs. 2 verweist unmittelbar auf die Anwendungsfälle des Anhangs III; die Route ist eine Alternative zu Art. 6 Abs. 1, kein Unterfall."
+    dependencies: ["RUL-030", "RUL-031", "RUL-032", "RUL-033", "RUL-034", "RUL-035", "RUL-036", "RUL-037"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-039"
+    status: "aktiv"
+    category: "AI_ACT_APPLICABILITY"
+    title:
+      de: "Anwendungsbeginn für Art.-6(2)-Systeme"
+      en: "Date of application for Article 6(2) systems"
+    question:
+      de: "Auf welches Datum bezieht sich die Bewertung (Stichtag 02.12.2027 für Art.-6(2)-Systeme)?"
+      en: "To which date does the assessment refer (reference date 2 December 2027 for Article 6(2) systems)?"
+    input_key: "assessment_date"
+    input_type: "date"
+    allowed_values: []
+    value_labels: null
+    decision_logic: "Wird nur nach einem endgültigen Anhang-III-Hochrisiko-Kandidaten erreicht. Vor 2027-12-02 ergibt ART6_2_NOT_YET_APPLICABLE (bezogen auf diesen Hochrisiko-Weg); ab 2027-12-02 ergibt ART6_2_HIGH_RISK. Beide führen zu RUL-043."
+    branches:
+      - when: {before: "2027-12-02"}
+        result: "ART6_2_NOT_YET_APPLICABLE"
+        next: "RUL-043"
+      - when: {on_or_after: "2027-12-02"}
+        result: "ART6_2_HIGH_RISK"
+        next: "RUL-043"
+    primary_legal_anchor:
+      - "SRC-002#Art.113/Buchst.c/Ziff.i"
+    guidance_anchor: []
+    guidance_detail: null
+    guidance_role: null
+    rationale: "Kapitel III Abschnitte 1 bis 3 gelten für Art.-6(2)/Anhang-III-Systeme ab 02.12.2027."
+    dependencies: ["RUL-040", "RUL-041", "RUL-042"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-040"
+    status: "aktiv"
+    category: "AI_ACT_APPLICABILITY"
+    title:
+      de: "Profiling natürlicher Personen nach Art. 6 Abs. 3"
+      en: "Profiling of natural persons under Article 6(3)"
+    question:
+      de: "Nimmt das KI-System ein Profiling natürlicher Personen vor?"
+      en: "Does the AI system perform profiling of natural persons?"
+    input_key: "profiling_natural_persons"
+    input_type: "enum"
+    allowed_values: ["YES", "NO", "UNCLEAR"]
+    value_labels:
+      "YES": {de: "Ja", en: "Yes"}
+      "NO": {de: "Nein", en: "No"}
+      UNCLEAR: {de: "Unklar", en: "Unclear"}
+    decision_logic: "YES schließt die Art.-6(3)-Ausnahme aus und ergibt ANNEX_III_HIGH_RISK_CANDIDATE (weiter mit RUL-039); NO führt zur Prüfung der Ausnahmebedingungen (RUL-041); UNCLEAR ergibt ART6_2_REVIEW_REQUIRED (weiter mit RUL-043)."
+    branches:
+      - when: "YES"
+        result: "ANNEX_III_HIGH_RISK_CANDIDATE"
+        next: "RUL-039"
+      - when: "NO"
+        next: "RUL-041"
+      - when: "UNCLEAR"
+        result: "ART6_2_REVIEW_REQUIRED"
+        next: "RUL-043"
+    primary_legal_anchor:
+      - "SRC-002#Art.6/Abs.3"
+    guidance_anchor: []
+    guidance_detail: null
+    guidance_role: null
+    rationale: "Ungeachtet der Ausnahme gilt ein in Anhang III genanntes KI-System immer als hochriskant, wenn es Profiling natürlicher Personen vornimmt."
+    dependencies: ["RUL-038"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-041"
+    status: "aktiv"
+    category: "AI_ACT_APPLICABILITY"
+    title:
+      de: "Bedingung der Ausnahme nach Art. 6 Abs. 3 Buchst. a bis d"
+      en: "Derogation condition under Article 6(3)(a) to (d)"
+    question:
+      de: "Ist mindestens eine der folgenden Bedingungen erfüllt: enge verfahrensbezogene Aufgabe, Verbesserung des Ergebnisses einer zuvor abgeschlossenen menschlichen Tätigkeit, Erkennung von Entscheidungsmustern oder Abweichungen ohne Ersetzung oder Beeinflussung der zuvor abgeschlossenen menschlichen Bewertung ohne angemessene menschliche Überprüfung, vorbereitende Aufgabe für eine für Anhang III relevante Bewertung?"
+      en: "Is at least one of the following conditions met: narrow procedural task, improving the result of a previously completed human activity, detecting decision-making patterns or deviations without replacing or influencing the previously completed human assessment without proper human review, preparatory task to an assessment relevant for Annex III?"
+    input_key: "art6_3_derogation_condition"
+    input_type: "enum"
+    allowed_values: ["NARROW_PROCEDURAL_TASK", "IMPROVES_PREVIOUS_HUMAN_ACTIVITY", "PATTERN_DETECTION_WITH_HUMAN_REVIEW", "PREPARATORY_TASK", "NONE", "UNCLEAR"]
+    value_labels:
+      NARROW_PROCEDURAL_TASK: {de: "Enge verfahrensbezogene Aufgabe (Buchst. a)", en: "Narrow procedural task (point (a))"}
+      IMPROVES_PREVIOUS_HUMAN_ACTIVITY: {de: "Verbesserung des Ergebnisses einer zuvor abgeschlossenen menschlichen Tätigkeit (Buchst. b)", en: "Improving the result of a previously completed human activity (point (b))"}
+      PATTERN_DETECTION_WITH_HUMAN_REVIEW: {de: "Erkennung von Entscheidungsmustern oder Abweichungen ohne Ersetzung oder Beeinflussung der zuvor abgeschlossenen menschlichen Bewertung ohne angemessene menschliche Überprüfung (Buchst. c)", en: "Detecting decision-making patterns or deviations without replacing or influencing the previously completed human assessment without proper human review (point (c))"}
+      PREPARATORY_TASK: {de: "Vorbereitende Aufgabe für eine für Anhang III relevante Bewertung (Buchst. d)", en: "Preparatory task to an assessment relevant for Annex III (point (d))"}
+      NONE: {de: "Keine dieser Bedingungen", en: "None of these conditions"}
+      UNCLEAR: {de: "Unklar", en: "Unclear"}
+    decision_logic: "Eine erfüllte Bedingung führt zur Prüfung des erheblichen Risikos (RUL-042); allein daraus folgt kein Nicht-Hochrisiko. NONE ergibt ANNEX_III_HIGH_RISK_CANDIDATE (weiter mit RUL-039); UNCLEAR ergibt ART6_2_REVIEW_REQUIRED (weiter mit RUL-043)."
+    branches:
+      - when: "NARROW_PROCEDURAL_TASK"
+        next: "RUL-042"
+      - when: "IMPROVES_PREVIOUS_HUMAN_ACTIVITY"
+        next: "RUL-042"
+      - when: "PATTERN_DETECTION_WITH_HUMAN_REVIEW"
+        next: "RUL-042"
+      - when: "PREPARATORY_TASK"
+        next: "RUL-042"
+      - when: "NONE"
+        result: "ANNEX_III_HIGH_RISK_CANDIDATE"
+        next: "RUL-039"
+      - when: "UNCLEAR"
+        result: "ART6_2_REVIEW_REQUIRED"
+        next: "RUL-043"
+    primary_legal_anchor:
+      - "SRC-002#Art.6/Abs.3/Buchst.a"
+      - "SRC-002#Art.6/Abs.3/Buchst.b"
+      - "SRC-002#Art.6/Abs.3/Buchst.c"
+      - "SRC-002#Art.6/Abs.3/Buchst.d"
+    guidance_anchor: []
+    guidance_detail: null
+    guidance_role: null
+    rationale: "Die Ausnahme nach Art. 6 Abs. 3 setzt mindestens eine der vier Bedingungen des zweiten Unterabsatzes voraus; sie gilt nur kumulativ mit dem Fehlen eines erheblichen Risikos."
+    dependencies: ["RUL-040"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-042"
+    status: "aktiv"
+    category: "AI_ACT_APPLICABILITY"
+    title:
+      de: "Erhebliches Risiko nach Art. 6 Abs. 3"
+      en: "Significant risk under Article 6(3)"
+    question:
+      de: "Birgt das KI-System ein erhebliches Risiko der Beeinträchtigung von Gesundheit, Sicherheit oder Grundrechten natürlicher Personen, auch dadurch, dass es das Ergebnis der Entscheidungsfindung wesentlich beeinflusst?"
+      en: "Does the AI system pose a significant risk of harm to the health, safety or fundamental rights of natural persons, including by materially influencing the outcome of decision making?"
+    input_key: "significant_risk_health_safety_fundamental_rights"
+    input_type: "enum"
+    allowed_values: ["YES", "NO", "UNCLEAR"]
+    value_labels:
+      "YES": {de: "Ja", en: "Yes"}
+      "NO": {de: "Nein", en: "No"}
+      UNCLEAR: {de: "Unklar", en: "Unclear"}
+    decision_logic: "YES ergibt ANNEX_III_HIGH_RISK_CANDIDATE (weiter mit RUL-039); NO ergibt ART6_3_NON_HIGH_RISK mit dem Hinweis ART6_4_SELF_ASSESSMENT_OBLIGATIONS_APPLY; UNCLEAR ergibt ART6_2_REVIEW_REQUIRED. Beide führen zu RUL-043."
+    branches:
+      - when: "YES"
+        result: "ANNEX_III_HIGH_RISK_CANDIDATE"
+        next: "RUL-039"
+      - when: "NO"
+        result: "ART6_3_NON_HIGH_RISK"
+        next: "RUL-043"
+      - when: "UNCLEAR"
+        result: "ART6_2_REVIEW_REQUIRED"
+        next: "RUL-043"
+    primary_legal_anchor:
+      - "SRC-002#Art.6/Abs.3"
+      - "SRC-002#Art.6/Abs.4"
+    guidance_anchor: []
+    guidance_detail: null
+    guidance_role: null
+    rationale: "Die Ausnahme greift nur, wenn zusätzlich zu einer Bedingung nach Buchst. a bis d belastbar feststeht, dass kein erhebliches Risiko besteht; Art. 6 Abs. 4 regelt die Folgen der Nicht-Hochrisiko-Selbsteinstufung."
+    dependencies: ["RUL-041"]
+    replaces: []
+    replaced_by: []
+
+  - id: "RUL-043"
+    status: "aktiv"
+    category: "AI_ACT_APPLICABILITY"
+    title:
+      de: "Kombiniertes Hochrisiko-Routing nach Art. 6"
+      en: "Combined high-risk routing under Article 6"
+    question:
+      de: "Keine Nutzerfrage; ergibt sich aus den Ergebnissen der Art.-6(1)- und Art.-6(2)/(3)-Route."
+      en: "No user question; follows from the results of the Article 6(1) and Article 6(2)/(3) routes."
+    input_key: "art6_combined_route_state"
+    input_type: "derived"
+    allowed_values: ["AI_ACT_HIGH_RISK", "AI_ACT_APPLICABILITY_REVIEW_REQUIRED", "AI_ACT_HIGH_RISK_LEGACY_TRANSITION", "AI_ACT_NOT_YET_APPLICABLE", "AI_ACT_APPLICABLE_NOT_HIGH_RISK"]
+    value_labels: null
+    decision_logic: "Kombiniert ausschließlich die bereits bestimmten Routenergebnisse: HIGH_RISK = wirksame Art.-6(1)-Route ODER wirksame Art.-6(2)-Route. Vorrangfolge der Zustände in allowed_values: ein wirksamer Hochrisiko-Weg vor ungeklärter Route vor Übergang vor noch nicht anwendbar vor nicht hochriskant. Nicht hochriskant daher nur, wenn beide Routen negativ sind bzw. die Art.-6(3)-Ausnahme festgestellt ist; nie aus einer negativen Art.-6(1)-Route allein. Ein positives Art.-6(1)-Ergebnis wird durch Art. 6 Abs. 3 nicht aufgehoben. Treffen beide Wege zu, bestimmt der früheste wirksame Weg den Beginn (applicable_from)."
+    branches:
+      - when: "AI_ACT_HIGH_RISK"
+        result: "AI_ACT_HIGH_RISK"
+      - when: "AI_ACT_APPLICABILITY_REVIEW_REQUIRED"
+        result: "AI_ACT_APPLICABILITY_REVIEW_REQUIRED"
+        review_cause:
+          de: "Mindestens eine Hochrisiko-Route ist nicht determinierbar, und keine Route ergibt einen wirksamen Hochrisiko-Status."
+          en: "At least one high-risk route cannot be determined and no route yields an effective high-risk status."
+      - when: "AI_ACT_HIGH_RISK_LEGACY_TRANSITION"
+        result: "AI_ACT_HIGH_RISK_LEGACY_TRANSITION"
+      - when: "AI_ACT_NOT_YET_APPLICABLE"
+        result: "AI_ACT_NOT_YET_APPLICABLE"
+      - when: "AI_ACT_APPLICABLE_NOT_HIGH_RISK"
+        result: "AI_ACT_APPLICABLE_NOT_HIGH_RISK"
+    primary_legal_anchor:
+      - "SRC-002#Art.6"
+    guidance_anchor: []
+    guidance_detail: null
+    guidance_role: null
+    rationale: "Art. 6 Abs. 2 bestimmt die Anhang-III-Systeme zusätzlich zu den Systemen nach Abs. 1 als hochriskant; die Wege sind parallel möglich. Die Anwendungstermine nach Art. 113 Buchst. c unterscheiden die Wege zeitlich."
+    dependencies: ["RUL-038", "RUL-039", "RUL-040", "RUL-041", "RUL-042"]
+    replaces: []
+    replaced_by: []
+
+change_history:
+  - version: "0.1"
+    change: "Katalog angelegt. RUL-001 bis RUL-026 aus den 26 finalen temporären Kandidaten der SRC-004-Research-Adjudikation übernommen (RQ-Q01 bis RQ-Q08 → RUL-001 bis RUL-008, RQ-C01 bis RQ-C12 → RUL-009 bis RUL-020, RQ-M01 bis RQ-M03 → RUL-021 bis RUL-023, RQ-CH01 bis RQ-CH03 → RUL-024 bis RUL-026). Grundlage ist DECISION_LOGIC_SRC_004_MDSW_QUALIFICATION_CLASSIFICATION.md Version 1.0 nach RUL_METHOD.md Version 1.0. Jede RUL trägt einen Primary Legal Anchor (SRC-001 bzw. SRC-010) und getrennt einen Guidance Anchor (SRC-004). Keine RR erzeugt oder geändert."
+  - version: "0.2"
+    change: "RUL-027 bis RUL-043 für AI-Act-Applicability und Hochrisiko-Routing nach Art. 6 ergänzt (AIA-R01 bis AIA-R11 → RUL-027 bis RUL-037, AIA-R12 → RUL-038, AIA-R13 → RUL-039, Art.-6(3)-Profiling, -Ausnahmebedingung und -Risikoprüfung → RUL-040 bis RUL-042, kombiniertes Art.-6-Routing → RUL-043). Neuer Einstiegspunkt RUL-027; 21 neue Ausgabewerte; Hinweise ART6_4_SELF_ASSESSMENT_OBLIGATIONS_APPLY und ART111_2_PUBLIC_AUTHORITY_COMPLIANCE_BY_2030_08_02. Primary Legal Anchor ausschließlich SRC-002 (konsolidiert 27.07.2026); keine Guidance-Anker. Grundlage ist DECISION_LOGIC_SRC_002_AI_ACT_APPLICABILITY.md Version 1.0 nach RUL_METHOD.md Version 1.1. RUL-001 bis RUL-026 unverändert; keine RR erzeugt oder geändert."

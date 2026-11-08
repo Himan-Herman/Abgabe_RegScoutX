@@ -1,0 +1,118 @@
+COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_data_model.py
+EXIT: 0
+Data model validation: PASS
+version: 0.8
+entities: 10
+
+COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_reference_assessment.py
+EXIT: 0
+Reference assessment validation: PASS
+sha256: 45cf843e993eb7c9fc17dfeb810541b667087bbbd3effc726188d04f6ad2fc66
+
+COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_rr_applicability.py
+EXIT: 0
+RR applicability validation: PASS
+version: 0.5
+requirements: 959 CONDITIONAL=629 NOT_STATED=61 REGULAR=269
+
+COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_rr_catalog.py
+EXIT: 0
+RR catalog validation: PASS
+version: 0.26
+requirements: 959
+
+COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_rr_measures.py
+EXIT: 0
+RR measure catalog validation: PASS
+version: 0.2
+measures: 17; evidence types: 17; adjudication rules: 16
+requirements: MAPPED=959
+mapping basis: PROJECT_DERIVED=581 SOURCE_EXPLICIT=378
+mapping rule: ADJ=504 TRIGGER=455 (adjudication overriding a trigger match: 2)
+by theme:
+  Data Governance: PROJECT_DERIVED=21
+  Gebrauchstauglichkeit: SOURCE_EXPLICIT=37 PROJECT_DERIVED=69
+  Menschliche Aufsicht: PROJECT_DERIVED=10
+  Post-Market-Monitoring: SOURCE_EXPLICIT=69 PROJECT_DERIVED=69
+  Qualitäts- und Risikomanagement: SOURCE_EXPLICIT=115 PROJECT_DERIVED=248
+  Robustheit: SOURCE_EXPLICIT=1 PROJECT_DERIVED=15
+  Software-Lebenszyklus: SOURCE_EXPLICIT=66 PROJECT_DERIVED=141
+  Transparenz: SOURCE_EXPLICIT=90 PROJECT_DERIVED=8
+by primary source:
+  SRC-001: SOURCE_EXPLICIT=113 PROJECT_DERIVED=88
+  SRC-002: SOURCE_EXPLICIT=24 PROJECT_DERIVED=91
+  SRC-005: SOURCE_EXPLICIT=77 PROJECT_DERIVED=132
+  SRC-006: SOURCE_EXPLICIT=47 PROJECT_DERIVED=58
+  SRC-007: SOURCE_EXPLICIT=54 PROJECT_DERIVED=126
+  SRC-008: SOURCE_EXPLICIT=23 PROJECT_DERIVED=65
+  SRC-009: SOURCE_EXPLICIT=40 PROJECT_DERIVED=21
+by lifecycle phase:
+  Entwicklung und Realisierung: SOURCE_EXPLICIT=161 PROJECT_DERIVED=283
+  Inverkehrbringen, Inbetriebnahme und Betrieb: SOURCE_EXPLICIT=150 PROJECT_DERIVED=122
+  Konformitätsbewertung: SOURCE_EXPLICIT=29 PROJECT_DERIVED=72
+  Planung und Konzeption: SOURCE_EXPLICIT=112 PROJECT_DERIVED=227
+  Post-Market-Überwachung: SOURCE_EXPLICIT=90 PROJECT_DERIVED=167
+  Verifikation und Validierung: SOURCE_EXPLICIT=74 PROJECT_DERIVED=202
+  Änderung und Wartung: SOURCE_EXPLICIT=198 PROJECT_DERIVED=291
+
+COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_rul_catalog.py
+EXIT: 0
+RUL catalog validation: PASS
+version: 0.3
+rules: 47
+
+COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_sr_catalog.py
+EXIT: 0
+SR catalog validation: PASS
+version: 0.6
+requirements: 43
+
+COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_standards_mapping.py
+EXIT: 0
+Standards mapping validation: PASS
+version: 1.1
+candidates: 594 CROSSWALK_ONLY=2 CROSS_NORM_MERGE=15 EXISTING_RR_SUPPORT=1 NEW_UNIQUE_RR=576
+merges: 6; new RR: 582; relations: 6
+
+COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_test_catalog.py
+EXIT: 0
+Test catalog validation: PASS
+test cases: 62 AUTOMATED=61 VALIDATOR=1 golden=4
+evidence: 19
+
+COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/traceability.py
+EXIT: 0
+Traceability check: PASS
+links: 5396
+  ALLOCATED_TO: 104
+  APPLICABILITY_BLOCK: 959
+  BLOCK_SCOPE: 27
+  CONDITION_SOURCE: 58
+  DECISION_OUTCOME: 8
+  DEPENDS_ON: 68
+  DERIVED_FROM: 60
+  EV_OF_TC: 440
+  GUIDANCE_ANCHOR: 30
+  LOCAL_CONDITION: 660
+  MEASURE_EVIDENCE_TYPE: 17
+  NORMATIVE_DEPENDENCY: 3
+  PREDICATE_PART: 16
+  PRIMARY_LEGAL_ANCHOR: 75
+  PRODUCES: 85
+  PROFILE_INPUT: 41
+  RR_MEASURE: 959
+  RR_SOURCE_PRIMARY: 963
+  RR_SOURCE_SUPPLEMENTARY: 286
+  SOURCE_SUPPORT: 3
+  TC_COVERS_RR: 153
+  TC_VERIFIES_SR: 194
+  VERIFIES: 187
+RUL verified by test cases: 47 of 47
+SR verified by test cases: 42 of 43
+RR measure mapping: MAPPED 959
+RR measure mapping basis: PROJECT_DERIVED 581, SOURCE_EXPLICIT 378
+RR with source, lifecycle phase, measure and evidence type: 959 of 959
+SR per architecture module: APPLICABILITY_ENGINE 10, APPLICATION_API 4, ASSESSMENT_REPOSITORY 3, ASSESSMENT_SERVICE 10, AUDIT_LOG 3, CATALOG_REPOSITORY 7, EVIDENCE_SERVICE 6, GAP_ENGINE 13, I18N 5, PRESENTATION 9, REPORTING 15, REQUIREMENT_SERVICE 5, RULE_ENGINE 14
+
+COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/derive_case_reference.py --check
+EXIT: 0

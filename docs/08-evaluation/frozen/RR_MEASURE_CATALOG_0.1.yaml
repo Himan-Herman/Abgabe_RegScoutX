@@ -1,0 +1,4040 @@
+version: "0.1"
+rr_catalog_version: "0.26"
+description: "Katalog vorgesehener Umsetzungsmaßnahmen und Nachweisarten je RR (SR-043, Katalogart RR_MEASURE). Generische, wiederverwendbare Maßnahmen; Zuordnung regelbasiert aus explizitem Artefakt- bzw. Tätigkeitsbezug im deutschen Requirement Text (trigger_pattern in Prioritätsreihenfolge). MAPPED bedeutet regelbasiert zugeordnet, nicht einzeln fachlich bestätigt; ohne expliziten Bezug gilt REVIEW_REQUIRED. Nachweisarten sind vorgesehene Nachweise, keine Projektevidenz (EV)."
+evidence_types:
+  EVT_RISK_MANAGEMENT_FILE:
+    label:
+      de: "Risikomanagementakte"
+      en: "Risk management file"
+    description:
+      de: "Eintrag bzw. Dokument in der Risikomanagementakte des Produkts."
+      en: "Entry or document in the risk management file of the device."
+  EVT_USABILITY_ENGINEERING_FILE:
+    label:
+      de: "Usability Engineering File"
+      en: "Usability engineering file"
+    description:
+      de: "Eintrag bzw. Dokument im Usability Engineering File."
+      en: "Entry or document in the usability engineering file."
+  EVT_TECHNICAL_DOCUMENTATION:
+    label:
+      de: "Technische Dokumentation"
+      en: "Technical documentation"
+    description:
+      de: "Bestandteil der technischen Dokumentation bzw. einer Produkt- oder Entwicklungsakte."
+      en: "Part of the technical documentation or of a device or design file."
+  EVT_LABELLING_AND_INSTRUCTIONS:
+    label:
+      de: "Kennzeichnung und Gebrauchsanweisung"
+      en: "Labelling and instructions for use"
+    description:
+      de: "Inhalt der Kennzeichnung, Gebrauchs- oder Betriebsanleitung bzw. elektronischen Gebrauchsanweisung."
+      en: "Content of the labelling, instructions for use or electronic instructions for use."
+  EVT_PLAN:
+    label:
+      de: "Plan"
+      en: "Plan"
+    description:
+      de: "Gelenkter Plan (z. B. Entwicklungs-, Risikomanagement-, Überwachungs- oder Evaluationsplan)."
+      en: "Controlled plan (e.g. development, risk management, surveillance or evaluation plan)."
+  EVT_REPORT:
+    label:
+      de: "Bericht"
+      en: "Report"
+    description:
+      de: "Gelenkter Bericht (z. B. PMS-Bericht, PSUR, Problem- oder Risikomanagementbericht)."
+      en: "Controlled report (e.g. PMS report, PSUR, problem or risk management report)."
+  EVT_AUDIT_RECORD:
+    label:
+      de: "Auditnachweis"
+      en: "Audit record"
+    description:
+      de: "Auditprogramm, Auditbericht bzw. Auditaufzeichnung."
+      en: "Audit programme, audit report or audit record."
+  EVT_REVIEW_RECORD:
+    label:
+      de: "Review-Protokoll"
+      en: "Review record"
+    description:
+      de: "Aufzeichnung eines Reviews bzw. einer Managementbewertung."
+      en: "Record of a review or management review."
+  EVT_VALIDATION_RECORD:
+    label:
+      de: "Validierungsnachweis"
+      en: "Validation record"
+    description:
+      de: "Validierungsplan, -protokoll bzw. -bericht mit Ergebnis."
+      en: "Validation plan, protocol or report with result."
+  EVT_VERIFICATION_RECORD:
+    label:
+      de: "Verifizierungs- bzw. Prüfnachweis"
+      en: "Verification or test record"
+    description:
+      de: "Verifizierungs- bzw. Prüfaufzeichnung mit Ergebnis."
+      en: "Verification or test record with result."
+  EVT_COMPETENCE_RECORD:
+    label:
+      de: "Kompetenz- bzw. Schulungsnachweis"
+      en: "Competence or training record"
+    description:
+      de: "Nachweis über Qualifikation, Schulung oder Kompetenz."
+      en: "Record of qualification, training or competence."
+  EVT_PMS_VIGILANCE_RECORD:
+    label:
+      de: "PMS- bzw. Vigilanznachweis"
+      en: "PMS or vigilance record"
+    description:
+      de: "Aufzeichnung aus Überwachung nach dem Inverkehrbringen, Vorkommnis- bzw. Reklamationsbearbeitung."
+      en: "Record from post-market surveillance, incident or complaint handling."
+  EVT_CHANGE_RECORD:
+    label:
+      de: "Änderungsnachweis"
+      en: "Change record"
+    description:
+      de: "Änderungsanforderung mit Bewertung, Genehmigung und Umsetzungsnachweis."
+      en: "Change request with evaluation, approval and implementation record."
+  EVT_DOCUMENTED_PROCEDURE:
+    label:
+      de: "Dokumentiertes Verfahren"
+      en: "Documented procedure"
+    description:
+      de: "Gelenkte Verfahrensanweisung bzw. Prozessbeschreibung."
+      en: "Controlled procedure or process description."
+  EVT_RECORD:
+    label:
+      de: "Aufzeichnung"
+      en: "Record"
+    description:
+      de: "Gelenkte Aufzeichnung bzw. Dokumentation des geforderten Ergebnisses."
+      en: "Controlled record or documentation of the required result."
+measures:
+  MEAS_RISK_MANAGEMENT_FILE:
+    label:
+      de: "In der Risikomanagementakte dokumentieren"
+      en: "Document in the risk management file"
+    evidence_types: ["EVT_RISK_MANAGEMENT_FILE"]
+    trigger_pattern: "Risikomanagementakte|RM-Akte"
+  MEAS_USABILITY_ENGINEERING_FILE:
+    label:
+      de: "Im Usability Engineering File dokumentieren"
+      en: "Document in the usability engineering file"
+    evidence_types: ["EVT_USABILITY_ENGINEERING_FILE"]
+    trigger_pattern: "Usability Engineering File|UE File|UE-File"
+  MEAS_TECHNICAL_DOCUMENTATION:
+    label:
+      de: "In die technische Dokumentation aufnehmen"
+      en: "Include in the technical documentation"
+    evidence_types: ["EVT_TECHNICAL_DOCUMENTATION"]
+    trigger_pattern: "technische[nr]? Dokumentation|Medizinproduktakte|Entwicklungsakte"
+  MEAS_LABELLING_AND_INSTRUCTIONS:
+    label:
+      de: "Kennzeichnung bzw. Gebrauchsanweisung entsprechend gestalten"
+      en: "Design labelling or instructions for use accordingly"
+    evidence_types: ["EVT_LABELLING_AND_INSTRUCTIONS"]
+    trigger_pattern: "Gebrauchsanweisung\\w*|Kennzeichnung|Etikett\\w*|\\bIFU\\b|\\beIFU\\b|Betriebsanleitung\\w*"
+  MEAS_REPORT:
+    label:
+      de: "Bericht erstellen und aktualisieren"
+      en: "Prepare and update report"
+    evidence_types: ["EVT_REPORT"]
+    trigger_pattern: "\\bPMS-Bericht\\w*|\\bPSUR\\b|\\bSicherheitsbericht\\w*|\\bProblembericht\\w*|\\bRisikomanagementbericht\\w*|\\bBericht(?:e|s|es)?\\b"
+  MEAS_PLAN:
+    label:
+      de: "Plan erstellen und pflegen"
+      en: "Establish and maintain plan"
+    evidence_types: ["EVT_PLAN"]
+    trigger_pattern: "(?<!gemäß )\\b[\\w-]*[Pp]lan(?:s|es)?\\b(?!-Kriterien)|\\b[\\w-]*[Pp]läne\\b"
+  MEAS_AUDIT:
+    label:
+      de: "Audit planen und durchführen"
+      en: "Plan and conduct audit"
+    evidence_types: ["EVT_AUDIT_RECORD"]
+    trigger_pattern: "\\b[\\w-]*[Aa]udit\\w*"
+  MEAS_REVIEW:
+    label:
+      de: "Review bzw. Managementbewertung durchführen"
+      en: "Conduct review or management review"
+    evidence_types: ["EVT_REVIEW_RECORD"]
+    trigger_pattern: "\\bReviews?\\b|Managementbewertung\\w*|Leitungsüberprüfung\\w*|Entwicklungsbewertung\\w*"
+  MEAS_VALIDATION:
+    label:
+      de: "Validierung durchführen und aufzeichnen"
+      en: "Perform and record validation"
+    evidence_types: ["EVT_VALIDATION_RECORD"]
+    trigger_pattern: "\\b(?:re)?validier(?:en|t)\\b|\\bValidierung(?:en)?\\b"
+  MEAS_VERIFICATION:
+    label:
+      de: "Verifizierung bzw. Prüfung durchführen und aufzeichnen"
+      en: "Perform and record verification or testing"
+    evidence_types: ["EVT_VERIFICATION_RECORD"]
+    trigger_pattern: "\\bverifizier(?:en|t)\\b|(?<!Implementierung/)\\bVerifizierung(?:en)?\\b|\\bVerifikation\\b|\\b\\w*[Pp]rüfungen\\b|\\bprüfen\\b|\\btesten\\b"
+  MEAS_COMPETENCE:
+    label:
+      de: "Kompetenz bzw. Schulung sicherstellen und nachweisen"
+      en: "Ensure and demonstrate competence or training"
+    evidence_types: ["EVT_COMPETENCE_RECORD"]
+    trigger_pattern: "(?<!angemessener )\\bSchulung(?:en)?\\b|\\bKompetenz(?:en)?\\b|\\bqualifiziert sein\\b|\\bgeschult\\b"
+  MEAS_PMS_VIGILANCE:
+    label:
+      de: "PMS- bzw. Vigilanztätigkeit durchführen und aufzeichnen"
+      en: "Perform and record PMS or vigilance activity"
+    evidence_types: ["EVT_PMS_VIGILANCE_RECORD"]
+    trigger_pattern: "Überwachung nach dem Inverkehrbringen|Beobachtung nach dem Inverkehrbringen|\\bVorkommnis\\w*|schwerwiegende[nr]? Vorf[aä]ll\\w*|\\bReklamation\\w*|Sicherheitskorrekturmaßnahme\\w*"
+  MEAS_CHANGE_CONTROL:
+    label:
+      de: "Änderung über Änderungsanforderung lenken"
+      en: "Control change through change request"
+    evidence_types: ["EVT_CHANGE_RECORD"]
+    trigger_pattern: "\\bÄnderungsanforderung\\w*"
+  MEAS_DOCUMENTED_PROCEDURE:
+    label:
+      de: "Verfahren festlegen und dokumentieren"
+      en: "Establish and document procedure"
+    evidence_types: ["EVT_DOCUMENTED_PROCEDURE"]
+    trigger_pattern: "\\b(?:dokumentierte[nsm]?|schriftliche[nsm]?) Verfahren\\b|\\bVerfahren\\b[^.;]*\\b(?:dokumentieren|festlegen|einrichten|aufrechterhalten)\\b"
+  MEAS_RECORD:
+    label:
+      de: "Ergebnis aufzeichnen"
+      en: "Record result"
+    evidence_types: ["EVT_RECORD"]
+    trigger_pattern: "\\baufzeichnen\\b|\\bAufzeichnungen\\b|\\bdokumentieren\\b|\\bdokumentiert\\b|\\baufbewahren\\b|\\baufzubewahren\\b"
+requirements:
+  RR-001:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-002:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-003:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-004:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-005:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-006:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-007:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-008:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-009:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentiert"
+  RR-010:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-011:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-012:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-013:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-014:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-015:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-016:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-017:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-018:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-019:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Beobachtung nach dem Inverkehrbringen"
+  RR-020:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-021:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-022:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-023:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-024:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-025:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-026:
+    status: "MAPPED"
+    measures: ["MEAS_COMPETENCE"]
+    basis: "Schulung"
+  RR-027:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-028:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-029:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-030:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-031:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-032:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-033:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-034:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-035:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-036:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-037:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-038:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-039:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-040:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-041:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-042:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-043:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-044:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-045:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-046:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Betriebsanleitungen"
+  RR-047:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Betriebsanleitungen"
+  RR-048:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Betriebsanleitungen"
+  RR-049:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Betriebsanleitungen"
+  RR-050:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Betriebsanleitungen"
+  RR-051:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Betriebsanleitungen"
+  RR-052:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Betriebsanleitungen"
+  RR-053:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Betriebsanleitungen"
+  RR-054:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Betriebsanleitungen"
+  RR-055:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Betriebsanleitungen"
+  RR-056:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Betriebsanleitungen"
+  RR-057:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Betriebsanleitungen"
+  RR-058:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Betriebsanleitungen"
+  RR-059:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Betriebsanleitungen"
+  RR-060:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Betriebsanleitungen"
+  RR-061:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Betriebsanleitungen"
+  RR-062:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Betriebsanleitungen"
+  RR-063:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-064:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-065:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-066:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-067:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-068:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-069:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-070:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-071:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-072:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-073:
+    status: "MAPPED"
+    measures: ["MEAS_COMPETENCE"]
+    basis: "Kompetenz"
+  RR-074:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-075:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-076:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Betriebsanleitungen"
+  RR-077:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-078:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-079:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-080:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-081:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-082:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren und Anweisungen dokumentieren"
+  RR-083:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-084:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-085:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-086:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-087:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-088:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-089:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-090:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-091:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-092:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-093:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-094:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-095:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-096:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Beobachtung nach dem Inverkehrbringen"
+  RR-097:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Beobachtung nach dem Inverkehrbringen"
+  RR-098:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Beobachtung nach dem Inverkehrbringen"
+  RR-099:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-100:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-101:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-102:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-103:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-104:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-105:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Beobachtung nach dem Inverkehrbringen"
+  RR-106:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Beobachtung nach dem Inverkehrbringen"
+  RR-107:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Beobachtung nach dem Inverkehrbringen"
+  RR-108:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Beobachtung nach dem Inverkehrbringen"
+  RR-109:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Beobachtung nach dem Inverkehrbringen"
+  RR-110:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Beobachtung nach dem Inverkehrbringen"
+  RR-111:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Beobachtung nach dem Inverkehrbringen"
+  RR-112:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-113:
+    status: "MAPPED"
+    measures: ["MEAS_TECHNICAL_DOCUMENTATION"]
+    basis: "technischen Dokumentation"
+  RR-114:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-115:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-116:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-117:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-118:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-119:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-120:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-121:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-122:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-123:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-124:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-125:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-126:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-127:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-128:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-129:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-130:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-131:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-132:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-133:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-134:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-135:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Überwachung nach dem Inverkehrbringen"
+  RR-136:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Überwachung nach dem Inverkehrbringen"
+  RR-137:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Überwachung nach dem Inverkehrbringen"
+  RR-138:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-139:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-140:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-141:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-142:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-143:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-144:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-145:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Risikomanagementplan"
+  RR-146:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Risikomanagementplan"
+  RR-147:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-148:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-149:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-150:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-151:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-152:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Überwachung nach dem Inverkehrbringen"
+  RR-153:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-154:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-155:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-156:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-157:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-158:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-159:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-160:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-161:
+    status: "MAPPED"
+    measures: ["MEAS_COMPETENCE"]
+    basis: "Schulungen"
+  RR-162:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-163:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-164:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-165:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-166:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-167:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-168:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-169:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-170:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-171:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-172:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Verifizierung"
+  RR-173:
+    status: "MAPPED"
+    measures: ["MEAS_VALIDATION"]
+    basis: "Validierung"
+  RR-174:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-175:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-176:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-177:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-178:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-179:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-180:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-181:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-182:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-183:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-184:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-185:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-186:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-187:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-188:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-189:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Kennzeichnung"
+  RR-190:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Kennzeichnung"
+  RR-191:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Kennzeichnung"
+  RR-192:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Kennzeichnung"
+  RR-193:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Kennzeichnung"
+  RR-194:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-195:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-196:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Kennzeichnung"
+  RR-197:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Kennzeichnung"
+  RR-198:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-199:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-200:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-201:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-202:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-203:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-204:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-205:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-206:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-207:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-208:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-209:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-210:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-211:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-212:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-213:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-214:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-215:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-216:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-217:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-218:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "IFU"
+  RR-219:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-220:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-221:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-222:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-223:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "IFU"
+  RR-224:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "IFU"
+  RR-225:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-226:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-227:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-228:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-229:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-230:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-231:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-232:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-233:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-234:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "IFU"
+  RR-235:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-236:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-237:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-238:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-239:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-240:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-241:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-242:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-243:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "IFU"
+  RR-244:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-245:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-246:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-247:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-248:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-249:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-250:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-251:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "IFU"
+  RR-252:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "IFU"
+  RR-253:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-254:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-255:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-256:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-257:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "eIFU"
+  RR-258:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-259:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-260:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-261:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-262:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-263:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-264:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-265:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "IFU"
+  RR-266:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-267:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-268:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-269:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-270:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-271:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-272:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-273:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-274:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-275:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-276:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-277:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-278:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-279:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-280:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-281:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-282:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-283:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-284:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-285:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-286:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-287:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-288:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-289:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-290:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-291:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-292:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-293:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-294:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-295:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-296:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Überwachung nach dem Inverkehrbringen"
+  RR-297:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Überwachung nach dem Inverkehrbringen"
+  RR-298:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Überwachung nach dem Inverkehrbringen"
+  RR-299:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Überwachung nach dem Inverkehrbringen"
+  RR-300:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Überwachung nach dem Inverkehrbringen"
+  RR-301:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Überwachung nach dem Inverkehrbringen"
+  RR-302:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-303:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-304:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-305:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-306:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-307:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-308:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-309:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-310:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-311:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-312:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-313:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-314:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Gebrauchsanweisung"
+  RR-315:
+    status: "MAPPED"
+    measures: ["MEAS_LABELLING_AND_INSTRUCTIONS"]
+    basis: "Kennzeichnung"
+  RR-316:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-317:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-318:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Sicherheitskorrekturmaßnahmen"
+  RR-319:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-320:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-321:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-322:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-323:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-324:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-325:
+    status: "MAPPED"
+    measures: ["MEAS_TECHNICAL_DOCUMENTATION"]
+    basis: "technische Dokumentation"
+  RR-326:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-327:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-328:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-329:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Vorkommnis"
+  RR-330:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-331:
+    status: "MAPPED"
+    measures: ["MEAS_TECHNICAL_DOCUMENTATION"]
+    basis: "technischen Dokumentation"
+  RR-332:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-333:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-334:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-335:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-336:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-337:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-338:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-339:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-340:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-341:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-342:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-343:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-344:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-345:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-346:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-347:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-348:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-349:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-350:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-351:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-352:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "PMS-Plan"
+  RR-353:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "Bericht"
+  RR-354:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PMS-Bericht"
+  RR-355:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PMS-Bericht"
+  RR-356:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PMS-Bericht"
+  RR-357:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PMS-Bericht"
+  RR-358:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PMS-Bericht"
+  RR-359:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PMS-Bericht"
+  RR-360:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "Bericht"
+  RR-361:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PSUR"
+  RR-362:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PSUR"
+  RR-363:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PSUR"
+  RR-364:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PSUR"
+  RR-365:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PSUR"
+  RR-366:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PSUR"
+  RR-367:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PSUR"
+  RR-368:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PSUR"
+  RR-369:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PSUR"
+  RR-370:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PSUR"
+  RR-371:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PSUR"
+  RR-372:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PSUR"
+  RR-373:
+    status: "MAPPED"
+    measures: ["MEAS_TECHNICAL_DOCUMENTATION"]
+    basis: "technischen Dokumentation"
+  RR-374:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PSUR"
+  RR-375:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PSUR"
+  RR-376:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PSUR"
+  RR-377:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "PSUR"
+  RR-378:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-379:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-380:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "verifizieren"
+  RR-381:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Verifizierung"
+  RR-382:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-383:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-384:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-385:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-386:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren, Tätigkeiten und Regelungen erstellen, implementieren und aufrechterhalten"
+  RR-387:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-388:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-389:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-390:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-391:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-392:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-393:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-394:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-395:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "Aufzeichnungen"
+  RR-396:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-397:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-398:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-399:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-400:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-401:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-402:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-403:
+    status: "MAPPED"
+    measures: ["MEAS_VALIDATION"]
+    basis: "Validierung"
+  RR-404:
+    status: "MAPPED"
+    measures: ["MEAS_VALIDATION"]
+    basis: "validieren"
+  RR-405:
+    status: "MAPPED"
+    measures: ["MEAS_VALIDATION"]
+    basis: "revalidieren"
+  RR-406:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-407:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "Aufzeichnungen"
+  RR-408:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "Aufzeichnungen"
+  RR-409:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren/Verweisen, Prozessinteraktionen und Dokumentationsstruktur dokumentieren"
+  RR-410:
+    status: "MAPPED"
+    measures: ["MEAS_TECHNICAL_DOCUMENTATION"]
+    basis: "Medizinproduktakte"
+  RR-411:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-412:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-413:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-414:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "Aufzeichnungen"
+  RR-415:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren für Identifizierung, Lagerung, Schutz, Integrität, Wiederauffindbarkeit, Aufbewahrung und Verfügung von Aufzeichnungen dokumentieren"
+  RR-416:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "Aufzeichnungen"
+  RR-417:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "Aufzeichnungen"
+  RR-418:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-419:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-420:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-421:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-422:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-423:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-424:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-425:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-426:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-427:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-428:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-429:
+    status: "MAPPED"
+    measures: ["MEAS_REVIEW"]
+    basis: "Managementbewertungen"
+  RR-430:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-431:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "Aufzeichnungen"
+  RR-432:
+    status: "MAPPED"
+    measures: ["MEAS_AUDIT"]
+    basis: "Audits"
+  RR-433:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-434:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-435:
+    status: "MAPPED"
+    measures: ["MEAS_COMPETENCE"]
+    basis: "Schulung"
+  RR-436:
+    status: "MAPPED"
+    measures: ["MEAS_COMPETENCE"]
+    basis: "Schulung"
+  RR-437:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-438:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-439:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-440:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "Aufzeichnungen"
+  RR-441:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-442:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren zur Überwachung und Lenkung der Arbeitsumgebung dokumentieren"
+  RR-443:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-444:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-445:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "Aufzeichnungen"
+  RR-446:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-447:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-448:
+    status: "MAPPED"
+    measures: ["MEAS_REVIEW"]
+    basis: "Review"
+  RR-449:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufzeichnen"
+  RR-450:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-451:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-452:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-453:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Reklamationen"
+  RR-454:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-455:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren für Entwicklung dokumentieren"
+  RR-456:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-457:
+    status: "MAPPED"
+    measures: ["MEAS_REVIEW"]
+    basis: "Reviews"
+  RR-458:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-459:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "Aufzeichnungen"
+  RR-460:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-461:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-462:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-463:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-464:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-465:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-466:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-467:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "Aufzeichnungen"
+  RR-468:
+    status: "MAPPED"
+    measures: ["MEAS_REVIEW"]
+    basis: "Entwicklungsbewertungen"
+  RR-469:
+    status: "MAPPED"
+    measures: ["MEAS_REVIEW"]
+    basis: "Entwicklungsbewertungen"
+  RR-470:
+    status: "MAPPED"
+    measures: ["MEAS_REVIEW"]
+    basis: "Entwicklungsbewertungen"
+  RR-471:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-472:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Verifizierungspläne"
+  RR-473:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "verifizieren"
+  RR-474:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufzeichnen"
+  RR-475:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-476:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Validierungspläne"
+  RR-477:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-478:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufzeichnen"
+  RR-479:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-480:
+    status: "MAPPED"
+    measures: ["MEAS_VALIDATION"]
+    basis: "validieren"
+  RR-481:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-482:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufzeichnen"
+  RR-483:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren für den Design Transfer dokumentieren"
+  RR-484:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "verifizieren"
+  RR-485:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-486:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufzeichnen"
+  RR-487:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren zur Lenkung von Entwicklungsänderungen dokumentieren"
+  RR-488:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-489:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-490:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-491:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "verifizieren"
+  RR-492:
+    status: "MAPPED"
+    measures: ["MEAS_VALIDATION"]
+    basis: "validieren"
+  RR-493:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-494:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-495:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufzeichnen"
+  RR-496:
+    status: "MAPPED"
+    measures: ["MEAS_TECHNICAL_DOCUMENTATION"]
+    basis: "Entwicklungsakte"
+  RR-497:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren dokumentieren"
+  RR-498:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-499:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-500:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-501:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-502:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-503:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufzeichnen"
+  RR-504:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-505:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-506:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-507:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-508:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Verifizierung"
+  RR-509:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-510:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Verifizierung"
+  RR-511:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "Aufzeichnungen"
+  RR-512:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-513:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Verifizierung"
+  RR-514:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "Aufzeichnungen"
+  RR-515:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Verifizierung"
+  RR-516:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Reklamationen"
+  RR-517:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "Aufzeichnungen"
+  RR-518:
+    status: "MAPPED"
+    measures: ["MEAS_VALIDATION"]
+    basis: "validieren"
+  RR-519:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "Aufzeichnungen"
+  RR-520:
+    status: "MAPPED"
+    measures: ["MEAS_VALIDATION"]
+    basis: "validieren"
+  RR-521:
+    status: "MAPPED"
+    measures: ["MEAS_VALIDATION"]
+    basis: "revalidieren"
+  RR-522:
+    status: "MAPPED"
+    measures: ["MEAS_VALIDATION"]
+    basis: "Validierung"
+  RR-523:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufzeichnen"
+  RR-524:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren zur Produktidentifikation dokumentieren"
+  RR-525:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-526:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-527:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-528:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren für Rückverfolgbarkeit dokumentieren und Umfang sowie aufzubewahrende Aufzeichnungen regulatorisch konform festlegen"
+  RR-529:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "verifizieren"
+  RR-530:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufzeichnen"
+  RR-531:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren zur Erhaltung der Produktkonformität während Verarbeitung, Lagerung, Handhabung und Vertrieb dokumentieren"
+  RR-532:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-533:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren dokumentieren"
+  RR-534:
+    status: "MAPPED"
+    measures: ["MEAS_VALIDATION"]
+    basis: "validieren"
+  RR-535:
+    status: "MAPPED"
+    measures: ["MEAS_VALIDATION"]
+    basis: "revalidieren"
+  RR-536:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-537:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufzeichnen"
+  RR-538:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-539:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-540:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-541:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-542:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-543:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-544:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Reklamationsbearbeitung"
+  RR-545:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Reklamation"
+  RR-546:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Reklamationen"
+  RR-547:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Reklamationen"
+  RR-548:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Reklamationsbearbeitung"
+  RR-549:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Reklamationen"
+  RR-550:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "Aufzeichnungen"
+  RR-551:
+    status: "MAPPED"
+    measures: ["MEAS_AUDIT"]
+    basis: "Audits"
+  RR-552:
+    status: "MAPPED"
+    measures: ["MEAS_AUDIT"]
+    basis: "Auditverantwortlichkeiten"
+  RR-553:
+    status: "MAPPED"
+    measures: ["MEAS_AUDIT"]
+    basis: "Auditprogramm"
+  RR-554:
+    status: "MAPPED"
+    measures: ["MEAS_AUDIT"]
+    basis: "Auditkriterien"
+  RR-555:
+    status: "MAPPED"
+    measures: ["MEAS_AUDIT"]
+    basis: "Auditoren"
+  RR-556:
+    status: "MAPPED"
+    measures: ["MEAS_AUDIT"]
+    basis: "Audits"
+  RR-557:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-558:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Verifizierung"
+  RR-559:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-560:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-561:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "verifizieren"
+  RR-562:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-563:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufzeichnen"
+  RR-564:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "Aufzeichnungen"
+  RR-565:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-566:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-567:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren für Identifikation, Dokumentation, Aussonderung, Bewertung und Disposition nichtkonformer Produkte einschließlich Verantwortlichkeiten dokumentieren"
+  RR-568:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-569:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-570:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufzeichnen"
+  RR-571:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-572:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-573:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufzeichnen"
+  RR-574:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-575:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren für Maßnahmenempfehlungen gemäß regulatorischen Anforderungen dokumentieren"
+  RR-576:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufzeichnen"
+  RR-577:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "dokumentierten Verfahren"
+  RR-578:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-579:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "verifizieren"
+  RR-580:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufzeichnen"
+  RR-581:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren zur Ermittlung, Erfassung und Analyse geeigneter Daten einschließlich geeigneter Methoden dokumentieren"
+  RR-582:
+    status: "MAPPED"
+    measures: ["MEAS_AUDIT"]
+    basis: "Audits"
+  RR-583:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-584:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufzeichnen"
+  RR-585:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-586:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-587:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-588:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren für Bewertung, Ursachenanalyse, Handlungsbedarf, Planung/Implementierung, Unschädlichkeitsverifikation und Wirksamkeitsbewertung von Korrekturmaßnahmen dokumentieren"
+  RR-589:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufzeichnen"
+  RR-590:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-591:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren für Ermittlung potenzieller Nichtkonformitäten/Ursachen, Handlungsbedarf, Planung/Implementierung, Unschädlichkeitsverifikation und Wirksamkeitsbewertung von Vorbeugungsmaßnahmen dokumentieren"
+  RR-592:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufzeichnen"
+  RR-593:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-594:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-595:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-596:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-597:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-598:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-599:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-600:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-601:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-602:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-603:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-604:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-605:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-606:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-607:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-608:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-609:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-610:
+    status: "MAPPED"
+    measures: ["MEAS_COMPETENCE"]
+    basis: "Schulung"
+  RR-611:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-612:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-613:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "Risikomanagementakte"
+  RR-614:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-615:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Risikomanagementplan"
+  RR-616:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-617:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-618:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-619:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-620:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Verifizierung"
+  RR-621:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Verifizierung"
+  RR-622:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-623:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-624:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "Risikomanagementakte"
+  RR-625:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "Risikomanagementakte"
+  RR-626:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "Risikomanagementakte"
+  RR-627:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-628:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-629:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "RM-Akte"
+  RR-630:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "RM-Akte"
+  RR-631:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-632:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-633:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-634:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-635:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-636:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "RM-Akte"
+  RR-637:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-638:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-639:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-640:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "RM-Akte"
+  RR-641:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-642:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-643:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-644:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-645:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-646:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "RM-Akte"
+  RR-647:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-648:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-649:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "RM-Akte"
+  RR-650:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "RM-Akte"
+  RR-651:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-652:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-653:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "RM-Akte"
+  RR-654:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-655:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-656:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "verifizieren"
+  RR-657:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "RM-Akte"
+  RR-658:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-659:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "RM-Akte"
+  RR-660:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-661:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-662:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "RM-Akte"
+  RR-663:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-664:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "RM-Akte"
+  RR-665:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-666:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-667:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-668:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "RM-Akte"
+  RR-669:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "RM-Plans"
+  RR-670:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "Risikomanagementbericht"
+  RR-671:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "Risikomanagementbericht"
+  RR-672:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "Risikomanagementakte"
+  RR-673:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Risikomanagementplan"
+  RR-674:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-675:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-676:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-677:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-678:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-679:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-680:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-681:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-682:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-683:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-684:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-685:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-686:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "RM-Akte"
+  RR-687:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "RM-Akte"
+  RR-688:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-689:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "RM-Akte"
+  RR-690:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-691:
+    status: "MAPPED"
+    measures: ["MEAS_REVIEW"]
+    basis: "Leitungsüberprüfung"
+  RR-692:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-693:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-694:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "Risikomanagementakte"
+  RR-695:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-696:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-697:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "RM-Akte"
+  RR-698:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-699:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-700:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-701:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-702:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-703:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-704:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-705:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-706:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-707:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-708:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-709:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Systemprüfungen"
+  RR-710:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-711:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-712:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-713:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-714:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-715:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-716:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Software-Entwicklungsplan"
+  RR-717:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-718:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-719:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-720:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Entwicklungsplan"
+  RR-721:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Systemprüfungen"
+  RR-722:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-723:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-724:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Entwicklungsplan"
+  RR-725:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Entwicklungsplan"
+  RR-726:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-727:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-728:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Entwicklungsplan"
+  RR-729:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-730:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Entwicklungsplan"
+  RR-731:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Entwicklungsplan"
+  RR-732:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-733:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-734:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Verifizierung"
+  RR-735:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-736:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-737:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-738:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-739:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-740:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-741:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-742:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-743:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-744:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-745:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-746:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-747:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-748:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-749:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-750:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-751:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-752:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-753:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-754:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-755:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "verifizieren"
+  RR-756:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Verifizierung"
+  RR-757:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-758:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-759:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-760:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-761:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-762:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-763:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-764:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "verifizieren"
+  RR-765:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-766:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-767:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-768:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-769:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-770:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "verifizieren"
+  RR-771:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Verifizierung"
+  RR-772:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-773:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren für Einheitenverifizierung festlegen"
+  RR-774:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Verifizierung"
+  RR-775:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-776:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-777:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-778:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "verifizieren"
+  RR-779:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-780:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-781:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "verifizieren"
+  RR-782:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "aufbewahren"
+  RR-783:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "prüfen"
+  RR-784:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-785:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "prüfen"
+  RR-786:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-787:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Regressionsprüfungen"
+  RR-788:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Integrationsprüfungen"
+  RR-789:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-790:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren zur Abdeckung aller Softwareanforderungen festlegen"
+  RR-791:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Systemprüfungen"
+  RR-792:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-793:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Systemprüfungen"
+  RR-794:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Prüfungen"
+  RR-795:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "prüfen"
+  RR-796:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-797:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "verifizieren"
+  RR-798:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Prüfungen"
+  RR-799:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "verifizieren"
+  RR-800:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Systemprüfungen"
+  RR-801:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-802:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-803:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-804:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-805:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren und Umgebung zur Erzeugung freigegebener Software dokumentieren"
+  RR-806:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Wartungsplans"
+  RR-807:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-808:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-809:
+    status: "MAPPED"
+    measures: ["MEAS_DOCUMENTED_PROCEDURE"]
+    basis: "Verfahren für zuverlässige Auslieferung freigegebener Software ohne Beschädigung oder unautorisierte Änderung festlegen"
+  RR-810:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Software-Wartungsplan"
+  RR-811:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Wartungsplan"
+  RR-812:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-813:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Wartungsplan"
+  RR-814:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-815:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-816:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-817:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-818:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-819:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-820:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "Problembericht"
+  RR-821:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "Problemberichte"
+  RR-822:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "Problembericht"
+  RR-823:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-824:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "Problemberichte"
+  RR-825:
+    status: "MAPPED"
+    measures: ["MEAS_CHANGE_CONTROL"]
+    basis: "Änderungsanforderungen"
+  RR-826:
+    status: "MAPPED"
+    measures: ["MEAS_CHANGE_CONTROL"]
+    basis: "Änderungsanforderungen"
+  RR-827:
+    status: "MAPPED"
+    measures: ["MEAS_CHANGE_CONTROL"]
+    basis: "Änderungsanforderungen"
+  RR-828:
+    status: "MAPPED"
+    measures: ["MEAS_CHANGE_CONTROL"]
+    basis: "Änderungsanforderungen"
+  RR-829:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-830:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-831:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-832:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-833:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-834:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-835:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-836:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-837:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "Risikomanagementakte"
+  RR-838:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-839:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-840:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-841:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-842:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Verifizierung"
+  RR-843:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-844:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-845:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-846:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-847:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-848:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-849:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-850:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-851:
+    status: "MAPPED"
+    measures: ["MEAS_CHANGE_CONTROL"]
+    basis: "Änderungsanforderungen"
+  RR-852:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-853:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-854:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-855:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "verifizieren"
+  RR-856:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "Problembericht"
+  RR-857:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-858:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "Problembericht"
+  RR-859:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "Problembericht"
+  RR-860:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-861:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-862:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-863:
+    status: "MAPPED"
+    measures: ["MEAS_CHANGE_CONTROL"]
+    basis: "Änderungsanforderung"
+  RR-864:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-865:
+    status: "MAPPED"
+    measures: ["MEAS_CHANGE_CONTROL"]
+    basis: "Änderungsanforderungen"
+  RR-866:
+    status: "MAPPED"
+    measures: ["MEAS_CHANGE_CONTROL"]
+    basis: "Änderungsanforderungen"
+  RR-867:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "Problemberichte"
+  RR-868:
+    status: "MAPPED"
+    measures: ["MEAS_RISK_MANAGEMENT_FILE"]
+    basis: "Risikomanagementakte"
+  RR-869:
+    status: "MAPPED"
+    measures: ["MEAS_REPORT"]
+    basis: "Problemberichte"
+  RR-870:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "verifizieren"
+  RR-871:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "Prüfungen"
+  RR-872:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-873:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-874:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-875:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-876:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-877:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-878:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-879:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-880:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-881:
+    status: "MAPPED"
+    measures: ["MEAS_USABILITY_ENGINEERING_FILE"]
+    basis: "Usability Engineering File"
+  RR-882:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-883:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-884:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-885:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-886:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-887:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-888:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-889:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-890:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-891:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-892:
+    status: "MAPPED"
+    measures: ["MEAS_USABILITY_ENGINEERING_FILE"]
+    basis: "UE File"
+  RR-893:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-894:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-895:
+    status: "MAPPED"
+    measures: ["MEAS_USABILITY_ENGINEERING_FILE"]
+    basis: "UE File"
+  RR-896:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-897:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-898:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-899:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-900:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-901:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-902:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-903:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-904:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-905:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-906:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-907:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-908:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-909:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-910:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-911:
+    status: "MAPPED"
+    measures: ["MEAS_USABILITY_ENGINEERING_FILE"]
+    basis: "UE File"
+  RR-912:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-913:
+    status: "MAPPED"
+    measures: ["MEAS_PLAN"]
+    basis: "Plan"
+  RR-914:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-915:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-916:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-917:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-918:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-919:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-920:
+    status: "MAPPED"
+    measures: ["MEAS_USABILITY_ENGINEERING_FILE"]
+    basis: "UE File"
+  RR-921:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-922:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-923:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-924:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-925:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-926:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-927:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-928:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-929:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-930:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-931:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-932:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-933:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-934:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-935:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-936:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-937:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-938:
+    status: "MAPPED"
+    measures: ["MEAS_USABILITY_ENGINEERING_FILE"]
+    basis: "UE File"
+  RR-939:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-940:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-941:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-942:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-943:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-944:
+    status: "MAPPED"
+    measures: ["MEAS_USABILITY_ENGINEERING_FILE"]
+    basis: "UE File"
+  RR-945:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-946:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-947:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-948:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-949:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-950:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-951:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentieren"
+  RR-952:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-953:
+    status: "MAPPED"
+    measures: ["MEAS_USABILITY_ENGINEERING_FILE"]
+    basis: "UE File"
+  RR-954:
+    status: "MAPPED"
+    measures: ["MEAS_PMS_VIGILANCE"]
+    basis: "Reklamationen"
+  RR-955:
+    status: "MAPPED"
+    measures: ["MEAS_USABILITY_ENGINEERING_FILE"]
+    basis: "UE File"
+  RR-956:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-957:
+    status: "REVIEW_REQUIRED"
+    measures: []
+    basis: null
+  RR-958:
+    status: "MAPPED"
+    measures: ["MEAS_RECORD"]
+    basis: "dokumentiert"
+  RR-959:
+    status: "MAPPED"
+    measures: ["MEAS_VERIFICATION"]
+    basis: "verifizieren"
+change_history:
+  - version: "0.1"
+    change: "Erstfassung: 15 generische Maßnahmen mit 15 Nachweisarten; alle 959 RR mit Mapping-Status (457 MAPPED, 502 REVIEW_REQUIRED). Keine RR geändert."

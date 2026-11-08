@@ -1,0 +1,9 @@
+/*
+ * Regel, die React Aria sonst als Inline-<style> einfügt (von der Content-Security-Policy
+ * blockiert). Das <link> trägt dieselbe ID; React Aria erkennt es und fügt nichts ein.
+ */
+@layer {
+  [data-react-aria-pressable] {
+    touch-action: pan-x pan-y pinch-zoom;
+  }
+}

@@ -1,0 +1,25 @@
+{
+ "assessment_id": "8663f60a-d753-43c1-9cb5-05984c0774af",
+ "excluded": [
+  "RR-001",
+  "RR-034",
+  "RR-205"
+ ],
+ "compared_requirements": 956,
+ "differing_requirements": [],
+ "counts_browser": {
+  "total": 959,
+  "applicable": 542,
+  "not_applicable": 128,
+  "unresolved": 289,
+  "fulfilled": 4,
+  "partially_fulfilled": 4,
+  "not_fulfilled": 4,
+  "not_assessed": 523,
+  "evidence_review_required": 7,
+  "gaps": 15,
+  "mapping_review_required": 284,
+  "answers_review_required": 0
+ },
+ "same_counts": true
+}

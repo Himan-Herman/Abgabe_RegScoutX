@@ -1,0 +1,13 @@
+{
+ "n": 10,
+ "explorer_load_ms": {
+  "median": 798,
+  "min": 789,
+  "max": 805
+ },
+ "search_ms": {
+  "median": 37.5,
+  "min": 27,
+  "max": 44
+ }
+}

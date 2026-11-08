@@ -1,0 +1,5862 @@
+# Eingefrorene Referenzbewertung der Fallstudie (Block 6). Erzeugt mit tools/derive_case_reference.py
+# vor dem Evaluationslauf; nicht aus Laufzeitergebnissen abgeleitet. Nicht nachträglich ändern.
+reference_version: '1.0'
+status: frozen
+provenance:
+  kind: manual_and_rule_derived_reference
+  author: Projektbearbeiter (Masterarbeit RegScoutX)
+  base_case: TC-036
+  adjudicated_basis: TC-036 golden_case (Profil, Regelpfade, Entscheidungen, 16 Blockzustände, 22 entscheidungskritische
+    RR, Scope-Summen) – manuelle Herleitung EV-003
+  derivation_tool: tools/derive_case_reference.py (keine Abhängigkeit von regscoutx/)
+  inputs:
+    tc_catalog: docs/07-testing/TC_CATALOG.yaml
+    rr_applicability: docs/03-regulatory/RR_APPLICABILITY.yaml
+    rr_catalog: docs/03-regulatory/RR_CATALOG.yaml
+    rr_measure: docs/03-regulatory/RR_MEASURE_CATALOG.yaml
+    rul_catalog: docs/03-regulatory/RUL_CATALOG.yaml
+    vocabulary: docs/03-regulatory/CONTROLLED_VOCABULARY.md
+  not_derived_from: keinem Bewertungs-, Bericht-, API- oder Laufzeitartefakt des Demonstrators
+  consistency_checks:
+  - 16 Blockzustände unabhängig nachgerechnet = adjudizierte Blockzustände
+  - 22 entscheidungskritische RR (Status und Begründung) = adjudizierte Werte
+  - scope-inaktiv 70 und scope-ungeklärt 0 = adjudizierte Summen
+catalog_versions:
+  rr_catalog: '0.26'
+  rul_catalog: '0.2'
+  rr_applicability: '0.4'
+  rr_measure: '0.1'
+interpretations:
+  RI-1: Lokale Bedingungen sind eine Konjunktion (dreiwertig); eine nicht erfüllte modellierte Bedingung ergibt
+    NOT_APPLICABLE auch dann, wenn zusätzlich eine nicht modellierte Bedingung dokumentiert ist.
+  RI-2: Ist keine modellierte Bedingung falsch, geht eine dokumentierte nicht modellierte Bedingung als Begründung
+    LOCAL_CONDITION_NOT_MODELLED vor einer fehlenden Eingabe (LOCAL_CONDITION_UNRESOLVED); der Status ist in beiden
+    Fällen APPLICABILITY_UNRESOLVED.
+  RI-3: 'Bei anwendbaren RR: evidence_state EVIDENCE_REFERENCED genau bei mindestens einer zugeordneten Nachweisreferenz,
+    sonst NO_EVIDENCE_REFERENCED; bei nicht anwendbaren bzw. ungeklärten RR NOT_CONSIDERED (DATA_MODEL RequirementResult).'
+  RI-4: Fehlende Profileingaben (im Referenzfall nicht angegeben) ergeben UNKNOWN (fail-closed).
+  RI-5: Bedingte RR ohne lokale und ohne nicht modellierte Bedingung sind bei aktivem Block APPLICABLE mit SCOPE_ACTIVE
+    (wie die adjudizierten RR-174, RR-360, RR-376).
+case_profile:
+  is_software: true
+  special_route: NONE
+  data_action_type: BEYOND_BASIC
+  individual_patient_benefit: true
+  own_medical_purpose: true
+  ivdr_information_purpose: false
+  drives_or_influences_device: NONE
+  provides_information_for_diagnostic_or_therapeutic_decisions: true
+  decision_impact_death_or_irreversible_deterioration: false
+  decision_impact_serious_deterioration_or_surgery: false
+  used_for_contraception_or_sti_prevention: false
+  therapeutic_with_integrated_diagnostic_function: false
+  drives_substance_administration_or_removal_device: false
+  further_unmodelled_rule_possibly_applicable: false
+  ai_system_status: 'YES'
+  scope_nexus: PRODUCT_MANUFACTURER
+  scope_exclusion: NONE
+  annex_i_product_relation: AI_SYSTEM_IS_PRODUCT
+  third_party_ca_required: 'YES'
+  third_party_ca_only_non_health_safety: 'NO'
+  assessment_date: '2028-09-01'
+  market_or_service_date: '2028-09-01'
+  annex_iii_use_case: NONE
+  lay_use: true
+  eifu_provision: NO_EIFU
+  investigational_device: false
+  custom_made_device: false
+  implantable_device: false
+  iso13485_clause1_exclusion_claimed: false
+  qms_software_used: true
+  outsourced_processes: false
+  purchasing_performed: true
+  software_safety_class: B
+  iec62304_route: REGULAR_LIFECYCLE
+  soup_used: true
+  software_change: false
+  software_problem_reported: false
+  iec62366_ui_route: REGULAR_ROUTE
+  usability_test_planned: true
+  training_required_for_safe_use: false
+  safety_information_as_risk_control: true
+expected_decisions:
+  QUALIFICATION:
+    status: DECIDED
+    outcome: MDSW
+  BOUNDARY:
+    status: DECIDED
+    outcome: MDR_MDSW
+  CLASSIFICATION:
+    status: DECIDED
+    outcome: FINAL_MDR_CLASS
+    mdr_class: IIa
+  AI_ACT_APPLICABILITY:
+    status: DECIDED
+    outcome: AI_ACT_HIGH_RISK
+    applicable_from: '2028-08-02'
+expected_block_states:
+  AI_ACT_HIGH_RISK: ACTIVE
+  MDR_MDSW_CORE: ACTIVE
+  MDR_LAY_USE: ACTIVE
+  SRC009_ART3_1_PATH: INACTIVE
+  SRC009_EIFU_REPLACEMENT: INACTIVE
+  SRC009_EIFU_ADDITIONAL: INACTIVE
+  MDR_ART85: INACTIVE
+  MDR_ART86: ACTIVE
+  MDR_ART86_IIB_III: INACTIVE
+  MDR_ART86_IIA: ACTIVE
+  MDR_ART86_ABS2: INACTIVE
+  MDR_ART86_OUTSIDE_ABS2: ACTIVE
+  NORM_SRC_005_QMS: ACTIVE
+  NORM_SRC_006_RISK_MANAGEMENT: ACTIVE
+  NORM_SRC_007_SOFTWARE_LIFECYCLE: ACTIVE
+  NORM_SRC_008_USABILITY: ACTIVE
+applicability_totals:
+  APPLICABLE: 542
+  NOT_APPLICABLE: 128
+  APPLICABILITY_UNRESOLVED: 289
+applicability:
+  RR-001:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-002:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-003:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-004:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-005:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-006:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-007:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-008:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-009:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-010:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-011:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-012:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-013:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-014:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-015:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-016:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-017:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-018:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-019:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-020:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-021:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-022:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-023:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-024:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-025:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-026:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-027:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-028:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-029:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-030:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-031:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-032:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-033:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-034:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: AI_ACT_HIGH_RISK
+  RR-035:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-036:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-037:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-038:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-039:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-040:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-041:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-042:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-043:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-044:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-045:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: AI_ACT_HIGH_RISK
+  RR-046:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-047:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-048:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-049:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-050:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-051:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-052:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-053:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-054:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-055:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-056:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-057:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-058:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-059:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-060:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-061:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-062:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-063:
+    status: APPLICABILITY_UNRESOLVED
+    reason: CONDITIONALITY_NOT_DOCUMENTED
+    rule: RB-3 Einordnung nicht dokumentiert
+    block: AI_ACT_HIGH_RISK
+  RR-064:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-065:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-066:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-067:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-068:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-069:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-070:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-071:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-072:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-073:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: AI_ACT_HIGH_RISK
+  RR-074:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-075:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-076:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-077:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-078:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-079:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: AI_ACT_HIGH_RISK
+  RR-080:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: AI_ACT_HIGH_RISK
+  RR-081:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-082:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-083:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-084:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-085:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-086:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-087:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-088:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-089:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-090:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-091:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-092:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-093:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: AI_ACT_HIGH_RISK
+  RR-094:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-095:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-096:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-097:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-098:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-099:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-100:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-101:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-102:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-103:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-104:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-105:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-106:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-107:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-108:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-109:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-110:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-111:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: AI_ACT_HIGH_RISK
+  RR-112:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-113:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: AI_ACT_HIGH_RISK
+  RR-114:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: AI_ACT_HIGH_RISK
+  RR-115:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: AI_ACT_HIGH_RISK
+  RR-116:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-117:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-118:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-119:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-120:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-121:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-122:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-123:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-124:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-125:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-126:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-127:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-128:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-129:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-130:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-131:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-132:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-133:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-134:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-135:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-136:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-137:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-138:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-139:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-140:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-141:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-142:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-143:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-144:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-145:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-146:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-147:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-148:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-149:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-150:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-151:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-152:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-153:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-154:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-155:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-156:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-157:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-158:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-159:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-160:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-161:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-162:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-163:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-164:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-165:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-166:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-167:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-168:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-169:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-170:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-171:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-172:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-173:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-174:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-8 bedingt ohne lokale Bedingung, Block aktiv
+    block: MDR_LAY_USE
+  RR-175:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-8 bedingt ohne lokale Bedingung, Block aktiv
+    block: MDR_LAY_USE
+  RR-176:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-8 bedingt ohne lokale Bedingung, Block aktiv
+    block: MDR_LAY_USE
+  RR-177:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-8 bedingt ohne lokale Bedingung, Block aktiv
+    block: MDR_LAY_USE
+  RR-178:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-8 bedingt ohne lokale Bedingung, Block aktiv
+    block: MDR_LAY_USE
+  RR-179:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-8 bedingt ohne lokale Bedingung, Block aktiv
+    block: MDR_LAY_USE
+  RR-180:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_UNRESOLVED
+    rule: RB-7 lokale Eingabe fehlt oder unbestimmt
+    block: MDR_LAY_USE
+  RR-181:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_LAY_USE
+  RR-182:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_LAY_USE
+  RR-183:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-184:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-185:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-186:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-187:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_UNRESOLVED
+    rule: RB-7 lokale Eingabe fehlt oder unbestimmt
+    block: MDR_MDSW_CORE
+  RR-188:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_UNRESOLVED
+    rule: RB-7 lokale Eingabe fehlt oder unbestimmt
+    block: MDR_MDSW_CORE
+  RR-189:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-190:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-191:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-192:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-193:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-194:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-195:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-196:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-197:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-198:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-199:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-200:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: MDR_MDSW_CORE
+  RR-201:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-202:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-203:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_UNRESOLVED
+    rule: RB-7 lokale Eingabe fehlt oder unbestimmt
+    block: MDR_MDSW_CORE
+  RR-204:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_UNRESOLVED
+    rule: RB-7 lokale Eingabe fehlt oder unbestimmt
+    block: MDR_MDSW_CORE
+  RR-205:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_ART3_1_PATH
+  RR-206:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-207:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-208:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-209:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-210:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-211:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-212:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-213:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-214:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-215:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-216:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-217:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-218:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-219:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-220:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-221:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-222:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-223:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-224:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-225:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-226:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-227:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-228:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-229:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-230:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-231:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-232:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-233:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-234:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-235:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-236:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-237:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-238:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-239:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-240:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-241:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-242:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-243:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-244:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-245:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-246:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-247:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-248:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-249:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-250:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-251:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-252:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-253:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-254:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-255:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-256:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-257:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-258:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-259:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-260:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-261:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-262:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-263:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-264:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_REPLACEMENT
+  RR-265:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: SRC009_EIFU_ADDITIONAL
+  RR-266:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-267:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-268:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-269:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-270:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-271:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-272:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-273:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-274:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-275:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_UNRESOLVED
+    rule: RB-7 lokale Eingabe fehlt oder unbestimmt
+    block: MDR_MDSW_CORE
+  RR-276:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-277:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-278:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-279:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-280:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-281:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-282:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-283:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-284:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-285:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-286:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_UNRESOLVED
+    rule: RB-7 lokale Eingabe fehlt oder unbestimmt
+    block: MDR_MDSW_CORE
+  RR-287:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-288:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-289:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-290:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-291:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-292:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-293:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-294:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-295:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-296:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-297:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-298:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-299:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-300:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-301:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-302:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-303:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-304:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-305:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-306:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-307:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-308:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-309:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-310:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-311:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-312:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-313:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-314:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-315:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-316:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-317:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-318:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-319:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-320:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-321:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-322:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-323:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-324:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-325:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-326:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-327:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-328:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-329:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_MDSW_CORE
+  RR-330:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-331:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_MDSW_CORE
+  RR-332:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-333:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-334:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-335:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-336:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-337:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-338:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-339:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-340:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-341:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-342:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-343:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-344:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-345:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-346:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-347:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-348:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-349:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-350:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-351:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-352:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: MDR_MDSW_CORE
+  RR-353:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: MDR_ART85
+  RR-354:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: MDR_ART85
+  RR-355:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: MDR_ART85
+  RR-356:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: MDR_ART85
+  RR-357:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: MDR_ART85
+  RR-358:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: MDR_ART85
+  RR-359:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: MDR_ART85
+  RR-360:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-8 bedingt ohne lokale Bedingung, Block aktiv
+    block: MDR_ART86
+  RR-361:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-8 bedingt ohne lokale Bedingung, Block aktiv
+    block: MDR_ART86
+  RR-362:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-8 bedingt ohne lokale Bedingung, Block aktiv
+    block: MDR_ART86
+  RR-363:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_ART86
+  RR-364:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_ART86
+  RR-365:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-8 bedingt ohne lokale Bedingung, Block aktiv
+    block: MDR_ART86
+  RR-366:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-8 bedingt ohne lokale Bedingung, Block aktiv
+    block: MDR_ART86
+  RR-367:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-8 bedingt ohne lokale Bedingung, Block aktiv
+    block: MDR_ART86
+  RR-368:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-8 bedingt ohne lokale Bedingung, Block aktiv
+    block: MDR_ART86
+  RR-369:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_ART86
+  RR-370:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: MDR_ART86_IIB_III
+  RR-371:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_ART86_IIA
+  RR-372:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-8 bedingt ohne lokale Bedingung, Block aktiv
+    block: MDR_ART86_IIA
+  RR-373:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: MDR_ART86
+  RR-374:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: MDR_ART86
+  RR-375:
+    status: NOT_APPLICABLE
+    reason: SCOPE_INACTIVE
+    rule: RB-1 Block inaktiv
+    block: MDR_ART86_ABS2
+  RR-376:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-8 bedingt ohne lokale Bedingung, Block aktiv
+    block: MDR_ART86_OUTSIDE_ABS2
+  RR-377:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: MDR_ART86_OUTSIDE_ABS2
+  RR-378:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-379:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-380:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-381:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-382:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-383:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-384:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-385:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-386:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-387:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-388:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-389:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-390:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-391:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-392:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-393:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-394:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-395:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-396:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-397:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-398:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-399:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_005_QMS
+  RR-400:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_005_QMS
+  RR-401:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_005_QMS
+  RR-402:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_005_QMS
+  RR-403:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-404:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-405:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-406:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-407:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-408:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-409:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-410:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-411:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-412:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-413:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-414:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-415:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-416:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-417:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-418:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-419:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-420:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-421:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-422:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-423:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-424:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-425:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-426:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-427:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-428:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-429:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-430:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-431:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-432:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-433:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_005_QMS
+  RR-434:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-435:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-436:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-437:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-438:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-439:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-440:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-441:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-442:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-443:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-444:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-445:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-446:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-447:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-448:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-449:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-450:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-451:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-452:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-453:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-454:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-455:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-456:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-457:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-458:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-459:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-460:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-461:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-462:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-463:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-464:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-465:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-466:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-467:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-468:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-469:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-470:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-471:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-472:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-473:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-474:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-475:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-476:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-477:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-478:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-479:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-480:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-481:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-482:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-483:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-484:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-485:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-486:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-487:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-488:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-489:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-490:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-491:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-492:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-493:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-494:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-495:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-496:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-497:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-498:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-499:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-500:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-501:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-502:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-503:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-504:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-505:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-506:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-507:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-508:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-509:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-510:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-511:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-512:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-513:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-514:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-515:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-516:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-517:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-518:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-519:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-520:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_UNRESOLVED
+    rule: RB-7 lokale Eingabe fehlt oder unbestimmt
+    block: NORM_SRC_005_QMS
+  RR-521:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_UNRESOLVED
+    rule: RB-7 lokale Eingabe fehlt oder unbestimmt
+    block: NORM_SRC_005_QMS
+  RR-522:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_UNRESOLVED
+    rule: RB-7 lokale Eingabe fehlt oder unbestimmt
+    block: NORM_SRC_005_QMS
+  RR-523:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-524:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-525:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-526:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-527:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-528:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-529:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_UNRESOLVED
+    rule: RB-7 lokale Eingabe fehlt oder unbestimmt
+    block: NORM_SRC_005_QMS
+  RR-530:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_UNRESOLVED
+    rule: RB-7 lokale Eingabe fehlt oder unbestimmt
+    block: NORM_SRC_005_QMS
+  RR-531:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-532:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-533:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-534:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_UNRESOLVED
+    rule: RB-7 lokale Eingabe fehlt oder unbestimmt
+    block: NORM_SRC_005_QMS
+  RR-535:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_UNRESOLVED
+    rule: RB-7 lokale Eingabe fehlt oder unbestimmt
+    block: NORM_SRC_005_QMS
+  RR-536:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_UNRESOLVED
+    rule: RB-7 lokale Eingabe fehlt oder unbestimmt
+    block: NORM_SRC_005_QMS
+  RR-537:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_UNRESOLVED
+    rule: RB-7 lokale Eingabe fehlt oder unbestimmt
+    block: NORM_SRC_005_QMS
+  RR-538:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-539:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-540:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-541:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-542:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-543:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-544:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-545:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-546:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-547:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-548:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-549:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-550:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-551:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-552:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-553:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-554:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-555:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-556:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-557:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-558:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-559:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-560:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-561:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-562:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-563:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-564:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-565:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-566:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-567:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-568:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-569:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-570:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-571:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-572:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-573:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-574:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-575:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-576:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-577:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-578:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-579:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-580:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-581:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-582:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-583:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-584:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-585:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-586:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-587:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-588:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-589:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-590:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-591:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_005_QMS
+  RR-592:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_005_QMS
+  RR-593:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-594:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-595:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-596:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-597:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-598:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-599:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-600:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-601:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-602:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-603:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-604:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-605:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-606:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-607:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-608:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-609:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-610:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-611:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-612:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-613:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-614:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-615:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-616:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-617:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-618:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-619:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-620:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-621:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-622:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-623:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-624:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-625:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-626:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-627:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-628:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-629:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-630:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-631:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-632:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-633:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-634:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-635:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-636:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-637:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-638:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-639:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-640:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-641:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-642:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-643:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-644:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-645:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-646:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-647:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-648:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-649:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-650:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-651:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-652:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-653:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-654:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-655:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-656:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-657:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-658:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-659:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-660:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-661:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-662:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-663:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-664:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-665:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-666:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-667:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-668:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-669:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-670:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-671:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-672:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-673:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-674:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-675:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-676:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-677:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-678:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-679:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-680:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-681:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-682:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-683:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-684:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-685:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-686:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-687:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-688:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-689:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-690:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-691:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_006_RISK_MANAGEMENT
+  RR-692:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-693:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-694:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-695:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-696:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-697:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-698:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-699:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-700:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-701:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-702:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-703:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-704:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-705:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-706:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-707:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-708:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-709:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-710:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-711:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-712:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-713:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-714:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-715:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-716:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-717:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-718:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-719:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-720:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-721:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-722:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-723:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-724:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-725:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-726:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-727:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-728:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-729:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-730:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-731:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-732:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-733:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-734:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-735:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-736:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-737:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-738:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-739:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-740:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-741:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-742:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-743:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-744:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-745:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-746:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-747:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-748:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-749:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-750:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-751:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-752:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-753:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-754:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-755:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-756:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-757:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-758:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-759:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-760:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-761:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-762:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-763:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-764:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-765:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-766:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-767:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-768:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-769:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-770:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-771:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-772:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-773:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-774:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-775:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-776:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-777:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-778:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-779:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-780:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-781:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-782:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-783:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-784:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-785:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-786:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-787:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-788:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-789:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-790:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-791:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-792:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-793:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-794:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-795:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-796:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-797:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-798:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-799:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-800:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-801:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-802:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-803:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-804:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-805:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-806:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-807:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-808:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-809:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-810:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-811:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-812:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-813:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-814:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-815:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-816:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-817:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-818:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-819:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-820:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-821:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-822:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-823:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-824:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-825:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-826:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-827:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-828:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-829:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-830:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-831:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-832:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-833:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-834:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-835:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-836:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-837:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-838:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-839:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-840:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-841:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-842:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-843:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-844:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-845:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-846:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-847:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-848:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-849:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-850:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-851:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-852:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-853:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-854:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-855:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-856:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-857:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-858:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-859:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-860:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-861:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-862:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-863:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-864:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-865:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-866:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-867:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-868:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-869:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-870:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-871:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  RR-872:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_008_USABILITY
+  RR-873:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_008_USABILITY
+  RR-874:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_008_USABILITY
+  RR-875:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_008_USABILITY
+  RR-876:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_008_USABILITY
+  RR-877:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_008_USABILITY
+  RR-878:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_008_USABILITY
+  RR-879:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-880:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-881:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_008_USABILITY
+  RR-882:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_008_USABILITY
+  RR-883:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_008_USABILITY
+  RR-884:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_008_USABILITY
+  RR-885:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_008_USABILITY
+  RR-886:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_008_USABILITY
+  RR-887:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_008_USABILITY
+  RR-888:
+    status: APPLICABLE
+    reason: SCOPE_ACTIVE
+    rule: RB-4 regulär, Block aktiv
+    block: NORM_SRC_008_USABILITY
+  RR-889:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-890:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_008_USABILITY
+  RR-891:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-892:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-893:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-894:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_008_USABILITY
+  RR-895:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-896:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-897:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-898:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-899:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-900:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-901:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-902:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-903:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-904:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-905:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-906:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-907:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-908:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-909:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-910:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-911:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-912:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-913:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-914:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-915:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-916:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-917:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-918:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-919:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-920:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-921:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-922:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-923:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-924:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-925:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-926:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-927:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_008_USABILITY
+  RR-928:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-929:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-930:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-931:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-932:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-933:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-934:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-935:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-936:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-937:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-938:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_008_USABILITY
+  RR-939:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_008_USABILITY
+  RR-940:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-941:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-942:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-943:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_008_USABILITY
+  RR-944:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-945:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-946:
+    status: APPLICABLE
+    reason: LOCAL_CONDITIONS_MET
+    rule: RB-9 alle lokalen Bedingungen erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-947:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_008_USABILITY
+  RR-948:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_008_USABILITY
+  RR-949:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_008_USABILITY
+  RR-950:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_008_USABILITY
+  RR-951:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_008_USABILITY
+  RR-952:
+    status: APPLICABILITY_UNRESOLVED
+    reason: LOCAL_CONDITION_NOT_MODELLED
+    rule: RB-6 nicht modellierte lokale Bedingung
+    block: NORM_SRC_008_USABILITY
+  RR-953:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-954:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-955:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-956:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-957:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-958:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_008_USABILITY
+  RR-959:
+    status: NOT_APPLICABLE
+    reason: LOCAL_CONDITION_NOT_MET
+    rule: RB-5 lokale Bedingung nicht erfüllt
+    block: NORM_SRC_008_USABILITY
+scenario:
+  justification: Synthetische Fallstudienangabe (Block 6, Szenario laut REFERENCE_ASSESSMENT.yaml)
+  answers:
+    RR-082:
+      status: FULFILLED
+      evidence_id: CS-EV-RR-082
+    RR-123:
+      status: PARTIALLY_FULFILLED
+      evidence_id: CS-EV-RR-123
+    RR-081:
+      status: NOT_FULFILLED
+      evidence_id: null
+    RR-384:
+      status: FULFILLED
+      evidence_id: null
+    RR-094:
+      status: NOT_ASSESSED
+      evidence_id: null
+    RR-076:
+      status: PARTIALLY_FULFILLED
+      evidence_id: null
+    RR-160:
+      status: FULFILLED
+      evidence_id: CS-EV-RR-160
+    RR-064:
+      status: PARTIALLY_FULFILLED
+      evidence_id: CS-EV-RR-064
+    RR-074:
+      status: NOT_FULFILLED
+      evidence_id: null
+    RR-165:
+      status: FULFILLED
+      evidence_id: null
+    RR-096:
+      status: NOT_ASSESSED
+      evidence_id: null
+    RR-135:
+      status: PARTIALLY_FULFILLED
+      evidence_id: null
+    RR-302:
+      status: FULFILLED
+      evidence_id: CS-EV-RR-302
+    RR-539:
+      status: PARTIALLY_FULFILLED
+      evidence_id: CS-EV-RR-539
+    RR-172:
+      status: NOT_FULFILLED
+      evidence_id: null
+    RR-448:
+      status: FULFILLED
+      evidence_id: null
+    RR-084:
+      status: NOT_ASSESSED
+      evidence_id: null
+    RR-189:
+      status: PARTIALLY_FULFILLED
+      evidence_id: null
+    RR-892:
+      status: FULFILLED
+      evidence_id: CS-EV-RR-892
+    RR-163:
+      status: PARTIALLY_FULFILLED
+      evidence_id: CS-EV-RR-163
+    RR-593:
+      status: NOT_FULFILLED
+      evidence_id: null
+    RR-692:
+      status: FULFILLED
+      evidence_id: null
+    RR-001:
+      status: FULFILLED
+      evidence_id: CS-EV-RR-001
+    RR-034:
+      status: NOT_FULFILLED
+      evidence_id: null
+    RR-205:
+      status: PARTIALLY_FULFILLED
+      evidence_id: CS-EV-RR-205
+  evidence:
+  - evidence_id: CS-EV-RR-082
+    requirement_id: RR-082
+    title: 'Fallstudie: Nachweis zu RR-082'
+    document_identifier: CS-DOC-RR-082
+    document_version: '1.0'
+    location: null
+    measure_key: MEAS_DOCUMENTED_PROCEDURE
+  - evidence_id: CS-EV-RR-123
+    requirement_id: RR-123
+    title: 'Fallstudie: Nachweis zu RR-123'
+    document_identifier: CS-DOC-RR-123
+    document_version: '1.0'
+    location: null
+    measure_key: MEAS_RECORD
+  - evidence_id: CS-EV-RR-160
+    requirement_id: RR-160
+    title: 'Fallstudie: Nachweis zu RR-160'
+    document_identifier: CS-DOC-RR-160
+    document_version: '1.0'
+    location: null
+    measure_key: null
+  - evidence_id: CS-EV-RR-064
+    requirement_id: RR-064
+    title: 'Fallstudie: Nachweis zu RR-064'
+    document_identifier: CS-DOC-RR-064
+    document_version: '1.0'
+    location: null
+    measure_key: null
+  - evidence_id: CS-EV-RR-302
+    requirement_id: RR-302
+    title: 'Fallstudie: Nachweis zu RR-302'
+    document_identifier: CS-DOC-RR-302
+    document_version: '1.0'
+    location: null
+    measure_key: null
+  - evidence_id: CS-EV-RR-539
+    requirement_id: RR-539
+    title: 'Fallstudie: Nachweis zu RR-539'
+    document_identifier: CS-DOC-RR-539
+    document_version: '1.0'
+    location: null
+    measure_key: null
+  - evidence_id: CS-EV-RR-892
+    requirement_id: RR-892
+    title: 'Fallstudie: Nachweis zu RR-892'
+    document_identifier: CS-DOC-RR-892
+    document_version: '1.0'
+    location: null
+    measure_key: MEAS_USABILITY_ENGINEERING_FILE
+  - evidence_id: CS-EV-RR-163
+    requirement_id: RR-163
+    title: 'Fallstudie: Nachweis zu RR-163'
+    document_identifier: CS-DOC-RR-163
+    document_version: '1.0'
+    location: null
+    measure_key: null
+  - evidence_id: CS-EV-RR-001
+    requirement_id: RR-001
+    title: 'Fallstudie: Nachweis zu RR-001'
+    document_identifier: CS-DOC-RR-001
+    document_version: '1.0'
+    location: null
+    measure_key: null
+  - evidence_id: CS-EV-RR-205
+    requirement_id: RR-205
+    title: 'Fallstudie: Nachweis zu RR-205'
+    document_identifier: CS-DOC-RR-205
+    document_version: '1.0'
+    location: null
+    measure_key: MEAS_LABELLING_AND_INSTRUCTIONS
+  cycle:
+  - FULFILLED mit Nachweis
+  - PARTIALLY_FULFILLED mit Nachweis
+  - NOT_FULFILLED
+  - FULFILLED
+  - NOT_ASSESSED
+  - PARTIALLY_FULFILLED
+gap_scope:
+- requirement_id: RR-082
+  stratum: A1 regulär, Maßnahme zugeordnet
+  theme: Qualitäts- und Risikomanagement
+  source_family: AI_ACT
+  conditionality: REGULAR
+  block: AI_ACT_HIGH_RISK
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input:
+    status: FULFILLED
+    with_evidence: true
+  gap_status: FULFILLED
+  gap_reason: ANSWER_WITH_EVIDENCE
+  is_gap: false
+  answer_state: ACTIVE
+  evidence_state: EVIDENCE_REFERENCED
+  measure_status: MAPPED
+  measures:
+  - MEAS_DOCUMENTED_PROCEDURE
+  primary_sources:
+  - SRC-002#Art.17/Abs.1
+  supplementary_sources: []
+  lifecycle:
+  - Planung und Konzeption
+- requirement_id: RR-123
+  stratum: A2 bedingt, Maßnahme zugeordnet
+  theme: Qualitäts- und Risikomanagement
+  source_family: MDR
+  conditionality: CONDITIONAL
+  block: MDR_MDSW_CORE
+  applicability: APPLICABLE
+  applicability_reason: LOCAL_CONDITIONS_MET
+  scenario_input:
+    status: PARTIALLY_FULFILLED
+    with_evidence: true
+  gap_status: PARTIALLY_FULFILLED
+  gap_reason: ANSWER_WITH_EVIDENCE
+  is_gap: true
+  answer_state: ACTIVE
+  evidence_state: EVIDENCE_REFERENCED
+  measure_status: MAPPED
+  measures:
+  - MEAS_RECORD
+  primary_sources:
+  - SRC-001#Art.10/Abs.9/UAbs.1/Satz.3
+  supplementary_sources: []
+  lifecycle:
+  - Planung und Konzeption
+- requirement_id: RR-081
+  stratum: A3 Maßnahmenzuordnung offen
+  theme: Qualitäts- und Risikomanagement
+  source_family: AI_ACT
+  conditionality: REGULAR
+  block: AI_ACT_HIGH_RISK
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input:
+    status: NOT_FULFILLED
+    with_evidence: false
+  gap_status: NOT_FULFILLED
+  gap_reason: ANSWER_NOT_FULFILLED
+  is_gap: true
+  answer_state: ACTIVE
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-002#Art.17/Abs.1
+  supplementary_sources: []
+  lifecycle:
+  - Planung und Konzeption
+- requirement_id: RR-384
+  stratum: A4 weitere Quellenfamilie
+  theme: Qualitäts- und Risikomanagement
+  source_family: NORM
+  conditionality: REGULAR
+  block: NORM_SRC_005_QMS
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input:
+    status: FULFILLED
+    with_evidence: false
+  gap_status: EVIDENCE_REVIEW_REQUIRED
+  gap_reason: ANSWER_WITHOUT_EVIDENCE
+  is_gap: true
+  answer_state: ACTIVE
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: MAPPED
+  measures:
+  - MEAS_RECORD
+  primary_sources:
+  - SRC-005#Abschnitt 4.1.1
+  supplementary_sources: []
+  lifecycle:
+  - Planung und Konzeption
+  - Entwicklung und Realisierung
+  - Verifikation und Validierung
+  - Konformitätsbewertung
+  - Inverkehrbringen, Inbetriebnahme und Betrieb
+  - Post-Market-Überwachung
+  - Änderung und Wartung
+- requirement_id: RR-094
+  stratum: A3 Maßnahmenzuordnung offen
+  theme: Data Governance
+  source_family: AI_ACT
+  conditionality: REGULAR
+  block: AI_ACT_HIGH_RISK
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input:
+    status: NOT_ASSESSED
+    with_evidence: false
+  gap_status: NOT_ASSESSED
+  gap_reason: ANSWER_NOT_ASSESSED
+  is_gap: false
+  answer_state: ACTIVE
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-002#Art.17/Abs.1/Buchst.f
+  supplementary_sources:
+  - SRC-002#Art.17/Abs.1
+  lifecycle:
+  - Entwicklung und Realisierung
+- requirement_id: RR-076
+  stratum: A1 regulär, Maßnahme zugeordnet
+  theme: Transparenz
+  source_family: AI_ACT
+  conditionality: REGULAR
+  block: AI_ACT_HIGH_RISK
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input:
+    status: PARTIALLY_FULFILLED
+    with_evidence: false
+  gap_status: EVIDENCE_REVIEW_REQUIRED
+  gap_reason: ANSWER_WITHOUT_EVIDENCE
+  is_gap: true
+  answer_state: ACTIVE
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: MAPPED
+  measures:
+  - MEAS_LABELLING_AND_INSTRUCTIONS
+  primary_sources:
+  - SRC-002#Art.15/Abs.3
+  supplementary_sources:
+  - SRC-002#Art.16/Buchst.a
+  lifecycle:
+  - Inverkehrbringen, Inbetriebnahme und Betrieb
+- requirement_id: RR-160
+  stratum: A3 Maßnahmenzuordnung offen
+  theme: Transparenz
+  source_family: MDR
+  conditionality: REGULAR
+  block: MDR_MDSW_CORE
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input:
+    status: FULFILLED
+    with_evidence: true
+  gap_status: FULFILLED
+  gap_reason: ANSWER_WITH_EVIDENCE
+  is_gap: false
+  answer_state: ACTIVE
+  evidence_state: EVIDENCE_REFERENCED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-001#Anh.I/Nr.4/Buchst.c
+  supplementary_sources:
+  - SRC-001#Anh.I/Nr.4/Satz.3
+  lifecycle:
+  - Inverkehrbringen, Inbetriebnahme und Betrieb
+- requirement_id: RR-064
+  stratum: A3 Maßnahmenzuordnung offen
+  theme: Menschliche Aufsicht
+  source_family: AI_ACT
+  conditionality: REGULAR
+  block: AI_ACT_HIGH_RISK
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input:
+    status: PARTIALLY_FULFILLED
+    with_evidence: true
+  gap_status: PARTIALLY_FULFILLED
+  gap_reason: ANSWER_WITH_EVIDENCE
+  is_gap: true
+  answer_state: ACTIVE
+  evidence_state: EVIDENCE_REFERENCED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-002#Art.14/Abs.1
+  supplementary_sources:
+  - SRC-002#Art.16/Buchst.a
+  lifecycle:
+  - Entwicklung und Realisierung
+- requirement_id: RR-074
+  stratum: A3 Maßnahmenzuordnung offen
+  theme: Robustheit
+  source_family: AI_ACT
+  conditionality: REGULAR
+  block: AI_ACT_HIGH_RISK
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input:
+    status: NOT_FULFILLED
+    with_evidence: false
+  gap_status: NOT_FULFILLED
+  gap_reason: ANSWER_NOT_FULFILLED
+  is_gap: true
+  answer_state: ACTIVE
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-002#Art.15/Abs.1
+  supplementary_sources:
+  - SRC-002#Art.16/Buchst.a
+  lifecycle:
+  - Entwicklung und Realisierung
+  - Inverkehrbringen, Inbetriebnahme und Betrieb
+  - Änderung und Wartung
+- requirement_id: RR-165
+  stratum: A4 weitere Quellenfamilie
+  theme: Robustheit
+  source_family: MDR
+  conditionality: REGULAR
+  block: MDR_MDSW_CORE
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input:
+    status: FULFILLED
+    with_evidence: false
+  gap_status: EVIDENCE_REVIEW_REQUIRED
+  gap_reason: ANSWER_WITHOUT_EVIDENCE
+  is_gap: true
+  answer_state: ACTIVE
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-001#Anh.I/Nr.17.1/Satz.1
+  supplementary_sources: []
+  lifecycle:
+  - Entwicklung und Realisierung
+  - Änderung und Wartung
+- requirement_id: RR-096
+  stratum: A1 regulär, Maßnahme zugeordnet
+  theme: Post-Market-Monitoring
+  source_family: AI_ACT
+  conditionality: REGULAR
+  block: AI_ACT_HIGH_RISK
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input:
+    status: NOT_ASSESSED
+    with_evidence: false
+  gap_status: NOT_ASSESSED
+  gap_reason: ANSWER_NOT_ASSESSED
+  is_gap: false
+  answer_state: ACTIVE
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: MAPPED
+  measures:
+  - MEAS_PMS_VIGILANCE
+  primary_sources:
+  - SRC-002#Art.17/Abs.1/Buchst.h
+  supplementary_sources:
+  - SRC-002#Art.17/Abs.1
+  lifecycle:
+  - Planung und Konzeption
+- requirement_id: RR-135
+  stratum: A2 bedingt, Maßnahme zugeordnet
+  theme: Post-Market-Monitoring
+  source_family: MDR
+  conditionality: CONDITIONAL
+  block: MDR_MDSW_CORE
+  applicability: APPLICABLE
+  applicability_reason: LOCAL_CONDITIONS_MET
+  scenario_input:
+    status: PARTIALLY_FULFILLED
+    with_evidence: false
+  gap_status: EVIDENCE_REVIEW_REQUIRED
+  gap_reason: ANSWER_WITHOUT_EVIDENCE
+  is_gap: true
+  answer_state: ACTIVE
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: MAPPED
+  measures:
+  - MEAS_PMS_VIGILANCE
+  primary_sources:
+  - SRC-001#Art.10/Abs.9/Buchst.i
+  supplementary_sources:
+  - SRC-001#Art.10/Abs.9/UAbs.1/Satz.3
+  - SRC-001#Art.10/Abs.9/UAbs.3
+  lifecycle:
+  - Planung und Konzeption
+- requirement_id: RR-302
+  stratum: A3 Maßnahmenzuordnung offen
+  theme: Post-Market-Monitoring
+  source_family: MDR
+  conditionality: REGULAR
+  block: MDR_MDSW_CORE
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input:
+    status: FULFILLED
+    with_evidence: true
+  gap_status: FULFILLED
+  gap_reason: ANSWER_WITH_EVIDENCE
+  is_gap: false
+  answer_state: ACTIVE
+  evidence_state: EVIDENCE_REFERENCED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-001#Art.83/Abs.1
+  supplementary_sources: []
+  lifecycle:
+  - Planung und Konzeption
+  - Post-Market-Überwachung
+- requirement_id: RR-539
+  stratum: A4 weitere Quellenfamilie
+  theme: Post-Market-Monitoring
+  source_family: NORM
+  conditionality: CONDITIONAL
+  block: NORM_SRC_005_QMS
+  applicability: APPLICABLE
+  applicability_reason: LOCAL_CONDITIONS_MET
+  scenario_input:
+    status: PARTIALLY_FULFILLED
+    with_evidence: true
+  gap_status: PARTIALLY_FULFILLED
+  gap_reason: ANSWER_WITH_EVIDENCE
+  is_gap: true
+  answer_state: ACTIVE
+  evidence_state: EVIDENCE_REFERENCED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-005#Abschnitt 8.2.1
+  supplementary_sources: []
+  lifecycle:
+  - Post-Market-Überwachung
+- requirement_id: RR-172
+  stratum: A1 regulär, Maßnahme zugeordnet
+  theme: Software-Lebenszyklus
+  source_family: MDR
+  conditionality: REGULAR
+  block: MDR_MDSW_CORE
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input:
+    status: NOT_FULFILLED
+    with_evidence: false
+  gap_status: NOT_FULFILLED
+  gap_reason: ANSWER_NOT_FULFILLED
+  is_gap: true
+  answer_state: ACTIVE
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: MAPPED
+  measures:
+  - MEAS_VERIFICATION
+  primary_sources:
+  - SRC-001#Anh.I/Nr.17.2
+  supplementary_sources: []
+  lifecycle:
+  - Entwicklung und Realisierung
+  - Änderung und Wartung
+- requirement_id: RR-448
+  stratum: A2 bedingt, Maßnahme zugeordnet
+  theme: Software-Lebenszyklus
+  source_family: NORM
+  conditionality: CONDITIONAL
+  block: NORM_SRC_005_QMS
+  applicability: APPLICABLE
+  applicability_reason: LOCAL_CONDITIONS_MET
+  scenario_input:
+    status: FULFILLED
+    with_evidence: false
+  gap_status: EVIDENCE_REVIEW_REQUIRED
+  gap_reason: ANSWER_WITHOUT_EVIDENCE
+  is_gap: true
+  answer_state: ACTIVE
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: MAPPED
+  measures:
+  - MEAS_REVIEW
+  primary_sources:
+  - SRC-005#Abschnitt 7.2.2
+  supplementary_sources: []
+  lifecycle:
+  - Planung und Konzeption
+- requirement_id: RR-084
+  stratum: A3 Maßnahmenzuordnung offen
+  theme: Software-Lebenszyklus
+  source_family: AI_ACT
+  conditionality: REGULAR
+  block: AI_ACT_HIGH_RISK
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input:
+    status: NOT_ASSESSED
+    with_evidence: false
+  gap_status: NOT_ASSESSED
+  gap_reason: ANSWER_NOT_ASSESSED
+  is_gap: false
+  answer_state: ACTIVE
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-002#Art.17/Abs.1/Buchst.a
+  supplementary_sources:
+  - SRC-002#Art.17/Abs.1
+  lifecycle:
+  - Änderung und Wartung
+- requirement_id: RR-189
+  stratum: A1 regulär, Maßnahme zugeordnet
+  theme: Gebrauchstauglichkeit
+  source_family: MDR
+  conditionality: REGULAR
+  block: MDR_MDSW_CORE
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input:
+    status: PARTIALLY_FULFILLED
+    with_evidence: false
+  gap_status: EVIDENCE_REVIEW_REQUIRED
+  gap_reason: ANSWER_WITHOUT_EVIDENCE
+  is_gap: true
+  answer_state: ACTIVE
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: MAPPED
+  measures:
+  - MEAS_LABELLING_AND_INSTRUCTIONS
+  primary_sources:
+  - SRC-001#Anh.I/Nr.23.1/Buchst.a/Satz.1
+  supplementary_sources: []
+  lifecycle:
+  - Entwicklung und Realisierung
+  - Inverkehrbringen, Inbetriebnahme und Betrieb
+  - Änderung und Wartung
+- requirement_id: RR-892
+  stratum: A2 bedingt, Maßnahme zugeordnet
+  theme: Gebrauchstauglichkeit
+  source_family: NORM
+  conditionality: CONDITIONAL
+  block: NORM_SRC_008_USABILITY
+  applicability: APPLICABLE
+  applicability_reason: LOCAL_CONDITIONS_MET
+  scenario_input:
+    status: FULFILLED
+    with_evidence: true
+  gap_status: FULFILLED
+  gap_reason: ANSWER_WITH_EVIDENCE
+  is_gap: false
+  answer_state: ACTIVE
+  evidence_state: EVIDENCE_REFERENCED
+  measure_status: MAPPED
+  measures:
+  - MEAS_USABILITY_ENGINEERING_FILE
+  primary_sources:
+  - SRC-008#Abschnitt 5.2
+  supplementary_sources: []
+  lifecycle:
+  - Entwicklung und Realisierung
+- requirement_id: RR-163
+  stratum: A3 Maßnahmenzuordnung offen
+  theme: Gebrauchstauglichkeit
+  source_family: MDR
+  conditionality: REGULAR
+  block: MDR_MDSW_CORE
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input:
+    status: PARTIALLY_FULFILLED
+    with_evidence: true
+  gap_status: PARTIALLY_FULFILLED
+  gap_reason: ANSWER_WITH_EVIDENCE
+  is_gap: true
+  answer_state: ACTIVE
+  evidence_state: EVIDENCE_REFERENCED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-001#Anh.I/Nr.5/Buchst.a
+  supplementary_sources:
+  - SRC-001#Anh.I/Nr.5
+  - SRC-001#Anh.I/Nr.2
+  lifecycle:
+  - Entwicklung und Realisierung
+  - Änderung und Wartung
+- requirement_id: RR-593
+  stratum: D Quelle SRC-006 noch nicht vertreten
+  theme: Qualitäts- und Risikomanagement
+  source_family: NORM
+  conditionality: REGULAR
+  block: NORM_SRC_006_RISK_MANAGEMENT
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input:
+    status: NOT_FULFILLED
+    with_evidence: false
+  gap_status: NOT_FULFILLED
+  gap_reason: ANSWER_NOT_FULFILLED
+  is_gap: true
+  answer_state: ACTIVE
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-006#Abschnitt 4.1
+  supplementary_sources: []
+  lifecycle:
+  - Planung und Konzeption
+- requirement_id: RR-692
+  stratum: D Quelle SRC-007 noch nicht vertreten
+  theme: Qualitäts- und Risikomanagement
+  source_family: NORM
+  conditionality: REGULAR
+  block: NORM_SRC_007_SOFTWARE_LIFECYCLE
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input:
+    status: FULFILLED
+    with_evidence: false
+  gap_status: EVIDENCE_REVIEW_REQUIRED
+  gap_reason: ANSWER_WITHOUT_EVIDENCE
+  is_gap: true
+  answer_state: ACTIVE
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-007#Abschnitt 4.1
+  supplementary_sources: []
+  lifecycle:
+  - Planung und Konzeption
+  - Entwicklung und Realisierung
+  - Verifikation und Validierung
+  - Änderung und Wartung
+- requirement_id: RR-083
+  stratum: B ohne Erfüllungsangabe
+  theme: Qualitäts- und Risikomanagement
+  source_family: AI_ACT
+  conditionality: REGULAR
+  block: AI_ACT_HIGH_RISK
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input: null
+  gap_status: NOT_ASSESSED
+  gap_reason: NO_ANSWER
+  is_gap: false
+  answer_state: null
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-002#Art.17/Abs.1/Buchst.a
+  supplementary_sources:
+  - SRC-002#Art.17/Abs.1
+  lifecycle:
+  - Planung und Konzeption
+- requirement_id: RR-162
+  stratum: B ohne Erfüllungsangabe
+  theme: Transparenz
+  source_family: MDR
+  conditionality: REGULAR
+  block: MDR_MDSW_CORE
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input: null
+  gap_status: NOT_ASSESSED
+  gap_reason: NO_ANSWER
+  is_gap: false
+  answer_state: null
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-001#Anh.I/Nr.4/Satz.4
+  supplementary_sources: []
+  lifecycle:
+  - Inverkehrbringen, Inbetriebnahme und Betrieb
+- requirement_id: RR-065
+  stratum: B ohne Erfüllungsangabe
+  theme: Menschliche Aufsicht
+  source_family: AI_ACT
+  conditionality: REGULAR
+  block: AI_ACT_HIGH_RISK
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input: null
+  gap_status: NOT_ASSESSED
+  gap_reason: NO_ANSWER
+  is_gap: false
+  answer_state: null
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-002#Art.14/Abs.3
+  supplementary_sources:
+  - SRC-002#Art.14/Abs.2
+  - SRC-002#Art.16/Buchst.a
+  lifecycle:
+  - Planung und Konzeption
+  - Entwicklung und Realisierung
+- requirement_id: RR-075
+  stratum: B ohne Erfüllungsangabe
+  theme: Robustheit
+  source_family: AI_ACT
+  conditionality: REGULAR
+  block: AI_ACT_HIGH_RISK
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input: null
+  gap_status: NOT_ASSESSED
+  gap_reason: NO_ANSWER
+  is_gap: false
+  answer_state: null
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-002#Art.15/Abs.1
+  supplementary_sources:
+  - SRC-002#Art.16/Buchst.a
+  lifecycle:
+  - Entwicklung und Realisierung
+  - Inverkehrbringen, Inbetriebnahme und Betrieb
+  - Änderung und Wartung
+- requirement_id: RR-097
+  stratum: B ohne Erfüllungsangabe
+  theme: Post-Market-Monitoring
+  source_family: AI_ACT
+  conditionality: REGULAR
+  block: AI_ACT_HIGH_RISK
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input: null
+  gap_status: NOT_ASSESSED
+  gap_reason: NO_ANSWER
+  is_gap: false
+  answer_state: null
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: MAPPED
+  measures:
+  - MEAS_PMS_VIGILANCE
+  primary_sources:
+  - SRC-002#Art.17/Abs.1/Buchst.h
+  supplementary_sources:
+  - SRC-002#Art.17/Abs.1
+  lifecycle:
+  - Post-Market-Überwachung
+- requirement_id: RR-085
+  stratum: B ohne Erfüllungsangabe
+  theme: Software-Lebenszyklus
+  source_family: AI_ACT
+  conditionality: REGULAR
+  block: AI_ACT_HIGH_RISK
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input: null
+  gap_status: NOT_ASSESSED
+  gap_reason: NO_ANSWER
+  is_gap: false
+  answer_state: null
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-002#Art.17/Abs.1/Buchst.b
+  supplementary_sources:
+  - SRC-002#Art.17/Abs.1
+  lifecycle:
+  - Entwicklung und Realisierung
+- requirement_id: RR-164
+  stratum: B ohne Erfüllungsangabe
+  theme: Gebrauchstauglichkeit
+  source_family: MDR
+  conditionality: REGULAR
+  block: MDR_MDSW_CORE
+  applicability: APPLICABLE
+  applicability_reason: SCOPE_ACTIVE
+  scenario_input: null
+  gap_status: NOT_ASSESSED
+  gap_reason: NO_ANSWER
+  is_gap: false
+  answer_state: null
+  evidence_state: NO_EVIDENCE_REFERENCED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-001#Anh.I/Nr.5/Buchst.b
+  supplementary_sources:
+  - SRC-001#Anh.I/Nr.5
+  lifecycle:
+  - Planung und Konzeption
+  - Entwicklung und Realisierung
+  - Änderung und Wartung
+- requirement_id: RR-001
+  stratum: C1 ungeklärt (nicht dokumentierte Einordnung)
+  theme: Transparenz
+  source_family: AI_ACT
+  conditionality: NOT_STATED
+  block: AI_ACT_HIGH_RISK
+  applicability: APPLICABILITY_UNRESOLVED
+  applicability_reason: CONDITIONALITY_NOT_DOCUMENTED
+  scenario_input:
+    status: FULFILLED
+    with_evidence: true
+  gap_status: APPLICABILITY_UNRESOLVED
+  gap_reason: RR_APPLICABILITY_UNRESOLVED
+  is_gap: false
+  answer_state: INACTIVE
+  evidence_state: NOT_CONSIDERED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-002#Art.13/Abs.1/Satz.1
+  supplementary_sources:
+  - SRC-002#Art.16/Buchst.a
+  lifecycle:
+  - Entwicklung und Realisierung
+- requirement_id: RR-034
+  stratum: C2 ungeklärt (nicht modellierte lokale Bedingung)
+  theme: Data Governance
+  source_family: AI_ACT
+  conditionality: CONDITIONAL
+  block: AI_ACT_HIGH_RISK
+  applicability: APPLICABILITY_UNRESOLVED
+  applicability_reason: LOCAL_CONDITION_NOT_MODELLED
+  scenario_input:
+    status: NOT_FULFILLED
+    with_evidence: false
+  gap_status: APPLICABILITY_UNRESOLVED
+  gap_reason: RR_APPLICABILITY_UNRESOLVED
+  is_gap: false
+  answer_state: INACTIVE
+  evidence_state: NOT_CONSIDERED
+  measure_status: REVIEW_REQUIRED
+  measures: []
+  primary_sources:
+  - SRC-002#Art.10/Abs.2/Buchst.b
+  supplementary_sources:
+  - SRC-002#Art.10/Abs.2/Satz.1
+  - SRC-002#Art.10/Abs.2/Satz.2
+  - SRC-002#Art.10/Abs.6
+  - SRC-002#Art.16/Buchst.a
+  lifecycle:
+  - Entwicklung und Realisierung
+  - Verifikation und Validierung
+- requirement_id: RR-205
+  stratum: C3 nicht anwendbar (Block inaktiv)
+  theme: Transparenz
+  source_family: EIFU
+  conditionality: CONDITIONAL
+  block: SRC009_ART3_1_PATH
+  applicability: NOT_APPLICABLE
+  applicability_reason: SCOPE_INACTIVE
+  scenario_input:
+    status: PARTIALLY_FULFILLED
+    with_evidence: true
+  gap_status: NOT_APPLICABLE
+  gap_reason: RR_NOT_APPLICABLE
+  is_gap: false
+  answer_state: INACTIVE
+  evidence_state: NOT_CONSIDERED
+  measure_status: MAPPED
+  measures:
+  - MEAS_LABELLING_AND_INSTRUCTIONS
+  primary_sources:
+  - SRC-009#Art.3/Abs.2
+  supplementary_sources: []
+  lifecycle:
+  - Inverkehrbringen, Inbetriebnahme und Betrieb
+traceability_sample:
+- RR-082
+- RR-094
+- RR-076
+- RR-064
+- RR-074
+- RR-096
+- RR-172
+- RR-189
+- RR-001
+- RR-034
+- RR-205

@@ -1,0 +1,5 @@
+# Laufzeitabhängigkeiten des Demonstrator-Kerns (gepinnt; ADR-0003, ADR-0006)
+-r tools/requirements.txt
+reportlab==5.0.1
+pillow==12.3.0
+charset-normalizer==3.5.1

@@ -1,0 +1,3154 @@
+version: '0.9'
+catalog_versions:
+  rr_catalog: '0.26'
+  rul_catalog: '0.3'
+  sr_catalog: '0.6'
+  rr_applicability: '0.5'
+  data_model: '0.8'
+  rr_measure: '0.2'
+description: Führende Vergabestelle für permanente Testfälle (TC). Die lokalen Kennungen T01 bis T15 bleiben Datenvarianten in RUL_DECISION_TESTS_SRC_004.yaml und werden über data_refs referenziert. Der Teststatus je TC ergibt sich aus dem Evidenzindex (EV → TC), nicht aus diesem Katalog.
+test_cases:
+- id: TC-001
+  status: aktiv
+  title:
+    de: 'Qualifikation: keine Medizinproduktesoftware'
+    en: 'Qualification: not medical device software'
+  purpose:
+    de: Pfade zu NOT_MDSW über reine Datenhaltung/Kommunikation (Step 3) und fehlenden individuellen Nutzen (Step 4) nach MDCG-2019-11-Beispielen.
+    en: Paths to NOT_MDSW via basic data actions (step 3) and missing individual benefit (step 4) from MDCG 2019-11 examples.
+  test_type: AUTOMATED
+  categories:
+  - B
+  - D
+  evaluation_dimensions:
+  - CORRECTNESS
+  - REGRESSION
+  preconditions: &id001
+    de: Kataloge fail-closed geladen (CatalogRepository.load).
+    en: Catalogs loaded fail-closed (CatalogRepository.load).
+  inputs:
+    de: Eingaben der Beispiele T01 und T02.
+    en: Inputs of examples T01 and T02.
+  expected:
+    de: Regelpfad RUL-001–RUL-004 bzw. RUL-001–RUL-003, Ergebnis NOT_MDSW, keine Klasse.
+    en: Rule path RUL-001–RUL-004 or RUL-001–RUL-003, result NOT_MDSW, no class.
+  verifies_sr:
+  - SR-001
+  - SR-002
+  - SR-006
+  verifies_rul:
+  - RUL-001
+  - RUL-002
+  - RUL-003
+  - RUL-004
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_rule_engine.py::GuidanceTestCases::test_t01_to_t15
+  - tools/test_validate_rul_catalog.py::RulDecisionTestCasesTest::test_cases_follow_catalog
+  data_refs:
+  - docs/07-testing/RUL_DECISION_TESTS_SRC_004.yaml#T01
+  - docs/07-testing/RUL_DECISION_TESTS_SRC_004.yaml#T02
+  golden_case: null
+  golden: false
+- id: TC-002
+  status: aktiv
+  title:
+    de: 'Qualifikation: Medizinproduktesoftware als Zwischenergebnis'
+    en: 'Qualification: medical device software as intermediate result'
+  purpose:
+    de: Telemedizin mit medizinischem Schwellenwertalarm erreicht MDSW; die Abgrenzung ist durch das Beispiel nicht festgelegt.
+    en: Telemedicine with medical threshold alarm reaches MDSW; the boundary is not fixed by the example.
+  test_type: AUTOMATED
+  categories:
+  - B
+  - D
+  evaluation_dimensions:
+  - CORRECTNESS
+  preconditions: *id001
+  inputs:
+    de: Eingaben des Beispiels T03.
+    en: Inputs of example T03.
+  expected:
+    de: Regelpfad RUL-001–RUL-005, Ergebnis MDSW.
+    en: Rule path RUL-001–RUL-005, result MDSW.
+  verifies_sr:
+  - SR-001
+  - SR-002
+  verifies_rul:
+  - RUL-001
+  - RUL-002
+  - RUL-003
+  - RUL-004
+  - RUL-005
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_rule_engine.py::GuidanceTestCases::test_t01_to_t15
+  - tools/test_validate_rul_catalog.py::RulDecisionTestCasesTest::test_cases_follow_catalog
+  data_refs:
+  - docs/07-testing/RUL_DECISION_TESTS_SRC_004.yaml#T03
+  golden_case: null
+  golden: false
+- id: TC-003
+  status: aktiv
+  title:
+    de: MDR/IVDR-Abgrenzung
+    en: MDR/IVDR boundary
+  purpose:
+    de: Abgrenzung nach MDR-dominanten, IVD-dominanten und ausschließlich IVD-basierten Informationen.
+    en: Boundary for MDR-dominant, IVD-dominant and IVD-only information.
+  test_type: AUTOMATED
+  categories:
+  - A
+  - B
+  - D
+  evaluation_dimensions:
+  - CORRECTNESS
+  - COMPLETENESS
+  preconditions: *id001
+  inputs:
+    de: Eingaben der Beispiele T04 bis T06.
+    en: Inputs of examples T04 to T06.
+  expected:
+    de: T04 MDR_MDSW; T05 und T06 OUT_OF_SCOPE_IVDR.
+    en: T04 MDR_MDSW; T05 and T06 OUT_OF_SCOPE_IVDR.
+  verifies_sr:
+  - SR-002
+  - SR-006
+  verifies_rul:
+  - RUL-001
+  - RUL-002
+  - RUL-003
+  - RUL-004
+  - RUL-005
+  - RUL-006
+  - RUL-007
+  - RUL-008
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_rule_engine.py::GuidanceTestCases::test_t01_to_t15
+  - tools/test_validate_rul_catalog.py::RulDecisionTestCasesTest::test_cases_follow_catalog
+  data_refs:
+  - docs/07-testing/RUL_DECISION_TESTS_SRC_004.yaml#T04
+  - docs/07-testing/RUL_DECISION_TESTS_SRC_004.yaml#T05
+  - docs/07-testing/RUL_DECISION_TESTS_SRC_004.yaml#T06
+  golden_case: null
+  golden: false
+- id: TC-004
+  status: aktiv
+  title:
+    de: 'Regel 11: Informationspfad (Klassen IIa bis III)'
+    en: 'Rule 11: information path (classes IIa to III)'
+  purpose:
+    de: Klassifizierung von Software mit Informationen für diagnostische oder therapeutische Entscheidungen; T08 und T14 prüfen mit identischen Eingaben dasselbe Szenario aus zwei Guidance-Beispielen.
+    en: Classification of software providing information for diagnostic or therapeutic decisions; T08 and T14 test the same scenario with identical inputs from two guidance examples.
+  test_type: AUTOMATED
+  categories:
+  - B
+  - D
+  evaluation_dimensions:
+  - CORRECTNESS
+  - COMPLETENESS
+  preconditions: *id001
+  inputs:
+    de: Eingaben der Beispiele T07, T08, T13, T14.
+    en: Inputs of examples T07, T08, T13, T14.
+  expected:
+    de: T07 III, T08 IIa, T13 III (therapeutisch mit integrierter Diagnostik), T14 IIa; Ergebnis FINAL_MDR_CLASS.
+    en: T07 III, T08 IIa, T13 III (therapeutic with integrated diagnostic), T14 IIa; result FINAL_MDR_CLASS.
+  verifies_sr:
+  - SR-002
+  - SR-005
+  - SR-006
+  verifies_rul:
+  - RUL-009
+  - RUL-010
+  - RUL-011
+  - RUL-012
+  - RUL-016
+  - RUL-017
+  - RUL-018
+  - RUL-019
+  - RUL-020
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_rule_engine.py::GuidanceTestCases::test_t01_to_t15
+  - tools/test_validate_rul_catalog.py::RulDecisionTestCasesTest::test_cases_follow_catalog
+  data_refs:
+  - docs/07-testing/RUL_DECISION_TESTS_SRC_004.yaml#T07
+  - docs/07-testing/RUL_DECISION_TESTS_SRC_004.yaml#T08
+  - docs/07-testing/RUL_DECISION_TESTS_SRC_004.yaml#T13
+  - docs/07-testing/RUL_DECISION_TESTS_SRC_004.yaml#T14
+  golden_case: null
+  golden: false
+- id: TC-005
+  status: aktiv
+  title:
+    de: 'Regel 11: Überwachungspfad und Restfall'
+    en: 'Rule 11: monitoring path and residual case'
+  purpose:
+    de: Klassen IIb/IIa für die Überwachung physiologischer Prozesse und Klasse I im Restfall; T11 und T12 prüfen mit identischen Eingaben denselben Pfad.
+    en: Classes IIb/IIa for monitoring of physiological processes and class I in the residual case; T11 and T12 test the same path with identical inputs.
+  test_type: AUTOMATED
+  categories:
+  - B
+  - D
+  evaluation_dimensions:
+  - CORRECTNESS
+  - COMPLETENESS
+  preconditions: *id001
+  inputs:
+    de: Eingaben der Beispiele T09 bis T12.
+    en: Inputs of examples T09 to T12.
+  expected:
+    de: T09 IIb, T10 IIa, T11 und T12 I.
+    en: T09 IIb, T10 IIa, T11 and T12 I.
+  verifies_sr:
+  - SR-002
+  - SR-005
+  - SR-006
+  verifies_rul:
+  - RUL-009
+  - RUL-010
+  - RUL-013
+  - RUL-014
+  - RUL-015
+  - RUL-016
+  - RUL-017
+  - RUL-018
+  - RUL-019
+  - RUL-020
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_rule_engine.py::GuidanceTestCases::test_t01_to_t15
+  - tests/test_rule_engine.py::ClassificationTest::test_rule_11c_class_i
+  - tools/test_validate_rul_catalog.py::RulDecisionTestCasesTest::test_cases_follow_catalog
+  data_refs:
+  - docs/07-testing/RUL_DECISION_TESTS_SRC_004.yaml#T09
+  - docs/07-testing/RUL_DECISION_TESTS_SRC_004.yaml#T10
+  - docs/07-testing/RUL_DECISION_TESTS_SRC_004.yaml#T11
+  - docs/07-testing/RUL_DECISION_TESTS_SRC_004.yaml#T12
+  golden_case: null
+  golden: false
+- id: TC-006
+  status: aktiv
+  title:
+    de: Modulare Systeme
+    en: Modular systems
+  purpose:
+    de: Abgrenzung medizinischer und nicht medizinischer Module sowie integriertes Produkt.
+    en: Distinction of medical and non-medical modules and integrated product.
+  test_type: AUTOMATED
+  categories:
+  - B
+  - D
+  evaluation_dimensions:
+  - CORRECTNESS
+  preconditions: *id001
+  inputs:
+    de: Eingaben des Beispiels T15 sowie integriertes Produkt.
+    en: Inputs of example T15 and integrated product.
+  expected:
+    de: Administrationsmodul nicht als MDSW reguliert bzw. bewertungsrelevant; Dosisplanung MDSW_MODULE; integriertes Produkt nach RUL-023.
+    en: Administration module not regulated as MDSW or assessment-relevant; dose planning MDSW_MODULE; integrated product per RUL-023.
+  verifies_sr:
+  - SR-002
+  - SR-006
+  verifies_rul:
+  - RUL-021
+  - RUL-022
+  - RUL-023
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_rule_engine.py::GuidanceTestCases::test_t01_to_t15
+  - tests/test_rule_engine.py::ModulesAndChangesTest::test_integrated_product_rul_023
+  - tools/test_validate_rul_catalog.py::RulDecisionTestCasesTest::test_rule_22_result_independent_of_rule_11_candidate
+  data_refs:
+  - docs/07-testing/RUL_DECISION_TESTS_SRC_004.yaml#T15
+  golden_case: null
+  golden: false
+- id: TC-007
+  status: aktiv
+  title:
+    de: 'Klassifikation: Sonderpfade und strengster Kandidat'
+    en: 'Classification: special paths and strictest candidate'
+  purpose:
+    de: Strengster Klassenkandidat nach class_order, nicht modellierte Regeln, Hardware- und Ansteuerungskonstellationen.
+    en: Strictest class candidate per class_order, unmodelled rules, hardware and driving constellations.
+  test_type: AUTOMATED
+  categories:
+  - B
+  - D
+  - G
+  evaluation_dimensions:
+  - CORRECTNESS
+  - REGRESSION
+  preconditions: *id001
+  inputs:
+    de: Konstruierte Klassifikationseingaben.
+    en: Constructed classification inputs.
+  expected:
+    de: Strengster Kandidat gewinnt; Review-Ausgang verhindert finale Klasse.
+    en: Strictest candidate wins; review output prevents a final class.
+  verifies_sr:
+  - SR-004
+  - SR-005
+  - SR-019
+  verifies_rul:
+  - RUL-009
+  - RUL-010
+  - RUL-011
+  - RUL-012
+  - RUL-013
+  - RUL-014
+  - RUL-015
+  - RUL-016
+  - RUL-017
+  - RUL-018
+  - RUL-019
+  - RUL-020
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_rule_engine.py::ClassificationTest::test_rule_3_5_strictest_candidate_wins
+  - tests/test_rule_engine.py::ClassificationTest::test_unmodelled_rule_blocks_final_class
+  - tests/test_rule_engine.py::ClassificationTest::test_hardware_constellation_is_carried_to_aggregation
+  - tests/test_rule_engine.py::ClassificationTest::test_driving_software_without_own_purpose
+  - tests/test_rule_engine.py::ClassificationTest::test_driving_software_with_own_purpose_never_final
+  - tests/test_rule_engine.py::ClassificationTest::test_execution_carries_both_anchor_levels
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-008
+  status: aktiv
+  title:
+    de: 'Qualifikation: vollständiger Pfad, Review und Sonderroute'
+    en: 'Qualification: full path, review and special route'
+  purpose:
+    de: Durchgängiger Pfad bis zur MDR-Klasse, Abgrenzungsreview bei unklarer Gewichtung, nicht abgedeckte Fälle und Sonderroute.
+    en: Full path to the MDR class, boundary review on unclear weighting, uncovered cases and special route.
+  test_type: AUTOMATED
+  categories:
+  - A
+  - B
+  - G
+  evaluation_dimensions:
+  - CORRECTNESS
+  preconditions: *id001
+  inputs:
+    de: Konstruierte Qualifikationseingaben.
+    en: Constructed qualification inputs.
+  expected:
+    de: MDSW → MDR_MDSW → FINAL_MDR_CLASS IIa; BOUNDARY_REVIEW_REQUIRED; NOT_COVERED_BY_SRC004 bzw. Sonderroute.
+    en: MDSW → MDR_MDSW → FINAL_MDR_CLASS IIa; BOUNDARY_REVIEW_REQUIRED; NOT_COVERED_BY_SRC004 or special route.
+  verifies_sr:
+  - SR-002
+  - SR-004
+  verifies_rul:
+  - RUL-001
+  - RUL-002
+  - RUL-003
+  - RUL-004
+  - RUL-005
+  - RUL-006
+  - RUL-007
+  - RUL-008
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_rule_engine.py::QualificationBoundaryTest::test_full_path_to_mdr_class
+  - tests/test_rule_engine.py::QualificationBoundaryTest::test_boundary_review_on_unclear_weighting
+  - tests/test_rule_engine.py::QualificationBoundaryTest::test_not_covered_and_special_route
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-009
+  status: aktiv
+  title:
+    de: Änderungsbewertung nach MDCG 2019-11
+    en: Change reassessment per MDCG 2019-11
+  purpose:
+    de: Auslöser einer erneuten Qualifikation bzw. Klassifikation bei Produktänderungen (RUL-024 bis RUL-026).
+    en: Triggers for re-qualification or re-classification on product changes (RUL-024 to RUL-026).
+  test_type: AUTOMATED
+  categories:
+  - D
+  evaluation_dimensions:
+  - CORRECTNESS
+  preconditions: *id001
+  inputs:
+    de: Konstruierte Änderungseingaben.
+    en: Constructed change inputs.
+  expected:
+    de: REASSESS_QUALIFICATION_CLASSIFICATION bzw. NO_SRC004_REASSESSMENT_TRIGGER.
+    en: REASSESS_QUALIFICATION_CLASSIFICATION or NO_SRC004_REASSESSMENT_TRIGGER.
+  verifies_sr:
+  - SR-002
+  verifies_rul:
+  - RUL-024
+  - RUL-025
+  - RUL-026
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_rule_engine.py::ModulesAndChangesTest::test_change_reassessment_rul_024_to_026
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-010
+  status: aktiv
+  title:
+    de: RULE_ENGINE fail-closed
+    en: RULE_ENGINE fail-closed
+  purpose:
+    de: Fehlende Eingaben ergeben INCOMPLETE statt einer Annahme; unzulässige Eingaben, unbekannte Einstiegsregeln, Zyklen und ungültige Verweise werden abgewiesen.
+    en: Missing inputs yield INCOMPLETE instead of an assumption; invalid inputs, unknown entry rules, cycles and invalid references are rejected.
+  test_type: AUTOMATED
+  categories:
+  - G
+  evaluation_dimensions:
+  - CORRECTNESS
+  - REGRESSION
+  preconditions: *id001
+  inputs:
+    de: Unvollständige bzw. unzulässige Eingaben und manipulierte Kataloge.
+    en: Incomplete or invalid inputs and manipulated catalogs.
+  expected:
+    de: Status INCOMPLETE mit benannter Regel; kontrollierte Domain-Fehler.
+    en: Status INCOMPLETE naming the rule; controlled domain errors.
+  verifies_sr:
+  - SR-003
+  - SR-031
+  - SR-034
+  verifies_rul:
+  - RUL-001
+  - RUL-005
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_rule_engine.py::FailClosedTest::test_missing_input_is_incomplete_not_guessed
+  - tests/test_rule_engine.py::FailClosedTest::test_invalid_inputs_are_rejected
+  - tests/test_rule_engine.py::FailClosedTest::test_unknown_entry_rule
+  - tests/test_rule_engine.py::FailClosedTest::test_cycle_is_detected
+  - tests/test_rule_engine.py::FailClosedTest::test_invalid_next_rule_is_detected
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-011
+  status: aktiv
+  title:
+    de: Regelabdeckung und abgeleitete Eingaben
+    en: Rule coverage and derived inputs
+  purpose:
+    de: Jede Regel RUL-001 bis RUL-026 wird ausgeführt; abgeleitete Eingaben RUL-015 und RUL-019 folgen der Graph-Ableitung; Determinismus des Regelpfads.
+    en: Every rule RUL-001 to RUL-026 is executed; derived inputs RUL-015 and RUL-019 follow the graph derivation; determinism of the rule path.
+  test_type: AUTOMATED
+  categories:
+  - D
+  - J
+  evaluation_dimensions:
+  - COMPLETENESS
+  - REPRODUCIBILITY
+  - REGRESSION
+  preconditions: *id001
+  inputs:
+    de: Alle Testeingaben der Regel-Engine.
+    en: All rule engine test inputs.
+  expected:
+    de: Alle Regeln erreicht; identische Eingaben ergeben identische Pfade.
+    en: All rules reached; identical inputs yield identical paths.
+  verifies_sr:
+  - SR-002
+  - SR-039
+  verifies_rul:
+  - RUL-001
+  - RUL-002
+  - RUL-003
+  - RUL-004
+  - RUL-005
+  - RUL-006
+  - RUL-007
+  - RUL-008
+  - RUL-009
+  - RUL-010
+  - RUL-011
+  - RUL-012
+  - RUL-013
+  - RUL-014
+  - RUL-015
+  - RUL-016
+  - RUL-017
+  - RUL-018
+  - RUL-019
+  - RUL-020
+  - RUL-021
+  - RUL-022
+  - RUL-023
+  - RUL-024
+  - RUL-025
+  - RUL-026
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_rule_engine.py::RuleCoverageTest::test_all_rules_executed
+  - tests/test_rule_engine.py::DerivedInputGraphTest::test_rul_015_is_reached_only_via_its_sole_value
+  - tests/test_rule_engine.py::DerivedInputGraphTest::test_rul_019_true_on_every_reachable_path
+  - tests/test_rule_engine.py::FailClosedTest::test_deterministic
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-012
+  status: aktiv
+  title:
+    de: AI Act nicht anwendbar
+    en: AI Act not applicable
+  purpose:
+    de: Kein KI-System, kein Anwendungsbereich nach Art. 2 bzw. Ausschluss.
+    en: No AI system, no scope under Art. 2 or exclusion.
+  test_type: AUTOMATED
+  categories:
+  - C
+  evaluation_dimensions:
+  - CORRECTNESS
+  preconditions: *id001
+  inputs:
+    de: Eingaben zu ai_system_status, scope_nexus, scope_exclusion.
+    en: Inputs for ai_system_status, scope_nexus, scope_exclusion.
+  expected:
+    de: AI_ACT_NOT_APPLICABLE bzw. Prüfbedarf bei OTHER_REVIEW.
+    en: AI_ACT_NOT_APPLICABLE or review for OTHER_REVIEW.
+  verifies_sr:
+  - SR-007
+  - SR-004
+  verifies_rul:
+  - RUL-027
+  - RUL-028
+  - RUL-029
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_ai_act_applicability.py::ScopeTest::test_01_no_ai_system
+  - tests/test_ai_act_applicability.py::ScopeTest::test_02_no_article_2_scope
+  - tests/test_ai_act_applicability.py::ScopeTest::test_03_article_2_exclusion
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-013
+  status: aktiv
+  title:
+    de: 'AI Act: Hochrisiko über Art. 6 Abs. 1 und Negativpfade'
+    en: 'AI Act: high risk via Art. 6(1) and negative paths'
+  purpose:
+    de: Produkt bzw. Sicherheitsbauteil mit Konformitätsbewertung durch Dritte; nicht hochriskante Pfade (kein Sicherheitsbauteil, ausschließlich nicht gesundheitsbezogene Bewertung).
+    en: Product or safety component with third-party conformity assessment; non-high-risk paths (no safety component, only non-health assessment).
+  test_type: AUTOMATED
+  categories:
+  - C
+  evaluation_dimensions:
+  - CORRECTNESS
+  preconditions: *id001
+  inputs:
+    de: Eingaben der Art.-6-Abs.-1-Route.
+    en: Inputs of the Art. 6(1) route.
+  expected:
+    de: AI_ACT_HIGH_RISK mit applicable_from 2028-08-02 bzw. AI_ACT_APPLICABLE_NOT_HIGH_RISK.
+    en: AI_ACT_HIGH_RISK with applicable_from 2028-08-02 or AI_ACT_APPLICABLE_NOT_HIGH_RISK.
+  verifies_sr:
+  - SR-007
+  verifies_rul:
+  - RUL-030
+  - RUL-031
+  - RUL-032
+  - RUL-033
+  - RUL-034
+  - RUL-035
+  - RUL-043
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_ai_act_applicability.py::Article61Test::test_04_mdr_product_with_third_party_assessment_is_candidate
+  - tests/test_ai_act_applicability.py::Article61Test::test_05_article_1a_non_safety_component
+  - tests/test_ai_act_applicability.py::Article61Test::test_06_article_1b_health_safety_override
+  - tests/test_ai_act_applicability.py::Article61Test::test_07_article_1c_only_non_health_safety_assessment
+  - tests/test_ai_act_applicability.py::Article61Test::test_09_article_6_1_effective
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-014
+  status: aktiv
+  title:
+    de: 'AI Act: noch nicht anwendbarer Zeitpunkt'
+    en: 'AI Act: not yet applicable date'
+  purpose:
+    de: Stichtage 2028-08-02 (Art. 6 Abs. 1) und 2027-12-02 (Anhang III).
+    en: Dates 2028-08-02 (Art. 6(1)) and 2027-12-02 (Annex III).
+  test_type: AUTOMATED
+  categories:
+  - C
+  - D
+  evaluation_dimensions:
+  - CORRECTNESS
+  preconditions: *id001
+  inputs:
+    de: Bewertungsdaten vor den Stichtagen.
+    en: Assessment dates before the application dates.
+  expected:
+    de: AI_ACT_NOT_YET_APPLICABLE mit applicable_from.
+    en: AI_ACT_NOT_YET_APPLICABLE with applicable_from.
+  verifies_sr:
+  - SR-007
+  verifies_rul:
+  - RUL-034
+  - RUL-039
+  - RUL-043
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_ai_act_applicability.py::Article61Test::test_08_article_6_1_before_2028_08_02
+  - tests/test_ai_act_applicability.py::Article62And63Test::test_18_annex_iii_before_2027_12_02
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-015
+  status: aktiv
+  title:
+    de: 'AI Act: Bestandssysteme und Übergang'
+    en: 'AI Act: legacy systems and transition'
+  purpose:
+    de: Bestandssystem ohne erhebliche Änderung, Behördennutzung mit Frist 2030-08-02, erhebliche Änderung.
+    en: Legacy system without significant change, public-authority use with deadline 2030-08-02, significant change.
+  test_type: AUTOMATED
+  categories:
+  - C
+  evaluation_dimensions:
+  - CORRECTNESS
+  preconditions: *id001
+  inputs:
+    de: Inverkehrbringen vor dem Stichtag.
+    en: Placing on the market before the application date.
+  expected:
+    de: AI_ACT_HIGH_RISK_LEGACY_TRANSITION, Hinweis ART111_2 bzw. AI_ACT_HIGH_RISK.
+    en: AI_ACT_HIGH_RISK_LEGACY_TRANSITION, flag ART111_2 or AI_ACT_HIGH_RISK.
+  verifies_sr:
+  - SR-007
+  verifies_rul:
+  - RUL-035
+  - RUL-036
+  - RUL-037
+  - RUL-043
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_ai_act_applicability.py::Article61Test::test_10_legacy_without_significant_change
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-016
+  status: aktiv
+  title:
+    de: 'AI Act: Hochrisiko über Art. 6 Abs. 2 (Anhang III)'
+    en: 'AI Act: high risk via Art. 6(2) (Annex III)'
+  purpose:
+    de: Anhang-III-Anwendungsfälle im Scope (u. a. Notfalltriage, Emotionserkennung), Profiling, sonstige mögliche Fälle und parallele Routen.
+    en: Annex III use cases in scope (including emergency triage, emotion recognition), profiling, other possible cases and parallel routes.
+  test_type: AUTOMATED
+  categories:
+  - C
+  - D
+  evaluation_dimensions:
+  - CORRECTNESS
+  - COMPLETENESS
+  preconditions: *id001
+  inputs:
+    de: Eingaben der Anhang-III-Route.
+    en: Inputs of the Annex III route.
+  expected:
+    de: AI_ACT_HIGH_RISK bzw. Prüfbedarf; bei zwei Routen gilt die früheste wirksame.
+    en: AI_ACT_HIGH_RISK or review; with two routes the earliest effective one governs.
+  verifies_sr:
+  - SR-007
+  verifies_rul:
+  - RUL-038
+  - RUL-039
+  - RUL-040
+  - RUL-043
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_ai_act_applicability.py::Article62And63Test::test_11_no_annex_iii_use_case
+  - tests/test_ai_act_applicability.py::Article62And63Test::test_12_emergency_healthcare_triage
+  - tests/test_ai_act_applicability.py::Article62And63Test::test_13_emotion_recognition
+  - tests/test_ai_act_applicability.py::Article62And63Test::test_14_profiling_excludes_derogation
+  - tests/test_ai_act_applicability.py::Article62And63Test::test_17_other_annex_iii_possible
+  - tests/test_ai_act_applicability.py::Article62And63Test::test_19_both_routes_earliest_effective_route_governs
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-017
+  status: aktiv
+  title:
+    de: 'AI Act: Ausnahme nach Art. 6 Abs. 3 nur im zulässigen Pfad'
+    en: 'AI Act: Art. 6(3) derogation only on the permitted path'
+  purpose:
+    de: Gültige Ausnahme, Ausnahme bei erheblichem Risiko, Hinweis nach Art. 6 Abs. 4; die Ausnahme hebt Art. 6 Abs. 1 nicht auf.
+    en: Valid derogation, derogation with significant risk, Art. 6(4) note; the derogation does not lift Art. 6(1).
+  test_type: AUTOMATED
+  categories:
+  - C
+  - D
+  evaluation_dimensions:
+  - CORRECTNESS
+  preconditions: *id001
+  inputs:
+    de: Eingaben zu art6_3_derogation_condition und Risiko.
+    en: Inputs for art6_3_derogation_condition and risk.
+  expected:
+    de: AI_ACT_APPLICABLE_NOT_HIGH_RISK mit Hinweis ART6_4 nur ohne Art.-6-Abs.-1-Hochrisiko.
+    en: AI_ACT_APPLICABLE_NOT_HIGH_RISK with ART6_4 flag only without Art. 6(1) high risk.
+  verifies_sr:
+  - SR-007
+  verifies_rul:
+  - RUL-041
+  - RUL-042
+  - RUL-043
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_ai_act_applicability.py::Article62And63Test::test_15_valid_article_6_3_derogation
+  - tests/test_ai_act_applicability.py::Article62And63Test::test_16_derogation_condition_with_significant_risk
+  - tests/test_ai_act_applicability.py::Article62And63Test::test_20_article_6_4_note_on_non_high_risk_self_assessment
+  - tests/test_ai_act_applicability.py::Article62And63Test::test_article_6_3_does_not_lift_article_6_1
+  - tests/test_ai_act_applicability.py::Article62And63Test::test_negative_article_6_1_alone_is_never_not_high_risk
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-018
+  status: aktiv
+  title:
+    de: AI-Act-Anforderungsblock
+    en: AI Act requirement block
+  purpose:
+    de: Aktivierung von RR-001 bis RR-115 je Endzustand; lokale und nicht dokumentierte Bedingungen bleiben fail-closed.
+    en: Activation of RR-001 to RR-115 per end state; local and undocumented conditions stay fail-closed.
+  test_type: AUTOMATED
+  categories:
+  - A
+  - C
+  - G
+  evaluation_dimensions:
+  - CORRECTNESS
+  - COMPLETENESS
+  preconditions: *id001
+  inputs:
+    de: Endzustände des Art.-6-Routings.
+    en: End states of the Art. 6 routing.
+  expected:
+    de: 'Hochrisiko: 45 anwendbar, 70 ungeklärt; inaktive Zustände: 115 nicht anwendbar; Prüfbedarf: 115 ungeklärt.'
+    en: 'High risk: 45 applicable, 70 unresolved; inactive states: 115 not applicable; review: 115 unresolved.'
+  verifies_sr:
+  - SR-008
+  - SR-009
+  - SR-010
+  verifies_rul:
+  - RUL-043
+  covers_rr:
+  - BLOCK:AI_ACT_HIGH_RISK
+  expected_trace: null
+  automation:
+  - tests/test_ai_act_applicability.py::AiRequirementBlockTest::test_high_risk_activates_block_with_local_fail_closed
+  - tests/test_ai_act_applicability.py::AiRequirementBlockTest::test_inactive_states_deactivate_block
+  - tests/test_ai_act_applicability.py::AiRequirementBlockTest::test_review_and_not_evaluated_stay_unresolved
+  - tests/test_ai_act_applicability.py::AiRuleCoverageTest::test_all_ai_rules_executed
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-019
+  status: aktiv
+  title:
+    de: MDR-Scope und klassenspezifische PMS-Blöcke
+    en: MDR scope and class-specific PMS blocks
+  purpose:
+    de: MDR_MDSW aktiviert den MDR-Korpus; NOT_MDSW und IVDR deaktivieren ihn; Art.-85/86-Blöcke nach Klasse.
+    en: MDR_MDSW activates the MDR corpus; NOT_MDSW and IVDR deactivate it; Art. 85/86 blocks by class.
+  test_type: AUTOMATED
+  categories:
+  - A
+  - B
+  evaluation_dimensions:
+  - CORRECTNESS
+  - COMPLETENESS
+  preconditions: *id001
+  inputs:
+    de: Qualifikations- und Klassifikationseingaben.
+    en: Qualification and classification inputs.
+  expected:
+    de: Blockweise APPLICABLE bzw. NOT_APPLICABLE mit SCOPE_INACTIVE.
+    en: Block-wise APPLICABLE or NOT_APPLICABLE with SCOPE_INACTIVE.
+  verifies_sr:
+  - SR-008
+  - SR-010
+  verifies_rul:
+  - RUL-005
+  - RUL-006
+  - RUL-020
+  covers_rr:
+  - BLOCK:MDR_MDSW_CORE
+  - BLOCK:MDR_ART85
+  - BLOCK:MDR_ART86
+  - BLOCK:MDR_ART86_ABS2
+  expected_trace: null
+  automation:
+  - tests/test_applicability_engine.py::TopLevelRoutingTest::test_a_not_mdsw
+  - tests/test_applicability_engine.py::TopLevelRoutingTest::test_b_out_of_scope_ivdr
+  - tests/test_applicability_engine.py::TopLevelRoutingTest::test_c_class_i
+  - tests/test_applicability_engine.py::TopLevelRoutingTest::test_d_class_iia
+  - tests/test_applicability_engine.py::TopLevelRoutingTest::test_e_class_iii_article_86_2
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-020
+  status: aktiv
+  title:
+    de: 'MDR: lokale Bedingungen'
+    en: 'MDR: local conditions'
+  purpose:
+    de: Laienanwendung, elektronische Gebrauchsanweisung, fehlender lokaler Auslöser, reguläre RR mit inaktivem übergeordnetem Bereich.
+    en: Lay use, electronic instructions for use, missing local trigger, regular RR with inactive parent scope.
+  test_type: AUTOMATED
+  categories:
+  - A
+  - G
+  evaluation_dimensions:
+  - CORRECTNESS
+  preconditions: *id001
+  inputs:
+    de: Applicability-Eingaben lay_use, eifu_provision u. a.
+    en: Applicability inputs lay_use, eifu_provision etc.
+  expected:
+    de: Anwendbarkeit folgt Block und lokaler Bedingung; fehlender Auslöser ergibt APPLICABILITY_UNRESOLVED.
+    en: Applicability follows block and local condition; a missing trigger yields APPLICABILITY_UNRESOLVED.
+  verifies_sr:
+  - SR-008
+  - SR-009
+  verifies_rul:
+  - RUL-006
+  covers_rr:
+  - BLOCK:MDR_LAY_USE
+  - BLOCK:SRC009_EIFU_REPLACEMENT
+  - BLOCK:SRC009_EIFU_ADDITIONAL
+  expected_trace: null
+  automation:
+  - tests/test_applicability_engine.py::TopLevelRoutingTest::test_f_lay_use
+  - tests/test_applicability_engine.py::TopLevelRoutingTest::test_g_eifu
+  - tests/test_applicability_engine.py::TopLevelRoutingTest::test_h_missing_local_trigger
+  - tests/test_applicability_engine.py::TopLevelRoutingTest::test_i_regular_rr_with_inactive_parent_scope
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-021
+  status: aktiv
+  title:
+    de: Applicability fail-closed
+    en: Applicability fail-closed
+  purpose:
+    de: Unvollständige oder fehlende Entscheidungen, fehlende Zuordnung und unzulässige Eingaben führen nie zu APPLICABLE.
+    en: Incomplete or missing decisions, missing mapping and invalid inputs never lead to APPLICABLE.
+  test_type: AUTOMATED
+  categories:
+  - G
+  evaluation_dimensions:
+  - CORRECTNESS
+  preconditions: *id001
+  inputs:
+    de: Unvollständige Entscheidungsergebnisse bzw. Eingaben.
+    en: Incomplete decision results or inputs.
+  expected:
+    de: APPLICABILITY_UNRESOLVED bzw. kontrollierter Fehler.
+    en: APPLICABILITY_UNRESOLVED or controlled error.
+  verifies_sr:
+  - SR-009
+  - SR-034
+  verifies_rul: []
+  covers_rr:
+  - BLOCK:MDR_ART86
+  expected_trace: null
+  automation:
+  - tests/test_applicability_engine.py::FailClosedApplicabilityTest::test_ai_act_requirements_unresolved_until_modelled
+  - tests/test_applicability_engine.py::FailClosedApplicabilityTest::test_incomplete_classification_leaves_class_blocks_unresolved
+  - tests/test_applicability_engine.py::FailClosedApplicabilityTest::test_no_decision_results_resolve_nothing_as_applicable
+  - tests/test_applicability_engine.py::FailClosedApplicabilityTest::test_missing_mapping_is_unresolved
+  - tests/test_applicability_engine.py::FailClosedApplicabilityTest::test_invalid_inputs_rejected
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-022
+  status: aktiv
+  title:
+    de: Applicability ohne Textauswertung, rückverfolgbar und deterministisch
+    en: Applicability without text evaluation, traceable and deterministic
+  purpose:
+    de: Anforderungstexte beeinflussen das Ergebnis nicht; Ergebnisse sind über determined_by rückverfolgbar und reproduzierbar.
+    en: Requirement texts do not influence the result; results are traceable via determined_by and reproducible.
+  test_type: AUTOMATED
+  categories:
+  - F
+  - J
+  evaluation_dimensions:
+  - TRACEABILITY
+  - REPRODUCIBILITY
+  preconditions: *id001
+  inputs:
+    de: Manipulierte Anforderungstexte; wiederholte Auswertung.
+    en: Manipulated requirement texts; repeated evaluation.
+  expected:
+    de: Identisches Ergebnis; jede RR verweist auf ihre DecisionResults.
+    en: Identical result; every RR refers to its DecisionResults.
+  verifies_sr:
+  - SR-008
+  - SR-020
+  verifies_rul: []
+  covers_rr:
+  - RR-116
+  expected_trace: null
+  automation:
+  - tests/test_applicability_engine.py::TopLevelRoutingTest::test_j_no_requirement_text_is_evaluated
+  - tests/test_applicability_engine.py::FailClosedApplicabilityTest::test_traceable_and_deterministic
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-023
+  status: aktiv
+  title:
+    de: 'IEC 62304: Sicherheitsklassen A, B, C und noch nicht klassifiziert'
+    en: 'IEC 62304: safety classes A, B, C and not yet classified'
+  purpose:
+    de: Klassengebundene RR nach Sicherheitsklasse; noch nicht klassifizierte Software folgt nach 4.3/g der Klasse-C-Route; SOUP-Auslöser.
+    en: Class-bound RR by safety class; not yet classified software follows the class C route per 4.3/g; SOUP trigger.
+  test_type: AUTOMATED
+  categories:
+  - E
+  evaluation_dimensions:
+  - CORRECTNESS
+  preconditions: *id001
+  inputs:
+    de: software_safety_class, iec62304_route, soup_used.
+    en: software_safety_class, iec62304_route, soup_used.
+  expected:
+    de: 'A: A/B/C-RR anwendbar, B/C-RR nicht; C bzw. noch nicht klassifiziert: C-RR anwendbar; SOUP-RR nur mit SOUP.'
+    en: 'A: A/B/C RR applicable, B/C RR not; C or not yet classified: C RR applicable; SOUP RR only with SOUP.'
+  verifies_sr:
+  - SR-008
+  - SR-009
+  verifies_rul: []
+  covers_rr:
+  - RR-716
+  - RR-727
+  - RR-728
+  - RR-760
+  - BLOCK:NORM_SRC_007_SOFTWARE_LIFECYCLE
+  expected_trace: null
+  automation:
+  - tests/test_standards_applicability.py::StandardsApplicabilityTest::test_iec62304_safety_class
+  - tests/test_standards_applicability.py::StandardsApplicabilityTest::test_not_yet_classified_software_follows_class_c
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-024
+  status: aktiv
+  title:
+    de: 'IEC 62304: Legacy-Route und Problemauslöser'
+    en: 'IEC 62304: legacy route and problem trigger'
+  purpose:
+    de: Legacy-RR nur auf der Legacy-Route; klassengebundene RR dort ungeklärt; Problembericht als Auslöser.
+    en: Legacy RR only on the legacy route; class-bound RR unresolved there; problem report as trigger.
+  test_type: AUTOMATED
+  categories:
+  - E
+  evaluation_dimensions:
+  - CORRECTNESS
+  preconditions: *id001
+  inputs:
+    de: iec62304_route LEGACY_SOFTWARE; software_problem_reported.
+    en: iec62304_route LEGACY_SOFTWARE; software_problem_reported.
+  expected:
+    de: RR-698 anwendbar, RR-716 ungeklärt; Problem-RR nur mit Problembericht.
+    en: RR-698 applicable, RR-716 unresolved; problem RR only with a problem report.
+  verifies_sr:
+  - SR-008
+  - SR-009
+  verifies_rul: []
+  covers_rr:
+  - RR-698
+  - RR-716
+  - RR-859
+  expected_trace: null
+  automation:
+  - tests/test_standards_applicability.py::StandardsApplicabilityTest::test_iec62304_legacy_route
+  - tests/test_standards_applicability.py::StandardsApplicabilityTest::test_iec62304_problem_trigger
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-025
+  status: aktiv
+  title:
+    de: 'IEC 62366-1: reguläre Route, UOUP und geänderte UOUP-Teile'
+    en: 'IEC 62366-1: regular route, UOUP and modified UOUP parts'
+  purpose:
+    de: Routenbindung nach Abschnitt 5 bzw. Anhang C; geänderte UOUP-Teile aktivieren die reguläre Route; lokale Auslöser Usability-Test, Training, Sicherheitsinformation.
+    en: Route binding per clause 5 or Annex C; modified UOUP parts activate the regular route; local triggers usability test, training, safety information.
+  test_type: AUTOMATED
+  categories:
+  - E
+  evaluation_dimensions:
+  - CORRECTNESS
+  preconditions: *id001
+  inputs:
+    de: iec62366_ui_route und lokale Eingaben.
+    en: iec62366_ui_route and local inputs.
+  expected:
+    de: 'REGULAR_ROUTE: Abschnitt-5-RR anwendbar, Anhang-C-RR nicht; UOUP_WITH_MODIFIED_PARTS: beide.'
+    en: 'REGULAR_ROUTE: clause 5 RR applicable, Annex C RR not; UOUP_WITH_MODIFIED_PARTS: both.'
+  verifies_sr:
+  - SR-008
+  - SR-009
+  verifies_rul: []
+  covers_rr:
+  - RR-882
+  - RR-889
+  - RR-930
+  - RR-954
+  - BLOCK:NORM_SRC_008_USABILITY
+  expected_trace: null
+  automation:
+  - tests/test_standards_applicability.py::StandardsApplicabilityTest::test_iec62366_routes
+  - tests/test_standards_applicability.py::StandardsApplicabilityTest::test_iec62366_local_triggers
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-026
+  status: aktiv
+  title:
+    de: 'ISO 13485: bedingte Anforderungen'
+    en: 'ISO 13485: conditional requirements'
+  purpose:
+    de: Ausschlussregel nach Abschnitt 1 für die Abschnitte 6 bis 8 und faktische Bedingungen (QMS-Software, Outsourcing).
+    en: Clause 1 exclusion rule for clauses 6 to 8 and factual conditions (QMS software, outsourcing).
+  test_type: AUTOMATED
+  categories:
+  - E
+  evaluation_dimensions:
+  - CORRECTNESS
+  preconditions: *id001
+  inputs:
+    de: iso13485_clause1_exclusion_claimed, qms_software_used, outsourced_processes.
+    en: iso13485_clause1_exclusion_claimed, qms_software_used, outsourced_processes.
+  expected:
+    de: 'Beanspruchter Ausschluss: Abschnitt-6–8-RR ungeklärt; faktische Bedingung falsch: nicht anwendbar.'
+    en: 'Claimed exclusion: clause 6–8 RR unresolved; factual condition false: not applicable.'
+  verifies_sr:
+  - SR-008
+  - SR-009
+  verifies_rul: []
+  covers_rr:
+  - RR-384
+  - RR-400
+  - RR-403
+  - RR-443
+  - BLOCK:NORM_SRC_005_QMS
+  expected_trace: null
+  automation:
+  - tests/test_standards_applicability.py::StandardsApplicabilityTest::test_iso13485_clause1_exclusion
+  - tests/test_standards_applicability.py::StandardsApplicabilityTest::test_iso13485_factual_conditions
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-027
+  status: aktiv
+  title:
+    de: ISO 14971 und Normblöcke
+    en: ISO 14971 and standards blocks
+  purpose:
+    de: Reguläre und bedingte ISO-14971-RR, fail-closed Merge-RR, Scope der Normblöcke.
+    en: Regular and conditional ISO 14971 RR, fail-closed merged RR, scope of the standards blocks.
+  test_type: AUTOMATED
+  categories:
+  - E
+  - A
+  - G
+  evaluation_dimensions:
+  - CORRECTNESS
+  - COMPLETENESS
+  preconditions: *id001
+  inputs:
+    de: Normeingaben mit und ohne MDR_MDSW.
+    en: Standards inputs with and without MDR_MDSW.
+  expected:
+    de: Regulär anwendbar; bedingt bzw. Merge ungeklärt; NOT_MDSW deaktiviert alle Normblöcke.
+    en: Regular applicable; conditional or merged unresolved; NOT_MDSW deactivates all standards blocks.
+  verifies_sr:
+  - SR-008
+  - SR-009
+  - SR-010
+  verifies_rul: []
+  covers_rr:
+  - RR-378
+  - RR-593
+  - RR-678
+  - BLOCK:NORM_SRC_006_RISK_MANAGEMENT
+  expected_trace: null
+  automation:
+  - tests/test_standards_applicability.py::StandardsApplicabilityTest::test_iso14971_regular_and_conditional
+  - tests/test_standards_applicability.py::StandardsApplicabilityTest::test_merges_stay_fail_closed
+  - tests/test_standards_applicability.py::StandardsApplicabilityTest::test_not_mdsw_deactivates_norm_blocks
+  - tests/test_standards_applicability.py::StandardsApplicabilityTest::test_every_new_rr_is_mapped_to_a_norm_block
+  - tests/test_standards_applicability.py::StandardsApplicabilityTest::test_without_norm_inputs_only_regular_rr_are_applicable
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-028
+  status: aktiv
+  title:
+    de: Katalog-Repository fail-closed und schreibgeschützt
+    en: Catalog repository fail-closed and read-only
+  purpose:
+    de: Versionen fixiert, unbekannte IDs abgewiesen, Kataloge schreibgeschützt, ungültige oder fehlende Kataloge werden nicht geladen.
+    en: Versions fixed, unknown IDs rejected, catalogs read-only, invalid or missing catalogs are not loaded.
+  test_type: AUTOMATED
+  categories:
+  - G
+  - J
+  evaluation_dimensions:
+  - CORRECTNESS
+  - REGRESSION
+  preconditions:
+    de: Repository-Kopie in temporärem Verzeichnis.
+    en: Repository copy in a temporary directory.
+  inputs:
+    de: Reale und manipulierte Kataloge.
+    en: Real and manipulated catalogs.
+  expected:
+    de: Kontrollierter CatalogValidationError; keine Teilauswertung.
+    en: Controlled CatalogValidationError; no partial evaluation.
+  verifies_sr:
+  - SR-021
+  - SR-022
+  - SR-030
+  - SR-031
+  verifies_rul: []
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_catalog_repository.py::CatalogRepositoryTest::test_versions_are_pinned
+  - tests/test_catalog_repository.py::CatalogRepositoryTest::test_version_set_matches_data_model
+  - tests/test_catalog_repository.py::CatalogRepositoryTest::test_catalog_sizes
+  - tests/test_catalog_repository.py::CatalogRepositoryTest::test_unknown_ids_are_rejected
+  - tests/test_catalog_repository.py::CatalogRepositoryTest::test_catalogs_are_read_only
+  - tests/test_catalog_repository.py::CatalogRepositoryTest::test_texts_come_from_the_catalog
+  - tests/test_catalog_repository.py::CatalogRepositoryFailClosedTest::test_copy_of_repository_loads
+  - tests/test_catalog_repository.py::CatalogRepositoryFailClosedTest::test_invalid_rul_reference_is_rejected
+  - tests/test_catalog_repository.py::CatalogRepositoryFailClosedTest::test_unparsable_catalog_is_rejected
+  - tests/test_catalog_repository.py::CatalogRepositoryFailClosedTest::test_missing_catalog_is_rejected
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-029
+  status: aktiv
+  title:
+    de: Validatorlauf aller Kataloge
+    en: Validator run of all catalogs
+  purpose:
+    de: Formale Konsistenz aller maschinenlesbaren Kataloge einschließlich Testfall-, Evidenz- und Maßnahmenkatalog.
+    en: Formal consistency of all machine-readable catalogs including test case, evidence and measure catalogs.
+  test_type: VALIDATOR
+  categories:
+  - J
+  evaluation_dimensions:
+  - COMPLETENESS
+  - REGRESSION
+  preconditions:
+    de: Arbeitsstand ohne ungeprüfte Änderungen.
+    en: Working state without unchecked changes.
+  inputs:
+    de: Alle Kataloge des Repositorys.
+    en: All catalogs of the repository.
+  expected:
+    de: Alle Validatoren PASS.
+    en: All validators PASS.
+  verifies_sr:
+  - SR-022
+  - SR-031
+  verifies_rul: []
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tools/validate_rr_catalog.py
+  - tools/validate_rul_catalog.py
+  - tools/validate_sr_catalog.py
+  - tools/validate_data_model.py
+  - tools/validate_rr_applicability.py
+  - tools/validate_standards_mapping.py
+  - tools/validate_rr_measures.py
+  - tools/validate_test_catalog.py
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-030
+  status: aktiv
+  title:
+    de: Traceability-Integrität
+    en: Traceability integrity
+  purpose:
+    de: Alle Verknüpfungen SRC → RR/RUL, DI → SR, SR → Modul, RR → Maßnahme → Nachweisart, TC → SR/RUL/RR und EV → TC sind auflösbar.
+    en: All links SRC → RR/RUL, DI → SR, SR → module, RR → measure → evidence type, TC → SR/RUL/RR and EV → TC resolve.
+  test_type: AUTOMATED
+  categories:
+  - F
+  - J
+  evaluation_dimensions:
+  - TRACEABILITY
+  - COMPLETENESS
+  preconditions: *id001
+  inputs:
+    de: Alle Kataloge.
+    en: All catalogs.
+  expected:
+    de: Keine unaufgelösten Verweise.
+    en: No unresolved references.
+  verifies_sr:
+  - SR-019
+  - SR-020
+  - SR-022
+  verifies_rul: []
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tools/test_traceability.py::TraceabilityTest::test_real_links_resolve
+  - tools/test_traceability.py::TraceabilityTest::test_all_link_kinds_present
+  - tools/traceability.py
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-031
+  status: aktiv
+  title:
+    de: Reproduzierbarkeit der Gesamtauswertung
+    en: Reproducibility of the complete evaluation
+  purpose:
+    de: 'Metatest: gleiche vollständige Eingabe ergibt über mehrere Läufe, neu geladene Kataloge und abweichende Eingabereihenfolge identische Regel-, Applicability- und Trace-Ausgaben.'
+    en: 'Metatest: the same complete input yields identical rule, applicability and trace outputs across runs, reloaded catalogs and different input order.'
+  test_type: AUTOMATED
+  categories:
+  - F
+  - J
+  evaluation_dimensions:
+  - REPRODUCIBILITY
+  preconditions: *id001
+  inputs:
+    de: Eingaben des Referenzfalls TC-036.
+    en: Inputs of reference case TC-036.
+  expected:
+    de: Identische EngineRuns, ApplicabilityResults und Herleitungen einschließlich IDs.
+    en: Identical EngineRuns, ApplicabilityResults and explanations including IDs.
+  verifies_sr:
+  - SR-002
+  - SR-016
+  - SR-028
+  verifies_rul:
+  - RUL-001
+  - RUL-027
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_reproducibility.py::ReproducibilityTest::test_repeated_runs_are_identical
+  - tests/test_reproducibility.py::ReproducibilityTest::test_input_order_does_not_matter
+  - tests/test_reproducibility.py::ReproducibilityTest::test_reloaded_catalogs_give_identical_results
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-032
+  status: aktiv
+  title:
+    de: Neuberechnung nach Eingabeänderung
+    en: Recomputation after an input change
+  purpose:
+    de: 'SR-040: Nach Änderung einer verwendeten Eingabe entspricht das Ergebnis einer vollständigen Neuauswertung; nicht mehr erreichte Eingaben wirken nicht.'
+    en: 'SR-040: after changing a used input the result equals a complete re-evaluation; inputs no longer reached have no effect.'
+  test_type: AUTOMATED
+  categories:
+  - H
+  evaluation_dimensions:
+  - CORRECTNESS
+  - REPRODUCIBILITY
+  preconditions: *id001
+  inputs:
+    de: Referenzeingaben mit geändertem own_medical_purpose bzw. software_safety_class.
+    en: Reference inputs with changed own_medical_purpose or software_safety_class.
+  expected:
+    de: Gleiche Entscheidungen und Anwendbarkeiten wie bei frischer Auswertung; unerreichte Eingaben in keiner RuleExecution und keinem relevant_inputs.
+    en: Same decisions and applicability as a fresh evaluation; unreached inputs in no RuleExecution and no relevant_inputs.
+  verifies_sr:
+  - SR-040
+  - SR-002
+  verifies_rul:
+  - RUL-005
+  - RUL-009
+  covers_rr:
+  - RR-116
+  - RR-728
+  expected_trace: null
+  automation:
+  - tests/test_block5_requirements.py::RecomputationTest::test_changed_input_equals_fresh_evaluation
+  - tests/test_block5_requirements.py::RecomputationTest::test_unreached_inputs_are_not_decision_basis
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-033
+  status: aktiv
+  title:
+    de: Herleitung jeder Anwendbarkeitsentscheidung
+    en: Derivation of every applicability decision
+  purpose:
+    de: 'SR-042: Für APPLICABLE, NOT_APPLICABLE und APPLICABILITY_UNRESOLVED werden Status, Begründung, Block, Prädikate, Eingaben, Entscheidungen mit RUL und Quellen ausgewiesen.'
+    en: 'SR-042: for APPLICABLE, NOT_APPLICABLE and APPLICABILITY_UNRESOLVED, status, reason, block, predicates, inputs, decisions with RUL and sources are shown.'
+  test_type: AUTOMATED
+  categories:
+  - F
+  evaluation_dimensions:
+  - TRACEABILITY
+  preconditions: *id001
+  inputs:
+    de: Referenzeingaben TC-036.
+    en: Reference inputs TC-036.
+  expected:
+    de: Vollständige, aus der Trace-Struktur stammende Herleitung für alle 959 RR.
+    en: Complete derivation taken from the trace structure for all 959 RR.
+  verifies_sr:
+  - SR-042
+  - SR-020
+  verifies_rul:
+  - RUL-020
+  - RUL-043
+  covers_rr:
+  - RR-001
+  - RR-376
+  - RR-727
+  - RR-760
+  expected_trace:
+    de: 'RR-760: Block NORM_SRC_007_SOFTWARE_LIFECYCLE, Prädikate MDR_MDSW, IEC62304_REGULAR_ROUTE, IEC62304_CLASS_BC, SOUP_USED = TRUE; Eingaben software_safety_class, iec62304_route, soup_used; Entscheidungen BOUNDARY/QUALIFICATION mit RUL-001 bis RUL-006; Quelle SRC-007#Abschnitt 5.3.3.'
+    en: 'RR-760: block NORM_SRC_007_SOFTWARE_LIFECYCLE, predicates MDR_MDSW, IEC62304_REGULAR_ROUTE, IEC62304_CLASS_BC, SOUP_USED = TRUE; inputs software_safety_class, iec62304_route, soup_used; decisions BOUNDARY/QUALIFICATION with RUL-001 to RUL-006; source SRC-007#Abschnitt 5.3.3.'
+  automation:
+  - tests/test_block5_requirements.py::ExplanationTest::test_every_state_is_explained
+  - tests/test_block5_requirements.py::ExplanationTest::test_explanation_matches_trace_and_catalog
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-034
+  status: aktiv
+  title:
+    de: Lebenszykluskontext je Anforderung
+    en: Life-cycle context per requirement
+  purpose:
+    de: 'SR-041: Lebenszyklusphasen jeder RR aus dem Katalog mit Bezeichnungen des kontrollierten Vokabulars in DE und EN.'
+    en: 'SR-041: life-cycle phases of every RR from the catalog with controlled-vocabulary labels in DE and EN.'
+  test_type: AUTOMATED
+  categories:
+  - I
+  evaluation_dimensions:
+  - COMPLETENESS
+  - TRACEABILITY
+  preconditions: *id001
+  inputs:
+    de: Alle 959 RR.
+    en: All 959 RR.
+  expected:
+    de: Phasen entsprechen lifecycle_phases; Bezeichnungen aus CONTROLLED_VOCABULARY.md.
+    en: Phases correspond to lifecycle_phases; labels from CONTROLLED_VOCABULARY.md.
+  verifies_sr:
+  - SR-041
+  - SR-011
+  - SR-026
+  verifies_rul: []
+  covers_rr:
+  - RR-630
+  - RR-116
+  expected_trace: null
+  automation:
+  - tests/test_block5_requirements.py::RequirementServiceTest::test_lifecycle_context_for_every_requirement
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-035
+  status: aktiv
+  title:
+    de: Maßnahme- und Nachweiszuordnung je Anforderung
+    en: Measure and evidence assignment per requirement
+  purpose:
+    de: 'SR-043 (strukturell): Jede RR besitzt einen Mapping-Status; MAPPED-RR liefern vorgesehene Maßnahme und Nachweisart; REVIEW_REQUIRED wird nicht als Zuordnung unterstellt.'
+    en: 'SR-043 (structural): every RR has a mapping status; MAPPED RR provide planned measure and evidence type; REVIEW_REQUIRED is not presented as an assignment.'
+  test_type: AUTOMATED
+  categories:
+  - I
+  evaluation_dimensions:
+  - COMPLETENESS
+  - TRACEABILITY
+  preconditions: *id001
+  inputs:
+    de: Maßnahmenkatalog und alle 959 RR.
+    en: Measure catalog and all 959 RR.
+  expected:
+    de: Kette RR → Maßnahme → Nachweisart auflösbar; Zuordnung aus trigger_pattern reproduzierbar.
+    en: Chain RR → measure → evidence type resolvable; assignment reproducible from trigger_pattern.
+  verifies_sr:
+  - SR-043
+  - SR-017
+  verifies_rul: []
+  covers_rr:
+  - RR-630
+  - RR-116
+  expected_trace: null
+  automation:
+  - tests/test_block5_requirements.py::RequirementServiceTest::test_measure_assignment
+  - tests/test_block5_requirements.py::RequirementServiceTest::test_review_required_has_no_measure
+  - tools/test_validate_rr_measures.py::RrMeasureValidationTest::test_real_catalog_is_valid
+  - tools/validate_rr_measures.py
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-036
+  status: aktiv
+  title:
+    de: 'Referenzfall: KI-Symptomchecker, MDR Klasse IIa, AI-Act-Hochrisiko'
+    en: 'Reference case: AI symptom checker, MDR class IIa, AI Act high risk'
+  purpose:
+    de: Manuell adjudizierter Referenzfall für das im Exposé vorgesehene Fallbeispiel (KI-gestützter Symptomchecker, voraussichtlich Klasse IIa nach Regel 11) mit Laienanwendung, Hochrisiko nach Art. 6 Abs. 1 und Normprofil Klasse B.
+    en: Manually adjudicated reference case for the case example foreseen in the exposé (AI-based symptom checker, expected class IIa under Rule 11) with lay use, high risk under Art. 6(1) and standards profile class B.
+  test_type: AUTOMATED
+  categories:
+  - A
+  - B
+  - C
+  - E
+  - F
+  evaluation_dimensions:
+  - CORRECTNESS
+  - COMPLETENESS
+  - TRACEABILITY
+  preconditions: *id001
+  inputs:
+    de: Vollständig in golden_case.rule_inputs und golden_case.profile.
+    en: Fully in golden_case.rule_inputs and golden_case.profile.
+  expected:
+    de: MDSW → MDR_MDSW → Klasse IIa; AI_ACT_HIGH_RISK ab 2028-08-02; Blockzustände und entscheidungskritische RR laut golden_case.
+    en: MDSW → MDR_MDSW → class IIa; AI_ACT_HIGH_RISK from 2028-08-02; block states and decision-critical RR as in golden_case.
+  verifies_sr:
+  - SR-002
+  - SR-005
+  - SR-007
+  - SR-008
+  - SR-009
+  - SR-010
+  - SR-020
+  verifies_rul:
+  - RUL-001
+  - RUL-002
+  - RUL-003
+  - RUL-004
+  - RUL-005
+  - RUL-006
+  - RUL-009
+  - RUL-010
+  - RUL-011
+  - RUL-012
+  - RUL-016
+  - RUL-017
+  - RUL-018
+  - RUL-019
+  - RUL-020
+  - RUL-027
+  - RUL-028
+  - RUL-029
+  - RUL-030
+  - RUL-032
+  - RUL-033
+  - RUL-034
+  - RUL-035
+  - RUL-038
+  - RUL-043
+  covers_rr:
+  - RR-001
+  - RR-064
+  - RR-116
+  - RR-174
+  - RR-240
+  - RR-353
+  - RR-360
+  - RR-370
+  - RR-376
+  - RR-378
+  - RR-384
+  - RR-403
+  - RR-443
+  - RR-593
+  - RR-678
+  - RR-698
+  - RR-727
+  - RR-728
+  - RR-760
+  - RR-889
+  - RR-930
+  - RR-954
+  expected_trace: null
+  automation:
+  - tests/test_golden_cases.py::GoldenCasesTest::test_golden_cases
+  - tests/test_assessment_service.py::GoldenCaseAssessmentTest::test_golden_cases_through_assessment
+  - tests/test_assessment_service.py::GoldenCaseAssessmentTest::test_golden_gap_view_without_answers
+  data_refs: []
+  golden_case:
+    rule_inputs:
+      RUL-001:
+        is_software: true
+        special_route: NONE
+        data_action_type: BEYOND_BASIC
+        individual_patient_benefit: true
+        own_medical_purpose: true
+        ivdr_information_purpose: false
+        drives_or_influences_device: NONE
+        provides_information_for_diagnostic_or_therapeutic_decisions: true
+        decision_impact_death_or_irreversible_deterioration: false
+        decision_impact_serious_deterioration_or_surgery: false
+        used_for_contraception_or_sti_prevention: false
+        therapeutic_with_integrated_diagnostic_function: false
+        drives_substance_administration_or_removal_device: false
+        further_unmodelled_rule_possibly_applicable: false
+      RUL-027:
+        ai_system_status: 'YES'
+        scope_nexus: PRODUCT_MANUFACTURER
+        scope_exclusion: NONE
+        annex_i_product_relation: AI_SYSTEM_IS_PRODUCT
+        third_party_ca_required: 'YES'
+        third_party_ca_only_non_health_safety: 'NO'
+        assessment_date: '2028-09-01'
+        market_or_service_date: '2028-09-01'
+        annex_iii_use_case: NONE
+    profile:
+      lay_use: true
+      eifu_provision: NO_EIFU
+      investigational_device: false
+      custom_made_device: false
+      implantable_device: false
+      iso13485_clause1_exclusion_claimed: false
+      qms_software_used: true
+      outsourced_processes: false
+      purchasing_performed: true
+      software_safety_class: B
+      iec62304_route: REGULAR_LIFECYCLE
+      soup_used: true
+      software_change: false
+      software_problem_reported: false
+      iec62366_ui_route: REGULAR_ROUTE
+      usability_test_planned: true
+      training_required_for_safe_use: false
+      safety_information_as_risk_control: true
+    expected_paths:
+      RUL-001:
+      - RUL-001
+      - RUL-002
+      - RUL-003
+      - RUL-004
+      - RUL-005
+      - RUL-006
+      - RUL-009
+      - RUL-010
+      - RUL-011
+      - RUL-012
+      - RUL-016
+      - RUL-017
+      - RUL-018
+      - RUL-019
+      - RUL-020
+      RUL-027:
+      - RUL-027
+      - RUL-028
+      - RUL-029
+      - RUL-030
+      - RUL-032
+      - RUL-033
+      - RUL-034
+      - RUL-035
+      - RUL-038
+      - RUL-043
+    expected_decisions:
+      QUALIFICATION:
+        status: DECIDED
+        outcome: MDSW
+      BOUNDARY:
+        status: DECIDED
+        outcome: MDR_MDSW
+      CLASSIFICATION:
+        status: DECIDED
+        outcome: FINAL_MDR_CLASS
+        mdr_class: IIa
+      AI_ACT_APPLICABILITY:
+        status: DECIDED
+        outcome: AI_ACT_HIGH_RISK
+        applicable_from: '2028-08-02'
+    expected_block_states:
+      AI_ACT_HIGH_RISK: ACTIVE
+      MDR_MDSW_CORE: ACTIVE
+      MDR_LAY_USE: ACTIVE
+      SRC009_ART3_1_PATH: INACTIVE
+      SRC009_EIFU_REPLACEMENT: INACTIVE
+      SRC009_EIFU_ADDITIONAL: INACTIVE
+      MDR_ART85: INACTIVE
+      MDR_ART86: ACTIVE
+      MDR_ART86_IIB_III: INACTIVE
+      MDR_ART86_IIA: ACTIVE
+      MDR_ART86_ABS2: INACTIVE
+      MDR_ART86_OUTSIDE_ABS2: ACTIVE
+      NORM_SRC_005_QMS: ACTIVE
+      NORM_SRC_006_RISK_MANAGEMENT: ACTIVE
+      NORM_SRC_007_SOFTWARE_LIFECYCLE: ACTIVE
+      NORM_SRC_008_USABILITY: ACTIVE
+    expected_requirements:
+      RR-116:
+      - APPLICABLE
+      - SCOPE_ACTIVE
+      RR-174:
+      - APPLICABLE
+      - SCOPE_ACTIVE
+      RR-353:
+      - NOT_APPLICABLE
+      - SCOPE_INACTIVE
+      RR-360:
+      - APPLICABLE
+      - SCOPE_ACTIVE
+      RR-370:
+      - NOT_APPLICABLE
+      - SCOPE_INACTIVE
+      RR-376:
+      - APPLICABLE
+      - SCOPE_ACTIVE
+      RR-240:
+      - NOT_APPLICABLE
+      - SCOPE_INACTIVE
+      RR-064:
+      - APPLICABLE
+      - SCOPE_ACTIVE
+      RR-001:
+      - APPLICABILITY_UNRESOLVED
+      - CONDITIONALITY_NOT_DOCUMENTED
+      RR-593:
+      - APPLICABLE
+      - SCOPE_ACTIVE
+      RR-384:
+      - APPLICABLE
+      - SCOPE_ACTIVE
+      RR-443:
+      - APPLICABLE
+      - LOCAL_CONDITIONS_MET
+      RR-403:
+      - APPLICABLE
+      - LOCAL_CONDITIONS_MET
+      RR-728:
+      - APPLICABLE
+      - LOCAL_CONDITIONS_MET
+      RR-727:
+      - NOT_APPLICABLE
+      - LOCAL_CONDITION_NOT_MET
+      RR-698:
+      - NOT_APPLICABLE
+      - LOCAL_CONDITION_NOT_MET
+      RR-760:
+      - APPLICABLE
+      - LOCAL_CONDITIONS_MET
+      RR-889:
+      - APPLICABLE
+      - LOCAL_CONDITIONS_MET
+      RR-954:
+      - NOT_APPLICABLE
+      - LOCAL_CONDITION_NOT_MET
+      RR-930:
+      - APPLICABLE
+      - LOCAL_CONDITIONS_MET
+      RR-378:
+      - APPLICABILITY_UNRESOLVED
+      - LOCAL_CONDITION_NOT_MODELLED
+      RR-678:
+      - APPLICABILITY_UNRESOLVED
+      - LOCAL_CONDITION_NOT_MODELLED
+    expected_totals: null
+    expected_scope_totals:
+      inactive: 70
+      unresolved: 0
+  golden: true
+- id: TC-037
+  status: aktiv
+  title:
+    de: 'Referenzfall: Wellness-App ohne medizinische Zweckbestimmung und ohne KI'
+    en: 'Reference case: wellness app without medical purpose and without AI'
+  purpose:
+    de: Vollständige Referenz über alle 959 RR für den Scope-inaktiven Fall.
+    en: Complete reference over all 959 RR for the scope-inactive case.
+  test_type: AUTOMATED
+  categories:
+  - A
+  - B
+  - C
+  evaluation_dimensions:
+  - CORRECTNESS
+  - COMPLETENESS
+  preconditions: *id001
+  inputs:
+    de: Vollständig in golden_case.rule_inputs; kein Applicability-Profil.
+    en: Fully in golden_case.rule_inputs; no applicability profile.
+  expected:
+    de: NOT_MDSW und AI_ACT_NOT_APPLICABLE; alle 959 RR NOT_APPLICABLE mit SCOPE_INACTIVE.
+    en: NOT_MDSW and AI_ACT_NOT_APPLICABLE; all 959 RR NOT_APPLICABLE with SCOPE_INACTIVE.
+  verifies_sr:
+  - SR-002
+  - SR-008
+  - SR-010
+  verifies_rul:
+  - RUL-001
+  - RUL-002
+  - RUL-003
+  - RUL-004
+  - RUL-005
+  - RUL-027
+  covers_rr:
+  - BLOCK:MDR_MDSW_CORE
+  - BLOCK:AI_ACT_HIGH_RISK
+  - BLOCK:NORM_SRC_005_QMS
+  expected_trace: null
+  automation:
+  - tests/test_golden_cases.py::GoldenCasesTest::test_golden_cases
+  - tests/test_assessment_service.py::GoldenCaseAssessmentTest::test_golden_cases_through_assessment
+  - tests/test_assessment_service.py::GoldenCaseAssessmentTest::test_golden_gap_view_without_answers
+  data_refs: []
+  golden_case:
+    rule_inputs:
+      RUL-001:
+        is_software: true
+        special_route: NONE
+        data_action_type: BEYOND_BASIC
+        individual_patient_benefit: true
+        own_medical_purpose: false
+      RUL-027:
+        ai_system_status: 'NO'
+    profile: {}
+    expected_paths:
+      RUL-001:
+      - RUL-001
+      - RUL-002
+      - RUL-003
+      - RUL-004
+      - RUL-005
+      RUL-027:
+      - RUL-027
+    expected_decisions:
+      QUALIFICATION:
+        status: DECIDED
+        outcome: NOT_MDSW
+      AI_ACT_APPLICABILITY:
+        status: DECIDED
+        outcome: AI_ACT_NOT_APPLICABLE
+    expected_block_states:
+      AI_ACT_HIGH_RISK: INACTIVE
+      MDR_MDSW_CORE: INACTIVE
+      MDR_LAY_USE: INACTIVE
+      SRC009_ART3_1_PATH: INACTIVE
+      SRC009_EIFU_REPLACEMENT: INACTIVE
+      SRC009_EIFU_ADDITIONAL: INACTIVE
+      MDR_ART85: INACTIVE
+      MDR_ART86: INACTIVE
+      MDR_ART86_IIB_III: INACTIVE
+      MDR_ART86_IIA: INACTIVE
+      MDR_ART86_ABS2: INACTIVE
+      MDR_ART86_OUTSIDE_ABS2: INACTIVE
+      NORM_SRC_005_QMS: INACTIVE
+      NORM_SRC_006_RISK_MANAGEMENT: INACTIVE
+      NORM_SRC_007_SOFTWARE_LIFECYCLE: INACTIVE
+      NORM_SRC_008_USABILITY: INACTIVE
+    expected_requirements:
+      RR-116:
+      - NOT_APPLICABLE
+      - SCOPE_INACTIVE
+      RR-064:
+      - NOT_APPLICABLE
+      - SCOPE_INACTIVE
+      RR-593:
+      - NOT_APPLICABLE
+      - SCOPE_INACTIVE
+    expected_totals:
+      APPLICABLE: 0
+      NOT_APPLICABLE: 959
+      APPLICABILITY_UNRESOLVED: 0
+    expected_scope_totals:
+      inactive: 959
+      unresolved: 0
+  golden: true
+- id: TC-038
+  status: aktiv
+  title:
+    de: 'Referenzfall: MDSW Klasse I ohne KI, IEC-62304-Legacy-Route, geänderte UOUP-Teile, ISO-13485-Ausschlüsse'
+    en: 'Reference case: MDSW class I without AI, IEC 62304 legacy route, modified UOUP parts, ISO 13485 exclusions'
+  purpose:
+    de: Referenzfall für Klasse I (Regel-11-Restfall), inaktiven AI-Act-Block, eIFU anstelle Papier und bedingte Normrouten.
+    en: Reference case for class I (Rule 11 residual case), inactive AI Act block, eIFU instead of paper and conditional standards routes.
+  test_type: AUTOMATED
+  categories:
+  - A
+  - B
+  - C
+  - E
+  - G
+  evaluation_dimensions:
+  - CORRECTNESS
+  - COMPLETENESS
+  preconditions: *id001
+  inputs:
+    de: Vollständig in golden_case.rule_inputs und golden_case.profile.
+    en: Fully in golden_case.rule_inputs and golden_case.profile.
+  expected:
+    de: MDR_MDSW, Klasse I; AI_ACT_NOT_APPLICABLE; Blockzustände und entscheidungskritische RR laut golden_case.
+    en: MDR_MDSW, class I; AI_ACT_NOT_APPLICABLE; block states and decision-critical RR as in golden_case.
+  verifies_sr:
+  - SR-002
+  - SR-005
+  - SR-008
+  - SR-009
+  - SR-010
+  verifies_rul:
+  - RUL-001
+  - RUL-006
+  - RUL-009
+  - RUL-010
+  - RUL-013
+  - RUL-015
+  - RUL-016
+  - RUL-017
+  - RUL-018
+  - RUL-019
+  - RUL-020
+  - RUL-027
+  covers_rr:
+  - RR-064
+  - RR-116
+  - RR-205
+  - RR-353
+  - RR-360
+  - RR-384
+  - RR-403
+  - RR-443
+  - RR-693
+  - RR-698
+  - RR-716
+  - RR-728
+  - RR-889
+  - RR-930
+  - RR-954
+  expected_trace: null
+  automation:
+  - tests/test_golden_cases.py::GoldenCasesTest::test_golden_cases
+  - tests/test_assessment_service.py::GoldenCaseAssessmentTest::test_golden_cases_through_assessment
+  - tests/test_assessment_service.py::GoldenCaseAssessmentTest::test_golden_gap_view_without_answers
+  data_refs: []
+  golden_case:
+    rule_inputs:
+      RUL-001:
+        is_software: true
+        special_route: NONE
+        data_action_type: BEYOND_BASIC
+        individual_patient_benefit: true
+        own_medical_purpose: true
+        ivdr_information_purpose: false
+        drives_or_influences_device: NONE
+        provides_information_for_diagnostic_or_therapeutic_decisions: false
+        monitors_physiological_processes_only: false
+        used_for_contraception_or_sti_prevention: false
+        therapeutic_with_integrated_diagnostic_function: false
+        drives_substance_administration_or_removal_device: false
+        further_unmodelled_rule_possibly_applicable: false
+      RUL-027:
+        ai_system_status: 'NO'
+    profile:
+      lay_use: false
+      eifu_provision: EIFU_INSTEAD_OF_PAPER
+      investigational_device: false
+      custom_made_device: false
+      implantable_device: false
+      iso13485_clause1_exclusion_claimed: true
+      qms_software_used: false
+      software_safety_class: A
+      iec62304_route: LEGACY_SOFTWARE
+      soup_used: false
+      iec62366_ui_route: UOUP_WITH_MODIFIED_PARTS
+      usability_test_planned: false
+    expected_paths:
+      RUL-001:
+      - RUL-001
+      - RUL-002
+      - RUL-003
+      - RUL-004
+      - RUL-005
+      - RUL-006
+      - RUL-009
+      - RUL-010
+      - RUL-013
+      - RUL-015
+      - RUL-016
+      - RUL-017
+      - RUL-018
+      - RUL-019
+      - RUL-020
+      RUL-027:
+      - RUL-027
+    expected_decisions:
+      QUALIFICATION:
+        status: DECIDED
+        outcome: MDSW
+      BOUNDARY:
+        status: DECIDED
+        outcome: MDR_MDSW
+      CLASSIFICATION:
+        status: DECIDED
+        outcome: FINAL_MDR_CLASS
+        mdr_class: I
+      AI_ACT_APPLICABILITY:
+        status: DECIDED
+        outcome: AI_ACT_NOT_APPLICABLE
+    expected_block_states:
+      AI_ACT_HIGH_RISK: INACTIVE
+      MDR_MDSW_CORE: ACTIVE
+      MDR_LAY_USE: INACTIVE
+      SRC009_ART3_1_PATH: UNRESOLVED
+      SRC009_EIFU_REPLACEMENT: ACTIVE
+      SRC009_EIFU_ADDITIONAL: INACTIVE
+      MDR_ART85: ACTIVE
+      MDR_ART86: INACTIVE
+      MDR_ART86_IIB_III: INACTIVE
+      MDR_ART86_IIA: INACTIVE
+      MDR_ART86_ABS2: INACTIVE
+      MDR_ART86_OUTSIDE_ABS2: INACTIVE
+      NORM_SRC_005_QMS: ACTIVE
+      NORM_SRC_006_RISK_MANAGEMENT: ACTIVE
+      NORM_SRC_007_SOFTWARE_LIFECYCLE: ACTIVE
+      NORM_SRC_008_USABILITY: ACTIVE
+    expected_requirements:
+      RR-116:
+      - APPLICABLE
+      - SCOPE_ACTIVE
+      RR-353:
+      - APPLICABLE
+      - SCOPE_ACTIVE
+      RR-360:
+      - NOT_APPLICABLE
+      - SCOPE_INACTIVE
+      RR-064:
+      - NOT_APPLICABLE
+      - SCOPE_INACTIVE
+      RR-205:
+      - APPLICABILITY_UNRESOLVED
+      - SCOPE_UNRESOLVED
+      RR-698:
+      - APPLICABLE
+      - LOCAL_CONDITIONS_MET
+      RR-716:
+      - APPLICABILITY_UNRESOLVED
+      - LOCAL_CONDITION_UNRESOLVED
+      RR-728:
+      - NOT_APPLICABLE
+      - LOCAL_CONDITION_NOT_MET
+      RR-693:
+      - APPLICABLE
+      - SCOPE_ACTIVE
+      RR-889:
+      - APPLICABLE
+      - LOCAL_CONDITIONS_MET
+      RR-954:
+      - APPLICABLE
+      - LOCAL_CONDITIONS_MET
+      RR-930:
+      - NOT_APPLICABLE
+      - LOCAL_CONDITION_NOT_MET
+      RR-384:
+      - APPLICABLE
+      - SCOPE_ACTIVE
+      RR-443:
+      - APPLICABILITY_UNRESOLVED
+      - LOCAL_CONDITION_UNRESOLVED
+      RR-403:
+      - NOT_APPLICABLE
+      - LOCAL_CONDITION_NOT_MET
+    expected_totals: null
+    expected_scope_totals:
+      inactive: 143
+      unresolved: 1
+  golden: true
+- id: TC-039
+  status: aktiv
+  title:
+    de: 'Referenzfall: unvollständige Eingaben, fail-closed'
+    en: 'Reference case: incomplete inputs, fail-closed'
+  purpose:
+    de: Vollständige Referenz über alle 959 RR bei fehlender Qualifikationseingabe und unklarem KI-Systemstatus ohne Applicability-Profil.
+    en: Complete reference over all 959 RR with a missing qualification input and unclear AI system status without applicability profile.
+  test_type: AUTOMATED
+  categories:
+  - G
+  - A
+  - C
+  evaluation_dimensions:
+  - CORRECTNESS
+  - COMPLETENESS
+  preconditions: *id001
+  inputs:
+    de: Vollständig in golden_case.rule_inputs; own_medical_purpose fehlt; kein Applicability-Profil.
+    en: Fully in golden_case.rule_inputs; own_medical_purpose missing; no applicability profile.
+  expected:
+    de: QUALIFICATION INCOMPLETE an RUL-005; AI_ACT_APPLICABILITY_REVIEW_REQUIRED; alle 959 RR APPLICABILITY_UNRESOLVED mit SCOPE_UNRESOLVED.
+    en: QUALIFICATION INCOMPLETE at RUL-005; AI_ACT_APPLICABILITY_REVIEW_REQUIRED; all 959 RR APPLICABILITY_UNRESOLVED with SCOPE_UNRESOLVED.
+  verifies_sr:
+  - SR-003
+  - SR-004
+  - SR-009
+  verifies_rul:
+  - RUL-001
+  - RUL-005
+  - RUL-027
+  covers_rr:
+  - BLOCK:MDR_MDSW_CORE
+  - BLOCK:AI_ACT_HIGH_RISK
+  - BLOCK:NORM_SRC_007_SOFTWARE_LIFECYCLE
+  expected_trace: null
+  automation:
+  - tests/test_golden_cases.py::GoldenCasesTest::test_golden_cases
+  - tests/test_assessment_service.py::GoldenCaseAssessmentTest::test_golden_cases_through_assessment
+  - tests/test_assessment_service.py::GoldenCaseAssessmentTest::test_golden_gap_view_without_answers
+  data_refs: []
+  golden_case:
+    rule_inputs:
+      RUL-001:
+        is_software: true
+        special_route: NONE
+        data_action_type: BEYOND_BASIC
+        individual_patient_benefit: true
+      RUL-027:
+        ai_system_status: UNCLEAR
+    profile: {}
+    expected_paths:
+      RUL-027:
+      - RUL-027
+    expected_missing_input:
+      RUL-001:
+        rule_id: RUL-005
+        input_key: own_medical_purpose
+    expected_decisions:
+      QUALIFICATION:
+        status: INCOMPLETE
+      AI_ACT_APPLICABILITY:
+        status: REVIEW_REQUIRED
+        outcome: AI_ACT_APPLICABILITY_REVIEW_REQUIRED
+    expected_block_states:
+      AI_ACT_HIGH_RISK: UNRESOLVED
+      MDR_MDSW_CORE: UNRESOLVED
+      MDR_LAY_USE: UNRESOLVED
+      SRC009_ART3_1_PATH: UNRESOLVED
+      SRC009_EIFU_REPLACEMENT: UNRESOLVED
+      SRC009_EIFU_ADDITIONAL: UNRESOLVED
+      MDR_ART85: UNRESOLVED
+      MDR_ART86: UNRESOLVED
+      MDR_ART86_IIB_III: UNRESOLVED
+      MDR_ART86_IIA: UNRESOLVED
+      MDR_ART86_ABS2: UNRESOLVED
+      MDR_ART86_OUTSIDE_ABS2: UNRESOLVED
+      NORM_SRC_005_QMS: UNRESOLVED
+      NORM_SRC_006_RISK_MANAGEMENT: UNRESOLVED
+      NORM_SRC_007_SOFTWARE_LIFECYCLE: UNRESOLVED
+      NORM_SRC_008_USABILITY: UNRESOLVED
+    expected_requirements:
+      RR-116:
+      - APPLICABILITY_UNRESOLVED
+      - SCOPE_UNRESOLVED
+      RR-064:
+      - APPLICABILITY_UNRESOLVED
+      - SCOPE_UNRESOLVED
+    expected_totals:
+      APPLICABLE: 0
+      NOT_APPLICABLE: 0
+      APPLICABILITY_UNRESOLVED: 959
+    expected_scope_totals:
+      inactive: 0
+      unresolved: 959
+  golden: true
+- id: TC-040
+  status: aktiv
+  title:
+    de: Architektur- und Abhängigkeitsprüfung
+    en: Architecture and dependency check
+  purpose:
+    de: 'Statische Prüfung der umgesetzten Module: Abhängigkeiten nach ARCHITECTURE Abschnitt 4, keine generative KI und keine Netzwerkbibliotheken.'
+    en: 'Static check of the implemented modules: dependencies per ARCHITECTURE section 4, no generative AI and no network libraries.'
+  test_type: AUTOMATED
+  categories:
+  - J
+  evaluation_dimensions:
+  - REGRESSION
+  - REPRODUCIBILITY
+  preconditions:
+    de: Quellcode unter regscoutx/ und tools/.
+    en: Source code under regscoutx/ and tools/.
+  inputs:
+    de: Importgraph der Python-Module.
+    en: Import graph of the Python modules.
+  expected:
+    de: Nur zugelassene Modulabhängigkeiten; keine Abhängigkeit zu KI- oder Netzwerkbibliotheken.
+    en: Only permitted module dependencies; no dependency on AI or network libraries.
+  verifies_sr:
+  - SR-029
+  - SR-035
+  - SR-038
+  verifies_rul: []
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_architecture.py::ArchitectureTest::test_module_dependencies_follow_architecture
+  - tests/test_architecture.py::ArchitectureTest::test_no_generative_ai_or_network_dependency
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-041
+  status: aktiv
+  title:
+    de: eIFU zusätzlich zur vollständigen Papier-Gebrauchsanweisung
+    en: eIFU in addition to full paper instructions for use
+  purpose:
+    de: Aktivierung des Blocks SRC009_EIFU_ADDITIONAL (RR-265) bei MDR-Medizinproduktesoftware mit eIFU zusätzlich zur Papier-IFU; Nachweis, dass SRC009_ART3_1_PATH designbedingt nie aktiv wird.
+    en: Activation of block SRC009_EIFU_ADDITIONAL (RR-265) for MDR medical device software with eIFU in addition to paper IFU; evidence that SRC009_ART3_1_PATH never becomes active by design.
+  test_type: AUTOMATED
+  categories:
+  - A
+  - F
+  evaluation_dimensions:
+  - CORRECTNESS
+  - COMPLETENESS
+  - TRACEABILITY
+  preconditions:
+    de: Kataloge fail-closed geladen (CatalogRepository.load).
+    en: Catalogs loaded fail-closed (CatalogRepository.load).
+  inputs:
+    de: Qualifikations- und Klassifikationseingaben mit MDR_MDSW (RUL-001 bis RUL-020); Applicability-Eingabe eifu_provision = EIFU_IN_ADDITION_TO_FULL_PAPER; Vergleich mit NO_EIFU und EIFU_INSTEAD_OF_PAPER.
+    en: Qualification and classification inputs with MDR_MDSW (RUL-001 to RUL-020); applicability input eifu_provision = EIFU_IN_ADDITION_TO_FULL_PAPER; comparison with NO_EIFU and EIFU_INSTEAD_OF_PAPER.
+  expected:
+    de: RR-265 APPLICABLE mit SCOPE_ACTIVE; Block SRC009_EIFU_ADDITIONAL aktiv, SRC009_EIFU_REPLACEMENT (RR-240) nicht anwendbar; ohne eIFU RR-265 nicht anwendbar; RR-205 (SRC009_ART3_1_PATH) bei keinem eIFU-Wert anwendbar.
+    en: RR-265 APPLICABLE with SCOPE_ACTIVE; block SRC009_EIFU_ADDITIONAL active, SRC009_EIFU_REPLACEMENT (RR-240) not applicable; without eIFU RR-265 not applicable; RR-205 (SRC009_ART3_1_PATH) applicable for no eIFU value.
+  verifies_sr:
+  - SR-008
+  - SR-010
+  - SR-042
+  verifies_rul:
+  - RUL-005
+  - RUL-006
+  covers_rr:
+  - RR-265
+  - RR-240
+  - RR-205
+  - BLOCK:SRC009_EIFU_ADDITIONAL
+  - BLOCK:SRC009_ART3_1_PATH
+  expected_trace:
+    de: 'RR-265: Block SRC009_EIFU_ADDITIONAL; Prädikate MDR_MDSW = TRUE, EIFU_ADDITIONAL = TRUE; Eingabe eifu_provision; Entscheidungen QUALIFICATION und BOUNDARY mit RUL-006; Quelle der Anwendbarkeit RR_EXTRACTION_SRC_009_ART3_7_9.md S9-9-A.'
+    en: 'RR-265: block SRC009_EIFU_ADDITIONAL; predicates MDR_MDSW = TRUE, EIFU_ADDITIONAL = TRUE; input eifu_provision; decisions QUALIFICATION and BOUNDARY with RUL-006; source of applicability RR_EXTRACTION_SRC_009_ART3_7_9.md S9-9-A.'
+  automation:
+  - tests/test_applicability_engine.py::TopLevelRoutingTest::test_g2_eifu_in_addition_to_paper
+  - tests/test_applicability_engine.py::TopLevelRoutingTest::test_g3_src009_article_3_1_path_is_structurally_unreachable
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-042
+  status: aktiv
+  title:
+    de: Gap-Status je RR aus Anwendbarkeit und strukturierter Erfüllungsbewertung
+    en: Gap status per RR from applicability and structured fulfilment assessment
+  purpose:
+    de: 'SR-012 bis SR-016: genau ein Gap-Status je RR; Anwendbarkeit und Erfüllung getrennt; Erfüllungsstatus nur aus Nutzereingabe; Begründungspflicht; Nachweislücke; keine Textauswertung.'
+    en: 'SR-012 to SR-016: exactly one gap status per RR; applicability and fulfilment separated; fulfilment status only from user input; mandatory justification; evidence gap; no text evaluation.'
+  test_type: AUTOMATED
+  categories:
+  - K
+  - G
+  evaluation_dimensions:
+  - CORRECTNESS
+  - COMPLETENESS
+  preconditions: *id001
+  inputs:
+    de: Referenzeingaben TC-036 ohne bzw. mit strukturierten Erfüllungsbewertungen; vollständige Kombinationstabelle Anwendbarkeit × Status × Nachweis.
+    en: Reference inputs TC-036 without and with structured fulfilment assessments; complete combination table applicability × status × evidence.
+  expected:
+    de: Ohne Antworten alle anwendbaren RR NOT_ASSESSED, keine Gaps; FULFILLED/PARTIALLY_FULFILLED/NOT_FULFILLED nur aus Antworten; (teilweise) Erfüllung ohne Nachweisreferenz EVIDENCE_REVIEW_REQUIRED; NOT_APPLICABLE und APPLICABILITY_UNRESOLVED bleiben erhalten; fehlende Begründung und unzulässiger Status werden abgewiesen.
+    en: Without answers all applicable RR NOT_ASSESSED, no gaps; FULFILLED/PARTIALLY_FULFILLED/NOT_FULFILLED only from answers; (partial) fulfilment without evidence reference EVIDENCE_REVIEW_REQUIRED; NOT_APPLICABLE and APPLICABILITY_UNRESOLVED are kept; missing justification and invalid status are rejected.
+  verifies_sr:
+  - SR-012
+  - SR-013
+  - SR-014
+  - SR-015
+  - SR-016
+  - SR-029
+  - SR-039
+  verifies_rul: []
+  covers_rr:
+  - RR-630
+  - RR-384
+  - RR-728
+  - RR-116
+  - RR-760
+  - RR-001
+  - RR-353
+  expected_trace: null
+  automation:
+  - tests/test_assessment_service.py::GapStatusTest::test_without_answers_everything_applicable_is_not_assessed
+  - tests/test_assessment_service.py::GapStatusTest::test_fulfilled_partial_not_fulfilled_and_evidence_gap
+  - tests/test_assessment_service.py::GapStatusTest::test_derivation_table_for_every_combination
+  - tests/test_assessment_service.py::GapStatusTest::test_status_vocabulary_and_justification
+  - tests/test_assessment_service.py::GapStatusTest::test_unresolved_and_scope_inactive_are_kept
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-043
+  status: aktiv
+  title:
+    de: Nachweis- und Maßnahmenbezug in der Gap-Analyse
+    en: Evidence and measure link in the gap analysis
+  purpose:
+    de: 'SR-015, SR-017, SR-018, SR-043: vorgesehene Maßnahme/Nachweisart (RR_MEASURE), nutzerseitige EvidenceReference und Projektevidenz bleiben getrennt; Kette Anforderung → Maßnahme → Nachweis wird aufgelöst. Seit D2 zusätzlich der Lebenszyklus nutzerseitiger Nachweisreferenzen über den Anwendungseinstieg.'
+    en: 'SR-015, SR-017, SR-018, SR-043: planned measure/evidence type (RR_MEASURE), user EvidenceReference and project evidence remain separate; chain requirement → measure → evidence is resolved. Since D2 also the life cycle of user evidence references via the application entry point.'
+  test_type: AUTOMATED
+  categories:
+  - I
+  - K
+  evaluation_dimensions:
+  - CORRECTNESS
+  - TRACEABILITY
+  preconditions: *id001
+  inputs:
+    de: Referenzeingaben TC-036 mit Nachweisreferenzen mit und ohne measure_key.
+    en: Reference inputs TC-036 with evidence references with and without measure_key.
+  expected:
+    de: 'MAPPED: Maßnahme und Nachweisart ausgegeben, Abdeckung durch Nachweisreferenzen je Maßnahme; REVIEW_REQUIRED: genau dieser Status, keine Maßnahme, als offener Punkt gezählt; measure_key muss eine vorgesehene Maßnahme der RR sein; eine Nachweisreferenz kann mehreren RR dienen; keine Nachweise erzeugt. Hinzufügen, Ändern, Zuordnen, Lösen, Entfernen und Filtern nach RR bzw. Maßnahme; Entfernen einer zugeordneten Referenz und unzulässige Zuordnungen werden ohne Speicheränderung abgewiesen.'
+    en: 'MAPPED: measure and evidence type returned, coverage by evidence references per measure; REVIEW_REQUIRED: exactly this status, no measure, counted as open item; measure_key must be a planned measure of the RR; one evidence reference can serve several RR; no evidence is created. Adding, updating, linking, unlinking, removing and filtering by RR or measure; removing a linked reference and invalid links are rejected without changing the store.'
+  verifies_sr:
+  - SR-015
+  - SR-017
+  - SR-018
+  - SR-043
+  - SR-034
+  verifies_rul: []
+  covers_rr:
+  - RR-630
+  - RR-384
+  - RR-728
+  - RR-116
+  expected_trace: null
+  automation:
+  - tests/test_assessment_service.py::EvidenceMeasureTest::test_evidence_present_absent_and_measure_coverage
+  - tests/test_assessment_service.py::EvidenceMeasureTest::test_review_required_measure_is_reported_not_assumed
+  - tests/test_assessment_service.py::EvidenceMeasureTest::test_measure_key_must_be_planned_and_known
+  - tests/test_assessment_service.py::EvidenceMeasureTest::test_evidence_can_serve_several_requirements
+  - tests/test_assessment_service.py::EvidenceMeasureTest::test_no_evidence_is_created_or_assumed
+  - tests/test_assessment_service.py::EvidenceMeasureTest::test_evidence_reference_validation
+  - tests/test_assessment_application.py::EvidenceLifecycleTest::test_evidence_crud_and_filters
+  - tests/test_assessment_application.py::EvidenceLifecycleTest::test_invalid_links_are_rejected
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-044
+  status: aktiv
+  title:
+    de: Neuberechnung mit Erhalt veralteter Erfüllungsbewertungen
+    en: Recalculation keeping stale fulfilment assessments
+  purpose:
+    de: 'SR-040 im Assessment-Kern: Neuberechnung entspricht einer vollständigen Neuauswertung; Bewertungen nicht mehr anwendbarer RR bleiben als INACTIVE erhalten und fließen nach Wiederanwendbarkeit erst nach Bestätigung ein (seit D2).'
+    en: 'SR-040 in the assessment core: recalculation equals a complete re-evaluation; assessments of RR no longer applicable are kept as INACTIVE and, once applicable again, only count after confirmation (since D2).'
+  test_type: AUTOMATED
+  categories:
+  - H
+  - K
+  - G
+  evaluation_dimensions:
+  - CORRECTNESS
+  - REPRODUCIBILITY
+  preconditions: *id001
+  inputs:
+    de: Referenzeingaben TC-036 mit Bewertungen zu RR-116 und RR-727; Änderung von own_medical_purpose bzw. software_safety_class.
+    en: Reference inputs TC-036 with assessments of RR-116 and RR-727; change of own_medical_purpose or software_safety_class.
+  expected:
+    de: Fingerprint und RR-Ergebnisse identisch mit frischer Auswertung desselben Eingabestands; RR-116 NOT_APPLICABLE mit INACTIVE-Bewertung, bei Rückänderung REACTIVATED_REVIEW_REQUIRED (NOT_ASSESSED, ANSWER_REVIEW_REQUIRED) bis zur Bestätigung; Klasse C macht RR-727 ebenso bestätigungspflichtig; unerreichte Eingaben ohne Wirkung; ungültige Änderung und abweichende Katalogversion abgewiesen, Ausgangsbewertung unverändert.
+    en: Fingerprint and RR results identical to a fresh evaluation of the same input state; RR-116 NOT_APPLICABLE with INACTIVE assessment, on reverting REACTIVATED_REVIEW_REQUIRED (NOT_ASSESSED, ANSWER_REVIEW_REQUIRED) until confirmed; class C likewise requires confirmation for RR-727; unreached inputs have no effect; invalid change and deviating catalog version rejected, original assessment unchanged.
+  verifies_sr:
+  - SR-040
+  - SR-002
+  verifies_rul:
+  - RUL-005
+  covers_rr:
+  - RR-116
+  - RR-727
+  expected_trace: null
+  automation:
+  - tests/test_assessment_service.py::RecalculationTest::test_recalculation_equals_fresh_evaluation
+  - tests/test_assessment_service.py::RecalculationTest::test_reactivated_answers_require_confirmation
+  - tests/test_assessment_service.py::RecalculationTest::test_answers_and_evidence_are_upserted
+  - tests/test_assessment_service.py::RecalculationTest::test_failed_recalculation_leaves_assessment_unchanged
+  - tests/test_assessment_service.py::RecalculationTest::test_version_mismatch_and_finalised_state_are_rejected
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-045
+  status: aktiv
+  title:
+    de: 'Assessment-Ergebnis: Versionsbindung, Lebenszyklus, Herleitung, Reproduzierbarkeit'
+    en: 'Assessment result: version binding, life cycle, derivation, reproducibility'
+  purpose:
+    de: 'SR-021, SR-041, SR-042, SR-016, SR-028: RRResult und AssessmentSummary tragen vollständiges CatalogVersionSet, Katalogtexte DE/EN, Lebenszyklusphasen, Herleitung aus explain und Gap-Status; fachlicher Fingerprint unabhängig von Metadaten.'
+    en: 'SR-021, SR-041, SR-042, SR-016, SR-028: RRResult and AssessmentSummary carry the complete CatalogVersionSet, catalog texts DE/EN, life-cycle phases, derivation from explain and gap status; domain fingerprint independent of metadata.'
+  test_type: AUTOMATED
+  categories:
+  - F
+  - I
+  - J
+  evaluation_dimensions:
+  - TRACEABILITY
+  - REPRODUCIBILITY
+  - COMPLETENESS
+  preconditions: *id001
+  inputs:
+    de: Referenzeingaben TC-036; wiederholte Auswertung mit anderer Assessment-ID, Zeitpunkten, Sprache, Eingabereihenfolge und neu geladenen Katalogen.
+    en: Reference inputs TC-036; repeated evaluation with different assessment ID, timestamps, language, input order and reloaded catalogs.
+  expected:
+    de: Sechs Katalogversionen; Phasen, Titel, Texte und Quellen je RR aus dem Katalog; Herleitung identisch mit ApplicabilityEngine.explain; identischer Fingerprint; Summen und Gruppen konsistent; alle Ausgabecodes mit zentralen DE/EN-Bezeichnungen im Datenmodell.
+    en: Six catalog versions; phases, titles, texts and sources per RR from the catalog; derivation identical to ApplicabilityEngine.explain; identical fingerprint; totals and groups consistent; all output codes with central DE/EN labels in the data model.
+  verifies_sr:
+  - SR-016
+  - SR-021
+  - SR-028
+  - SR-041
+  - SR-042
+  - SR-020
+  verifies_rul: []
+  covers_rr:
+  - RR-728
+  - RR-630
+  expected_trace:
+    de: 'RR-728: Eingaben software_safety_class = B, iec62304_route = REGULAR_LIFECYCLE → Prädikate TRUE → Entscheidungen mit RUL-001 bis RUL-006 → APPLICABLE (LOCAL_CONDITIONS_MET) → Antwort NOT_FULFILLED → Gap-Status NOT_FULFILLED (ANSWER_NOT_FULFILLED).'
+    en: 'RR-728: inputs software_safety_class = B, iec62304_route = REGULAR_LIFECYCLE → predicates TRUE → decisions with RUL-001 to RUL-006 → APPLICABLE (LOCAL_CONDITIONS_MET) → answer NOT_FULFILLED → gap status NOT_FULFILLED (ANSWER_NOT_FULFILLED).'
+  automation:
+  - tests/test_assessment_service.py::AssessmentResultTest::test_version_set_is_complete
+  - tests/test_assessment_service.py::AssessmentResultTest::test_lifecycle_and_catalog_content
+  - tests/test_assessment_service.py::AssessmentResultTest::test_explanation_chain_from_input_to_gap_status
+  - tests/test_assessment_service.py::AssessmentResultTest::test_output_is_reproducible
+  - tests/test_assessment_service.py::AssessmentResultTest::test_summary_counts_and_groups
+  - tests/test_assessment_service.py::AssessmentResultTest::test_output_codes_have_central_labels
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-046
+  status: aktiv
+  title:
+    de: Assessment-Eingaben und Kataloge fail-closed
+    en: Assessment inputs and catalogs fail-closed
+  purpose:
+    de: 'SR-034, SR-031: maschinenlesbare Assessment-Eingaben werden gegen das Datenmodell validiert; fehlerhafte Maßnahmenzuordnung führt zu hartem Fehler; unvollständiges Profil ergibt APPLICABILITY_UNRESOLVED statt Fehler.'
+    en: 'SR-034, SR-031: machine-readable assessment inputs are validated against the data model; a faulty measure mapping leads to a hard error; an incomplete profile yields APPLICABILITY_UNRESOLVED instead of an error.'
+  test_type: AUTOMATED
+  categories:
+  - G
+  evaluation_dimensions:
+  - CORRECTNESS
+  - REGRESSION
+  preconditions: *id001
+  inputs:
+    de: Gültige und ungültige Eingabestrukturen, unbekannte Schlüssel und Werte, doppelte Antworten, manipulierter Maßnahmenkatalog, Profil nur mit is_software.
+    en: Valid and invalid input structures, unknown keys and values, duplicate answers, manipulated measure catalog, profile with is_software only.
+  expected:
+    de: 'Unbekannte Felder, falsche Typen, unzulässige Werte und Verweise abgewiesen; fehlende oder ungültige RR_MEASURE-Zuordnung bricht ohne Teilergebnis ab; unvollständiges Profil: QUALIFICATION INCOMPLETE und alle 959 RR APPLICABILITY_UNRESOLVED.'
+    en: 'Unknown fields, wrong types, invalid values and references rejected; missing or invalid RR_MEASURE mapping aborts without partial result; incomplete profile: QUALIFICATION INCOMPLETE and all 959 RR APPLICABILITY_UNRESOLVED.'
+  verifies_sr:
+  - SR-034
+  - SR-031
+  - SR-003
+  verifies_rul:
+  - RUL-001
+  covers_rr:
+  - RR-630
+  expected_trace: null
+  automation:
+  - tests/test_assessment_service.py::AssessmentInputTest::test_machine_readable_input
+  - tests/test_assessment_service.py::AssessmentInputTest::test_invalid_inputs_are_rejected
+  - tests/test_assessment_service.py::AssessmentInputTest::test_incomplete_profile_is_unresolved_not_an_error
+  - tests/test_assessment_service.py::AssessmentInputTest::test_broken_measure_mapping_fails_closed
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-047
+  status: aktiv
+  title:
+    de: 'Persistenz: verlustfreier Round-Trip, Integrität und Pfadsicherheit'
+    en: 'Persistence: lossless round trip, integrity and path safety'
+  purpose:
+    de: Gespeicherte Bewertungen werden verlustfrei geladen, beschädigte oder manipulierte Dokumente fail-closed abgewiesen, Kennungen können keine Pfade erzeugen, Schreiben ist atomisch und nur anhängend.
+    en: Stored assessments load losslessly, corrupt or manipulated documents are rejected fail-closed, identifiers cannot create paths, writing is atomic and append-only.
+  test_type: AUTOMATED
+  categories:
+  - J
+  - G
+  evaluation_dimensions:
+  - REPRODUCIBILITY
+  - REGRESSION
+  - CORRECTNESS
+  preconditions: *id001
+  inputs:
+    de: Referenzeingaben TC-036 mit Bewertungen und Nachweisreferenzen; ungültige Kennungen; beschädigte, veränderte und neu gehashte Dokumente; erzwungener Schreibfehler; Verstöße gegen die Anhängeregel.
+    en: Reference inputs TC-036 with assessments and evidence references; invalid identifiers; corrupt, altered and re-hashed documents; forced write error; violations of the append-only rule.
+  expected:
+    de: save → load ergibt identischen Fingerprint, identische Ergebnisse, Eingaben (einschließlich stale und assessed_at), Revision, Zustand und Audit; Fingerprint unabhängig von Zeitstempeln; Pfadangaben und nicht kanonische Kennungen abgewiesen; jede Beschädigung ergibt PersistenceError; nach Schreibfehler unveränderte Datei ohne Reste, Rechte 0600; Änderung gespeicherter Revisionen oder Audit-Einträge abgewiesen.
+    en: save → load yields identical fingerprint, results, inputs (including stale and assessed_at), revision, state and audit; fingerprint independent of timestamps; paths and non-canonical identifiers rejected; every corruption yields PersistenceError; after a write error the file is unchanged without leftovers, permissions 0600; modifying stored revisions or audit entries rejected.
+  verifies_sr:
+  - SR-021
+  - SR-031
+  - SR-034
+  verifies_rul: []
+  covers_rr:
+  - RR-630
+  - RR-727
+  expected_trace: null
+  automation:
+  - tests/test_assessment_application.py::PersistenceTest::test_save_load_round_trip
+  - tests/test_assessment_application.py::PersistenceTest::test_fingerprint_is_independent_of_timestamps
+  - tests/test_assessment_application.py::PersistenceTest::test_invalid_assessment_ids_are_rejected
+  - tests/test_assessment_application.py::PersistenceTest::test_corrupt_documents_fail_closed
+  - tests/test_assessment_application.py::PersistenceTest::test_save_is_atomic
+  - tests/test_assessment_application.py::PersistenceTest::test_repository_enforces_append_only
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-048
+  status: aktiv
+  title:
+    de: Katalogversionsabgleich beim Öffnen und Revisionen
+    en: Catalog version check on opening and revisions
+  purpose:
+    de: 'SR-037: MATCH, MISMATCH und unvollständige Versionsangaben werden unterschieden; eine Abweichung wird protokolliert und nie still übernommen; Neubewertung mit aktuellem Stand, Wiederöffnen und Änderungen erzeugen nachvollziehbare Revisionen bzw. Differenzen, ohne gespeicherte Revisionen zu verändern.'
+    en: 'SR-037: MATCH, MISMATCH and incomplete version information are distinguished; a deviation is logged and never adopted silently; re-assessment against current catalogs, reopening and changes produce traceable revisions or differences without modifying stored revisions.'
+  test_type: AUTOMATED
+  categories:
+  - G
+  - H
+  - F
+  evaluation_dimensions:
+  - CORRECTNESS
+  - TRACEABILITY
+  - REPRODUCIBILITY
+  preconditions: *id001
+  inputs:
+    de: Gespeicherte Bewertung, geöffnet mit gleichen, abweichenden (rr_measure_version) und unvollständigen Katalogversionen; Abschließen, Wiederöffnen, Profiländerung.
+    en: Stored assessment opened with identical, deviating (rr_measure_version) and incomplete catalog versions; finalising, reopening, profile change.
+  expected:
+    de: 'MATCH: schreibbar; MISMATCH: gespeicherter Stand lesbar, CATALOG_VERSION_MISMATCH_DETECTED mit beiden Versionsständen, Schreiben abgewiesen, rebase erzeugt Revision 2 (CATALOG_REBASE) bei unveränderter Revision 1; INCOMPLETE_VERSION_INFO: nur lesbar, auch rebase abgewiesen; FINALISED unveränderlich, reopen erzeugt Revision 2 ohne fachliche Differenz; Profiländerung weist Eingabe-, Anwendbarkeits-, Gap- und Bewertungszustandsänderungen aus und entspricht einer frischen Auswertung.'
+    en: 'MATCH: writable; MISMATCH: stored state readable, CATALOG_VERSION_MISMATCH_DETECTED with both version sets, writes rejected, rebase creates revision 2 (CATALOG_REBASE) with revision 1 unchanged; INCOMPLETE_VERSION_INFO: read-only, rebase rejected as well; FINALISED immutable, reopen creates revision 2 without domain difference; a profile change reports input, applicability, gap and assessment-state changes and equals a fresh evaluation.'
+  verifies_sr:
+  - SR-037
+  - SR-021
+  - SR-040
+  verifies_rul:
+  - RUL-005
+  covers_rr:
+  - RR-630
+  - RR-116
+  expected_trace: null
+  automation:
+  - tests/test_assessment_application.py::VersionRevisionTest::test_match_opens_normally
+  - tests/test_assessment_application.py::VersionRevisionTest::test_mismatch_is_read_only_and_rebase_creates_revision
+  - tests/test_assessment_application.py::VersionRevisionTest::test_incomplete_version_information_fails_closed
+  - tests/test_assessment_application.py::VersionRevisionTest::test_finalised_revision_is_immutable_and_reopen_creates_revision
+  - tests/test_assessment_application.py::VersionRevisionTest::test_profile_change_records_before_after_difference
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-049
+  status: aktiv
+  title:
+    de: Audit-Protokoll über den Bewertungslebenszyklus
+    en: Audit log across the assessment life cycle
+  purpose:
+    de: 'SR-032: Jede zentrale Operation erzeugt nur anhängende Audit-Ereignisse mit Revision, Nummer, Zeitpunkt, Kennung und strukturierten Codes; keine Freitexte; Audit beeinflusst den fachlichen Fingerprint nicht.'
+    en: 'SR-032: every central operation produces append-only audit events with revision, number, timestamp, identifier and structured codes; no free text; audit does not affect the domain fingerprint.'
+  test_type: AUTOMATED
+  categories:
+  - F
+  - J
+  evaluation_dimensions:
+  - TRACEABILITY
+  - REGRESSION
+  preconditions: *id001
+  inputs:
+    de: Anlegen, Profiländerung, Nachweis hinzufügen/ändern/zuordnen/lösen/entfernen, Bewertung setzen, Neuberechnung, Abschließen, Wiederöffnen, Öffnen mit abweichender Katalogversion.
+    en: Create, profile change, add/update/link/unlink/remove evidence, set assessment, recalculation, finalising, reopening, opening with deviating catalog version.
+  expected:
+    de: Protokoll wächst nach jeder Operation und behält alle vorherigen Einträge; fortlaufende Nummern; alle audit_event_type außer REPORT_CREATED (folgt mit REPORTING) treten auf; Profiländerung mit vorher/nachher, Nachweisänderung nur mit Feldnamen; Begründungstext, Titel und Dokumentkennung erscheinen nicht; Fingerprint nach wiederholter Neuberechnung unverändert.
+    en: Log grows after every operation and keeps all previous entries; consecutive numbers; all audit_event_type except REPORT_CREATED (follows with REPORTING) occur; profile change with before/after, evidence change with field names only; justification text, title and document identifier do not appear; fingerprint unchanged after repeated recalculation.
+  verifies_sr:
+  - SR-032
+  - SR-040
+  verifies_rul: []
+  covers_rr:
+  - RR-630
+  expected_trace: null
+  automation:
+  - tests/test_assessment_application.py::AuditTest::test_events_for_central_operations_are_append_only
+  - tests/test_assessment_application.py::AuditTest::test_audit_does_not_change_fingerprint
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-050
+  status: aktiv
+  title:
+    de: Wieder anwendbare Bewertungen und Abschluss
+    en: Assessments applicable again and finalisation
+  purpose:
+    de: 'SR-040, SR-013: Eine Bewertung, deren RR nach einer Eingabeänderung wieder anwendbar wird, fließt erst nach bewusster Bestätigung oder neuer Bewertung ein; Abschließen ist bis dahin gesperrt.'
+    en: 'SR-040, SR-013: an assessment whose RR becomes applicable again after an input change only counts after deliberate confirmation or a new assessment; finalising is blocked until then.'
+  test_type: AUTOMATED
+  categories:
+  - H
+  - K
+  evaluation_dimensions:
+  - CORRECTNESS
+  preconditions: *id001
+  inputs:
+    de: Referenzeingaben TC-036 mit Bewertung zu RR-630 bzw. RR-727; own_medical_purpose false und zurück; software_safety_class C.
+    en: Reference inputs TC-036 with assessment of RR-630 or RR-727; own_medical_purpose false and back; software_safety_class C.
+  expected:
+    de: INACTIVE → REACTIVATED_REVIEW_REQUIRED (NOT_ASSESSED, ANSWER_REVIEW_REQUIRED), in reactivated_answers ausgewiesen; Abschließen abgewiesen; stale ist nicht vom Nutzer setzbar; Bestätigung stellt ACTIVE/FULFILLED her und ist nur einmal möglich; neue Bewertung ersetzt die veraltete; danach Abschluss möglich.
+    en: INACTIVE → REACTIVATED_REVIEW_REQUIRED (NOT_ASSESSED, ANSWER_REVIEW_REQUIRED), reported in reactivated_answers; finalising rejected; stale cannot be set by the user; confirmation restores ACTIVE/FULFILLED and is possible only once; a new assessment replaces the stale one; finalising possible afterwards.
+  verifies_sr:
+  - SR-040
+  - SR-013
+  verifies_rul:
+  - RUL-005
+  covers_rr:
+  - RR-630
+  - RR-727
+  expected_trace: null
+  automation:
+  - tests/test_assessment_application.py::ReactivationTest::test_reactivated_assessment_needs_deliberate_confirmation
+  - tests/test_assessment_application.py::ReactivationTest::test_new_assessment_replaces_stale_one
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-051
+  status: aktiv
+  title:
+    de: Berichtsmodell aus gespeicherten Revisionen einschließlich Referenzfällen
+    en: Report model from stored revisions including reference cases
+  purpose:
+    de: Das sprachneutrale ReportModel übernimmt den gespeicherten Stand ohne Neuberechnung und ohne Datenverlust für alle 959 RR; Referenzfälle TC-036, TC-037 und TC-039 werden korrekt abgebildet; Regeln mit Primärrecht und Guidance, Review-Ursachen, Maßnahmen, Nachweise und offene Punkte sind enthalten.
+    en: The language-neutral ReportModel takes over the stored state without recomputation and without data loss for all 959 RR; reference cases TC-036, TC-037 and TC-039 are reproduced correctly; rules with primary law and guidance, review causes, measures, evidence and open items are included.
+  test_type: AUTOMATED
+  categories:
+  - L
+  - F
+  - I
+  evaluation_dimensions:
+  - CORRECTNESS
+  - COMPLETENESS
+  - TRACEABILITY
+  preconditions: *id001
+  inputs:
+    de: Eingaben der Referenzfälle TC-036, TC-037, TC-039; TC-036 mit Bewertungen zu RR-630, RR-728, RR-116 und einer Nachweisreferenz; Profiländerung und Rückänderung.
+    en: Inputs of reference cases TC-036, TC-037, TC-039; TC-036 with assessments of RR-630, RR-728, RR-116 and one evidence reference; profile change and reversal.
+  expected:
+    de: Entscheidungen, Anwendbarkeit und Begründungscodes entsprechen den Referenz-Sollwerten; 959 Einträge in Katalogreihenfolge identisch mit der gespeicherten Ergebnissicht und dem Katalog; Summen, Gruppen und Maßnahmenabdeckung konsistent; REVIEW_REQUIRED ohne Maßnahme als offener Punkt; Review-Ursache RUL-027 und fehlende Eingabe RUL-005 mit Frage; reaktivierte Bewertung als Bestätigungsbedarf.
+    en: Decisions, applicability and reason codes match the reference values; 959 entries in catalog order identical to the stored result view and the catalog; totals, groups and measure coverage consistent; REVIEW_REQUIRED without measure as open item; review cause RUL-027 and missing input RUL-005 with question; reactivated assessment as confirmation need.
+  verifies_sr:
+  - SR-023
+  - SR-010
+  - SR-017
+  - SR-019
+  - SR-020
+  - SR-004
+  - SR-041
+  - SR-042
+  - SR-043
+  verifies_rul:
+  - RUL-005
+  - RUL-027
+  covers_rr:
+  - RR-630
+  - RR-728
+  - RR-116
+  - RR-001
+  expected_trace: null
+  automation:
+  - tests/test_reporting.py::ReportModelTest::test_golden_tc036_model
+  - tests/test_reporting.py::ReportModelTest::test_golden_tc037_model
+  - tests/test_reporting.py::ReportModelTest::test_all_requirements_without_data_loss_and_consistent_counts
+  - tests/test_reporting.py::ReportModelTest::test_measures_evidence_and_open_items
+  - tests/test_reporting.py::ReportModelTest::test_review_causes_and_incomplete_inputs
+  - tests/test_reporting.py::ReportModelTest::test_reactivated_review_required
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-052
+  status: aktiv
+  title:
+    de: HTML-Bericht in Deutsch und Englisch mit zentraler Sprachausgabe
+    en: HTML report in German and English with central language output
+  purpose:
+    de: 'SR-025 bis SR-027: vollständiger, sprachreiner HTML-Bericht aus zentralen Sprachressourcen und Katalogfeldern; Escaping, keine externen Ressourcen, Light/Dark, kontrastsichere Tokens, deterministischer Inhalt.'
+    en: 'SR-025 to SR-027: complete, single-language HTML report from central language resources and catalog fields; escaping, no external resources, light/dark, contrast-safe tokens, deterministic content.'
+  test_type: AUTOMATED
+  categories:
+  - L
+  - J
+  evaluation_dimensions:
+  - CORRECTNESS
+  - COMPLETENESS
+  - REPRODUCIBILITY
+  preconditions: *id001
+  inputs:
+    de: TC-036 mit Bewertungen, Nachweisreferenz und Freitexten mit Markup; Berichte in DE und EN mit festen und abweichenden Erzeugungszeitpunkten.
+    en: TC-036 with assessments, evidence reference and free texts containing markup; reports in DE and EN with fixed and differing generation times.
+  expected:
+    de: Alle 14 Abschnitte, Aussagegrenze und Katalogtexte in der Berichtssprache; keine Texte der anderen Sprache; gleiche Schlüsselmengen und Platzhalter DE/EN, keine fehlenden oder verwaisten Schlüssel, keine sichtbaren Texte in Reporting-Modulen; längster Anforderungstext und Lokator vollständig; Markup escaped, keine Skripte, Links oder externen Ressourcen; gleicher Inhalt bis auf den Zeitpunkt; Kontrast ≥ 4,5:1.
+    en: All 14 sections, report limits and catalog texts in the report language; no texts of the other language; identical key sets and placeholders DE/EN, no missing or orphaned keys, no visible texts in reporting modules; longest requirement text and locator complete; markup escaped, no scripts, links or external resources; identical content apart from the timestamp; contrast ≥ 4.5:1.
+  verifies_sr:
+  - SR-025
+  - SR-026
+  - SR-027
+  - SR-023
+  - SR-017
+  verifies_rul: []
+  covers_rr:
+  - RR-630
+  expected_trace: null
+  automation:
+  - tests/test_reporting.py::HtmlReportTest::test_de_and_en_reports_are_complete_and_not_mixed
+  - tests/test_reporting.py::HtmlReportTest::test_long_texts_and_locators_are_complete
+  - tests/test_reporting.py::HtmlReportTest::test_escaping_and_no_external_resources
+  - tests/test_reporting.py::HtmlReportTest::test_content_is_deterministic
+  - tests/test_reporting.py::HtmlReportTest::test_tokens_meet_contrast_requirements
+  - tests/test_i18n.py::MessageCatalogTest::test_languages_have_identical_complete_keysets
+  - tests/test_i18n.py::MessageCatalogTest::test_keys_are_stable_semantic_identifiers
+  - tests/test_i18n.py::MessageCatalogTest::test_every_referenced_key_exists_and_no_key_is_orphaned
+  - tests/test_i18n.py::MessageCatalogTest::test_code_labels_are_central_and_complete
+  - tests/test_i18n.py::TranslatorTest::test_missing_keys_and_parameters_fail_without_fallback
+  - tests/test_i18n.py::TranslatorTest::test_localised_formatting
+  - tests/test_i18n.py::CentralTextSourcesTest::test_reporting_modules_contain_no_visible_prose
+  - tests/test_i18n.py::CentralTextSourcesTest::test_resources_are_valid_json_objects
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-053
+  status: aktiv
+  title:
+    de: PDF-Bericht (A4) mit Seitenzählung und eingebetteten Schriften
+    en: PDF report (A4) with pagination and embedded fonts
+  purpose:
+    de: Der PDF-Bericht entsteht aus demselben Dokument wie der HTML-Bericht, ist vollständig gegliedert, paginiert, deterministisch und hat denselben Inhaltshash.
+    en: The PDF report is produced from the same document as the HTML report, is fully structured, paginated, deterministic and has the same content hash.
+  test_type: AUTOMATED
+  categories:
+  - L
+  evaluation_dimensions:
+  - COMPLETENESS
+  - REPRODUCIBILITY
+  preconditions: *id001
+  inputs:
+    de: TC-036 mit Bewertungen; PDF in DE und EN.
+    en: TC-036 with assessments; PDF in DE and EN.
+  expected:
+    de: Gültiges PDF mit mehr als 50 Seiten, eingebetteten Schriften, allen 14 Abschnitten in Reihenfolge und aufsteigenden Seitenzahlen; zweimalige Erzeugung byte-gleich; Inhaltshash gleich dem HTML-Bericht; sicherer Dateiname.
+    en: Valid PDF with more than 50 pages, embedded fonts, all 14 sections in order and ascending page numbers; generated twice byte-identical; content hash equal to the HTML report; safe file name.
+  verifies_sr:
+  - SR-023
+  - SR-025
+  - SR-026
+  verifies_rul: []
+  covers_rr:
+  - RR-630
+  expected_trace: null
+  automation:
+  - tests/test_reporting.py::PdfReportTest::test_pdf_is_complete_paginated_and_deterministic
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-054
+  status: aktiv
+  title:
+    de: Versionsbindung, historische Stände, Snapshot, Audit und Fehlerisolation des Berichts
+    en: Version binding, historical states, snapshot, audit and error isolation of the report
+  purpose:
+    de: 'SR-021, SR-024, SR-032, SR-036, SR-037: Der Bericht nennt alle Katalogversionen seiner Revision, kennzeichnet abweichende Stände als historisch ohne aktuelle Texte, bleibt als Snapshot unverändert, wird als REPORT_CREATED ohne Inhalte protokolliert und lässt bei Fehlern alles unverändert.'
+    en: 'SR-021, SR-024, SR-032, SR-036, SR-037: the report lists all catalog versions of its revision, marks deviating states as historical without current texts, remains unchanged as a snapshot, is logged as REPORT_CREATED without content and leaves everything unchanged on errors.'
+  test_type: AUTOMATED
+  categories:
+  - L
+  - G
+  - H
+  evaluation_dimensions:
+  - CORRECTNESS
+  - TRACEABILITY
+  - REPRODUCIBILITY
+  preconditions: *id001
+  inputs:
+    de: Bewertung geöffnet mit abweichender rr_measure_version; abgeschlossene und wieder geöffnete Bewertung; nachträgliche Bewertungsänderung; erzwungener Renderer-Fehler.
+    en: Assessment opened with deviating rr_measure_version; finalised and reopened assessment; later change of an assessment; forced renderer error.
+  expected:
+    de: 'MISMATCH: historischer Hinweis, keine Katalogtexte, gespeicherte Versionen; ältere Revision als abgelöst, alle sechs Versionen genannt, unbekannte Revision abgewiesen; Snapshot nach späterer Änderung unverändert; REPORT_CREATED mit Sprache, Format, Schemaversion, Inhaltshash und Versionsstatus, ohne Inhalte; Renderer-Fehler als ReportGenerationError, Datei und Fingerprint unverändert.'
+    en: 'MISMATCH: historical notice, no catalog texts, stored versions; older revision marked superseded, all six versions listed, unknown revision rejected; snapshot unchanged after later change; REPORT_CREATED with language, format, schema version, content hash and version status, without content; renderer error as ReportGenerationError, file and fingerprint unchanged.'
+  verifies_sr:
+  - SR-021
+  - SR-024
+  - SR-032
+  - SR-036
+  - SR-037
+  verifies_rul: []
+  covers_rr:
+  - RR-630
+  - RR-728
+  expected_trace: null
+  automation:
+  - tests/test_reporting.py::HistoricalReportTest::test_mismatch_report_is_marked_historical_without_current_texts
+  - tests/test_reporting.py::HistoricalReportTest::test_snapshot_is_immutable_and_reproducible
+  - tests/test_reporting.py::HistoricalReportTest::test_superseded_revision_and_version_listing
+  - tests/test_reporting.py::ReportAuditTest::test_report_created_is_audited_without_content
+  - tests/test_reporting.py::ReportAuditTest::test_failed_report_changes_nothing
+  - tests/test_reporting.py::ReportModelTest::test_evidence_order_does_not_depend_on_identifiers
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-055
+  status: aktiv
+  title:
+    de: 'Web-Abnahme: Bewertung anlegen, adaptiver Fragebogen und Einordnung'
+    en: 'Web acceptance: create assessment, adaptive questionnaire and classification'
+  purpose:
+    de: 'E2E-Schritte 1–4 und DI-001, DI-004, DI-006: Bewertung anlegen, Produktprofil im segmentierten Fragebogen erfassen, Folgefragen mit Auslöser und zulässigen Werten vor der Eingabe, Einordnung und Anwendbarkeitsblöcke anzeigen.'
+    en: 'E2E steps 1–4 and DI-001, DI-004, DI-006: create assessment, capture product profile in the segmented questionnaire, follow-up questions with trigger and allowed values before input, show classification and applicability blocks.'
+  test_type: AUTOMATED
+  categories:
+  - M
+  - D
+  - F
+  evaluation_dimensions:
+  - CORRECTNESS
+  - TRACEABILITY
+  - COMPLETENESS
+  preconditions:
+    de: 'Kataloge fail-closed geladen; lokaler Server mit leerem Datenverzeichnis; gebaute Oberfläche (web/dist) für Browser-Tests.'
+    en: 'Catalogs loaded fail-closed; local server with empty data directory; built user interface (web/dist) for browser tests.'
+  inputs:
+    de: 'Leeres Profil; Antworten des Referenzfalls TC-036 über die Oberfläche; is_software nein.'
+    en: 'Empty profile; answers of reference case TC-036 through the user interface; is_software no.'
+  expected:
+    de: 'Nur Einstiegsfragen offen; Folgefragen nennen Regel, Frage und Antwort; Optionen und Folgen entsprechen dem RUL-Katalog; Segmente Qualifizierung, Klassifizierung und AI Act abgeschlossen mit Ergebnis des Referenzfalls; ohne Software ist die Klassifizierung nicht erforderlich; Spine- und Blockzustände aus gespeicherten Ergebnissen.'
+    en: 'Only entry questions open; follow-up questions name rule, question and answer; options and consequences match the RUL catalog; qualification, classification and AI Act segments complete with the reference outcome; without software, classification is not required; spine and block states from stored results.'
+  verifies_sr:
+  - SR-001
+  - SR-004
+  - SR-007
+  - SR-026
+  verifies_rul: []
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_web_application.py::QuestionnaireTest::test_empty_profile_asks_only_entry_questions
+  - tests/test_web_application.py::QuestionnaireTest::test_follow_up_names_triggering_rule_and_answer
+  - tests/test_web_application.py::QuestionnaireTest::test_options_and_consequences_come_from_the_catalog
+  - tests/test_web_application.py::QuestionnaireTest::test_reference_case_completes_decision_segments
+  - tests/test_web_application.py::QuestionnaireTest::test_questionnaire_is_deterministic
+  - tests/test_web_application.py::ViewsTest::test_spine_states
+  - tests/test_web_application.py::ViewsTest::test_blocks_and_matrix_are_consistent_with_counts
+  - web/e2e/assessment-flow.spec.ts
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-056
+  status: aktiv
+  title:
+    de: 'Web-Abnahme: Anforderungen, Gap-Bewertung, Nachweis und Herleitung'
+    en: 'Web acceptance: requirements, gap assessment, evidence and derivation'
+  purpose:
+    de: 'E2E-Schritte 5–8: Anforderungsexplorer mit 959 RR und Filtern, Erfüllungsbewertung mit Begründungspflicht, Nachweisreferenz anlegen und zuordnen, Decision Trace von Eingabe bis Nachweis.'
+    en: 'E2E steps 5–8: requirement explorer with 959 RR and filters, fulfilment assessment with mandatory justification, create and link evidence reference, decision trace from input to evidence.'
+  test_type: AUTOMATED
+  categories:
+  - M
+  - K
+  - I
+  - F
+  evaluation_dimensions:
+  - CORRECTNESS
+  - TRACEABILITY
+  preconditions:
+    de: 'Kataloge fail-closed geladen; lokaler Server mit leerem Datenverzeichnis; gebaute Oberfläche (web/dist) für Browser-Tests.'
+    en: 'Catalogs loaded fail-closed; local server with empty data directory; built user interface (web/dist) for browser tests.'
+  inputs:
+    de: 'Referenzfall TC-036; anwendbare RR mit vorgesehener Maßnahme; Status ohne und mit Begründung; Nachweis mit HTML-artigem Titel.'
+    en: 'Reference case TC-036; applicable RR with planned measure; status without and with justification; evidence with HTML-like title.'
+  expected:
+    de: 'Fehlende Begründung und NOT_APPLICABLE werden abgewiesen; erfüllt ohne Nachweis ergibt EVIDENCE_REVIEW_REQUIRED, mit zugeordnetem Nachweis FULFILLED; Freitext bleibt unverändert Text; Detail enthält Prädikate, Entscheidungen, Eingaben, Regeln und Maßnahmen; Lesen ändert weder Fingerprint noch Audit.'
+    en: 'Missing justification and NOT_APPLICABLE are rejected; fulfilled without evidence yields EVIDENCE_REVIEW_REQUIRED, with linked evidence FULFILLED; free text stays unchanged text; detail contains predicates, decisions, inputs, rules and measures; reading changes neither fingerprint nor audit.'
+  verifies_sr:
+  - SR-011
+  - SR-013
+  - SR-014
+  - SR-015
+  - SR-017
+  - SR-041
+  - SR-042
+  - SR-043
+  verifies_rul: []
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_web_application.py::ApiTest::test_gap_assessment_evidence_and_trace
+  - tests/test_web_application.py::ViewsTest::test_reading_views_changes_neither_fingerprint_nor_audit
+  - web/e2e/assessment-flow.spec.ts
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-057
+  status: aktiv
+  title:
+    de: 'Web-Abnahme: Eingabe ändern, sichtbare Neuberechnung, nicht mehr verwendete und reaktivierte Angaben'
+    en: 'Web acceptance: change input, visible recalculation, unused and reactivated answers'
+  purpose:
+    de: 'E2E-Schritte 9–11: zu einer früheren Frage zurückgehen und die Antwort ändern, Neuberechnung mit Differenz sichtbar machen, nicht mehr verwendete Angaben und wieder anwendbare Bewertungen kennzeichnen und bestätigen.'
+    en: 'E2E steps 9–11: go back to an earlier question and change the answer, make recalculation with difference visible, mark and confirm unused answers and reactivated assessments.'
+  test_type: AUTOMATED
+  categories:
+  - M
+  - H
+  evaluation_dimensions:
+  - CORRECTNESS
+  - REPRODUCIBILITY
+  preconditions:
+    de: 'Kataloge fail-closed geladen; lokaler Server mit leerem Datenverzeichnis; gebaute Oberfläche (web/dist) für Browser-Tests.'
+    en: 'Catalogs loaded fail-closed; local server with empty data directory; built user interface (web/dist) for browser tests.'
+  inputs:
+    de: 'Profiländerung einer Einstiegsfrage; ungültiger und unbekannter Wert; Entfernen einer Angabe; Wechsel is_software ja → nein.'
+    en: 'Profile change of an entry question; invalid and unknown value; removal of an answer; switch is_software yes → no.'
+  expected:
+    de: 'Änderung meldet geänderte Eingaben, Anwendbarkeits- und Statusänderungen; ungültige Werte 422 ohne Änderung; abhängige Angaben werden als nicht mehr verwendet ausgewiesen; reaktivierte Bewertungen bleiben bis zur Bestätigung ohne Wirkung.'
+    en: 'Change reports changed inputs, applicability and status changes; invalid values 422 without change; dependent answers are reported as unused; reactivated assessments have no effect until confirmed.'
+  verifies_sr:
+  - SR-040
+  - SR-034
+  - SR-032
+  verifies_rul: []
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_web_application.py::ApiTest::test_profile_update_reports_change_and_validates
+  - tests/test_web_application.py::QuestionnaireTest::test_not_required_segment_and_stale_answers
+  - web/e2e/assessment-flow.spec.ts
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-058
+  status: aktiv
+  title:
+    de: 'Web-Abnahme: Bericht, PDF, Revision und Versionsabweichung'
+    en: 'Web acceptance: report, PDF, revision and version mismatch'
+  purpose:
+    de: 'E2E-Schritte 12–15: Berichtsansicht aus dem ReportDocument, PDF-Erzeugung, Revision abschließen, wieder öffnen und ältere Revision öffnen, Versionsabweichung schreibgeschützt anzeigen, beschädigte Bewertung fail-closed melden.'
+    en: 'E2E steps 12–15: report view from the ReportDocument, PDF creation, finalise, reopen and open an older revision, show version mismatch read-only, report corrupted assessment fail-closed.'
+  test_type: AUTOMATED
+  categories:
+  - M
+  - L
+  - G
+  - H
+  evaluation_dimensions:
+  - CORRECTNESS
+  - REPRODUCIBILITY
+  - TRACEABILITY
+  preconditions:
+    de: 'Kataloge fail-closed geladen; lokaler Server mit leerem Datenverzeichnis; gebaute Oberfläche (web/dist) für Browser-Tests.'
+    en: 'Catalogs loaded fail-closed; local server with empty data directory; built user interface (web/dist) for browser tests.'
+  inputs:
+    de: 'Referenzfall TC-036; Bericht DE/EN; abgeschlossene und wieder geöffnete Bewertung; Katalogstand mit abweichender rr_measure_version; beschädigte Bewertungsdatei.'
+    en: 'Reference case TC-036; report DE/EN; finalised and reopened assessment; catalog state with deviating rr_measure_version; corrupted assessment file.'
+  expected:
+    de: 'Berichtsdokument in der gewählten Sprache; PDF mit Inhaltshash und REPORT_CREATED; abgeschlossene Revision nicht änderbar, Wiederöffnen erzeugt Revision 2; bei Abweichung schreibgeschützt, Spine blockiert, Neubewertung erzeugt eine Revision; beschädigte Datei als CORRUPTED_ASSESSMENT.'
+    en: 'Report document in the chosen language; PDF with content hash and REPORT_CREATED; finalised revision not editable, reopening creates revision 2; on mismatch read-only, spine blocked, rebase creates a revision; corrupted file as CORRUPTED_ASSESSMENT.'
+  verifies_sr:
+  - SR-021
+  - SR-023
+  - SR-026
+  - SR-036
+  - SR-037
+  verifies_rul: []
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_web_application.py::ApiTest::test_report_files_and_audit
+  - tests/test_web_application.py::ApiTest::test_lifecycle_actions_and_state_conflict
+  - tests/test_web_application.py::ApiTest::test_version_mismatch_is_read_only
+  - tests/test_web_application.py::ApiTest::test_not_found_and_corrupted
+  - tests/test_web_application.py::ApiTest::test_meta_i18n_and_measures
+  - web/e2e/assessment-flow.spec.ts
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-059
+  status: aktiv
+  title:
+    de: 'Web-Abnahme: lokaler Betrieb ohne externe Verbindungen und Schutz der Anwendungs-API'
+    en: 'Web acceptance: local operation without external connections and protection of the application API'
+  purpose:
+    de: 'SR-034, SR-035, SR-038: Server nur an localhost, Host-Prüfung, Abweisung seitenfremder und unmarkierter schreibender Anfragen, Größen- und Formatprüfung, pfadsichere Auslieferung, strikte Content-Security-Policy; die Oberfläche lädt keine externen Ressourcen.'
+    en: 'SR-034, SR-035, SR-038: server only on localhost, host check, rejection of cross-site and unmarked writing requests, size and format checks, path-safe delivery, strict content security policy; the user interface loads no external resources.'
+  test_type: AUTOMATED
+  categories:
+  - M
+  - G
+  evaluation_dimensions:
+  - CORRECTNESS
+  - REGRESSION
+  preconditions:
+    de: 'Kataloge fail-closed geladen; lokaler Server mit leerem Datenverzeichnis; gebaute Oberfläche (web/dist) für Browser-Tests.'
+    en: 'Catalogs loaded fail-closed; local server with empty data directory; built user interface (web/dist) for browser tests.'
+  inputs:
+    de: 'Anfragen mit fremdem Host, Sec-Fetch-Site cross-site, ohne Pflicht-Header, mit falschem Inhaltstyp, ungültigem JSON, Übergröße und Pfad-Traversal; Bindung an 0.0.0.0.'
+    en: 'Requests with foreign host, Sec-Fetch-Site cross-site, without mandatory header, with wrong content type, invalid JSON, oversize and path traversal; binding to 0.0.0.0.'
+  expected:
+    de: '403, 403, 403, 415, 400, 413 bzw. keine Auslieferung außerhalb des Oberflächenverzeichnisses; Bindung außerhalb von localhost abgewiesen; Sicherheitsheader auf allen Antworten; keine CORS-Freigabe.'
+    en: '403, 403, 403, 415, 400, 413 or no delivery outside the user interface directory; binding outside localhost rejected; security headers on all responses; no CORS permission.'
+  verifies_sr:
+  - SR-034
+  - SR-035
+  - SR-038
+  verifies_rul: []
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_web_application.py::ServerTest::test_security_headers_on_static_and_api
+  - tests/test_web_application.py::ServerTest::test_host_cross_site_and_write_header_checks
+  - tests/test_web_application.py::ServerTest::test_body_validation
+  - tests/test_web_application.py::ServerTest::test_static_serving_is_path_safe
+  - tests/test_web_application.py::ServerTest::test_server_binds_only_to_localhost
+  - web/e2e/presentation.spec.ts
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-060
+  status: aktiv
+  title:
+    de: 'Web-Abnahme: Sprachen, Darstellungspräferenzen, Barrierefreiheit und Responsive'
+    en: 'Web acceptance: languages, display preferences, accessibility and responsiveness'
+  purpose:
+    de: 'SR-026, SR-027: DE/EN ohne Mischsprache aus den zentralen Ressourcen; Farbschemata, hoher Kontrast, Schriftgröße, Dichte und reduzierte Bewegung ohne fachliche Wirkung; Tastaturbedienung; axe-core ohne Befund in allen Ansichten; kein horizontaler Überlauf von 360 bis 1440 px und bei 200 % Zoom; Leistung des Explorers mit 959 Anforderungen.'
+    en: 'SR-026, SR-027: DE/EN without mixed language from the central resources; colour schemes, high contrast, text size, density and reduced motion without domain effect; keyboard operation; axe-core without findings in all views; no horizontal overflow from 360 to 1440 px and at 200 % zoom; explorer performance with 959 requirements.'
+  test_type: AUTOMATED
+  categories:
+  - M
+  - L
+  - J
+  evaluation_dimensions:
+  - CORRECTNESS
+  - REGRESSION
+  preconditions:
+    de: 'Kataloge fail-closed geladen; lokaler Server mit frischen Testdaten (web/e2e/seed.py); gebaute Oberfläche; Google Chrome.'
+    en: 'Catalogs loaded fail-closed; local server with fresh test data (web/e2e/seed.py); built user interface; Google Chrome.'
+  inputs:
+    de: 'Alle Ansichten in Hell, Dunkel, hohem Kontrast, Deutsch und Englisch; Breiten 1440, 1280, 768, 390, 360 px; 200 % Zoom mit sehr großer Schrift; Tastatur ohne Maus.'
+    en: 'All views in light, dark, high contrast, German and English; widths 1440, 1280, 768, 390, 360 px; 200 % zoom with extra large text; keyboard without mouse.'
+  expected:
+    de: 'Keine deutschen Oberflächentexte in Englisch; Palette und Attribute je Präferenz, Präferenzen ohne API-Schreibzugriff und ohne Änderung von Fingerprint oder Audit; Skip-Link, Fokusführung und Fokusrückgabe; keine axe-Verstöße (WCAG 2.0/2.1/2.2 A und AA); kein horizontaler Seitenüberlauf; Touch-Ziele mindestens 44 px; Explorer unter 5 s, Filter unter 1 s.'
+    en: 'No German interface texts in English; palette and attributes per preference, preferences without API writes and without change of fingerprint or audit; skip link, focus management and focus return; no axe violations (WCAG 2.0/2.1/2.2 A and AA); no horizontal page overflow; touch targets at least 44 px; explorer below 5 s, filter below 1 s.'
+  verifies_sr:
+  - SR-026
+  - SR-027
+  - SR-041
+  verifies_rul: []
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - web/e2e/presentation.spec.ts
+  - web/e2e/accessibility.spec.ts
+  - web/e2e/responsive.spec.ts
+  - tests/test_i18n.py::MessageCatalogTest::test_web_interface_keys_exist_and_none_is_orphaned
+  - tests/test_i18n.py::MessageCatalogTest::test_web_interface_contains_no_visible_text_literals
+  - tests/test_web_application.py::WebAppManifestTest::test_manifest_and_icons
+  - tests/test_web_application.py::WebAppManifestTest::test_no_external_resources_in_the_interface
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-061
+  status: aktiv
+  title:
+    de: 'Evaluation der Fallstudie gegen die eingefrorene Referenz (Block 6)'
+    en: 'Evaluation of the case study against the frozen reference (block 6)'
+  purpose:
+    de: 'Korrektheit, Vollständigkeit, Nachvollziehbarkeit, Reproduzierbarkeit und DE/EN-Konsistenz der Fallstudie (KI-Symptomchecker, Basis TC-036) über die Anwendungs-API gegen REFERENCE_ASSESSMENT.yaml (EV-011); Browser-Durchlauf der Fallstudie über die Oberfläche.'
+    en: 'Correctness, completeness, traceability, reproducibility and DE/EN consistency of the case study (AI symptom checker, based on TC-036) through the application API against REFERENCE_ASSESSMENT.yaml (EV-011); browser run of the case study through the user interface.'
+  test_type: AUTOMATED
+  categories:
+  - A
+  - F
+  - K
+  - J
+  evaluation_dimensions:
+  - CORRECTNESS
+  - COMPLETENESS
+  - REPRODUCIBILITY
+  - TRACEABILITY
+  - REGRESSION
+  preconditions:
+    de: 'Kataloge fail-closed geladen; eingefrorene Referenz (EV-011) unverändert; leeres Datenverzeichnis.'
+    en: 'Catalogs loaded fail-closed; frozen reference (EV-011) unchanged; empty data directory.'
+  inputs:
+    de: 'Fallprofil (TC-036) adaptiv über den Fragebogen, 25 strukturierte Erfüllungsangaben und 10 Nachweisreferenzen laut Referenzszenario.'
+    en: 'Case profile (TC-036) adaptively through the questionnaire, 25 structured fulfilment inputs and 10 evidence references per the reference scenario.'
+  expected:
+    de: 'Anwendbarkeit 959 von 959 und Begründungscodes gleich der Referenz; Gap-Status, Begründung, Gap-Kennzeichen, Bewertungs- und Nachweisstatus 32 von 32; vollständige Datensätze 32 von 32; Nachvollziehbarkeit ohne FAIL außer dem dokumentierten Befund F-4; DE und EN mit identischen sprachneutralen Werten; Berichtsdokument bis auf Kennungen reproduzierbar.'
+    en: 'Applicability 959 of 959 and reason codes equal to the reference; gap status, reason, gap flag, answer and evidence state 32 of 32; complete records 32 of 32; traceability without FAIL except documented finding F-4; DE and EN with identical language-neutral values; report document reproducible apart from identifiers.'
+  verifies_sr:
+  - SR-002
+  - SR-008
+  - SR-009
+  - SR-015
+  - SR-020
+  - SR-026
+  - SR-042
+  verifies_rul: []
+  covers_rr:
+  - RR-082
+  - RR-123
+  - RR-081
+  - RR-384
+  - RR-094
+  - RR-076
+  - RR-160
+  - RR-064
+  - RR-074
+  - RR-165
+  - RR-096
+  - RR-135
+  - RR-302
+  - RR-539
+  - RR-172
+  - RR-448
+  - RR-084
+  - RR-189
+  - RR-892
+  - RR-163
+  - RR-593
+  - RR-692
+  - RR-083
+  - RR-162
+  - RR-065
+  - RR-075
+  - RR-097
+  - RR-085
+  - RR-164
+  - RR-001
+  - RR-034
+  - RR-205
+  expected_trace: null
+  automation:
+  - tests/test_case_study_evaluation.py::CaseStudyEvaluationTest::test_applicability_agrees_with_reference_for_all_requirements
+  - tests/test_case_study_evaluation.py::CaseStudyEvaluationTest::test_gap_status_and_completeness_in_the_gap_reference_scope
+  - tests/test_case_study_evaluation.py::CaseStudyEvaluationTest::test_traceability_sample
+  - tests/test_case_study_evaluation.py::CaseStudyEvaluationTest::test_german_and_english_report_carry_the_same_values
+  - tests/test_case_study_evaluation.py::CaseStudyEvaluationTest::test_report_document_is_reproducible_apart_from_identifiers
+  - tools/test_validate_reference_assessment.py
+  - web/e2e/case-study.spec.ts
+  data_refs: []
+  golden_case: null
+  golden: false
+- id: TC-062
+  status: aktiv
+  title:
+    de: Anhang-III-Übergang nach Art. 111 Abs. 2 und historische Versionsbindung
+    en: Annex III transition under Article 111(2) and historical version binding
+  purpose:
+    de: 'Gezielte Regression von R01-4.6-F01: Übergang auf der Anhang-III-Route, Stichtage, fehlende Angaben, Routenaggregation
+      und Schutz historischer Revisionen.'
+    en: 'Targeted regression for R01-4.6-F01: Annex III transition, reference dates, missing inputs, route aggregation and
+      protection of historical revisions.'
+  test_type: AUTOMATED
+  categories:
+  - A
+  - C
+  - D
+  - G
+  - H
+  - J
+  evaluation_dimensions:
+  - CORRECTNESS
+  - TRACEABILITY
+  - REGRESSION
+  preconditions:
+    de: Aktuelle Kataloge RUL 0.3 / RR_APPLICABILITY 0.5; historische Varianten hashgebunden; ausschließlich temporäre Daten.
+    en: Current RUL 0.3 / RR_APPLICABILITY 0.5 catalogs; historical variants hash-pinned; temporary data only.
+  inputs:
+    de: Anhang-III-Triage mit Inverkehrbringen 2026; Stichtage 02.12.2027 und 02.08.2030; getrennte Änderungen je Route; fehlende
+      und unklare Übergangsangaben.
+    en: Annex III triage placed on the market in 2026; reference dates 2 December 2027 and 2 August 2030; separate changes
+      per route; missing and unclear transitional facts.
+  expected:
+    de: 'Bestandsystem ohne Konzeptionsänderung und ohne Behördennutzung bleibt im Übergang: 115 RR nicht anwendbar mit SCOPE_LEGACY_TRANSITION.
+      Neue/geänderte Systeme werden wirksam; Behördenfrist wird geprüft. Fehlende Angaben bleiben unvollständig, unklare Angaben
+      prüfbedürftig. Historische Revisionen bleiben erhalten; Neubewertung nur als neue Revision.'
+    en: 'An unchanged existing system not intended for public authorities remains in transition: 115 RR not applicable with
+      SCOPE_LEGACY_TRANSITION. New/changed systems become effective; the public-authority deadline is checked. Missing facts
+      remain incomplete, unclear facts require review. Historical revisions remain unchanged; rebase creates a new revision.'
+  verifies_sr:
+  - SR-002
+  - SR-008
+  - SR-009
+  - SR-020
+  - SR-021
+  - SR-037
+  verifies_rul:
+  - RUL-040
+  - RUL-041
+  - RUL-042
+  - RUL-043
+  - RUL-044
+  - RUL-045
+  - RUL-046
+  - RUL-047
+  covers_rr: []
+  expected_trace: null
+  automation:
+  - tests/test_annex_iii_transition.py::AnnexIIITransitionTest
+  - tests/test_annex_iii_transition.py::HistoricalTransitionTest
+  data_refs: []
+  golden_case: null
+  golden: false
+change_history:
+- version: '0.1'
+  change: 'Erstfassung: 40 Testfälle TC-001 bis TC-040, davon 4 manuell adjudizierte Referenzfälle (Golden Cases TC-036 bis TC-039). T01 bis T15 nach Zweck zu TC-001 bis TC-006 gebündelt; identische Szenarien (T08/T14, T11/T12) als Varianten dokumentiert.'
+- version: '0.2'
+  change: 'TC-041 ergänzt: aktive Prüfung des Blocks SRC009_EIFU_ADDITIONAL und Nachweis der designbedingten Unerreichbarkeit von SRC009_ART3_1_PATH. Bindung an DATA_MODEL 0.5 (rr_measure_version im CatalogVersionSet).'
+- version: '0.3'
+  change: 'Demonstrator D1 (Assessment-/Gap-Kern): TC-042 bis TC-046 mit neuer Kategorie K (Gap-Analyse / Erfüllungsstatus); TC-036 bis TC-039 zusätzlich über den Assessment-Kern automatisiert, Gap-Soll ohne Antworten aus den bestehenden Referenz-Sollwerten und der dokumentierten Ableitungstabelle abgeleitet (keine Soll-Werte geändert). Bindung an SR_CATALOG 0.4 und DATA_MODEL 0.6.'
+- version: '0.4'
+  change: 'Demonstrator D2 (Persistenz, Versionsabgleich, Revisionen, Audit): TC-047 bis TC-050; TC-043 um den Lebenszyklus von Nachweisreferenzen erweitert; TC-044 an die Bestätigungspflicht wieder anwendbarer Bewertungen angepasst (Audit-Prüfung nach TC-049 verlagert). Bindung an DATA_MODEL 0.7 und SR_CATALOG 0.5. Keine Soll-Werte der Referenzfälle geändert.'
+- version: '0.5'
+  change: 'Demonstrator D3 (Reporting, PDF, zentrale Sprachausgabe): Kategorie L (Bericht / Sprachausgabe), TC-051 bis TC-054. Bindung an DATA_MODEL 0.8. Keine Soll-Werte der Referenzfälle geändert.'
+- version: '0.6'
+  change: 'Demonstrator D4 (Web-Anwendung): Kategorie M (Web-Anwendung / Oberfläche und API); Abnahmeszenarien TC-055 bis TC-060 mit Browser-Ende-zu-Ende-Tests (web/e2e) und den zugehörigen Tests der Anwendungs-API. Bindung an SR_CATALOG 0.6. Keine Soll-Werte der Referenzfälle geändert.'
+- version: '0.7'
+  change: 'Block 6 (Fallstudie und Evaluation): TC-061 Evaluation der Fallstudie gegen die eingefrorene Referenz; TC-054 um den Regressionstest der Nachweisreihenfolge (Befund F-2) ergänzt. Keine Soll-Werte der Referenzfälle geändert.'
+- version: '0.8'
+  change: 'Bindung an RR_MEASURE_CATALOG 0.2 (Impact-Prüfung): TC-035 prüft weiterhin den Mapping-Status aller RR, jetzt 959 MAPPED mit Mapping-Basis, Zuordnungsregel und Begründung; der fail-closed-Pfad REVIEW_REQUIRED wird über eine Testfixture geprüft. TC-061 führt die Fallstudie unverändert gegen den evaluierten Maßnahmenkatalog 0.1 aus (eingefrorene Fassung, SHA-256 geprüft). Keine Soll-Werte geändert, kein TC neu.'
+- version: '0.9'
+  change: 'TC-062 ergänzt: gezielte Korrektur der Anhang-III-Übergangslücke. Bindung an RUL 0.3 und RR_APPLICABILITY 0.5; bestehende TC-001 bis TC-061 und alle Golden-Case-Sollwerte unverändert. TC-061 verwendet die hashgebundenen historischen Fassungen RUL 0.2, RR_APPLICABILITY 0.4 und RR_MEASURE 0.1.'

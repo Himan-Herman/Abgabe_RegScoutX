@@ -1,0 +1,893 @@
+version: "0.6"
+
+requirements:
+  - id: "SR-001"
+    status: "aktiv"
+    group: "QUALIFICATION_CLASSIFICATION"
+    title:
+      de: "Kontrollierte Produkteingaben"
+      en: "Controlled product inputs"
+    statement:
+      de: "Das System muss Produktangaben für die Entscheidungslogik ausschließlich über Eingaben erfassen, deren Schlüssel und zulässige Werte aus dem RUL-Katalog stammen."
+      en: "The system shall capture product information for the decision logic only through inputs whose keys and allowed values are taken from the RUL catalog."
+    acceptance_criterion:
+      de: "Jede entscheidungsrelevante Frage entspricht einem nicht abgeleiteten input_key des RUL-Katalogs; ein Wert außerhalb von allowed_values wird abgewiesen."
+      en: "Every decision-relevant question corresponds to a non-derived input_key of the RUL catalog; a value outside allowed_values is rejected."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#3-zielstellung"
+      - "EXPOSE_SCOPE.md#4-erwartetes-ergebnis"
+    allocated_modules: ["ASSESSMENT_SERVICE", "PRESENTATION"]
+    rationale: "Das Exposé sieht strukturierte Produkteingaben über einen Fragebogen vor; kontrollierte Werte sind Voraussetzung für reproduzierbare Regelauswertung."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-002"
+    status: "aktiv"
+    group: "QUALIFICATION_CLASSIFICATION"
+    title:
+      de: "Deterministische Regelausführung"
+      en: "Deterministic rule execution"
+    statement:
+      de: "Das System muss die Entscheidungsregeln des RUL-Katalogs so ausführen, dass gleiche Eingaben bei gleicher Katalogversion denselben Regelpfad und dasselbe Ergebnis liefern."
+      en: "The system shall execute the decision rules of the RUL catalog such that identical inputs with the same catalog version yield the same rule path and the same result."
+    acceptance_criterion:
+      de: "Wiederholte Auswertung identischer Eingaben gegen dieselbe Katalogversion erzeugt identische RuleExecution-Folgen und DecisionResults."
+      en: "Repeated evaluation of identical inputs against the same catalog version produces identical RuleExecution sequences and DecisionResults."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+      - "EXPOSE_SCOPE.md#4-erwartetes-ergebnis"
+    allocated_modules: ["RULE_ENGINE"]
+    rationale: "Reproduzierbarkeit ist Bewertungskriterium der Zielerreichung; der Demonstrator ist bewusst regelbasiert."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-003"
+    status: "aktiv"
+    group: "QUALIFICATION_CLASSIFICATION"
+    title:
+      de: "Keine Entscheidung bei fehlender oder ungültiger Eingabe"
+      en: "No decision on missing or invalid input"
+    statement:
+      de: "Das System muss die Auswertung eines Regelpfads an einer Regel ohne Ergebnis anhalten, wenn deren Eingabe fehlt oder ungültig ist."
+      en: "The system shall stop evaluating a rule path at a rule without a result if its input is missing or invalid."
+    acceptance_criterion:
+      de: "Bei fehlender oder ungültiger Eingabe hat das DecisionResult den Status INCOMPLETE und benennt die betroffene Regel; es wird kein Ergebnis angenommen."
+      en: "With a missing or invalid input the DecisionResult has status INCOMPLETE and names the affected rule; no result is assumed."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+    allocated_modules: ["RULE_ENGINE"]
+    rationale: "RUL_METHOD.md Abschnitt 7 schließt automatische Entscheidungen bei unzureichender Evidenz aus; Korrektheit darf nicht durch Raten entstehen."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-004"
+    status: "aktiv"
+    group: "QUALIFICATION_CLASSIFICATION"
+    title:
+      de: "Review-Ausgänge als offene Prüfpunkte"
+      en: "Review outcomes as open review items"
+    statement:
+      de: "Das System muss Ausgänge des Typs REVIEW als offene Prüfpunkte mit der im RUL-Katalog dokumentierten Ursache ausgeben und nie als Entscheidung oder Klasse darstellen."
+      en: "The system shall present outcomes of type REVIEW as open review items with the cause documented in the RUL catalog and never as a decision or class."
+    acceptance_criterion:
+      de: "Ein Pfad mit Review-Ausgang ergibt den Status REVIEW_REQUIRED ohne mdr_class; die Ursache erscheint in Anzeige und Bericht."
+      en: "A path with a review outcome yields status REVIEW_REQUIRED without mdr_class; the cause appears in the display and the report."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+      - "EXPOSE_SCOPE.md#4-erwartetes-ergebnis"
+    allocated_modules: ["RULE_ENGINE", "REPORTING"]
+    rationale: "Review-Ausgänge wie BOUNDARY_REVIEW_REQUIRED und ADDITIONAL_CLASSIFICATION_REVIEW_REQUIRED kennzeichnen Grenzen der modellierten Logik und dürfen keine Scheinsicherheit erzeugen."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-005"
+    status: "aktiv"
+    group: "QUALIFICATION_CLASSIFICATION"
+    title:
+      de: "MDR-Klassenaggregation nach Katalog"
+      en: "MDR class aggregation according to the catalog"
+    statement:
+      de: "Das System muss die finale MDR-Klasse ausschließlich als strengsten Klassenkandidaten des Regelpfads nach class_order des RUL-Katalogs bestimmen und bei einem mitgeführten Review-Ausgang keine finale Klasse ausgeben."
+      en: "The system shall determine the final MDR class only as the strictest class candidate of the rule path according to the class_order of the RUL catalog and shall output no final class if a review outcome was carried along."
+    acceptance_criterion:
+      de: "Für die Testfälle T07 bis T14 entspricht die ausgegebene Klasse dem Soll; ein Pfad mit mitgeführtem Review-Ausgang ergibt keine Klasse."
+      en: "For test cases T07 to T14 the output class matches the expected result; a path with a carried review outcome yields no class."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#4-erwartetes-ergebnis"
+      - "EXPOSE_SCOPE.md#5-geplante-evaluation"
+    allocated_modules: ["RULE_ENGINE"]
+    rationale: "Die Aggregation nach Anhang VIII Abschnitt 3.5 ist in RUL-020 festgelegt; die Engine setzt sie um, ohne eigene Klassifikationslogik hinzuzufügen."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-006"
+    status: "aktiv"
+    group: "QUALIFICATION_CLASSIFICATION"
+    title:
+      de: "Protokoll des Entscheidungspfads"
+      en: "Decision path record"
+    statement:
+      de: "Das System muss für jeden ausgeführten Regelschritt Regel-ID, Eingabeschlüssel, Eingabewert, gewählten Zweig und Katalogversion speichern."
+      en: "The system shall store the rule id, input key, input value, selected branch and catalog version for every executed rule step."
+    acceptance_criterion:
+      de: "Aus den gespeicherten RuleExecutions lässt sich der vollständige Regelpfad eines DecisionResults lückenlos rekonstruieren."
+      en: "The complete rule path of a DecisionResult can be reconstructed without gaps from the stored RuleExecutions."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+    allocated_modules: ["RULE_ENGINE"]
+    rationale: "Nachvollziehbarkeit der Entscheidung ist Bewertungskriterium der Zielerreichung."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-007"
+    status: "aktiv"
+    group: "QUALIFICATION_CLASSIFICATION"
+    title:
+      de: "Getrennte AI-Act-Applicability"
+      en: "Separate AI Act applicability"
+    statement:
+      de: "Das System muss die AI-Act-Applicability als eigenen Entscheidungsbereich getrennt von der MDR-Klassifizierung ausweisen und ausschließlich über katalogisierte Entscheidungsregeln bestimmen."
+      en: "The system shall present AI Act applicability as a separate decision area distinct from MDR classification and shall determine it only through catalogued decision rules."
+    acceptance_criterion:
+      de: "Solange der RUL-Katalog keine Regeln für diesen Bereich enthält, hat das DecisionResult des Bereichs AI_ACT_APPLICABILITY den Status NOT_EVALUATED; eine MDR-Klasse wird nie als AI-Act-Einstufung ausgegeben."
+      en: "As long as the RUL catalog contains no rules for this area, the DecisionResult of area AI_ACT_APPLICABILITY has status NOT_EVALUATED; an MDR class is never output as an AI Act classification."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#2-problemstellung"
+      - "EXPOSE_SCOPE.md#3-zielstellung"
+    allocated_modules: ["RULE_ENGINE", "REPORTING"]
+    rationale: "Das Exposé verbindet MDR und AI Act; die aktuelle High-Risk-Logik aus SRC-002 ist separat zu prüfen und liegt noch nicht als RUL vor."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-008"
+    status: "aktiv"
+    group: "APPLICABILITY"
+    title:
+      de: "RR-Aktivierung über katalogisierte Entscheidungsergebnisse"
+      en: "RR activation through catalogued decision results"
+    statement:
+      de: "Das System muss anwendbare RR ausschließlich aus Entscheidungsergebnissen und dokumentierten, versionierten Applicability-Regeln bestimmen."
+      en: "The system shall determine applicable RR only from decision results and documented, versioned applicability rules."
+    acceptance_criterion:
+      de: "Jede ApplicableRequirement verweist über determined_by auf mindestens ein DecisionResult; keine Aktivierungslogik liegt außerhalb der Kataloge und der APPLICABILITY_ENGINE."
+      en: "Every ApplicableRequirement refers through determined_by to at least one DecisionResult; no activation logic resides outside the catalogs and the APPLICABILITY_ENGINE."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#3-zielstellung"
+      - "EXPOSE_SCOPE.md#4-erwartetes-ergebnis"
+    allocated_modules: ["APPLICABILITY_ENGINE"]
+    rationale: "Das Exposé verlangt die Identifikation relevanter Anforderungen anhand der Produkteingaben mit formalisierter Entscheidungslogik."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-009"
+    status: "aktiv"
+    group: "APPLICABILITY"
+    title:
+      de: "Bedingte RR ohne bestätigte Bedingung"
+      en: "Conditional RR without confirmed condition"
+    statement:
+      de: "Das System muss eine RR, deren Anforderungstext eine Bedingung enthält, als APPLICABILITY_UNRESOLVED ausweisen, solange die Bedingung nicht durch eine katalogisierte Regel bestätigt ist."
+      en: "The system shall mark an RR whose requirement text contains a condition as APPLICABILITY_UNRESOLVED as long as the condition is not confirmed by a catalogued rule."
+    acceptance_criterion:
+      de: "Ohne bestätigende Regel wird eine bedingte RR weder als APPLICABLE noch als NOT_APPLICABLE geführt; Bedingungen werden nicht aus Freitext interpretiert."
+      en: "Without a confirming rule a conditional RR is neither APPLICABLE nor NOT_APPLICABLE; conditions are not interpreted from free text."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+    allocated_modules: ["APPLICABILITY_ENGINE"]
+    rationale: "Der RR-Katalog führt Bedingungen im Anforderungstext und nicht als Schemafeld; eine automatische Auslegung würde die Korrektheit gefährden."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-010"
+    status: "aktiv"
+    group: "APPLICABILITY"
+    title:
+      de: "Begründete Nicht-Anwendbarkeit"
+      en: "Justified non-applicability"
+    statement:
+      de: "Das System muss nicht anwendbare RR mit Begründung und Verweis auf das auslösende Entscheidungsergebnis behalten statt sie zu entfernen."
+      en: "The system shall keep non-applicable RR with a justification and a reference to the triggering decision result instead of removing them."
+    acceptance_criterion:
+      de: "Jede RR mit applicability NOT_APPLICABLE besitzt eine Begründung und mindestens einen Eintrag in determined_by und ist im Bericht einsehbar."
+      en: "Every RR with applicability NOT_APPLICABLE has a justification and at least one entry in determined_by and can be viewed in the report."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+    allocated_modules: ["APPLICABILITY_ENGINE", "REPORTING"]
+    rationale: "Vollständigkeit und Nachvollziehbarkeit verlangen, dass auch ausgeblendete Anforderungen begründet bleiben."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-011"
+    status: "aktiv"
+    group: "APPLICABILITY"
+    title:
+      de: "Anzeige regulatorischer Anforderungen mit Quellenverweis"
+      en: "Display of regulatory requirements with source references"
+    statement:
+      de: "Das System muss jede angezeigte RR mit ID, Titel, Anforderungstext in der gewählten Sprache und ihren Quellenlokatoren aus dem RR-Katalog darstellen."
+      en: "The system shall display every shown RR with its id, title, requirement text in the selected language and its source locators from the RR catalog."
+    acceptance_criterion:
+      de: "Angezeigte Texte und Lokatoren stimmen mit dem RR-Katalog der fixierten Version überein."
+      en: "Displayed texts and locators match the RR catalog of the pinned version."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#3-zielstellung"
+    allocated_modules: ["REQUIREMENT_SERVICE", "PRESENTATION"]
+    rationale: "Das Exposé verlangt eine Gap-Analyse mit Quellenverweisen."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-012"
+    status: "aktiv"
+    group: "GAP_ANALYSIS"
+    title:
+      de: "Erfüllungsstatus aus kontrolliertem Vokabular"
+      en: "Fulfilment status from a controlled vocabulary"
+    statement:
+      de: "Das System muss den Erfüllungsstatus je RR ausschließlich aus dem Vokabular gap_status des Datenmodells führen."
+      en: "The system shall record the fulfilment status of each RR only from the gap_status vocabulary of the data model."
+    acceptance_criterion:
+      de: "Ein Status außerhalb von gap_status wird abgewiesen."
+      en: "A status outside gap_status is rejected."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#3-zielstellung"
+    allocated_modules: ["GAP_ENGINE"]
+    rationale: "Der Abgleich des Erfüllungsstands erfordert eindeutige, vergleichbare Statuswerte."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-013"
+    status: "aktiv"
+    group: "GAP_ANALYSIS"
+    title:
+      de: "Kein automatischer Erfüllungsstatus"
+      en: "No automatic fulfilment status"
+    statement:
+      de: "Das System muss neue Bewertungen einer anwendbaren RR mit NOT_ASSESSED beginnen und darf FULFILLED, PARTIALLY_FULFILLED oder NOT_FULFILLED nur auf Nutzereingabe setzen."
+      en: "The system shall start new assessments of an applicable RR with NOT_ASSESSED and may set FULFILLED, PARTIALLY_FULFILLED or NOT_FULFILLED only on user input."
+    acceptance_criterion:
+      de: "Ohne Nutzereingabe bleibt jeder Status NOT_ASSESSED; NOT_APPLICABLE wird nur aus der Anwendbarkeit abgeleitet."
+      en: "Without user input every status remains NOT_ASSESSED; NOT_APPLICABLE is only derived from applicability."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+      - "EXPOSE_SCOPE.md#4-erwartetes-ergebnis"
+    allocated_modules: ["GAP_ENGINE"]
+    rationale: "Der Demonstrator ersetzt keine Konformitätsbewertung; der Erfüllungsstand ist eine Aussage des Nutzers."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-014"
+    status: "aktiv"
+    group: "GAP_ANALYSIS"
+    title:
+      de: "Begründungspflicht des Erfüllungsstatus"
+      en: "Justification of the fulfilment status"
+    statement:
+      de: "Das System muss für die Status FULFILLED, PARTIALLY_FULFILLED und NOT_FULFILLED eine Begründung verlangen."
+      en: "The system shall require a justification for the statuses FULFILLED, PARTIALLY_FULFILLED and NOT_FULFILLED."
+    acceptance_criterion:
+      de: "Das Setzen eines dieser Status ohne Begründung wird abgewiesen."
+      en: "Setting one of these statuses without a justification is rejected."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+    allocated_modules: ["GAP_ENGINE"]
+    rationale: "Nachvollziehbarkeit der Ergebnisberichte."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-015"
+    status: "aktiv"
+    group: "GAP_ANALYSIS"
+    title:
+      de: "Gap-Ermittlung einschließlich Nachweislücken"
+      en: "Gap determination including evidence gaps"
+    statement:
+      de: "Das System muss einen Gap ausweisen, wenn eine anwendbare RR den Status PARTIALLY_FULFILLED oder NOT_FULFILLED hat oder als FULFILLED bzw. PARTIALLY_FULFILLED ohne Nachweisreferenz bewertet ist."
+      en: "The system shall report a gap if an applicable RR has status PARTIALLY_FULFILLED or NOT_FULFILLED or is assessed as FULFILLED or PARTIALLY_FULFILLED without an evidence reference."
+    acceptance_criterion:
+      de: "Für jede Kombination aus Status und vorhandener bzw. fehlender Nachweisreferenz entspricht die Gap-Kennzeichnung der Regel im Datenmodell."
+      en: "For every combination of status and present or missing evidence reference the gap flag matches the rule in the data model."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#3-zielstellung"
+      - "EXPOSE_SCOPE.md#4-erwartetes-ergebnis"
+    allocated_modules: ["GAP_ENGINE"]
+    rationale: "Die Gap-Analyse ist Kernfunktion des Demonstrators; fehlende Nachweise sind als Lücke erkennbar zu machen."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-016"
+    status: "aktiv"
+    group: "GAP_ANALYSIS"
+    title:
+      de: "Reproduzierbare Gap-Zusammenfassung"
+      en: "Reproducible gap summary"
+    statement:
+      de: "Das System muss die Gap-Zusammenfassung deterministisch aus Anwendbarkeit, Status und Nachweisreferenzen berechnen."
+      en: "The system shall compute the gap summary deterministically from applicability, statuses and evidence references."
+    acceptance_criterion:
+      de: "Identische Bewertungsdaten und Katalogversionen ergeben eine identische Gap-Zusammenfassung."
+      en: "Identical assessment data and catalog versions yield an identical gap summary."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+    allocated_modules: ["GAP_ENGINE", "REPORTING"]
+    rationale: "Reproduzierbarkeit ist Bewertungskriterium der Zielerreichung."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-017"
+    status: "aktiv"
+    group: "EVIDENCE"
+    title:
+      de: "Nachweisreferenzen je Anforderung"
+      en: "Evidence references per requirement"
+    statement:
+      de: "Das System muss je bewerteter RR null bis mehrere Nachweisreferenzen mit Titel und Dokumentkennung zuordnen können."
+      en: "The system shall allow zero to many evidence references with title and document identifier to be linked to each assessed RR."
+    acceptance_criterion:
+      de: "Eine Nachweisreferenz kann mehreren RR zugeordnet und im Bericht je RR angezeigt werden."
+      en: "An evidence reference can be linked to several RR and is shown per RR in the report."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#4-erwartetes-ergebnis"
+    allocated_modules: ["EVIDENCE_SERVICE", "GAP_ENGINE"]
+    rationale: "Das Exposé verlangt die Verknüpfung jeder Anforderung mit einem Nachweisdokument."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-018"
+    status: "aktiv"
+    group: "EVIDENCE"
+    title:
+      de: "Keine erzeugten Nachweise"
+      en: "No generated evidence"
+    statement:
+      de: "Das System darf Nachweisreferenzen ausschließlich aus Nutzereingaben anlegen und keine Nachweise erzeugen, ergänzen oder unterstellen."
+      en: "The system shall create evidence references only from user input and shall not generate, complete or presume evidence."
+    acceptance_criterion:
+      de: "Es existiert kein Codepfad, der eine EvidenceReference ohne Nutzereingabe anlegt."
+      en: "No code path exists that creates an EvidenceReference without user input."
+    verification_method: "INSPECTION"
+    derived_from:
+      - "EXPOSE_SCOPE.md#4-erwartetes-ergebnis"
+    allocated_modules: ["EVIDENCE_SERVICE"]
+    rationale: "Der Demonstrator ersetzt keine Zertifizierung oder Konformitätsbewertung; erfundene Nachweise würden die Gap-Analyse verfälschen."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-019"
+    status: "aktiv"
+    group: "TRACEABILITY"
+    title:
+      de: "Rückverfolgbarkeit von Entscheidungsergebnissen"
+      en: "Traceability of decision results"
+    statement:
+      de: "Das System muss für jedes Entscheidungsergebnis die angewendeten RUL-IDs mit ihren Primary-Legal-Ankern und Guidance-Ankern ausweisen."
+      en: "The system shall show, for every decision result, the applied RUL ids with their primary legal anchors and guidance anchors."
+    acceptance_criterion:
+      de: "Jedes DecisionResult im Bericht nennt die RUL-IDs des Pfads und deren SRC-Lokatoren, getrennt nach Primärrecht und Guidance."
+      en: "Every DecisionResult in the report names the RUL ids of the path and their SRC locators, separated into primary law and guidance."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+    allocated_modules: ["RULE_ENGINE", "REPORTING"]
+    rationale: "Jede Ausgabe muss bis zur regulatorischen Quelle rückverfolgbar sein; Primärrecht und Guidance bleiben getrennt."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-020"
+    status: "aktiv"
+    group: "TRACEABILITY"
+    title:
+      de: "Rückverfolgbarkeit von Anforderungsergebnissen"
+      en: "Traceability of requirement results"
+    statement:
+      de: "Das System muss für jede RR im Ergebnis ihre Quellenlokatoren und die Entscheidungsergebnisse ausweisen, aus denen ihre Anwendbarkeit folgt."
+      en: "The system shall show, for every RR in the result, its source locators and the decision results from which its applicability follows."
+    acceptance_criterion:
+      de: "Für jede ApplicableRequirement sind RR-ID, SRC-Lokatoren und determined_by im Bericht auflösbar."
+      en: "For every ApplicableRequirement the RR id, SRC locators and determined_by can be resolved in the report."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+      - "EXPOSE_SCOPE.md#4-erwartetes-ergebnis"
+    allocated_modules: ["APPLICABILITY_ENGINE", "REPORTING"]
+    rationale: "Die Traceability-Matrix verknüpft jede Anforderung mit Quelle und Nachweis."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-021"
+    status: "aktiv"
+    group: "TRACEABILITY"
+    title:
+      de: "Fixierte Katalogversionen je Bewertung"
+      en: "Pinned catalog versions per assessment"
+    statement:
+      de: "Das System muss bei Anlage einer Bewertung die Versionen von Quellenregister, RR-Katalog, RUL-Katalog und Datenmodell fixieren und in jedem Bericht angeben."
+      en: "The system shall pin the versions of the source register, RR catalog, RUL catalog and data model when an assessment is created and state them in every report."
+    acceptance_criterion:
+      de: "Assessment und ReportSnapshot enthalten ein vollständiges CatalogVersionSet; der Bericht nennt alle Versionen des CatalogVersionSet."
+      en: "Assessment and ReportSnapshot contain a complete CatalogVersionSet; the report states all versions of the CatalogVersionSet."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+    allocated_modules: ["ASSESSMENT_SERVICE", "CATALOG_REPOSITORY", "ASSESSMENT_REPOSITORY"]
+    rationale: "Identische Eingaben führen nur bei identischen Katalogversionen zu identischen Ergebnissen."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-022"
+    status: "aktiv"
+    group: "TRACEABILITY"
+    title:
+      de: "Verweisintegrität der Kataloge"
+      en: "Reference integrity of the catalogs"
+    statement:
+      de: "Das System muss vor der Nutzung der Kataloge prüfen, dass alle Verweise zwischen Quellen, RR und RUL auf vergebene IDs zeigen."
+      en: "The system shall verify before using the catalogs that all references between sources, RR and RUL point to assigned ids."
+    acceptance_criterion:
+      de: "Ein Katalog mit Verweis auf eine nicht vergebene SRC-, RR- oder RUL-ID wird nicht geladen."
+      en: "A catalog with a reference to an unassigned SRC, RR or RUL id is not loaded."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#4-erwartetes-ergebnis"
+    allocated_modules: ["CATALOG_REPOSITORY"]
+    rationale: "Eine Traceability-Matrix ist nur mit konsistenten Verweisen belastbar."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-023"
+    status: "aktiv"
+    group: "REPORTING"
+    title:
+      de: "Inhalt des Ergebnisberichts"
+      en: "Content of the result report"
+    statement:
+      de: "Das System muss einen Ergebnisbericht mit Qualifikation, MDR/IVDR-Abgrenzung, Klassifizierung, AI-Act-Applicability, anwendbaren Anforderungen, Gap-Zusammenfassung, Anforderungsdetails, Nachweisen, offenen Punkten und verwendeten Katalogversionen erzeugen."
+      en: "The system shall generate a result report containing qualification, MDR/IVDR boundary, classification, AI Act applicability, applicable requirements, gap summary, requirement details, evidence, open points and the catalog versions used."
+    acceptance_criterion:
+      de: "Ein erzeugter Bericht enthält alle genannten Abschnitte; offene Punkte umfassen Review-Ausgänge, unvollständige Eingaben, ungeklärte Anwendbarkeit und nicht bewertete Anforderungen."
+      en: "A generated report contains all listed sections; open points include review outcomes, incomplete inputs, undetermined applicability and unassessed requirements."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#4-erwartetes-ergebnis"
+    allocated_modules: ["REPORTING"]
+    rationale: "Das Exposé sieht einen automatisch erzeugten Ergebnisbericht mit Quellenverweisen vor."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-024"
+    status: "aktiv"
+    group: "REPORTING"
+    title:
+      de: "Bericht aus unveränderlichem Snapshot"
+      en: "Report from an immutable snapshot"
+    statement:
+      de: "Das System muss jeden Bericht aus einem unveränderlichen ReportSnapshot erzeugen."
+      en: "The system shall generate every report from an immutable ReportSnapshot."
+    acceptance_criterion:
+      de: "Erneute Erzeugung aus demselben Snapshot liefert denselben Inhalt und denselben content_hash; spätere Änderungen der Bewertung verändern den Snapshot nicht."
+      en: "Regenerating from the same snapshot yields the same content and the same content_hash; later changes to the assessment do not alter the snapshot."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+    allocated_modules: ["REPORTING"]
+    rationale: "Reproduzierbarkeit und Nachvollziehbarkeit der Ergebnisberichte."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-025"
+    status: "aktiv"
+    group: "REPORTING"
+    title:
+      de: "Hinweis auf die Aussagegrenze"
+      en: "Statement of the limits of validity"
+    statement:
+      de: "Das System muss in jedem Bericht darauf hinweisen, dass das Ergebnis keine juristische Beratung, Zertifizierung oder behördliche Konformitätsbewertung ersetzt."
+      en: "The system shall state in every report that the result does not replace legal advice, certification or a regulatory conformity assessment."
+    acceptance_criterion:
+      de: "Der Hinweis ist in jedem Bericht in der Berichtssprache enthalten."
+      en: "The statement is contained in every report in the report language."
+    verification_method: "INSPECTION"
+    derived_from:
+      - "EXPOSE_SCOPE.md#4-erwartetes-ergebnis"
+    allocated_modules: ["REPORTING", "I18N"]
+    rationale: "Das Exposé grenzt den Demonstrator ausdrücklich als Prüfmittel und nicht als Produktivsystem ab."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-026"
+    status: "aktiv"
+    group: "I18N"
+    title:
+      de: "Oberfläche und Bericht in Deutsch und Englisch"
+      en: "User interface and report in German and English"
+    statement:
+      de: "Das System muss Oberfläche und Ergebnisbericht wahlweise in Deutsch oder Englisch bereitstellen."
+      en: "The system shall provide the user interface and the result report in German or English as selected."
+    acceptance_criterion:
+      de: "Nach Wahl der Sprache erscheinen alle sichtbaren Texte einschließlich regulatorischer Katalogtexte in dieser Sprache."
+      en: "After selecting the language all visible texts, including regulatory catalog texts, appear in that language."
+    verification_method: "DEMONSTRATION"
+    derived_from:
+      - "EXPOSE_SCOPE.md#status-und-zweck-dieses-dokuments"
+    allocated_modules: ["I18N", "PRESENTATION", "REPORTING"]
+    rationale: "Technische Erweiterung im Rahmen des Exposés; die Kataloge führen DE/EN-Texte, und die Fragen der Entscheidungsregeln liegen zweisprachig vor."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-027"
+    status: "aktiv"
+    group: "I18N"
+    title:
+      de: "Zentrale Textquellen"
+      en: "Central text sources"
+    statement:
+      de: "Das System muss sichtbare Texte ausschließlich aus zentralen Sprachressourcen oder den DE/EN-Feldern der Kataloge beziehen."
+      en: "The system shall take visible texts only from central language resources or from the DE/EN fields of the catalogs."
+    acceptance_criterion:
+      de: "Außerhalb der zentralen Sprachressourcen und Kataloge sind keine sichtbaren Texte im Code hinterlegt."
+      en: "No visible texts are defined in code outside the central language resources and catalogs."
+    verification_method: "INSPECTION"
+    derived_from:
+      - "EXPOSE_SCOPE.md#status-und-zweck-dieses-dokuments"
+    allocated_modules: ["I18N"]
+    rationale: "Verteilte Texte erschweren Wartung und Konsistenz der Zweisprachigkeit."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-028"
+    status: "aktiv"
+    group: "I18N"
+    title:
+      de: "Sprachunabhängige Ergebnisse"
+      en: "Language-independent results"
+    statement:
+      de: "Das System muss Entscheidungen, Anwendbarkeit und Status unabhängig von der gewählten Sprache über sprachneutrale Codes bestimmen."
+      en: "The system shall determine decisions, applicability and statuses through language-neutral codes independently of the selected language."
+    acceptance_criterion:
+      de: "Dieselbe Bewertung in DE und EN ergibt identische DecisionResults, ApplicableRequirements und GapAssessments."
+      en: "The same assessment in German and English yields identical DecisionResults, ApplicableRequirements and GapAssessments."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+    allocated_modules: ["ASSESSMENT_SERVICE", "RULE_ENGINE"]
+    rationale: "Reproduzierbarkeit darf nicht von der Darstellungssprache abhängen."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-029"
+    status: "aktiv"
+    group: "NON_FUNCTIONAL"
+    title:
+      de: "Keine generative KI in der Entscheidungslogik"
+      en: "No generative AI in the decision logic"
+    statement:
+      de: "Das System darf in Entscheidungs-, Applicability- und Gap-Logik keine generative KI und kein Sprachmodell verwenden."
+      en: "The system shall not use generative AI or a language model in the decision, applicability and gap logic."
+    acceptance_criterion:
+      de: "Die Module RULE_ENGINE, APPLICABILITY_ENGINE und GAP_ENGINE haben keine Abhängigkeit zu generativen KI-Komponenten."
+      en: "The modules RULE_ENGINE, APPLICABILITY_ENGINE and GAP_ENGINE have no dependency on generative AI components."
+    verification_method: "INSPECTION"
+    derived_from:
+      - "EXPOSE_SCOPE.md#4-erwartetes-ergebnis"
+    allocated_modules: ["RULE_ENGINE", "APPLICABILITY_ENGINE", "GAP_ENGINE"]
+    rationale: "Das Exposé legt den Demonstrator bewusst regelbasiert und ohne generative KI fest."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-030"
+    status: "aktiv"
+    group: "NON_FUNCTIONAL"
+    title:
+      de: "Datengetriebene regulatorische Inhalte"
+      en: "Data-driven regulatory content"
+    statement:
+      de: "Das System muss regulatorische Inhalte und Entscheidungsregeln ausschließlich aus den versionierten Katalogen lesen und darf sie nicht im Programm- oder Oberflächencode nachbilden."
+      en: "The system shall read regulatory content and decision rules only from the versioned catalogs and shall not replicate them in program or user-interface code."
+    acceptance_criterion:
+      de: "Außerhalb der Kataloge und der Tests sind keine RR- oder RUL-Inhalte oder -Verzweigungen im Code hinterlegt; eine neue Katalogversion erfordert keine Codeänderung, solange das Katalogschema gleich bleibt."
+      en: "No RR or RUL content or branching is defined in code outside the catalogs and tests; a new catalog version requires no code change as long as the catalog schema is unchanged."
+    verification_method: "INSPECTION"
+    derived_from:
+      - "EXPOSE_SCOPE.md#4-erwartetes-ergebnis"
+      - "EXPOSE_SCOPE.md#status-und-zweck-dieses-dokuments"
+    allocated_modules: ["CATALOG_REPOSITORY", "RULE_ENGINE", "REQUIREMENT_SERVICE"]
+    rationale: "Versionierter Anforderungskatalog und formalisierte Entscheidungslogik sind eigenständige Ergebnisartefakte; eine zweite Wahrheit im Code würde sie entwerten."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-031"
+    status: "aktiv"
+    group: "NON_FUNCTIONAL"
+    title:
+      de: "Fail-closed-Laden der Kataloge"
+      en: "Fail-closed catalog loading"
+    statement:
+      de: "Das System muss die Auswertung verweigern, wenn ein Katalog nicht schemakonform geladen werden kann."
+      en: "The system shall refuse evaluation if a catalog cannot be loaded in conformity with its schema."
+    acceptance_criterion:
+      de: "Ein strukturell ungültiger Katalog führt zu einer kontrollierten Fehlermeldung ohne Teilauswertung."
+      en: "A structurally invalid catalog leads to a controlled error message without partial evaluation."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+    allocated_modules: ["CATALOG_REPOSITORY"]
+    rationale: "Korrektheit darf nicht auf fehlerhaft geladenen Daten beruhen; entspricht dem fail-closed-Prinzip aus ADR-0001."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-032"
+    status: "aktiv"
+    group: "NON_FUNCTIONAL"
+    title:
+      de: "Nur anhängendes Audit-Protokoll"
+      en: "Append-only audit log"
+    statement:
+      de: "Das System muss fachliche Ereignisse einer Bewertung mit Zeitpunkt, Ereignistyp und Katalogversionen in einem nur anhängenden Protokoll erfassen."
+      en: "The system shall record business events of an assessment with timestamp, event type and catalog versions in an append-only log."
+    acceptance_criterion:
+      de: "Jedes Ereignis aus audit_event_type erzeugt einen AuditEvent; vorhandene Einträge können nicht geändert oder gelöscht werden."
+      en: "Every event from audit_event_type produces an AuditEvent; existing entries cannot be modified or deleted."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+    allocated_modules: ["AUDIT_LOG"]
+    rationale: "Auditierbarkeit stützt Nachvollziehbarkeit und Reproduzierbarkeit der Ergebnisse."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-033"
+    status: "aktiv"
+    group: "NON_FUNCTIONAL"
+    title:
+      de: "Datenminimierung"
+      en: "Data minimisation"
+    statement:
+      de: "Das System darf für eine Bewertung keine personenbezogenen Gesundheitsdaten verlangen oder speichern."
+      en: "The system shall not require or store personal health data for an assessment."
+    acceptance_criterion:
+      de: "Datenmodell und Eingaben enthalten keine Felder für personenbezogene Gesundheitsdaten."
+      en: "The data model and the inputs contain no fields for personal health data."
+    verification_method: "INSPECTION"
+    derived_from:
+      - "EXPOSE_SCOPE.md#status-und-zweck-dieses-dokuments"
+    allocated_modules: ["ASSESSMENT_SERVICE", "EVIDENCE_SERVICE", "ASSESSMENT_REPOSITORY"]
+    rationale: "Privacy by Design als technische Erweiterung: Die Bewertung betrifft ein Produkt, nicht Patientinnen oder Patienten."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-034"
+    status: "aktiv"
+    group: "NON_FUNCTIONAL"
+    title:
+      de: "Validierung aller Eingaben"
+      en: "Validation of all inputs"
+    statement:
+      de: "Das System muss alle Nutzereingaben gegen das Datenmodell validieren und unbekannte Felder oder unzulässige Werte abweisen."
+      en: "The system shall validate all user inputs against the data model and reject unknown fields or invalid values."
+    acceptance_criterion:
+      de: "Eingaben mit unbekannten Feldern, falschen Typen oder unzulässigen Enum-Werten werden mit kontrollierter Fehlermeldung abgewiesen."
+      en: "Inputs with unknown fields, wrong types or invalid enum values are rejected with a controlled error message."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#status-und-zweck-dieses-dokuments"
+    allocated_modules: ["ASSESSMENT_SERVICE", "EVIDENCE_SERVICE", "GAP_ENGINE", "APPLICATION_API"]
+    rationale: "Security by Design als technische Erweiterung; ungeprüfte Eingaben gefährden Korrektheit und Integrität."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-035"
+    status: "aktiv"
+    group: "NON_FUNCTIONAL"
+    title:
+      de: "Keine Übermittlung an externe Dienste"
+      en: "No transmission to external services"
+    statement:
+      de: "Das System darf Bewertungsdaten während der Auswertung nicht an externe Dienste übermitteln."
+      en: "The system shall not transmit assessment data to external services during evaluation."
+    acceptance_criterion:
+      de: "Die Auswertung einer Bewertung ist ohne Netzwerkzugriff vollständig durchführbar."
+      en: "The evaluation of an assessment can be completed without network access."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#status-und-zweck-dieses-dokuments"
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+    allocated_modules: ["ASSESSMENT_SERVICE", "RULE_ENGINE", "APPLICABILITY_ENGINE", "GAP_ENGINE", "APPLICATION_API", "PRESENTATION"]
+    rationale: "Privacy by Design und Reproduzierbarkeit: Ergebnisse dürfen nicht von externen Diensten abhängen."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-036"
+    status: "aktiv"
+    group: "NON_FUNCTIONAL"
+    title:
+      de: "Fehlerisolation"
+      en: "Error isolation"
+    statement:
+      de: "Das System muss Fehler eines Moduls kontrolliert melden, ohne bereits ermittelte Entscheidungen, Anwendbarkeiten oder Status zu verändern."
+      en: "The system shall report an error of a module in a controlled way without altering already determined decisions, applicabilities or statuses."
+    acceptance_criterion:
+      de: "Ein erzwungener Fehler in REPORTING lässt DecisionResults und GapAssessments unverändert und erzeugt eine verständliche Fehlermeldung ohne stillen Ersatzwert."
+      en: "A forced error in REPORTING leaves DecisionResults and GapAssessments unchanged and produces an understandable error message without a silent fallback value."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#status-und-zweck-dieses-dokuments"
+    allocated_modules: ["ASSESSMENT_SERVICE", "REPORTING", "APPLICATION_API"]
+    rationale: "Fehlerbehandlung als technische Erweiterung; stille Ersatzwerte würden die Korrektheit verdecken."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-037"
+    status: "aktiv"
+    group: "NON_FUNCTIONAL"
+    title:
+      de: "Erkennung von Versionsabweichungen"
+      en: "Detection of version mismatches"
+    statement:
+      de: "Das System muss eine Abweichung zwischen den fixierten Katalogversionen einer Bewertung und den aktuell geladenen Katalogen erkennen und darf die Bewertung nicht still neu auswerten."
+      en: "The system shall detect a mismatch between the pinned catalog versions of an assessment and the currently loaded catalogs and shall not silently re-evaluate the assessment."
+    acceptance_criterion:
+      de: "Beim Öffnen einer Bewertung mit abweichender Katalogversion wird die Abweichung angezeigt und als CATALOG_VERSION_MISMATCH_DETECTED protokolliert."
+      en: "Opening an assessment with a differing catalog version shows the mismatch and logs it as CATALOG_VERSION_MISMATCH_DETECTED."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+    allocated_modules: ["ASSESSMENT_SERVICE", "CATALOG_REPOSITORY", "PRESENTATION"]
+    rationale: "DOCUMENTATION_CONVENTIONS.md Abschnitt 4 verlangt bei Fassungsänderungen eine Impact-Prüfung statt stiller Übernahme."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-038"
+    status: "aktiv"
+    group: "NON_FUNCTIONAL"
+    title:
+      de: "Modulare Architektur mit Abhängigkeitsregeln"
+      en: "Modular architecture with dependency rules"
+    statement:
+      de: "Das System muss aus den festgelegten Architekturmodulen bestehen, die nur die zugelassenen Abhängigkeiten nutzen."
+      en: "The system shall consist of the defined architecture modules, which use only the permitted dependencies."
+    acceptance_criterion:
+      de: "Eine Abhängigkeitsanalyse zeigt keine Abhängigkeit außerhalb der Regeln in ARCHITECTURE.md Abschnitt 4, insbesondere keine Abhängigkeit einer Engine von PRESENTATION."
+      en: "A dependency analysis shows no dependency outside the rules in ARCHITECTURE.md section 4, in particular no dependency of an engine on PRESENTATION."
+    verification_method: "ANALYSIS"
+    derived_from:
+      - "EXPOSE_SCOPE.md#4-erwartetes-ergebnis"
+      - "EXPOSE_SCOPE.md#status-und-zweck-dieses-dokuments"
+    allocated_modules: ["CATALOG_REPOSITORY", "ASSESSMENT_SERVICE", "ASSESSMENT_REPOSITORY", "RULE_ENGINE", "APPLICABILITY_ENGINE", "REQUIREMENT_SERVICE", "GAP_ENGINE", "EVIDENCE_SERVICE", "REPORTING", "I18N", "AUDIT_LOG", "PRESENTATION", "APPLICATION_API"]
+    rationale: "Geringe Kopplung und hohe Kohäsion nach den Projektvorgaben; Voraussetzung für Wartbarkeit."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-039"
+    status: "aktiv"
+    group: "NON_FUNCTIONAL"
+    title:
+      de: "Testbarkeit der Entscheidungsmodule ohne Oberfläche"
+      en: "Testability of the decision modules without user interface"
+    statement:
+      de: "Das System muss Regel-, Applicability- und Gap-Logik ohne Oberfläche automatisiert testbar bereitstellen."
+      en: "The system shall provide the rule, applicability and gap logic so that it can be tested automatically without a user interface."
+    acceptance_criterion:
+      de: "Die regelbasierten Testfälle unter docs/07-testing laufen automatisiert gegen die RULE_ENGINE ohne PRESENTATION und liefern die Soll-Ergebnisse."
+      en: "The rule-based test cases under docs/07-testing run automatically against the RULE_ENGINE without PRESENTATION and yield the expected results."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#5-geplante-evaluation"
+    allocated_modules: ["RULE_ENGINE", "APPLICABILITY_ENGINE", "GAP_ENGINE"]
+    rationale: "Die Logikverifikation anhand definierter Testfälle ist Teil der geplanten Evaluation."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-040"
+    status: "aktiv"
+    group: "QUALIFICATION_CLASSIFICATION"
+    title:
+      de: "Konsistente Neuberechnung nach Eingabeänderung"
+      en: "Consistent recomputation after an input change"
+    statement:
+      de: "Das System muss nach Änderung einer bereits verwendeten Eingabe alle davon abhängigen Entscheidungs-, Anwendbarkeits- und Gap-Ergebnisse deterministisch aus dem aktuellen Eingabestand neu bestimmen und darf Eingaben, die auf dem geänderten Entscheidungspfad nicht mehr erreicht werden oder nicht mehr entscheidungsrelevant sind, nicht als Entscheidungsgrundlage verwenden."
+      en: "After a change to an input already used, the system shall deterministically recompute all dependent decision, applicability and gap results from the current input state and shall not use inputs that are no longer reached on the changed decision path or are no longer decision-relevant as a basis for decisions."
+    acceptance_criterion:
+      de: "Nach einer Eingabeänderung sind DecisionResults, ApplicableRequirements und Gap-Zusammenfassung identisch mit einer vollständigen Neuauswertung des geänderten Eingabestands gegen dieselbe Katalogversion; nicht mehr erreichte Eingaben erscheinen in keiner RuleExecution und in keinem relevant_inputs; bereits erfasste Erfüllungsbewertungen werden nicht still verworfen, und die Änderung ist im Audit-Protokoll nachvollziehbar."
+      en: "After an input change, DecisionResults, ApplicableRequirements and the gap summary are identical to a complete re-evaluation of the changed input state against the same catalog version; inputs no longer reached appear in no RuleExecution and in no relevant_inputs; fulfilment assessments already recorded are not silently discarded, and the change is traceable in the audit log."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+      - "STATE_OF_THE_ART.md#DI-005"
+    allocated_modules: ["ASSESSMENT_SERVICE", "RULE_ENGINE", "APPLICABILITY_ENGINE", "GAP_ENGINE", "AUDIT_LOG", "PRESENTATION"]
+    rationale: "Reproduzierbarkeit nach Exposé verlangt, dass ein Ergebnis stets dem aktuellen Eingabestand entspricht; die Korrektur früherer Eingaben in langen, bedingten Fragebäumen ist eine abgeleitete Design Implication (STATE_OF_THE_ART.md DI-005). Die zustandslose deterministische Auswertung (SR-002) ist die technische Grundlage."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-041"
+    status: "aktiv"
+    group: "REPORTING"
+    title:
+      de: "Lebenszykluskontext je Anforderung"
+      en: "Life-cycle context per requirement"
+    statement:
+      de: "Das System muss für jede ausgegebene RR die im RR-Katalog hinterlegten Lebenszyklusphasen in Ergebnisdarstellung und Ergebnisbericht in der gewählten Sprache ausweisen."
+      en: "The system shall show, for every RR output, the life-cycle phases recorded in the RR catalog in the result view and in the result report in the selected language."
+    acceptance_criterion:
+      de: "Die ausgewiesenen Phasen entsprechen lifecycle_phases der RR in der fixierten Katalogversion; ihre Bezeichnungen stammen ausschließlich aus dem kontrollierten Vokabular nach CONTROLLED_VOCABULARY.md."
+      en: "The phases shown correspond to the lifecycle_phases of the RR in the fixed catalog version; their labels are taken exclusively from the controlled vocabulary in CONTROLLED_VOCABULARY.md."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#2-problemstellung"
+      - "EXPOSE_SCOPE.md#4-erwartetes-ergebnis"
+      - "STATE_OF_THE_ART.md#DI-010"
+    allocated_modules: ["REQUIREMENT_SERVICE", "REPORTING", "I18N", "PRESENTATION"]
+    rationale: "Das Exposé verlangt ein phasenbezogenes Modell und eine Traceability-Matrix mit Lebenszyklusphase; die Lebenszyklusphasen je RR liegen im Katalog vor, werden aber bisher von keiner SR ausgewiesen (STATE_OF_THE_ART.md DI-010). Keine neue Lebenszyklus-Taxonomie."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-042"
+    status: "aktiv"
+    group: "TRACEABILITY"
+    title:
+      de: "Nachvollziehbare Herleitung jeder Anwendbarkeitsentscheidung"
+      en: "Traceable derivation of every applicability decision"
+    statement:
+      de: "Das System muss für jede RR in jedem Anwendbarkeitszustand die Herleitung ihrer Anwendbarkeit mit Anwendbarkeits- und Begründungscode, Block, ausgewerteten Prädikaten mit ihrem Wert, entscheidungsrelevanten Eingaben, herangezogenen Entscheidungsergebnissen mit ihren RUL und den Quellenlokatoren der RR ausweisen."
+      en: "The system shall show, for every RR in every applicability state, the derivation of its applicability with applicability and reason code, block, evaluated predicates with their value, decision-relevant inputs, the decision results used with their RUL and the source locators of the RR."
+    acceptance_criterion:
+      de: "Für jede ApplicableRequirement mit APPLICABLE, NOT_APPLICABLE oder APPLICABILITY_UNRESOLVED sind applicability, reason_code, block, evaluated_predicates, relevant_inputs, determined_by, supporting_rule_ids und die SRC-Lokatoren der RR in Ergebnisdarstellung und Bericht auflösbar; die Angaben stammen unverändert aus der vom APPLICABILITY_ENGINE erzeugten Trace-Struktur."
+      en: "For every ApplicableRequirement with APPLICABLE, NOT_APPLICABLE or APPLICABILITY_UNRESOLVED, applicability, reason_code, block, evaluated_predicates, relevant_inputs, determined_by, supporting_rule_ids and the SRC locators of the RR can be resolved in the result view and the report; the data are taken unchanged from the trace structure produced by the APPLICABILITY_ENGINE."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#bewertungskriterien-der-zielerreichung"
+      - "STATE_OF_THE_ART.md#DI-004"
+    allocated_modules: ["APPLICABILITY_ENGINE", "REPORTING", "PRESENTATION"]
+    rationale: "Nachvollziehbarkeit nach Exposé erfordert die Herleitung nicht nur für nicht anwendbare RR (SR-010), sondern für sämtliche Anwendbarkeitszustände, einschließlich der Applicability-Eingaben, die nicht aus DecisionResults stammen (STATE_OF_THE_ART.md DI-004). Wiederverwendet wird die bestehende Trace-Struktur von ApplicableRequirement; keine eigene Erklärungskomponente."
+    replaces: []
+    replaced_by: []
+
+  - id: "SR-043"
+    status: "aktiv"
+    group: "EVIDENCE"
+    title:
+      de: "Vorgesehene Maßnahme und Nachweisart je Anforderung"
+      en: "Planned measure and evidence type per requirement"
+    statement:
+      de: "Das System muss einer RR vorgesehene Umsetzungsmaßnahmen mit vorgesehener Nachweisart aus einem versionierten Katalog zuordnen, nutzerseitige Nachweisreferenzen einer vorgesehenen Maßnahme zuordnen lassen und diese Zuordnung in Gap-Analyse und Bericht verwenden."
+      en: "The system shall assign planned implementation measures with a planned evidence type from a versioned catalog to an RR, allow user evidence references to be assigned to a planned measure, and use this assignment in the gap analysis and the report."
+    acceptance_criterion:
+      de: "Vorgesehene Maßnahmen werden als Katalogverweis RR_MEASURE mit Bezug auf genau eine RR und mindestens eine vorgesehene Nachweisart geführt; eine EvidenceReference kann über measure_key auf eine vorgesehene Maßnahme verweisen; Gap-Analyse und Bericht lösen die Zuordnung Anforderung → Maßnahme → Nachweis auf; fehlt für eine RR eine vorgesehene Maßnahme, wird dies als offener Punkt ausgewiesen und nicht unterstellt."
+      en: "Planned measures are held as catalog reference RR_MEASURE relating to exactly one RR and at least one planned evidence type; an EvidenceReference can refer to a planned measure via measure_key; gap analysis and report resolve the assignment requirement → measure → evidence; if a planned measure is missing for an RR, this is reported as an open item and not assumed."
+    verification_method: "TEST"
+    derived_from:
+      - "EXPOSE_SCOPE.md#4-erwartetes-ergebnis"
+      - "STATE_OF_THE_ART.md#DI-008"
+    allocated_modules: ["CATALOG_REPOSITORY", "REQUIREMENT_SERVICE", "EVIDENCE_SERVICE", "GAP_ENGINE", "REPORTING"]
+    rationale: "Das Exposé verlangt eine Traceability-Matrix, die jede Anforderung mit Quelle, Lebenszyklusphase, Maßnahme und Nachweisdokument verknüpft; bisher ist nur die nutzerseitige Nachweisreferenz modelliert (STATE_OF_THE_ART.md DI-008). Die SR legt ausschließlich die System- und Datenfähigkeit fest; die inhaltliche Befüllung des Maßnahmenkatalogs ist nicht Gegenstand dieser SR."
+    replaces: []
+    replaced_by: []
+
+change_history:
+  - version: "0.1"
+    change: "Katalog angelegt mit SR-001 bis SR-039 nach SYSTEM_REQUIREMENTS.md Version 1.0. Gruppen: 7 QUALIFICATION_CLASSIFICATION, 4 APPLICABILITY, 5 GAP_ANALYSIS, 2 EVIDENCE, 4 TRACEABILITY, 3 REPORTING, 3 I18N, 11 NON_FUNCTIONAL. Alle SR aus Abschnitten von EXPOSE_SCOPE.md abgeleitet; keine SR aus einzelnen RR; keine RR oder RUL geändert."
+  - version: "0.2"
+    change: "Redaktionell: In SR-009 den Statuscode UNDETERMINED an die Bezeichnung APPLICABILITY_UNRESOLVED aus DATA_MODEL.yaml Version 0.2 angeglichen. Keine Bedeutungsänderung; keine ID geändert."
+  - version: "0.3"
+    change: "SR-040 bis SR-043 aus dem Abgleich des Stands der Technik (STATE_OF_THE_ART.md Abschnitt 8) aufgenommen und damit die vier dort vorbereiteten PROPOSED_SR_GAP geschlossen: SR-040 konsistente Neuberechnung nach Eingabeänderung (DI-005), SR-041 Lebenszykluskontext je Anforderung (DI-010), SR-042 nachvollziehbare Herleitung jeder Anwendbarkeitsentscheidung (DI-004), SR-043 vorgesehene Maßnahme und Nachweisart je Anforderung (DI-008). derived_from verweist zusätzlich zum Exposé auf die Design Implication (STATE_OF_THE_ART.md#DI-NNN); keine SRC-ID für Fachliteratur. SR-001 bis SR-039 unverändert."
+  - version: "0.4"
+    change: "Redaktionell: Abnahmekriterium von SR-021 nennt statt „alle vier Versionen“ alle Versionen des CatalogVersionSet, das seit DATA_MODEL 0.5 sechs Versionen führt (zusätzlich RR_APPLICABILITY und RR_MEASURE). Anforderung, Zweck (reproduzierbare Bindung einer Bewertung an die verwendeten Katalogversionen) und ID unverändert; keine neue SR."
+  - version: "0.5"
+    change: "Zuordnung: Architekturmodul ASSESSMENT_REPOSITORY (ADR-0005) in allocated_modules von SR-021 (gespeicherte Versionsbindung), SR-033 (Datenminimierung im Speicher) und SR-038 (Modularchitektur) ergänzt. Keine Änderung an Anforderungstexten, Abnahmekriterien oder IDs."
+  - version: "0.6"
+    change: "Zuordnung: Architekturmodul APPLICATION_API (ADR-0007) in allocated_modules von SR-034 (Validierung der Anfragen), SR-035 (keine externe Übermittlung, nur localhost), SR-036 (Fehler als stabile Codes ohne Zustandsänderung) und SR-038 (Modularchitektur) ergänzt; PRESENTATION zusätzlich in SR-035 (keine Telemetrie, keine Drittanbieter-Ressourcen), SR-037 (Anzeige der Versionsabweichung) und SR-040 (sichtbare Neuberechnung). Keine Änderung an Anforderungstexten, Abnahmekriterien oder IDs."

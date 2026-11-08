@@ -1,0 +1,11 @@
+{
+  "command": [
+    "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+    "-B",
+    "-m",
+    "unittest",
+    "tests.test_annex_iii_transition"
+  ],
+  "exit_code": 0,
+  "seconds": 22.856
+}

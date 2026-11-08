@@ -1,0 +1,275 @@
+version: "1.3"
+rule_catalog_version: "0.3"
+note:
+  de: "Regelbasierte Decision-Logic-Testfälle aus den Beispielen von SRC-004 (MDCG 2019-11 Rev. 1). Ein Guidance-Beispiel validiert den Regelbaum für die dort beschriebene Zweckbestimmung und Nutzungssituation; es ist keine allgemeine Rechtsregel. Die Kennungen T01 bis T15 sind Datenvarianten; die permanenten Testfälle TC-001 bis TC-006 in TC_CATALOG.yaml referenzieren sie über data_refs. Keine vollständige Fallstudie."
+  en: "Rule-based decision-logic test cases from the examples in SRC-004 (MDCG 2019-11 Rev. 1). A guidance example validates the rule tree for the intended purpose and use situation described there; it is not a general legal rule. T01 to T15 are data variants; the permanent test cases TC-001 to TC-006 in TC_CATALOG.yaml reference them via data_refs. Not a full case study."
+
+test_cases:
+  - id: "T01"
+    title: "Labor-Operations-Dashboard"
+    example_locator: "SRC-004#Abschnitt 9 (Annex II, Figure 1 – Example 1)"
+    start_rule: "RUL-001"
+    inputs:
+      is_software: true
+      special_route: "NONE"
+      data_action_type: "BEYOND_BASIC"
+      individual_patient_benefit: false
+    expected_path: ["RUL-001", "RUL-002", "RUL-003", "RUL-004"]
+    expected_result: "NOT_MDSW"
+    expected_class: null
+    path_note: "Guidance: Step 3 JA (mehr als Speicherung, Archivierung, Kommunikation, einfache Suche), Step 4 NEIN."
+
+  - id: "T02"
+    title: "Reine Telemedizin-Übertragung"
+    example_locator: "SRC-004, Annex I, d.1 Telemedicine systems (S. 27)"
+    start_rule: "RUL-001"
+    inputs:
+      is_software: true
+      special_route: "NONE"
+      data_action_type: "BASIC_ONLY"
+    expected_path: ["RUL-001", "RUL-002", "RUL-003"]
+    expected_result: "NOT_MDSW"
+    expected_class: null
+    path_note: "Guidance: Telemedizin, die Informationen zu Überwachungszwecken ausschließlich überträgt und anzeigt, ohne Daten zu interpretieren, ist kein Medizinprodukt; im Regelbaum als reine Kommunikation in Step 3 abgebildet. Die Zitierweise von SRC-004 kennt keinen Lokator für das nicht nummerierte Annex I."
+
+  - id: "T03"
+    title: "Telemedizin mit medizinischem Schwellenwertalarm"
+    example_locator: "SRC-004, Annex I, d.1 Telemedicine systems (S. 27)"
+    start_rule: "RUL-001"
+    inputs:
+      is_software: true
+      special_route: "NONE"
+      data_action_type: "BEYOND_BASIC"
+      individual_patient_benefit: true
+      own_medical_purpose: true
+    expected_path: ["RUL-001", "RUL-002", "RUL-003", "RUL-004", "RUL-005"]
+    expected_result: "MDSW"
+    expected_class: null
+    path_note: "Guidance: Zusatzmodule wie Schwellenwertalarme können bei medizinischem Zweck Medizinprodukt sein. Die MDR/IVDR-Abgrenzung ist durch das Beispiel nicht festgelegt; der Pfad endet mit dem Zwischenergebnis MDSW."
+
+  - id: "T04"
+    title: "Gemischter ICU-Risikoscore"
+    example_locator: "SRC-004#Abschnitt 9 (Annex II, Figure 2 – Example 2)"
+    start_rule: "RUL-001"
+    inputs:
+      is_software: true
+      special_route: "NONE"
+      data_action_type: "BEYOND_BASIC"
+      individual_patient_benefit: true
+      own_medical_purpose: true
+      ivdr_information_purpose: true
+      information_solely_from_ivd_data: false
+      dominant_data_source: "MDR_DOMINANT"
+    expected_path: ["RUL-001", "RUL-002", "RUL-003", "RUL-004", "RUL-005", "RUL-006", "RUL-007", "RUL-008"]
+    expected_result: "MDR_MDSW"
+    expected_class: null
+    path_note: "Guidance: Figure 2 Step 1 JA, Step 2 NEIN (IVD-Ergebnis kann einfließen), Step 3: Daten aus Medizinprodukten bestimmen die Zweckbestimmung wesentlich. Die Klassifizierung ist durch das Beispiel nicht festgelegt."
+
+  - id: "T05"
+    title: "Trisomie-Risikoscore"
+    example_locator: "SRC-004#Abschnitt 9 (Annex II, Figure 2 – Example 3)"
+    start_rule: "RUL-001"
+    inputs:
+      is_software: true
+      special_route: "NONE"
+      data_action_type: "BEYOND_BASIC"
+      individual_patient_benefit: true
+      own_medical_purpose: true
+      ivdr_information_purpose: true
+      information_solely_from_ivd_data: false
+      dominant_data_source: "IVD_DOMINANT"
+    expected_path: ["RUL-001", "RUL-002", "RUL-003", "RUL-004", "RUL-005", "RUL-006", "RUL-007", "RUL-008"]
+    expected_result: "OUT_OF_SCOPE_IVDR"
+    expected_class: null
+    path_note: "Guidance: gemischte Daten (Bildmessung einbezogen); die IVD-Marker sind für das Ergebnis maßgeblich."
+
+  - id: "T06"
+    title: "NGS-Krebsanalyse"
+    example_locator: "SRC-004#Abschnitt 9 (Annex II, Figure 2 – Example 4)"
+    start_rule: "RUL-001"
+    inputs:
+      is_software: true
+      special_route: "NONE"
+      data_action_type: "BEYOND_BASIC"
+      individual_patient_benefit: true
+      own_medical_purpose: true
+      ivdr_information_purpose: true
+      information_solely_from_ivd_data: true
+    expected_path: ["RUL-001", "RUL-002", "RUL-003", "RUL-004", "RUL-005", "RUL-006", "RUL-007"]
+    expected_result: "OUT_OF_SCOPE_IVDR"
+    expected_class: null
+    path_note: "Guidance: ausschließlich IVD-Daten; Qualifikation als IVD-MDSW nach Step 2."
+
+  - id: "T07"
+    title: "Akut-Schlaganfall-Bilddiagnostik"
+    example_locator: "SRC-004#Abschnitt 11 (Annex IV)"
+    start_rule: "RUL-009"
+    inputs:
+      drives_or_influences_device: "NONE"
+      provides_information_for_diagnostic_or_therapeutic_decisions: true
+      decision_impact_death_or_irreversible_deterioration: true
+      used_for_contraception_or_sti_prevention: false
+      therapeutic_with_integrated_diagnostic_function: false
+      drives_substance_administration_or_removal_device: false
+      other_active_device_rule_applicable: true
+      further_unmodelled_rule_possibly_applicable: false
+    expected_path: ["RUL-009", "RUL-010", "RUL-011", "RUL-016", "RUL-017", "RUL-018", "RUL-019", "RUL-020"]
+    expected_result: "FINAL_MDR_CLASS"
+    expected_class: "III"
+    path_note: "Guidance: Klasse III nach Regel 11a. Vorbedingung: MDR_MDSW festgestellt. Die Negativantworten zu Regeln 15, 22 und 12 sowie zu weiteren Regeln sind Annahmen für das beschriebene Beispiel."
+
+  - id: "T08"
+    title: "Chemotherapie-Ranking BRCA-positiv"
+    example_locator: "SRC-004#Abschnitt 11 (Annex IV)"
+    start_rule: "RUL-009"
+    inputs:
+      drives_or_influences_device: "NONE"
+      provides_information_for_diagnostic_or_therapeutic_decisions: true
+      decision_impact_death_or_irreversible_deterioration: false
+      decision_impact_serious_deterioration_or_surgery: false
+      used_for_contraception_or_sti_prevention: false
+      therapeutic_with_integrated_diagnostic_function: false
+      drives_substance_administration_or_removal_device: false
+      other_active_device_rule_applicable: true
+      further_unmodelled_rule_possibly_applicable: false
+    expected_path: ["RUL-009", "RUL-010", "RUL-011", "RUL-012", "RUL-016", "RUL-017", "RUL-018", "RUL-019", "RUL-020"]
+    expected_result: "FINAL_MDR_CLASS"
+    expected_class: "IIa"
+    path_note: "Guidance: Klasse IIa nach Regel 11a; Information für therapeutische Entscheidungen ohne IIb/III-Eskalation im beschriebenen Fall."
+
+  - id: "T09"
+    title: "Kontinuierliche Vitalüberwachung in Anästhesie, Intensiv- oder Notfallversorgung"
+    example_locator: "SRC-004#Abschnitt 11 (Annex IV)"
+    start_rule: "RUL-009"
+    inputs:
+      drives_or_influences_device: "NONE"
+      provides_information_for_diagnostic_or_therapeutic_decisions: false
+      monitors_physiological_processes_only: true
+      vital_parameters_with_immediate_danger: true
+      used_for_contraception_or_sti_prevention: false
+      therapeutic_with_integrated_diagnostic_function: false
+      drives_substance_administration_or_removal_device: false
+      other_active_device_rule_applicable: true
+      further_unmodelled_rule_possibly_applicable: false
+    expected_path: ["RUL-009", "RUL-010", "RUL-013", "RUL-014", "RUL-016", "RUL-017", "RUL-018", "RUL-019", "RUL-020"]
+    expected_result: "FINAL_MDR_CLASS"
+    expected_class: "IIb"
+    path_note: "Guidance: Klasse IIb nach Regel 11b."
+
+  - id: "T10"
+    title: "Routine- und Home-Monitoring physiologischer Prozesse"
+    example_locator: "SRC-004#Abschnitt 11 (Annex IV)"
+    start_rule: "RUL-009"
+    inputs:
+      drives_or_influences_device: "NONE"
+      provides_information_for_diagnostic_or_therapeutic_decisions: false
+      monitors_physiological_processes_only: true
+      vital_parameters_with_immediate_danger: false
+      used_for_contraception_or_sti_prevention: false
+      therapeutic_with_integrated_diagnostic_function: false
+      drives_substance_administration_or_removal_device: false
+      other_active_device_rule_applicable: true
+      further_unmodelled_rule_possibly_applicable: false
+    expected_path: ["RUL-009", "RUL-010", "RUL-013", "RUL-014", "RUL-016", "RUL-017", "RUL-018", "RUL-019", "RUL-020"]
+    expected_result: "FINAL_MDR_CLASS"
+    expected_class: "IIa"
+    path_note: "Guidance: Klasse IIa nach Regel 11b; keine entsprechende unmittelbare Gefahr."
+
+  - id: "T11"
+    title: "Fertilitätsstatus zur Unterstützung der Empfängnis"
+    example_locator: "SRC-004#Abschnitt 11 (Annex IV)"
+    start_rule: "RUL-009"
+    inputs:
+      drives_or_influences_device: "NONE"
+      provides_information_for_diagnostic_or_therapeutic_decisions: false
+      monitors_physiological_processes_only: false
+      rule_11_residual_case: true
+      used_for_contraception_or_sti_prevention: false
+      therapeutic_with_integrated_diagnostic_function: false
+      drives_substance_administration_or_removal_device: false
+      other_active_device_rule_applicable: true
+      further_unmodelled_rule_possibly_applicable: false
+    expected_path: ["RUL-009", "RUL-010", "RUL-013", "RUL-015", "RUL-016", "RUL-017", "RUL-018", "RUL-019", "RUL-020"]
+    expected_result: "FINAL_MDR_CLASS"
+    expected_class: "I"
+    path_note: "Guidance: Klasse I nach Regel 11c; weder 11a noch 11b, keine Empfängnisverhütung."
+
+  - id: "T12"
+    title: "Kommunikationshilfe bei Kommunikationsstörung"
+    example_locator: "SRC-004#Abschnitt 11 (Annex IV)"
+    start_rule: "RUL-009"
+    inputs:
+      drives_or_influences_device: "NONE"
+      provides_information_for_diagnostic_or_therapeutic_decisions: false
+      monitors_physiological_processes_only: false
+      rule_11_residual_case: true
+      used_for_contraception_or_sti_prevention: false
+      therapeutic_with_integrated_diagnostic_function: false
+      drives_substance_administration_or_removal_device: false
+      other_active_device_rule_applicable: true
+      further_unmodelled_rule_possibly_applicable: false
+    expected_path: ["RUL-009", "RUL-010", "RUL-013", "RUL-015", "RUL-016", "RUL-017", "RUL-018", "RUL-019", "RUL-020"]
+    expected_result: "FINAL_MDR_CLASS"
+    expected_class: "I"
+    path_note: "Guidance: Klasse I nach Regel 11c."
+
+  - id: "T13"
+    title: "Adaptive kognitive Therapie mit integriertem diagnostischem Feedback"
+    example_locator: "SRC-004#Abschnitt 11 (Annex IV)"
+    start_rule: "RUL-009"
+    inputs:
+      drives_or_influences_device: "NONE"
+      provides_information_for_diagnostic_or_therapeutic_decisions: true
+      decision_impact_death_or_irreversible_deterioration: false
+      decision_impact_serious_deterioration_or_surgery: false
+      used_for_contraception_or_sti_prevention: false
+      therapeutic_with_integrated_diagnostic_function: true
+      drives_substance_administration_or_removal_device: false
+      other_active_device_rule_applicable: true
+      further_unmodelled_rule_possibly_applicable: false
+    expected_path: ["RUL-009", "RUL-010", "RUL-011", "RUL-012", "RUL-016", "RUL-017", "RUL-018", "RUL-019", "RUL-020"]
+    expected_result: "FINAL_MDR_CLASS"
+    expected_class: "III"
+    path_note: "Guidance: Klasse III nach Regel 22; die Diagnostik bestimmt automatisiert die Folgetherapie. Die Regel-11-Eingaben sind durch das Beispiel nicht festgelegt und hier angenommen; das Ergebnis III ist nach Abschnitt 3.5 unabhängig vom Regel-11-Kandidaten."
+
+  - id: "T14"
+    title: "Kognitive Software, Therapieentscheidung durch Spezialisten"
+    example_locator: "SRC-004#Abschnitt 11 (Annex IV)"
+    start_rule: "RUL-009"
+    inputs:
+      drives_or_influences_device: "NONE"
+      provides_information_for_diagnostic_or_therapeutic_decisions: true
+      decision_impact_death_or_irreversible_deterioration: false
+      decision_impact_serious_deterioration_or_surgery: false
+      used_for_contraception_or_sti_prevention: false
+      therapeutic_with_integrated_diagnostic_function: false
+      drives_substance_administration_or_removal_device: false
+      other_active_device_rule_applicable: true
+      further_unmodelled_rule_possibly_applicable: false
+    expected_path: ["RUL-009", "RUL-010", "RUL-011", "RUL-012", "RUL-016", "RUL-017", "RUL-018", "RUL-019", "RUL-020"]
+    expected_result: "FINAL_MDR_CLASS"
+    expected_class: "IIa"
+    path_note: "Guidance: Klasse IIa nach Regel 11a; Information für die menschliche Therapieentscheidung."
+
+  - id: "T15"
+    title: "Modulares System: Administration und Radiotherapie-Dosisplanung"
+    example_locator: "SRC-004#Abschnitt 7"
+    modules:
+      - module: "Administrationsmodul"
+        start_rule: "RUL-021"
+        inputs:
+          module_has_own_medical_purpose: false
+        input_variants:
+          non_medical_module_required_or_affects_safety_performance: [true, false]
+        expected_path: ["RUL-021", "RUL-022"]
+        expected_result_one_of: ["NON_MEDICAL_MODULE_NOT_REGULATED_AS_MDSW", "NON_MEDICAL_BUT_ASSESSMENT_RELEVANT"]
+      - module: "Dosisplanungsmodul"
+        start_rule: "RUL-021"
+        inputs:
+          module_has_own_medical_purpose: true
+        expected_path: ["RUL-021"]
+        expected_result: "MDSW_MODULE"
+    path_note: "Guidance: Administrationsmodul ohne medizinischen Zweck (nicht MDSW), Dosisplanungsmodul mit medizinischem Zweck (MDSW). Ob das Administrationsmodul bewertungsrelevant ist, legt das Beispiel nicht fest; beide RUL-022-Ergebnisse sind Nicht-MDSW-Ergebnisse. Schnittstellen und Gesamtkonfiguration sind nach SRC-004 Abschnitt 7 dennoch zu bewerten."
+change_history:
+  - version: "1.3"
+    change: "Bindung an RUL_CATALOG 0.3; SRC-004-Regeln RUL-001 bis RUL-026 und sämtliche Testeingaben/-sollwerte unverändert."

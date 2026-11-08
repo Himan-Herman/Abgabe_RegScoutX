@@ -1,0 +1,3644 @@
+version: "1.1"
+rr_catalog_version: "0.26"
+description: "Maschinenlesbare Zuordnung der 594 eingefrorenen Normkandidaten aus SRC-005 bis SRC-008 zu permanenten RR sowie der normbezogenen Stützungs-, Crosswalk- und Abhängigkeitsbeziehungen. Kein Normvolltext und kein Anforderungskatalog: Temp-IDs, Lokatoren und Entscheidungen der normübergreifenden Deduplizierung. Führender Nachweis ist RR_EXTRACTION_STANDARDS_SRC_005_008.md."
+evidence: "RR_EXTRACTION_STANDARDS_SRC_005_008.md"
+sources:
+  SRC-005: 209
+  SRC-006: 107
+  SRC-007: 185
+  SRC-008: 93
+merges:
+  NORM-MERGE-01:
+    rr: "RR-378"
+    candidates:
+      - "ISO14971-RR-063"
+      - "IEC62304-RR-148"
+  NORM-MERGE-02:
+    rr: "RR-379"
+    candidates:
+      - "ISO14971-RR-065"
+      - "IEC62304-RR-149"
+  NORM-MERGE-03:
+    rr: "RR-380"
+    candidates:
+      - "ISO14971-RR-068"
+      - "IEC62304-RR-153"
+      - "IEC62366-RR-089"
+  NORM-MERGE-04:
+    rr: "RR-381"
+    candidates:
+      - "ISO14971-RR-069"
+      - "IEC62304-RR-154"
+      - "IEC62366-RR-091"
+  NORM-MERGE-05:
+    rr: "RR-382"
+    candidates:
+      - "ISO14971-RR-072"
+      - "IEC62366-RR-082"
+      - "IEC62366-RR-092"
+  NORM-MERGE-06:
+    rr: "RR-383"
+    candidates:
+      - "ISO14971-RR-073"
+      - "IEC62366-RR-093"
+candidates:
+  - temp_id: "ISO13485-RR-001"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-384"]
+  - temp_id: "ISO13485-RR-002"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-385"]
+  - temp_id: "ISO13485-RR-003"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-386"]
+  - temp_id: "ISO13485-RR-004"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-387"]
+  - temp_id: "ISO13485-RR-005"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.2(a)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-388"]
+  - temp_id: "ISO13485-RR-006"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.2(b)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-389"]
+  - temp_id: "ISO13485-RR-007"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.2(c)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-390"]
+  - temp_id: "ISO13485-RR-008"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.3(a)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-391"]
+  - temp_id: "ISO13485-RR-009"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.3(b)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-392"]
+  - temp_id: "ISO13485-RR-010"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.3(c)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-393"]
+  - temp_id: "ISO13485-RR-011"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.3(d)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-394"]
+  - temp_id: "ISO13485-RR-012"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.3(e)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-395"]
+  - temp_id: "ISO13485-RR-013"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-396"]
+  - temp_id: "ISO13485-RR-014"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.4(a)–(b)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-397"]
+  - temp_id: "ISO13485-RR-015"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.4(c)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-398"]
+  - temp_id: "ISO13485-RR-016"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-399"]
+  - temp_id: "ISO13485-RR-017"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-400"]
+  - temp_id: "ISO13485-RR-018"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-401"]
+  - temp_id: "ISO13485-RR-019"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-402"]
+  - temp_id: "ISO13485-RR-020"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-403"]
+  - temp_id: "ISO13485-RR-021"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-404"]
+  - temp_id: "ISO13485-RR-022"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-405"]
+  - temp_id: "ISO13485-RR-023"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-406"]
+  - temp_id: "ISO13485-RR-024"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.1.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-407"]
+  - temp_id: "ISO13485-RR-025"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.2.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-408"]
+  - temp_id: "ISO13485-RR-026"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.2.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-409"]
+  - temp_id: "ISO13485-RR-027"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.2.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-410"]
+  - temp_id: "ISO13485-RR-028"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.2.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-411"]
+  - temp_id: "ISO13485-RR-029"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.2.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-412"]
+  - temp_id: "ISO13485-RR-030"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.2.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-413"]
+  - temp_id: "ISO13485-RR-031"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.2.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-414"]
+  - temp_id: "ISO13485-RR-032"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.2.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-415"]
+  - temp_id: "ISO13485-RR-033"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.2.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-416"]
+  - temp_id: "ISO13485-RR-034"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 4.2.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-417"]
+  - temp_id: "ISO13485-RR-035"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 5.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-418"]
+  - temp_id: "ISO13485-RR-036"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 5.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-419"]
+  - temp_id: "ISO13485-RR-037"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 5.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-420"]
+  - temp_id: "ISO13485-RR-038"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 5.4.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-421"]
+  - temp_id: "ISO13485-RR-039"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 5.4.2(a)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-422"]
+  - temp_id: "ISO13485-RR-040"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 5.4.2(b)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-423"]
+  - temp_id: "ISO13485-RR-041"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 5.5.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-424"]
+  - temp_id: "ISO13485-RR-042"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 5.5.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-425"]
+  - temp_id: "ISO13485-RR-043"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 5.5.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-426"]
+  - temp_id: "ISO13485-RR-044-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 5.5.3"
+    split_of: "ISO13485-RR-044"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-427"]
+  - temp_id: "ISO13485-RR-044-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 5.5.3"
+    split_of: "ISO13485-RR-044"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-428"]
+  - temp_id: "ISO13485-RR-045"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 5.6.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-429"]
+  - temp_id: "ISO13485-RR-046-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 5.6.1"
+    split_of: "ISO13485-RR-046"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-430"]
+  - temp_id: "ISO13485-RR-046-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 5.6.1"
+    split_of: "ISO13485-RR-046"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-431"]
+  - temp_id: "ISO13485-RR-047"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 5.6.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-432"]
+  - temp_id: "ISO13485-RR-048"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 5.6.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-433"]
+  - temp_id: "ISO13485-RR-049"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 6.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-434"]
+  - temp_id: "ISO13485-RR-050"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 6.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-435"]
+  - temp_id: "ISO13485-RR-051"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 6.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-436"]
+  - temp_id: "ISO13485-RR-052"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 6.2(a)–(e)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-437"]
+  - temp_id: "ISO13485-RR-053"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 6.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-438"]
+  - temp_id: "ISO13485-RR-054-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 6.3"
+    split_of: "ISO13485-RR-054"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-439"]
+  - temp_id: "ISO13485-RR-054-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 6.3"
+    split_of: "ISO13485-RR-054"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-440"]
+  - temp_id: "ISO13485-RR-055-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 6.4.1"
+    split_of: "ISO13485-RR-055"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-441"]
+  - temp_id: "ISO13485-RR-055-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 6.4.1"
+    split_of: "ISO13485-RR-055"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-442"]
+  - temp_id: "ISO13485-RR-056"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-443"]
+  - temp_id: "ISO13485-RR-057-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.1"
+    split_of: "ISO13485-RR-057"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-444"]
+  - temp_id: "ISO13485-RR-057-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.1"
+    split_of: "ISO13485-RR-057"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-445"]
+  - temp_id: "ISO13485-RR-058"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.1(a)–(d)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-446"]
+  - temp_id: "ISO13485-RR-059"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.2.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-447"]
+  - temp_id: "ISO13485-RR-060-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.2.2"
+    split_of: "ISO13485-RR-060"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-448"]
+  - temp_id: "ISO13485-RR-060-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.2.2"
+    split_of: "ISO13485-RR-060"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-449"]
+  - temp_id: "ISO13485-RR-061"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.2.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-450"]
+  - temp_id: "ISO13485-RR-062-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.2.2"
+    split_of: "ISO13485-RR-062"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-451"]
+  - temp_id: "ISO13485-RR-062-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.2.2"
+    split_of: "ISO13485-RR-062"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-452"]
+  - temp_id: "ISO13485-RR-063"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.2.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-453"]
+  - temp_id: "ISO13485-RR-064"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.2.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-454"]
+  - temp_id: "ISO13485-RR-065"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-455"]
+  - temp_id: "ISO13485-RR-066"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-456"]
+  - temp_id: "ISO13485-RR-067"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.2(a)–(f)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-457"]
+  - temp_id: "ISO13485-RR-068-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.3"
+    split_of: "ISO13485-RR-068"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-458"]
+  - temp_id: "ISO13485-RR-068-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.3"
+    split_of: "ISO13485-RR-068"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-459"]
+  - temp_id: "ISO13485-RR-069"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.3(a)–(e)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-460"]
+  - temp_id: "ISO13485-RR-070-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.3"
+    split_of: "ISO13485-RR-070"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-461"]
+  - temp_id: "ISO13485-RR-070-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.3"
+    split_of: "ISO13485-RR-070"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-462"]
+  - temp_id: "ISO13485-RR-071"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-463"]
+  - temp_id: "ISO13485-RR-072"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.4(a)–(d)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-464"]
+  - temp_id: "ISO13485-RR-073-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.4"
+    split_of: "ISO13485-RR-073"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-465"]
+  - temp_id: "ISO13485-RR-073-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.4"
+    split_of: "ISO13485-RR-073"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-466"]
+  - temp_id: "ISO13485-RR-073-C"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.4"
+    split_of: "ISO13485-RR-073"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-467"]
+  - temp_id: "ISO13485-RR-074"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-468"]
+  - temp_id: "ISO13485-RR-075-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.5"
+    split_of: "ISO13485-RR-075"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-469"]
+  - temp_id: "ISO13485-RR-075-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.5"
+    split_of: "ISO13485-RR-075"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-470"]
+  - temp_id: "ISO13485-RR-076"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-471"]
+  - temp_id: "ISO13485-RR-077"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-472"]
+  - temp_id: "ISO13485-RR-078"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-473"]
+  - temp_id: "ISO13485-RR-079"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-474"]
+  - temp_id: "ISO13485-RR-080"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.7"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-475"]
+  - temp_id: "ISO13485-RR-081"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.7"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-476"]
+  - temp_id: "ISO13485-RR-082-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.7"
+    split_of: "ISO13485-RR-082"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-477"]
+  - temp_id: "ISO13485-RR-082-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.7"
+    split_of: "ISO13485-RR-082"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-478"]
+  - temp_id: "ISO13485-RR-083"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.7"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-479"]
+  - temp_id: "ISO13485-RR-084"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.7"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-480"]
+  - temp_id: "ISO13485-RR-085-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.7"
+    split_of: "ISO13485-RR-085"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-481"]
+  - temp_id: "ISO13485-RR-085-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.7"
+    split_of: "ISO13485-RR-085"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-482"]
+  - temp_id: "ISO13485-RR-086-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.8"
+    split_of: "ISO13485-RR-086"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-483"]
+  - temp_id: "ISO13485-RR-086-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.8"
+    split_of: "ISO13485-RR-086"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-484"]
+  - temp_id: "ISO13485-RR-086-C"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.8"
+    split_of: "ISO13485-RR-086"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-485"]
+  - temp_id: "ISO13485-RR-087"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.8"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-486"]
+  - temp_id: "ISO13485-RR-088"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-487"]
+  - temp_id: "ISO13485-RR-089"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-488"]
+  - temp_id: "ISO13485-RR-090-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.9"
+    split_of: "ISO13485-RR-090"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-489"]
+  - temp_id: "ISO13485-RR-090-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.9(a)"
+    split_of: "ISO13485-RR-090"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-490"]
+  - temp_id: "ISO13485-RR-090-C"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.9(b)"
+    split_of: "ISO13485-RR-090"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-491"]
+  - temp_id: "ISO13485-RR-090-D"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.9(c)"
+    split_of: "ISO13485-RR-090"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-492"]
+  - temp_id: "ISO13485-RR-090-E"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.9(d)"
+    split_of: "ISO13485-RR-090"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-493"]
+  - temp_id: "ISO13485-RR-091"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-494"]
+  - temp_id: "ISO13485-RR-092"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-495"]
+  - temp_id: "ISO13485-RR-093"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.3.10"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-496"]
+  - temp_id: "ISO13485-RR-094"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.4.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-497"]
+  - temp_id: "ISO13485-RR-095"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.4.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-498"]
+  - temp_id: "ISO13485-RR-096-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.4.1"
+    split_of: "ISO13485-RR-096"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-499"]
+  - temp_id: "ISO13485-RR-096-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.4.1"
+    split_of: "ISO13485-RR-096"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-500"]
+  - temp_id: "ISO13485-RR-096-C"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.4.1"
+    split_of: "ISO13485-RR-096"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-501"]
+  - temp_id: "ISO13485-RR-097"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.4.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-502"]
+  - temp_id: "ISO13485-RR-098"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.4.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-503"]
+  - temp_id: "ISO13485-RR-099"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.4.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-504"]
+  - temp_id: "ISO13485-RR-100"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.4.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-505"]
+  - temp_id: "ISO13485-RR-101"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.4.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-506"]
+  - temp_id: "ISO13485-RR-102"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.4.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-507"]
+  - temp_id: "ISO13485-RR-103"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.4.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-508"]
+  - temp_id: "ISO13485-RR-104"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.4.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-509"]
+  - temp_id: "ISO13485-RR-105"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.4.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-510"]
+  - temp_id: "ISO13485-RR-106"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.4.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-511"]
+  - temp_id: "ISO13485-RR-107"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-512"]
+  - temp_id: "ISO13485-RR-108-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.3"
+    split_of: "ISO13485-RR-108"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-513"]
+  - temp_id: "ISO13485-RR-108-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.3"
+    split_of: "ISO13485-RR-108"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-514"]
+  - temp_id: "ISO13485-RR-109"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-515"]
+  - temp_id: "ISO13485-RR-110"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-516"]
+  - temp_id: "ISO13485-RR-111"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-517"]
+  - temp_id: "ISO13485-RR-112"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-518"]
+  - temp_id: "ISO13485-RR-113"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-519"]
+  - temp_id: "ISO13485-RR-114-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.6"
+    split_of: "ISO13485-RR-114"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-520"]
+  - temp_id: "ISO13485-RR-114-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.6"
+    split_of: "ISO13485-RR-114"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-521"]
+  - temp_id: "ISO13485-RR-115"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-522"]
+  - temp_id: "ISO13485-RR-116"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-523"]
+  - temp_id: "ISO13485-RR-117-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.8"
+    split_of: "ISO13485-RR-117"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-524"]
+  - temp_id: "ISO13485-RR-117-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.8"
+    split_of: "ISO13485-RR-117"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-525"]
+  - temp_id: "ISO13485-RR-118"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.8"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-526"]
+  - temp_id: "ISO13485-RR-119"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.8"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-527"]
+  - temp_id: "ISO13485-RR-120"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.9.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-528"]
+  - temp_id: "ISO13485-RR-121-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.10"
+    split_of: "ISO13485-RR-121"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-529"]
+  - temp_id: "ISO13485-RR-121-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.10"
+    split_of: "ISO13485-RR-121"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-530"]
+  - temp_id: "ISO13485-RR-122"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.5.11"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-531"]
+  - temp_id: "ISO13485-RR-123"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-532"]
+  - temp_id: "ISO13485-RR-124"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-533"]
+  - temp_id: "ISO13485-RR-125-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.6"
+    split_of: "ISO13485-RR-125"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-534"]
+  - temp_id: "ISO13485-RR-125-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.6"
+    split_of: "ISO13485-RR-125"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-535"]
+  - temp_id: "ISO13485-RR-126"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-536"]
+  - temp_id: "ISO13485-RR-127"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 7.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-537"]
+  - temp_id: "ISO13485-RR-128"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-538"]
+  - temp_id: "ISO13485-RR-129-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.1"
+    split_of: "ISO13485-RR-129"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-539"]
+  - temp_id: "ISO13485-RR-129-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.1"
+    split_of: "ISO13485-RR-129"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-540"]
+  - temp_id: "ISO13485-RR-130"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-541"]
+  - temp_id: "ISO13485-RR-131"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-542"]
+  - temp_id: "ISO13485-RR-132"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-543"]
+  - temp_id: "ISO13485-RR-133"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-544"]
+  - temp_id: "ISO13485-RR-134-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.2"
+    split_of: "ISO13485-RR-134"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-545"]
+  - temp_id: "ISO13485-RR-134-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.2"
+    split_of: "ISO13485-RR-134"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-546"]
+  - temp_id: "ISO13485-RR-135"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-547"]
+  - temp_id: "ISO13485-RR-136"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-548"]
+  - temp_id: "ISO13485-RR-137"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-549"]
+  - temp_id: "ISO13485-RR-138"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-550"]
+  - temp_id: "ISO13485-RR-139"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-551"]
+  - temp_id: "ISO13485-RR-140"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-552"]
+  - temp_id: "ISO13485-RR-141-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.4"
+    split_of: "ISO13485-RR-141"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-553"]
+  - temp_id: "ISO13485-RR-141-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.4"
+    split_of: "ISO13485-RR-141"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-554"]
+  - temp_id: "ISO13485-RR-142"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-555"]
+  - temp_id: "ISO13485-RR-143"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-556"]
+  - temp_id: "ISO13485-RR-144-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.4"
+    split_of: "ISO13485-RR-144"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-557"]
+  - temp_id: "ISO13485-RR-144-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.4"
+    split_of: "ISO13485-RR-144"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-558"]
+  - temp_id: "ISO13485-RR-145"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-559"]
+  - temp_id: "ISO13485-RR-146"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-560"]
+  - temp_id: "ISO13485-RR-147"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-561"]
+  - temp_id: "ISO13485-RR-148-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.6"
+    split_of: "ISO13485-RR-148"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-562"]
+  - temp_id: "ISO13485-RR-148-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.6"
+    split_of: "ISO13485-RR-148"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-563"]
+  - temp_id: "ISO13485-RR-148-C"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.6"
+    split_of: "ISO13485-RR-148"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-564"]
+  - temp_id: "ISO13485-RR-149"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.2.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-565"]
+  - temp_id: "ISO13485-RR-150"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.3.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-566"]
+  - temp_id: "ISO13485-RR-151"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.3.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-567"]
+  - temp_id: "ISO13485-RR-152-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.3.1"
+    split_of: "ISO13485-RR-152"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-568"]
+  - temp_id: "ISO13485-RR-152-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.3.1"
+    split_of: "ISO13485-RR-152"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-569"]
+  - temp_id: "ISO13485-RR-153"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.3.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-570"]
+  - temp_id: "ISO13485-RR-154"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.3.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-571"]
+  - temp_id: "ISO13485-RR-155-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.3.2"
+    split_of: "ISO13485-RR-155"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-572"]
+  - temp_id: "ISO13485-RR-155-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.3.2"
+    split_of: "ISO13485-RR-155"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-573"]
+  - temp_id: "ISO13485-RR-156"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.3.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-574"]
+  - temp_id: "ISO13485-RR-157"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.3.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-575"]
+  - temp_id: "ISO13485-RR-158"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.3.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-576"]
+  - temp_id: "ISO13485-RR-159-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.3.4"
+    split_of: "ISO13485-RR-159"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-577"]
+  - temp_id: "ISO13485-RR-159-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.3.4"
+    split_of: "ISO13485-RR-159"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-578"]
+  - temp_id: "ISO13485-RR-160"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.3.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-579"]
+  - temp_id: "ISO13485-RR-161"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.3.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-580"]
+  - temp_id: "ISO13485-RR-162"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-581"]
+  - temp_id: "ISO13485-RR-163"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-582"]
+  - temp_id: "ISO13485-RR-164"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-583"]
+  - temp_id: "ISO13485-RR-165"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-584"]
+  - temp_id: "ISO13485-RR-166-A"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.5.1"
+    split_of: "ISO13485-RR-166"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-585"]
+  - temp_id: "ISO13485-RR-166-B"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.5.1"
+    split_of: "ISO13485-RR-166"
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-586"]
+  - temp_id: "ISO13485-RR-167"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.5.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-587"]
+  - temp_id: "ISO13485-RR-168"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.5.2(a)–(f)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-588"]
+  - temp_id: "ISO13485-RR-169"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.5.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-589"]
+  - temp_id: "ISO13485-RR-170"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.5.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-590"]
+  - temp_id: "ISO13485-RR-171"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.5.3(a)–(e)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-591"]
+  - temp_id: "ISO13485-RR-172"
+    source: "SRC-005"
+    locator: "SRC-005#Abschnitt 8.5.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-592"]
+  - temp_id: "ISO14971-RR-001"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-593"]
+  - temp_id: "ISO14971-RR-002"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-594"]
+  - temp_id: "ISO14971-RR-003"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-595"]
+  - temp_id: "ISO14971-RR-004"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-596"]
+  - temp_id: "ISO14971-RR-005"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.1(a)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-597"]
+  - temp_id: "ISO14971-RR-006"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.1(b)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-598"]
+  - temp_id: "ISO14971-RR-007"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.1(b)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-599"]
+  - temp_id: "ISO14971-RR-008"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.1(c)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-600"]
+  - temp_id: "ISO14971-RR-009"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.1(d)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-601"]
+  - temp_id: "ISO14971-RR-010"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-602"]
+  - temp_id: "ISO14971-RR-011"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-603"]
+  - temp_id: "ISO14971-RR-012"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-604"]
+  - temp_id: "ISO14971-RR-013"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-605"]
+  - temp_id: "ISO14971-RR-014"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-606"]
+  - temp_id: "ISO14971-RR-015"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-607"]
+  - temp_id: "ISO14971-RR-016"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-608"]
+  - temp_id: "ISO14971-RR-017"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-609"]
+  - temp_id: "ISO14971-RR-018"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-610"]
+  - temp_id: "ISO14971-RR-019"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-611"]
+  - temp_id: "ISO14971-RR-020"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-612"]
+  - temp_id: "ISO14971-RR-021"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.4"
+    split_of: null
+    decision: "CROSSWALK_ONLY"
+    rr: ["RR-145", "RR-146"]
+  - temp_id: "ISO14971-RR-022"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-613"]
+  - temp_id: "ISO14971-RR-023"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.4(a)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-614"]
+  - temp_id: "ISO14971-RR-024"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.4(b)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-615"]
+  - temp_id: "ISO14971-RR-025"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.4(c)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-616"]
+  - temp_id: "ISO14971-RR-026"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.4(d)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-617"]
+  - temp_id: "ISO14971-RR-027"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.4(e)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-618"]
+  - temp_id: "ISO14971-RR-028"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.4(e)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-619"]
+  - temp_id: "ISO14971-RR-029"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.4(f)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-620"]
+  - temp_id: "ISO14971-RR-030"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.4(f)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-621"]
+  - temp_id: "ISO14971-RR-031"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.4(g)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-622"]
+  - temp_id: "ISO14971-RR-032"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.4(g)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-623"]
+  - temp_id: "ISO14971-RR-033"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-624"]
+  - temp_id: "ISO14971-RR-034"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-625"]
+  - temp_id: "ISO14971-RR-035"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-626"]
+  - temp_id: "ISO14971-RR-036"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 4.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-627"]
+  - temp_id: "ISO14971-RR-037"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-628"]
+  - temp_id: "ISO14971-RR-038"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-629"]
+  - temp_id: "ISO14971-RR-039"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-630"]
+  - temp_id: "ISO14971-RR-040"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.1(a)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-631"]
+  - temp_id: "ISO14971-RR-041"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.1(b)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-632"]
+  - temp_id: "ISO14971-RR-042"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.1(c)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-633"]
+  - temp_id: "ISO14971-RR-043"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-634"]
+  - temp_id: "ISO14971-RR-044"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-635"]
+  - temp_id: "ISO14971-RR-045"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-636"]
+  - temp_id: "ISO14971-RR-046"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-637"]
+  - temp_id: "ISO14971-RR-047"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-638"]
+  - temp_id: "ISO14971-RR-048"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-639"]
+  - temp_id: "ISO14971-RR-049"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-640"]
+  - temp_id: "ISO14971-RR-050"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-641"]
+  - temp_id: "ISO14971-RR-051"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-642"]
+  - temp_id: "ISO14971-RR-052"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-643"]
+  - temp_id: "ISO14971-RR-053"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-644"]
+  - temp_id: "ISO14971-RR-054"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-645"]
+  - temp_id: "ISO14971-RR-055"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-646"]
+  - temp_id: "ISO14971-RR-056"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-647"]
+  - temp_id: "ISO14971-RR-057"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-648"]
+  - temp_id: "ISO14971-RR-058"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-649"]
+  - temp_id: "ISO14971-RR-059"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 5.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-650"]
+  - temp_id: "ISO14971-RR-060"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-651"]
+  - temp_id: "ISO14971-RR-061"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-652"]
+  - temp_id: "ISO14971-RR-062"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-653"]
+  - temp_id: "ISO14971-RR-063"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 7.1"
+    split_of: null
+    decision: "CROSS_NORM_MERGE"
+    rr: ["RR-378"]
+  - temp_id: "ISO14971-RR-064"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 7.1(a)–(c)"
+    split_of: null
+    decision: "EXISTING_RR_SUPPORT"
+    rr: ["RR-157"]
+  - temp_id: "ISO14971-RR-065"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 7.1"
+    split_of: null
+    decision: "CROSS_NORM_MERGE"
+    rr: ["RR-379"]
+  - temp_id: "ISO14971-RR-066"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 7.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-654"]
+  - temp_id: "ISO14971-RR-067"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 7.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-655"]
+  - temp_id: "ISO14971-RR-068"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 7.2"
+    split_of: null
+    decision: "CROSS_NORM_MERGE"
+    rr: ["RR-380"]
+  - temp_id: "ISO14971-RR-069"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 7.2"
+    split_of: null
+    decision: "CROSS_NORM_MERGE"
+    rr: ["RR-381"]
+  - temp_id: "ISO14971-RR-070"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 7.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-656"]
+  - temp_id: "ISO14971-RR-071"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 7.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-657"]
+  - temp_id: "ISO14971-RR-072"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 7.3"
+    split_of: null
+    decision: "CROSS_NORM_MERGE"
+    rr: ["RR-382"]
+  - temp_id: "ISO14971-RR-073"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 7.3"
+    split_of: null
+    decision: "CROSS_NORM_MERGE"
+    rr: ["RR-383"]
+  - temp_id: "ISO14971-RR-074"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 7.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-658"]
+  - temp_id: "ISO14971-RR-075"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 7.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-659"]
+  - temp_id: "ISO14971-RR-076"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 7.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-660"]
+  - temp_id: "ISO14971-RR-077"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 7.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-661"]
+  - temp_id: "ISO14971-RR-078"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 7.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-662"]
+  - temp_id: "ISO14971-RR-079"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 7.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-663"]
+  - temp_id: "ISO14971-RR-080"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 7.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-664"]
+  - temp_id: "ISO14971-RR-081"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 8"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-665"]
+  - temp_id: "ISO14971-RR-082"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 8"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-666"]
+  - temp_id: "ISO14971-RR-083"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 8"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-667"]
+  - temp_id: "ISO14971-RR-084"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 8"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-668"]
+  - temp_id: "ISO14971-RR-085"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-669"]
+  - temp_id: "ISO14971-RR-086"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-670"]
+  - temp_id: "ISO14971-RR-087"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-671"]
+  - temp_id: "ISO14971-RR-088"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-672"]
+  - temp_id: "ISO14971-RR-089"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-673"]
+  - temp_id: "ISO14971-RR-090"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 10.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-674"]
+  - temp_id: "ISO14971-RR-091"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 10.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-675"]
+  - temp_id: "ISO14971-RR-092"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 10.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-676"]
+  - temp_id: "ISO14971-RR-093"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 10.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-677"]
+  - temp_id: "ISO14971-RR-094"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 10.2(a)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-678"]
+  - temp_id: "ISO14971-RR-095"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 10.2(b)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-679"]
+  - temp_id: "ISO14971-RR-096"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 10.2(c)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-680"]
+  - temp_id: "ISO14971-RR-097"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 10.2(d)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-681"]
+  - temp_id: "ISO14971-RR-098"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 10.2(e)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-682"]
+  - temp_id: "ISO14971-RR-099"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 10.2(f)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-683"]
+  - temp_id: "ISO14971-RR-100"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 10.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-684"]
+  - temp_id: "ISO14971-RR-101"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 10.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-685"]
+  - temp_id: "ISO14971-RR-102"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 10.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-686"]
+  - temp_id: "ISO14971-RR-103"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 10.4(1)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-687"]
+  - temp_id: "ISO14971-RR-104"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 10.4(1)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-688"]
+  - temp_id: "ISO14971-RR-105"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 10.4(1)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-689"]
+  - temp_id: "ISO14971-RR-106"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 10.4(2)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-690"]
+  - temp_id: "ISO14971-RR-107"
+    source: "SRC-006"
+    locator: "SRC-006#Abschnitt 10.4(2)"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-691"]
+  - temp_id: "IEC62304-RR-001"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-692"]
+  - temp_id: "IEC62304-RR-002"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.2"
+    split_of: null
+    decision: "CROSSWALK_ONLY"
+    rr: ["RR-594"]
+  - temp_id: "IEC62304-RR-003"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.3/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-693"]
+  - temp_id: "IEC62304-RR-004"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.3/c"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-694"]
+  - temp_id: "IEC62304-RR-005"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.3/d"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-695"]
+  - temp_id: "IEC62304-RR-006"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.3/e"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-696"]
+  - temp_id: "IEC62304-RR-007"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.3/f"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-697"]
+  - temp_id: "IEC62304-RR-008"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.4.2/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-698"]
+  - temp_id: "IEC62304-RR-009"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.4.2/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-699"]
+  - temp_id: "IEC62304-RR-010"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.4.2/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-700"]
+  - temp_id: "IEC62304-RR-011"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.4.2/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-701"]
+  - temp_id: "IEC62304-RR-012"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.4.2/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-702"]
+  - temp_id: "IEC62304-RR-013"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.4.2/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-703"]
+  - temp_id: "IEC62304-RR-014"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.4.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-704"]
+  - temp_id: "IEC62304-RR-015"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.4.3/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-705"]
+  - temp_id: "IEC62304-RR-016"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.4.3/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-706"]
+  - temp_id: "IEC62304-RR-017"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.4.3/c"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-707"]
+  - temp_id: "IEC62304-RR-018"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.4.3/c"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-708"]
+  - temp_id: "IEC62304-RR-019"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.4.3/c"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-709"]
+  - temp_id: "IEC62304-RR-020"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.4.4/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-710"]
+  - temp_id: "IEC62304-RR-021"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.4.4/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-711"]
+  - temp_id: "IEC62304-RR-022"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.4.4/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-712"]
+  - temp_id: "IEC62304-RR-023"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.4.4/c"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-713"]
+  - temp_id: "IEC62304-RR-024"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.4.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-714"]
+  - temp_id: "IEC62304-RR-025"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 4.4.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-715"]
+  - temp_id: "IEC62304-RR-026"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-716"]
+  - temp_id: "IEC62304-RR-027"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-717"]
+  - temp_id: "IEC62304-RR-028"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-718"]
+  - temp_id: "IEC62304-RR-029"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.1/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-719"]
+  - temp_id: "IEC62304-RR-030"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.1/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-720"]
+  - temp_id: "IEC62304-RR-031"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.1/c"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-721"]
+  - temp_id: "IEC62304-RR-032"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.1/d"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-722"]
+  - temp_id: "IEC62304-RR-033"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.1/e"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-723"]
+  - temp_id: "IEC62304-RR-034"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-724"]
+  - temp_id: "IEC62304-RR-035"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.3/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-725"]
+  - temp_id: "IEC62304-RR-036"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.3/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-726"]
+  - temp_id: "IEC62304-RR-037"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-727"]
+  - temp_id: "IEC62304-RR-038"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-728"]
+  - temp_id: "IEC62304-RR-039"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-729"]
+  - temp_id: "IEC62304-RR-040"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.7"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-730"]
+  - temp_id: "IEC62304-RR-041"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.8"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-731"]
+  - temp_id: "IEC62304-RR-042"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-732"]
+  - temp_id: "IEC62304-RR-043"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.10"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-733"]
+  - temp_id: "IEC62304-RR-044"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.11"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-734"]
+  - temp_id: "IEC62304-RR-045"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.1.12"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-735"]
+  - temp_id: "IEC62304-RR-046"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-736"]
+  - temp_id: "IEC62304-RR-047"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-737"]
+  - temp_id: "IEC62304-RR-048"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.2/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-738"]
+  - temp_id: "IEC62304-RR-049"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.2/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-739"]
+  - temp_id: "IEC62304-RR-050"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.2/c"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-740"]
+  - temp_id: "IEC62304-RR-051"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.2/d"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-741"]
+  - temp_id: "IEC62304-RR-052"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.2/e"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-742"]
+  - temp_id: "IEC62304-RR-053"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.2/f"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-743"]
+  - temp_id: "IEC62304-RR-054"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.2/g"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-744"]
+  - temp_id: "IEC62304-RR-055"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.2/h"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-745"]
+  - temp_id: "IEC62304-RR-056"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.2/i"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-746"]
+  - temp_id: "IEC62304-RR-057"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.2/j"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-747"]
+  - temp_id: "IEC62304-RR-058"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.2/k"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-748"]
+  - temp_id: "IEC62304-RR-059"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.2/l"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-749"]
+  - temp_id: "IEC62304-RR-060"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-750"]
+  - temp_id: "IEC62304-RR-061"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-751"]
+  - temp_id: "IEC62304-RR-062"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-752"]
+  - temp_id: "IEC62304-RR-063"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-753"]
+  - temp_id: "IEC62304-RR-064"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-754"]
+  - temp_id: "IEC62304-RR-065"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-755"]
+  - temp_id: "IEC62304-RR-066"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.2.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-756"]
+  - temp_id: "IEC62304-RR-067"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.3.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-757"]
+  - temp_id: "IEC62304-RR-068"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.3.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-758"]
+  - temp_id: "IEC62304-RR-069"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.3.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-759"]
+  - temp_id: "IEC62304-RR-070"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.3.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-760"]
+  - temp_id: "IEC62304-RR-071"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.3.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-761"]
+  - temp_id: "IEC62304-RR-072"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.3.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-762"]
+  - temp_id: "IEC62304-RR-073"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.3.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-763"]
+  - temp_id: "IEC62304-RR-074"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.3.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-764"]
+  - temp_id: "IEC62304-RR-075"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.3.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-765"]
+  - temp_id: "IEC62304-RR-076"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.4.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-766"]
+  - temp_id: "IEC62304-RR-077"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.4.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-767"]
+  - temp_id: "IEC62304-RR-078"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.4.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-768"]
+  - temp_id: "IEC62304-RR-079"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.4.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-769"]
+  - temp_id: "IEC62304-RR-080"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.4.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-770"]
+  - temp_id: "IEC62304-RR-081"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.4.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-771"]
+  - temp_id: "IEC62304-RR-082"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.5.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-772"]
+  - temp_id: "IEC62304-RR-083"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.5.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-773"]
+  - temp_id: "IEC62304-RR-084"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.5.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-774"]
+  - temp_id: "IEC62304-RR-085"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.5.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-775"]
+  - temp_id: "IEC62304-RR-086"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.5.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-776"]
+  - temp_id: "IEC62304-RR-087"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.5.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-777"]
+  - temp_id: "IEC62304-RR-088"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.5.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-778"]
+  - temp_id: "IEC62304-RR-089"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.5.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-779"]
+  - temp_id: "IEC62304-RR-090"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.6.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-780"]
+  - temp_id: "IEC62304-RR-091"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.6.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-781"]
+  - temp_id: "IEC62304-RR-092"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.6.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-782"]
+  - temp_id: "IEC62304-RR-093"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.6.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-783"]
+  - temp_id: "IEC62304-RR-094"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.6.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-784"]
+  - temp_id: "IEC62304-RR-095"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.6.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-785"]
+  - temp_id: "IEC62304-RR-096"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.6.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-786"]
+  - temp_id: "IEC62304-RR-097"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.6.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-787"]
+  - temp_id: "IEC62304-RR-098"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.6.7"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-788"]
+  - temp_id: "IEC62304-RR-099"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.6.8"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-789"]
+  - temp_id: "IEC62304-RR-100"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.7.1/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-790"]
+  - temp_id: "IEC62304-RR-101"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.7.1/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-791"]
+  - temp_id: "IEC62304-RR-102"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.7.1/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-792"]
+  - temp_id: "IEC62304-RR-103"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.7.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-793"]
+  - temp_id: "IEC62304-RR-104"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.7.3/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-794"]
+  - temp_id: "IEC62304-RR-105"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.7.3/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-795"]
+  - temp_id: "IEC62304-RR-106"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.7.3/c"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-796"]
+  - temp_id: "IEC62304-RR-107"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.7.4/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-797"]
+  - temp_id: "IEC62304-RR-108"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.7.4/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-798"]
+  - temp_id: "IEC62304-RR-109"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.7.4/c"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-799"]
+  - temp_id: "IEC62304-RR-110"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.7.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-800"]
+  - temp_id: "IEC62304-RR-111"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.8.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-801"]
+  - temp_id: "IEC62304-RR-112"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.8.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-802"]
+  - temp_id: "IEC62304-RR-113"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.8.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-803"]
+  - temp_id: "IEC62304-RR-114"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.8.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-804"]
+  - temp_id: "IEC62304-RR-115"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.8.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-805"]
+  - temp_id: "IEC62304-RR-116"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.8.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-806"]
+  - temp_id: "IEC62304-RR-117"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.8.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-807"]
+  - temp_id: "IEC62304-RR-118"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.8.7"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-808"]
+  - temp_id: "IEC62304-RR-119"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 5.8.8"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-809"]
+  - temp_id: "IEC62304-RR-120"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-810"]
+  - temp_id: "IEC62304-RR-121"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.1/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-811"]
+  - temp_id: "IEC62304-RR-122"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.1/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-812"]
+  - temp_id: "IEC62304-RR-123"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.1/c"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-813"]
+  - temp_id: "IEC62304-RR-124"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.1/d"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-814"]
+  - temp_id: "IEC62304-RR-125"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.1/e"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-815"]
+  - temp_id: "IEC62304-RR-126"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.1/f"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-816"]
+  - temp_id: "IEC62304-RR-127"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.2.1.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-817"]
+  - temp_id: "IEC62304-RR-128"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.2.1.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-818"]
+  - temp_id: "IEC62304-RR-129"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.2.1.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-819"]
+  - temp_id: "IEC62304-RR-130"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.2.1.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-820"]
+  - temp_id: "IEC62304-RR-131"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.2.1.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-821"]
+  - temp_id: "IEC62304-RR-132"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.2.1.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-822"]
+  - temp_id: "IEC62304-RR-133"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.2.1.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-823"]
+  - temp_id: "IEC62304-RR-134"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.2.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-824"]
+  - temp_id: "IEC62304-RR-135"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.2.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-825"]
+  - temp_id: "IEC62304-RR-136"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.2.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-826"]
+  - temp_id: "IEC62304-RR-137"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.2.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-827"]
+  - temp_id: "IEC62304-RR-138"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.2.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-828"]
+  - temp_id: "IEC62304-RR-139"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.2.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-829"]
+  - temp_id: "IEC62304-RR-140"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.2.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-830"]
+  - temp_id: "IEC62304-RR-141"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.3.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-831"]
+  - temp_id: "IEC62304-RR-142"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.3.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-832"]
+  - temp_id: "IEC62304-RR-143"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 6.3.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-833"]
+  - temp_id: "IEC62304-RR-144"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 7.1.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-834"]
+  - temp_id: "IEC62304-RR-145"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 7.1.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-835"]
+  - temp_id: "IEC62304-RR-146"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 7.1.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-836"]
+  - temp_id: "IEC62304-RR-147"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 7.1.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-837"]
+  - temp_id: "IEC62304-RR-148"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 7.2.1"
+    split_of: null
+    decision: "CROSS_NORM_MERGE"
+    rr: ["RR-378"]
+  - temp_id: "IEC62304-RR-149"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 7.2.1"
+    split_of: null
+    decision: "CROSS_NORM_MERGE"
+    rr: ["RR-379"]
+  - temp_id: "IEC62304-RR-150"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 7.2.2/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-838"]
+  - temp_id: "IEC62304-RR-151"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 7.2.2/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-839"]
+  - temp_id: "IEC62304-RR-152"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 7.2.2/c"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-840"]
+  - temp_id: "IEC62304-RR-153"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 7.3.1"
+    split_of: null
+    decision: "CROSS_NORM_MERGE"
+    rr: ["RR-380"]
+  - temp_id: "IEC62304-RR-154"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 7.3.1"
+    split_of: null
+    decision: "CROSS_NORM_MERGE"
+    rr: ["RR-381"]
+  - temp_id: "IEC62304-RR-155"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 7.3.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-841"]
+  - temp_id: "IEC62304-RR-156"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 7.3.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-842"]
+  - temp_id: "IEC62304-RR-157"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 7.4.1/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-843"]
+  - temp_id: "IEC62304-RR-158"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 7.4.1/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-844"]
+  - temp_id: "IEC62304-RR-159"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 7.4.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-845"]
+  - temp_id: "IEC62304-RR-160"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 7.4.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-846"]
+  - temp_id: "IEC62304-RR-161"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 8.1.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-847"]
+  - temp_id: "IEC62304-RR-162"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 8.1.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-848"]
+  - temp_id: "IEC62304-RR-163"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 8.1.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-849"]
+  - temp_id: "IEC62304-RR-164"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 8.1.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-850"]
+  - temp_id: "IEC62304-RR-165"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 8.2.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-851"]
+  - temp_id: "IEC62304-RR-166"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 8.2.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-852"]
+  - temp_id: "IEC62304-RR-167"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 8.2.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-853"]
+  - temp_id: "IEC62304-RR-168"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 8.2.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-854"]
+  - temp_id: "IEC62304-RR-169"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 8.2.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-855"]
+  - temp_id: "IEC62304-RR-170"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 8.2.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-856"]
+  - temp_id: "IEC62304-RR-171"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 8.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-857"]
+  - temp_id: "IEC62304-RR-172"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 9.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-858"]
+  - temp_id: "IEC62304-RR-173"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 9.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-859"]
+  - temp_id: "IEC62304-RR-174"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 9.2/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-860"]
+  - temp_id: "IEC62304-RR-175"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 9.2/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-861"]
+  - temp_id: "IEC62304-RR-176"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 9.2/c"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-862"]
+  - temp_id: "IEC62304-RR-177"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 9.2/d"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-863"]
+  - temp_id: "IEC62304-RR-178"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 9.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-864"]
+  - temp_id: "IEC62304-RR-179"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 9.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-865"]
+  - temp_id: "IEC62304-RR-180"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 9.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-866"]
+  - temp_id: "IEC62304-RR-181"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 9.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-867"]
+  - temp_id: "IEC62304-RR-182"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 9.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-868"]
+  - temp_id: "IEC62304-RR-183"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 9.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-869"]
+  - temp_id: "IEC62304-RR-184"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 9.7"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-870"]
+  - temp_id: "IEC62304-RR-185"
+    source: "SRC-007"
+    locator: "SRC-007#Abschnitt 9.8"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-871"]
+  - temp_id: "IEC62366-RR-001"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 4.1.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-872"]
+  - temp_id: "IEC62366-RR-002"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 4.1.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-873"]
+  - temp_id: "IEC62366-RR-003"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 4.1.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-874"]
+  - temp_id: "IEC62366-RR-004"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 4.1.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-875"]
+  - temp_id: "IEC62366-RR-005"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 4.1.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-876"]
+  - temp_id: "IEC62366-RR-006"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 4.1.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-877"]
+  - temp_id: "IEC62366-RR-007"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 4.1.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-878"]
+  - temp_id: "IEC62366-RR-008"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 4.1.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-879"]
+  - temp_id: "IEC62366-RR-009"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 4.1.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-880"]
+  - temp_id: "IEC62366-RR-010"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 4.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-881"]
+  - temp_id: "IEC62366-RR-011"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-882"]
+  - temp_id: "IEC62366-RR-012"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-883"]
+  - temp_id: "IEC62366-RR-013"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-884"]
+  - temp_id: "IEC62366-RR-014"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-885"]
+  - temp_id: "IEC62366-RR-015"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-886"]
+  - temp_id: "IEC62366-RR-016"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-887"]
+  - temp_id: "IEC62366-RR-017"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-888"]
+  - temp_id: "IEC62366-RR-018"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-889"]
+  - temp_id: "IEC62366-RR-019"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-890"]
+  - temp_id: "IEC62366-RR-020"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-891"]
+  - temp_id: "IEC62366-RR-021"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-892"]
+  - temp_id: "IEC62366-RR-022"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-893"]
+  - temp_id: "IEC62366-RR-023"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-894"]
+  - temp_id: "IEC62366-RR-024"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-895"]
+  - temp_id: "IEC62366-RR-025"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-896"]
+  - temp_id: "IEC62366-RR-026"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-897"]
+  - temp_id: "IEC62366-RR-027"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-898"]
+  - temp_id: "IEC62366-RR-028"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-899"]
+  - temp_id: "IEC62366-RR-029"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-900"]
+  - temp_id: "IEC62366-RR-030"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-901"]
+  - temp_id: "IEC62366-RR-031"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.5"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-902"]
+  - temp_id: "IEC62366-RR-032"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-903"]
+  - temp_id: "IEC62366-RR-033"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-904"]
+  - temp_id: "IEC62366-RR-034"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-905"]
+  - temp_id: "IEC62366-RR-035"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-906"]
+  - temp_id: "IEC62366-RR-036"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-907"]
+  - temp_id: "IEC62366-RR-037"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-908"]
+  - temp_id: "IEC62366-RR-038"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-909"]
+  - temp_id: "IEC62366-RR-039"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-910"]
+  - temp_id: "IEC62366-RR-040"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.6"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-911"]
+  - temp_id: "IEC62366-RR-041"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-912"]
+  - temp_id: "IEC62366-RR-042"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-913"]
+  - temp_id: "IEC62366-RR-043"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.1/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-914"]
+  - temp_id: "IEC62366-RR-044"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.1/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-915"]
+  - temp_id: "IEC62366-RR-045"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.1/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-916"]
+  - temp_id: "IEC62366-RR-046"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.1/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-917"]
+  - temp_id: "IEC62366-RR-047"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.1/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-918"]
+  - temp_id: "IEC62366-RR-048"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.1/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-919"]
+  - temp_id: "IEC62366-RR-049"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-920"]
+  - temp_id: "IEC62366-RR-050"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.2/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-921"]
+  - temp_id: "IEC62366-RR-051"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.2/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-922"]
+  - temp_id: "IEC62366-RR-052"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.2/c"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-923"]
+  - temp_id: "IEC62366-RR-053"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.3/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-924"]
+  - temp_id: "IEC62366-RR-054"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.3/a"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-925"]
+  - temp_id: "IEC62366-RR-055"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.3/b"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-926"]
+  - temp_id: "IEC62366-RR-056"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.3/c"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-927"]
+  - temp_id: "IEC62366-RR-057"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.3/d"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-928"]
+  - temp_id: "IEC62366-RR-058"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.3/d"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-929"]
+  - temp_id: "IEC62366-RR-059"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.3/e"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-930"]
+  - temp_id: "IEC62366-RR-060"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.3/e"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-931"]
+  - temp_id: "IEC62366-RR-061"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.3/e"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-932"]
+  - temp_id: "IEC62366-RR-062"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.3/e"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-933"]
+  - temp_id: "IEC62366-RR-063"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.7.3/e"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-934"]
+  - temp_id: "IEC62366-RR-064"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.8"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-935"]
+  - temp_id: "IEC62366-RR-065"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.8"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-936"]
+  - temp_id: "IEC62366-RR-066"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.8"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-937"]
+  - temp_id: "IEC62366-RR-067"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.8"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-938"]
+  - temp_id: "IEC62366-RR-068"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.8"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-939"]
+  - temp_id: "IEC62366-RR-069"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.8"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-940"]
+  - temp_id: "IEC62366-RR-070"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.8"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-941"]
+  - temp_id: "IEC62366-RR-071"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-942"]
+  - temp_id: "IEC62366-RR-072"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-943"]
+  - temp_id: "IEC62366-RR-073"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-944"]
+  - temp_id: "IEC62366-RR-074"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-945"]
+  - temp_id: "IEC62366-RR-075"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-946"]
+  - temp_id: "IEC62366-RR-076"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-947"]
+  - temp_id: "IEC62366-RR-077"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-948"]
+  - temp_id: "IEC62366-RR-078"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-949"]
+  - temp_id: "IEC62366-RR-079"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-950"]
+  - temp_id: "IEC62366-RR-080"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-951"]
+  - temp_id: "IEC62366-RR-081"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.9"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-952"]
+  - temp_id: "IEC62366-RR-082"
+    source: "SRC-008"
+    locator: "SRC-008#Abschnitt 5.9"
+    split_of: null
+    decision: "CROSS_NORM_MERGE"
+    rr: ["RR-382"]
+  - temp_id: "IEC62366-RR-083"
+    source: "SRC-008"
+    locator: "SRC-008#Anhang C/C.2.1"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-953"]
+  - temp_id: "IEC62366-RR-084"
+    source: "SRC-008"
+    locator: "SRC-008#Anhang C/C.2.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-954"]
+  - temp_id: "IEC62366-RR-085"
+    source: "SRC-008"
+    locator: "SRC-008#Anhang C/C.2.2"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-955"]
+  - temp_id: "IEC62366-RR-086"
+    source: "SRC-008"
+    locator: "SRC-008#Anhang C/C.2.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-956"]
+  - temp_id: "IEC62366-RR-087"
+    source: "SRC-008"
+    locator: "SRC-008#Anhang C/C.2.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-957"]
+  - temp_id: "IEC62366-RR-088"
+    source: "SRC-008"
+    locator: "SRC-008#Anhang C/C.2.3"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-958"]
+  - temp_id: "IEC62366-RR-089"
+    source: "SRC-008"
+    locator: "SRC-008#Anhang C/C.2.4"
+    split_of: null
+    decision: "CROSS_NORM_MERGE"
+    rr: ["RR-380"]
+  - temp_id: "IEC62366-RR-090"
+    source: "SRC-008"
+    locator: "SRC-008#Anhang C/C.2.4"
+    split_of: null
+    decision: "NEW_UNIQUE_RR"
+    rr: ["RR-959"]
+  - temp_id: "IEC62366-RR-091"
+    source: "SRC-008"
+    locator: "SRC-008#Anhang C/C.2.4"
+    split_of: null
+    decision: "CROSS_NORM_MERGE"
+    rr: ["RR-381"]
+  - temp_id: "IEC62366-RR-092"
+    source: "SRC-008"
+    locator: "SRC-008#Anhang C/C.2.5"
+    split_of: null
+    decision: "CROSS_NORM_MERGE"
+    rr: ["RR-382"]
+  - temp_id: "IEC62366-RR-093"
+    source: "SRC-008"
+    locator: "SRC-008#Anhang C/C.2.5"
+    split_of: null
+    decision: "CROSS_NORM_MERGE"
+    rr: ["RR-383"]
+relations:
+  - kind: "SOURCE_SUPPORT"
+    candidate: "ISO14971-RR-064"
+    rr: "RR-157"
+    locator: "SRC-006#Abschnitt 7.1"
+    note: "EXISTING_RR_SUPPORT: SRC-006 stützt RR-157 evidenzseitig; Primary Source von RR-157 bleibt unverändert."
+  - kind: "SOURCE_SUPPORT"
+    candidate: "ISO14971-RR-021"
+    rr: "RR-145"
+    locator: "SRC-006#Abschnitt 4.4"
+    note: "CROSSWALK_ONLY: kombinierter Normkandidat (Plan erstellen und dokumentieren) entspricht den bestehenden atomaren RR-145 und RR-146; SRC-006 stützt beide evidenzseitig."
+  - kind: "SOURCE_SUPPORT"
+    candidate: "ISO14971-RR-021"
+    rr: "RR-146"
+    locator: "SRC-006#Abschnitt 4.4"
+    note: "CROSSWALK_ONLY: siehe RR-145."
+  - kind: "NORMATIVE_DEPENDENCY"
+    candidate: "IEC62304-RR-002"
+    from: "SRC-007#Abschnitt 4.2"
+    to: "RR-594"
+    note: "CROSSWALK_ONLY: IEC 62304 verlangt die Anwendung eines Risikomanagementprozesses nach ISO 14971; kein zweiter Sollzustand neben RR-594 (ISO14971-RR-002)."
+  - kind: "NORMATIVE_DEPENDENCY"
+    candidate: null
+    from: "SRC-007"
+    to: "SRC-006"
+    note: "IEC 62304 Abschnitt 2 führt ISO 14971 als normative Verweisung; Abhängigkeit, keine Änderung der Primary Sources."
+  - kind: "NORMATIVE_DEPENDENCY"
+    candidate: null
+    from: "SRC-008"
+    to: "SRC-006"
+    note: "IEC 62366-1 Abschnitt 2 führt ISO 14971:2019 als einzige normative Verweisung; Abhängigkeit, keine Änderung der Primary Sources."
+change_history:
+  - version: "1.0"
+    change: "Erstfassung: 594 Normkandidaten (SRC-005 209, SRC-006 107, SRC-007 185, SRC-008 93) den RR-378 bis RR-959 bzw. bestehenden RR zugeordnet; 6 Merge-Gruppen; 3 Stützungs- und 3 Abhängigkeitsbeziehungen."
+  - version: "1.1"
+    change: "Bindung an RR_CATALOG 0.26 (redaktionelle Präzisierung von 15 Norm-RR); Kandidatenzuordnung, Merge-Gruppen und Beziehungen unverändert. Abschließender Cross-Source-/Coverage-Audit: PASS."

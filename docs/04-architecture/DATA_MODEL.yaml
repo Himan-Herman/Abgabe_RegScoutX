@@ -1,0 +1,483 @@
+version: "0.8"
+
+description: "Fachliches, technologieneutrales Datenmodell des Demonstrators. Keine Persistenz- oder Technologieentscheidung. Regulatorische Inhalte (SRC, RR, RUL) werden nicht kopiert, sondern über catalog_ref referenziert; die Katalogversionen einer Bewertung werden im CatalogVersionSet fixiert."
+
+# Zulässige Attributtypen: uuid, string, text, integer, boolean, date, datetime, version,
+# enum:<Enum>, ref:<Entität>, value:<Wertobjekt>, catalog_ref:<Katalogart>,
+# scalar (Wert aus allowed_values einer RUL bzw. eines Applicability-Inputs) sowie
+# list:<Typ> für Listen.
+catalog_ref_kinds:
+  - "SRC_LOCATOR"
+  - "RR"
+  - "RUL"
+  - "RUL_OUTPUT"
+  - "RUL_INPUT_KEY"
+  - "PROFILE_INPUT_KEY"
+  - "APPLICABILITY_BLOCK"
+  - "APPLICABILITY_PREDICATE"
+  - "RUL_FLAG"
+  # Vorgesehene Umsetzungsmaßnahme zu genau einer RR mit mindestens einer vorgesehenen
+  # Nachweisart (SR-043); der versionierte Maßnahmenkatalog wird separat befüllt.
+  - "RR_MEASURE"
+
+enums:
+  language:
+    - "DE"
+    - "EN"
+  assessment_state:
+    - "DRAFT"
+    - "FINALISED"
+  decision_area:
+    - "QUALIFICATION"
+    - "BOUNDARY"
+    - "CLASSIFICATION"
+    - "AI_ACT_APPLICABILITY"
+    - "MODULES"
+    - "CHANGE_REASSESSMENT"
+  decision_status:
+    - "DECIDED"
+    - "REVIEW_REQUIRED"
+    - "INCOMPLETE"
+    - "NOT_EVALUATED"
+  mdr_class:
+    - "I"
+    - "IIa"
+    - "IIb"
+    - "III"
+  applicability:
+    - "APPLICABLE"
+    - "NOT_APPLICABLE"
+    - "APPLICABILITY_UNRESOLVED"
+  applicability_reason:
+    - "SCOPE_ACTIVE"
+    - "LOCAL_CONDITIONS_MET"
+    - "SCOPE_INACTIVE"
+    - "SCOPE_NOT_YET_APPLICABLE"
+    - "SCOPE_LEGACY_TRANSITION"
+    - "LOCAL_CONDITION_NOT_MET"
+    - "SCOPE_UNRESOLVED"
+    - "LOCAL_CONDITION_UNRESOLVED"
+    - "LOCAL_CONDITION_NOT_MODELLED"
+    - "CONDITIONALITY_NOT_DOCUMENTED"
+    - "NO_MAPPING"
+  tri_state:
+    - "TRUE"
+    - "FALSE"
+    - "UNKNOWN"
+  gap_status:
+    - "FULFILLED"
+    - "PARTIALLY_FULFILLED"
+    - "NOT_FULFILLED"
+    - "NOT_ASSESSED"
+    - "NOT_APPLICABLE"
+  gap_result:
+    - "NOT_APPLICABLE"
+    - "APPLICABILITY_UNRESOLVED"
+    - "NOT_ASSESSED"
+    - "FULFILLED"
+    - "PARTIALLY_FULFILLED"
+    - "NOT_FULFILLED"
+    - "EVIDENCE_REVIEW_REQUIRED"
+  gap_reason:
+    - "RR_NOT_APPLICABLE"
+    - "RR_APPLICABILITY_UNRESOLVED"
+    - "NO_ANSWER"
+    - "ANSWER_NOT_ASSESSED"
+    - "ANSWER_NOT_FULFILLED"
+    - "ANSWER_WITH_EVIDENCE"
+    - "ANSWER_WITHOUT_EVIDENCE"
+    - "ANSWER_REVIEW_REQUIRED"
+  answer_state:
+    - "ACTIVE"
+    - "INACTIVE"
+    - "REACTIVATED_REVIEW_REQUIRED"
+  evidence_state:
+    - "NOT_CONSIDERED"
+    - "NO_EVIDENCE_REFERENCED"
+    - "EVIDENCE_REFERENCED"
+  measure_mapping_status:
+    - "MAPPED"
+    - "REVIEW_REQUIRED"
+  source_reference_role:
+    - "RR_PRIMARY"
+    - "RR_SUPPLEMENTARY"
+    - "RUL_PRIMARY_LEGAL_ANCHOR"
+    - "RUL_GUIDANCE_ANCHOR"
+  audit_event_type:
+    - "ASSESSMENT_CREATED"
+    - "INPUT_RECORDED"
+    - "RULES_EXECUTED"
+    - "APPLICABILITY_DETERMINED"
+    - "GAP_STATUS_SET"
+    - "EVIDENCE_LINKED"
+    - "REPORT_CREATED"
+    - "ASSESSMENT_FINALISED"
+    - "CATALOG_VERSION_MISMATCH_DETECTED"
+    - "GAP_STATUS_CHANGED"
+    - "EVIDENCE_UPDATED"
+    - "EVIDENCE_REMOVED"
+    - "ASSESSMENT_RECALCULATED"
+    - "ASSESSMENT_REOPENED"
+    - "REVISION_CREATED"
+  version_status:
+    - "MATCH"
+    - "MISMATCH"
+    - "INCOMPLETE_VERSION_INFO"
+  revision_origin:
+    - "CREATED"
+    - "REOPENED"
+    - "CATALOG_REBASE"
+  report_format:
+    - "HTML"
+    - "PDF"
+  report_open_item:
+    - "APPLICABILITY_UNRESOLVED"
+    - "ASSESSMENT_PENDING"
+    - "CONFIRMATION_REQUIRED"
+    - "EVIDENCE_REVIEW_REQUIRED"
+    - "GAP_TO_CLOSE"
+    - "MEASURE_MAPPING_REVIEW"
+
+enum_labels:
+  decision_area:
+    QUALIFICATION: {de: "Qualifikation als Medizinproduktesoftware", en: "Qualification as medical device software"}
+    BOUNDARY: {de: "Abgrenzung MDR/IVDR", en: "MDR/IVDR boundary"}
+    CLASSIFICATION: {de: "MDR-Klassifizierung", en: "MDR classification"}
+    AI_ACT_APPLICABILITY: {de: "Anwendbarkeit des AI Act", en: "AI Act applicability"}
+    MODULES: {de: "Modulare Systeme", en: "Modular systems"}
+    CHANGE_REASSESSMENT: {de: "Änderungsbewertung", en: "Change assessment"}
+  tri_state:
+    "TRUE": {de: "erfüllt", en: "true"}
+    "FALSE": {de: "nicht erfüllt", en: "false"}
+    UNKNOWN: {de: "ungeklärt", en: "unknown"}
+  report_format:
+    HTML: {de: "HTML", en: "HTML"}
+    PDF: {de: "PDF", en: "PDF"}
+  report_open_item:
+    APPLICABILITY_UNRESOLVED: {de: "Anwendbarkeit klären", en: "Resolve applicability"}
+    ASSESSMENT_PENDING: {de: "Erfüllung bewerten", en: "Assess fulfilment"}
+    CONFIRMATION_REQUIRED: {de: "Frühere Bewertung bestätigen oder neu bewerten", en: "Confirm or re-assess earlier assessment"}
+    EVIDENCE_REVIEW_REQUIRED: {de: "Nachweisreferenz ergänzen", en: "Add evidence reference"}
+    GAP_TO_CLOSE: {de: "Gap schließen", en: "Close gap"}
+    MEASURE_MAPPING_REVIEW: {de: "Maßnahmenzuordnung prüfen", en: "Review measure assignment"}
+  assessment_state:
+    DRAFT: {de: "Entwurf", en: "draft"}
+    FINALISED: {de: "abgeschlossen", en: "finalised"}
+  version_status:
+    MATCH: {de: "Katalogversionen stimmen überein", en: "catalog versions match"}
+    MISMATCH: {de: "Katalogversionen weichen ab; gespeicherter Stand nur lesbar", en: "catalog versions differ; stored state is read-only"}
+    INCOMPLETE_VERSION_INFO: {de: "Versionsangaben unvollständig; Prüfung erforderlich", en: "version information incomplete; review required"}
+  revision_origin:
+    CREATED: {de: "neu angelegt", en: "created"}
+    REOPENED: {de: "nach Abschluss wieder geöffnet", en: "reopened after finalisation"}
+    CATALOG_REBASE: {de: "bewusst mit aktuellem Katalogstand neu bewertet", en: "deliberately re-assessed against current catalogs"}
+  audit_event_type:
+    ASSESSMENT_CREATED: {de: "Bewertung angelegt", en: "assessment created"}
+    INPUT_RECORDED: {de: "Produkteingabe erfasst oder geändert", en: "product input recorded or changed"}
+    RULES_EXECUTED: {de: "Entscheidungsregeln ausgeführt", en: "decision rules executed"}
+    APPLICABILITY_DETERMINED: {de: "Anwendbarkeit bestimmt", en: "applicability determined"}
+    GAP_STATUS_SET: {de: "Erfüllungsbewertung gesetzt", en: "fulfilment assessment set"}
+    EVIDENCE_LINKED: {de: "Nachweisreferenz hinzugefügt", en: "evidence reference added"}
+    REPORT_CREATED: {de: "Bericht erzeugt", en: "report created"}
+    ASSESSMENT_FINALISED: {de: "Bewertung abgeschlossen", en: "assessment finalised"}
+    CATALOG_VERSION_MISMATCH_DETECTED: {de: "Abweichende Katalogversion erkannt", en: "catalog version mismatch detected"}
+    GAP_STATUS_CHANGED: {de: "Erfüllungsbewertung geändert oder bestätigt", en: "fulfilment assessment changed or confirmed"}
+    EVIDENCE_UPDATED: {de: "Nachweisreferenz geändert", en: "evidence reference updated"}
+    EVIDENCE_REMOVED: {de: "Nachweisreferenz entfernt", en: "evidence reference removed"}
+    ASSESSMENT_RECALCULATED: {de: "Bewertung neu berechnet", en: "assessment recalculated"}
+    ASSESSMENT_REOPENED: {de: "Bewertung wieder geöffnet", en: "assessment reopened"}
+    REVISION_CREATED: {de: "Revision angelegt", en: "revision created"}
+  gap_status:
+    FULFILLED: {de: "erfüllt", en: "fulfilled"}
+    PARTIALLY_FULFILLED: {de: "teilweise erfüllt", en: "partially fulfilled"}
+    NOT_FULFILLED: {de: "nicht erfüllt", en: "not fulfilled"}
+    NOT_ASSESSED: {de: "nicht bewertet", en: "not assessed"}
+    NOT_APPLICABLE: {de: "nicht anwendbar", en: "not applicable"}
+  gap_result:
+    NOT_APPLICABLE: {de: "nicht anwendbar", en: "not applicable"}
+    APPLICABILITY_UNRESOLVED: {de: "Anwendbarkeit ungeklärt", en: "applicability unresolved"}
+    NOT_ASSESSED: {de: "nicht bewertet", en: "not assessed"}
+    FULFILLED: {de: "erfüllt (Nutzerangabe mit Nachweisreferenz)", en: "fulfilled (user statement with evidence reference)"}
+    PARTIALLY_FULFILLED: {de: "teilweise erfüllt (Nutzerangabe mit Nachweisreferenz)", en: "partially fulfilled (user statement with evidence reference)"}
+    NOT_FULFILLED: {de: "nicht erfüllt (Nutzerangabe)", en: "not fulfilled (user statement)"}
+    EVIDENCE_REVIEW_REQUIRED: {de: "Nachweisprüfung erforderlich", en: "evidence review required"}
+  gap_reason:
+    RR_NOT_APPLICABLE: {de: "Die Anforderung ist nach der Anwendbarkeitsprüfung nicht anwendbar; eine Erfüllungsbewertung fließt nicht ein.", en: "The requirement is not applicable according to the applicability check; no fulfilment assessment is used."}
+    RR_APPLICABILITY_UNRESOLVED: {de: "Die Anwendbarkeit ist ungeklärt; eine Erfüllungsbewertung fließt nicht ein.", en: "Applicability is unresolved; no fulfilment assessment is used."}
+    NO_ANSWER: {de: "Für die anwendbare Anforderung liegt keine Erfüllungsbewertung vor.", en: "No fulfilment assessment exists for the applicable requirement."}
+    ANSWER_NOT_ASSESSED: {de: "Die Erfüllungsbewertung ist ausdrücklich als nicht bewertet erfasst.", en: "The fulfilment assessment is explicitly recorded as not assessed."}
+    ANSWER_NOT_FULFILLED: {de: "Der Nutzer hat die Anforderung als nicht erfüllt bewertet.", en: "The user assessed the requirement as not fulfilled."}
+    ANSWER_WITH_EVIDENCE: {de: "Der Nutzer hat (teilweise) Erfüllung angegeben und mindestens eine Nachweisreferenz zugeordnet.", en: "The user stated (partial) fulfilment and assigned at least one evidence reference."}
+    ANSWER_WITHOUT_EVIDENCE: {de: "Der Nutzer hat (teilweise) Erfüllung angegeben, aber keine Nachweisreferenz zugeordnet (Nachweislücke).", en: "The user stated (partial) fulfilment but assigned no evidence reference (evidence gap)."}
+    ANSWER_REVIEW_REQUIRED: {de: "Eine frühere Erfüllungsbewertung ist nach Wiederanwendbarkeit der Anforderung unbestätigt und fließt nicht ein.", en: "An earlier fulfilment assessment is unconfirmed after the requirement became applicable again and is not used."}
+  answer_state:
+    ACTIVE: {de: "aktiv", en: "active"}
+    INACTIVE: {de: "inaktiv (Anforderung derzeit nicht anwendbar)", en: "inactive (requirement currently not applicable)"}
+    REACTIVATED_REVIEW_REQUIRED: {de: "wieder anwendbar, Bestätigung erforderlich", en: "applicable again, confirmation required"}
+  evidence_state:
+    NOT_CONSIDERED: {de: "nicht berücksichtigt", en: "not considered"}
+    NO_EVIDENCE_REFERENCED: {de: "keine Nachweisreferenz", en: "no evidence reference"}
+    EVIDENCE_REFERENCED: {de: "Nachweisreferenz vorhanden", en: "evidence reference present"}
+  measure_mapping_status:
+    MAPPED: {de: "Maßnahme regelbasiert zugeordnet", en: "measure assigned by rule"}
+    REVIEW_REQUIRED: {de: "Maßnahmenzuordnung offen (Prüfung erforderlich)", en: "measure assignment open (review required)"}
+  applicability:
+    APPLICABLE: {de: "anwendbar", en: "applicable"}
+    NOT_APPLICABLE: {de: "nicht anwendbar", en: "not applicable"}
+    APPLICABILITY_UNRESOLVED: {de: "Anwendbarkeit ungeklärt", en: "applicability unresolved"}
+  applicability_reason:
+    SCOPE_ACTIVE: {de: "Der übergeordnete regulatorische Bereich ist aktiv; keine lokale Bedingung dokumentiert.", en: "The parent regulatory scope is active; no local condition documented."}
+    LOCAL_CONDITIONS_MET: {de: "Der übergeordnete Bereich ist aktiv und alle lokalen Bedingungen sind erfüllt.", en: "The parent scope is active and all local conditions are met."}
+    SCOPE_INACTIVE: {de: "Der übergeordnete regulatorische Bereich ist nicht aktiv.", en: "The parent regulatory scope is not active."}
+    SCOPE_NOT_YET_APPLICABLE: {de: "Der übergeordnete Bereich ist zum Bewertungsdatum noch nicht anwendbar (Anwendungsbeginn nicht erreicht).", en: "The parent scope is not yet applicable at the assessment date (date of application not reached)."}
+    SCOPE_LEGACY_TRANSITION: {de: "Der übergeordnete Bereich ist wegen einer Übergangsregelung für Bestandssysteme derzeit nicht aktiviert.", en: "The parent scope is currently not activated because of a transitional provision for existing systems."}
+    LOCAL_CONDITION_NOT_MET: {de: "Der übergeordnete Bereich ist aktiv, eine lokale Bedingung ist nicht erfüllt.", en: "The parent scope is active, a local condition is not met."}
+    SCOPE_UNRESOLVED: {de: "Ob der übergeordnete Bereich aktiv ist, ist mit den vorliegenden Entscheidungen und Eingaben nicht bestimmbar.", en: "Whether the parent scope is active cannot be determined from the available decisions and inputs."}
+    LOCAL_CONDITION_UNRESOLVED: {de: "Für eine lokale Bedingung fehlt die notwendige Eingabe.", en: "The input required for a local condition is missing."}
+    LOCAL_CONDITION_NOT_MODELLED: {de: "Eine dokumentierte lokale Bedingung ist nicht maschinenlesbar modelliert.", en: "A documented local condition is not modelled in machine-readable form."}
+    CONDITIONALITY_NOT_DOCUMENTED: {de: "Die Evidenz dokumentiert für diese Anforderung keine Einordnung als regulär oder bedingt.", en: "The evidence documents no classification of this requirement as regular or conditional."}
+    NO_MAPPING: {de: "Für diese Anforderung existiert keine Applicability-Zuordnung.", en: "No applicability mapping exists for this requirement."}
+  decision_status:
+    DECIDED: {de: "entschieden", en: "decided"}
+    REVIEW_REQUIRED: {de: "Prüfung erforderlich", en: "review required"}
+    INCOMPLETE: {de: "unvollständige Eingaben", en: "incomplete inputs"}
+    NOT_EVALUATED: {de: "nicht bewertet", en: "not evaluated"}
+
+value_objects:
+  CatalogVersionSet:
+    description: "Fixierte Versionen aller Kataloge, gegen die eine Bewertung oder ein Bericht erzeugt wurde."
+    attributes:
+      sources_version: {type: "version", required: true}
+      rr_catalog_version: {type: "version", required: true}
+      rul_catalog_version: {type: "version", required: true}
+      data_model_version: {type: "version", required: true}
+      rr_applicability_version: {type: "version", required: true}
+      rr_measure_version: {type: "version", required: true}
+  AuditDetail:
+    description: "Strukturierte Angabe eines AuditEvents (Code, Schlüssel oder Kennung); keine Freitexte oder Dokumentangaben."
+    attributes:
+      key: {type: "string", required: true}
+      value: {type: "scalar", required: false}
+  InputAnswer:
+    description: "Eine kontrollierte Produkteingabe; recorded_at setzt der ASSESSMENT_SERVICE bei der Erfassung."
+    attributes:
+      input_key: {type: "catalog_ref:PROFILE_INPUT_KEY", required: true}
+      value: {type: "scalar", required: true}
+      recorded_at: {type: "datetime", required: false}
+  EvaluatedPredicate:
+    description: "Dreiwertiges Ergebnis eines Applicability-Prädikats."
+    attributes:
+      predicate_key: {type: "catalog_ref:APPLICABILITY_PREDICATE", required: true}
+      value: {type: "enum:tri_state", required: true}
+  SourceReference:
+    description: "Aus den Katalogen aufgelöster Quellenverweis; wird nicht vom Nutzer erfasst."
+    attributes:
+      locator: {type: "catalog_ref:SRC_LOCATOR", required: true}
+      role: {type: "enum:source_reference_role", required: true}
+
+entities:
+  Assessment:
+    description: "Eine Bewertung eines Produkts gegen fixierte Katalogversionen."
+    identifier: "assessment_id"
+    attributes:
+      assessment_id: {type: "uuid", required: true}
+      revision: {type: "integer", required: true}
+      origin: {type: "enum:revision_origin", required: true}
+      based_on: {type: "integer", required: false}
+      created_at: {type: "datetime", required: true}
+      state: {type: "enum:assessment_state", required: true}
+      language: {type: "enum:language", required: true}
+      catalog_versions: {type: "value:CatalogVersionSet", required: true}
+      fingerprint: {type: "string", required: true}
+    invariants:
+      - "catalog_versions wird bei Anlage fixiert und danach nicht verändert; Abweichungen zu später geladenen Katalogen werden als CATALOG_VERSION_MISMATCH_DETECTED protokolliert, nicht still übernommen."
+      - "Die Sprache beeinflusst ausschließlich die Darstellung, nie Entscheidungen oder Status."
+      - "Das Ergebnisschema einer Bewertung ist dieses Datenmodell; seine Version ist data_model_version im CatalogVersionSet."
+      - "fingerprint ist ein SHA-256-Wert über den fachlichen Inhalt (CatalogVersionSet, ProductProfile, GapAssessments ohne assessed_at, EvidenceReferences, DecisionResults und RequirementResults); assessment_id, revision, created_at, state, language, Zeitpunkte und AuditEvents gehen nicht ein. Gleicher fachlicher Inhalt ergibt denselben fingerprint."
+      - "Eine Bewertung besteht aus fortlaufend nummerierten Revisionen (assessment_id, revision); gespeicherte Revisionen werden nie verändert, nur die letzte Revision ist im Zustand DRAFT änderbar."
+      - "FINALISED ist unveränderlich; reopen erzeugt eine neue DRAFT-Revision (origin REOPENED). Abschließen ist nur ohne Bewertungen im answer_state REACTIVATED_REVIEW_REQUIRED zulässig."
+      - "Beim Öffnen wird catalog_versions der letzten Revision mit den geladenen Katalogen verglichen (version_status). MISMATCH und INCOMPLETE_VERSION_INFO erlauben nur Lesen des gespeicherten Stands; eine Neubewertung mit aktuellen Katalogen entsteht nur bei MISMATCH und nur als neue Revision (origin CATALOG_REBASE). Regulatorische Entscheidungen werden nie migriert."
+
+  ProductProfile:
+    description: "Kontrollierte Produkteingaben einer Bewertung."
+    identifier: "profile_id"
+    attributes:
+      profile_id: {type: "uuid", required: true}
+      assessment_id: {type: "ref:Assessment", required: true}
+      answers: {type: "list:value:InputAnswer", required: true}
+    invariants:
+      - "Jeder input_key ist ein nicht abgeleiteter input_key des RUL-Katalogs oder ein Applicability-Input aus RR_APPLICABILITY.yaml; jeder Wert liegt in dessen allowed_values."
+      - "Freitext ist keine Entscheidungseingabe."
+
+  RuleExecution:
+    description: "Ein ausgeführter Regelschritt eines Entscheidungspfads."
+    identifier: "execution_id"
+    attributes:
+      execution_id: {type: "uuid", required: true}
+      decision_result_id: {type: "ref:DecisionResult", required: true}
+      sequence: {type: "integer", required: true}
+      rule_id: {type: "catalog_ref:RUL", required: true}
+      input_key: {type: "catalog_ref:RUL_INPUT_KEY", required: true}
+      input_value: {type: "scalar", required: true}
+      derived_input: {type: "boolean", required: true}
+      result: {type: "catalog_ref:RUL_OUTPUT", required: false}
+      next_rule_id: {type: "catalog_ref:RUL", required: false}
+      review: {type: "catalog_ref:RUL_OUTPUT", required: false}
+    invariants:
+      - "Genau ein Zweig der Regel passt zum Eingabewert; result, next_rule_id und review entsprechen diesem Zweig."
+      - "Die Ursache eines Review-Ausgangs wird aus dem RUL-Katalog aufgelöst und nicht kopiert."
+
+  DecisionResult:
+    description: "Ergebnis eines Entscheidungsbereichs."
+    identifier: "decision_result_id"
+    attributes:
+      decision_result_id: {type: "uuid", required: true}
+      assessment_id: {type: "ref:Assessment", required: true}
+      area: {type: "enum:decision_area", required: true}
+      status: {type: "enum:decision_status", required: true}
+      outcome: {type: "catalog_ref:RUL_OUTPUT", required: false}
+      mdr_class: {type: "enum:mdr_class", required: false}
+      applicable_from: {type: "date", required: false}
+      compliance_flags: {type: "list:catalog_ref:RUL_FLAG", required: true}
+    invariants:
+      - "status DECIDED nur, wenn der Pfad ein Ergebnis ohne Review-Ausgang erreicht hat."
+      - "mdr_class nur bei area CLASSIFICATION, status DECIDED und outcome FINAL_MDR_CLASS; sie ist der strengste Klassenkandidat des Pfads."
+      - "area AI_ACT_APPLICABILITY hat status NOT_EVALUATED, solange für die Bewertung keine AI-Act-Regeln ausgeführt wurden."
+      - "applicable_from ist das früheste Anwendbarkeitsdatum der Routenergebnisse, die auf das outcome aggregieren; compliance_flags sind Routing-/Compliance-Hinweise und kein Erfüllungsstatus."
+
+  ApplicableRequirement:
+    description: "Anwendbarkeit einer RR in einer Bewertung."
+    identifier: "applicable_requirement_id"
+    attributes:
+      applicable_requirement_id: {type: "uuid", required: true}
+      assessment_id: {type: "ref:Assessment", required: true}
+      requirement_id: {type: "catalog_ref:RR", required: true}
+      applicability: {type: "enum:applicability", required: true}
+      reason_code: {type: "enum:applicability_reason", required: true}
+      block: {type: "catalog_ref:APPLICABILITY_BLOCK", required: false}
+      evaluated_predicates: {type: "list:value:EvaluatedPredicate", required: true}
+      supporting_rule_ids: {type: "list:catalog_ref:RUL", required: true}
+      relevant_inputs: {type: "list:value:InputAnswer", required: true}
+      source_of_applicability: {type: "string", required: true}
+      determined_by: {type: "list:ref:DecisionResult", required: true}
+    invariants:
+      - "Die Anwendbarkeit folgt ausschließlich aus RR_APPLICABILITY.yaml, den DecisionResults und den Eingaben; Anforderungstexte werden nicht ausgewertet."
+      - "Der übergeordnete Bereich wird vor lokalen Bedingungen ausgewertet: inaktiver Bereich ergibt NOT_APPLICABLE, ungeklärter Bereich APPLICABILITY_UNRESOLVED."
+      - "Fehlende Eingabe, fehlende oder nicht modellierte Bedingung und nicht ausgewertete Regel ergeben APPLICABILITY_UNRESOLVED, nie APPLICABLE oder NOT_APPLICABLE."
+      - "Die Begründung ist reason_code mit seiner DE/EN-Bezeichnung; determined_by enthält die herangezogenen DecisionResults, bei AI-Act-Anforderungen das DecisionResult des Bereichs AI_ACT_APPLICABILITY."
+
+  GapAssessment:
+    description: "Vom Nutzer strukturiert erfasste Erfüllungsbewertung einer RR; an die RR, nicht an eine einzelne Auswertung gebunden."
+    identifier: "gap_assessment_id"
+    attributes:
+      gap_assessment_id: {type: "uuid", required: true}
+      requirement_id: {type: "catalog_ref:RR", required: true}
+      status: {type: "enum:gap_status", required: true}
+      justification: {type: "text", required: false}
+      evidence_ids: {type: "list:ref:EvidenceReference", required: true}
+      assessed_at: {type: "datetime", required: false}
+      stale: {type: "boolean", required: true}
+    invariants:
+      - "Initialer Status ist NOT_ASSESSED; das System setzt nie selbst FULFILLED, PARTIALLY_FULFILLED oder NOT_FULFILLED."
+      - "NOT_APPLICABLE wird ausschließlich aus applicability NOT_APPLICABLE abgeleitet und ist nicht manuell setzbar."
+      - "FULFILLED, PARTIALLY_FULFILLED und NOT_FULFILLED erfordern eine Begründung."
+      - "FULFILLED oder PARTIALLY_FULFILLED ohne evidence_ids wird als Nachweislücke ausgewiesen (RequirementResult.gap_result EVIDENCE_REVIEW_REQUIRED)."
+      - "Ein Gap liegt vor bei PARTIALLY_FULFILLED, NOT_FULFILLED oder einer Nachweislücke."
+      - "justification und Dokumentangaben werden nicht ausgewertet; sie bestimmen keinen Status."
+      - "Eine GapAssessment fließt nur ein, solange ihre RR APPLICABLE ist und stale falsch ist (answer_state ACTIVE); sonst bleibt sie erhalten (INACTIVE bzw. REACTIVATED_REVIEW_REQUIRED). Sie wird nie still verworfen."
+      - "stale setzt ausschließlich das System, sobald die RR in einer Auswertung nicht APPLICABLE ist; nur eine bewusste Bestätigung oder eine neue Bewertung hebt es auf."
+
+  RequirementResult:
+    description: "Abgeleitetes Ergebnis genau einer RR in einer Auswertung: Anwendbarkeit, Gap-Status, Nachweis- und Maßnahmenbezug."
+    identifier: "requirement_result_id"
+    attributes:
+      requirement_result_id: {type: "uuid", required: true}
+      assessment_id: {type: "ref:Assessment", required: true}
+      applicable_requirement_id: {type: "ref:ApplicableRequirement", required: true}
+      gap_assessment_id: {type: "ref:GapAssessment", required: false}
+      answer_state: {type: "enum:answer_state", required: false}
+      gap_result: {type: "enum:gap_result", required: true}
+      gap_reason: {type: "enum:gap_reason", required: true}
+      gap: {type: "boolean", required: true}
+      evidence_state: {type: "enum:evidence_state", required: true}
+      evidence_ids: {type: "list:ref:EvidenceReference", required: true}
+      measure_mapping_status: {type: "enum:measure_mapping_status", required: true}
+      measures: {type: "list:catalog_ref:RR_MEASURE", required: true}
+    invariants:
+      - "Je RR und Auswertung genau ein RequirementResult mit genau einem gap_result."
+      - "applicability NOT_APPLICABLE ergibt gap_result NOT_APPLICABLE, APPLICABILITY_UNRESOLVED ergibt APPLICABILITY_UNRESOLVED; eine vorhandene GapAssessment ist dann INACTIVE und evidence_state NOT_CONSIDERED."
+      - "Bei APPLICABLE: ohne GapAssessment oder mit Status NOT_ASSESSED NOT_ASSESSED; NOT_FULFILLED NOT_FULFILLED; FULFILLED bzw. PARTIALLY_FULFILLED mit mindestens einer Nachweisreferenz FULFILLED bzw. PARTIALLY_FULFILLED, ohne Nachweisreferenz EVIDENCE_REVIEW_REQUIRED."
+      - "gap ist wahr genau bei PARTIALLY_FULFILLED, NOT_FULFILLED und EVIDENCE_REVIEW_REQUIRED; fehlende Bewertung oder fehlende Nachweisreferenz ist nie NOT_FULFILLED."
+      - "gap_reason ist ein nicht-regulatorischer Begründungscode; die regulatorische Herleitung der Anwendbarkeit bleibt beim ApplicableRequirement."
+      - "measures und measure_mapping_status stammen unverändert aus RR_MEASURE; bei REVIEW_REQUIRED ist measures leer und dies ist ein offener Punkt, keine unterstellte Maßnahme. Eine Nachweisreferenz belegt nie selbst die Erfüllung."
+
+  EvidenceReference:
+    description: "Vom Nutzer angegebener Verweis auf ein Nachweisdokument; RegScoutX erzeugt keine Nachweise."
+    identifier: "evidence_id"
+    attributes:
+      evidence_id: {type: "uuid", required: true}
+      assessment_id: {type: "ref:Assessment", required: true}
+      title: {type: "string", required: true}
+      document_identifier: {type: "string", required: true}
+      document_version: {type: "string", required: false}
+      location: {type: "string", required: false}
+      measure_key: {type: "catalog_ref:RR_MEASURE", required: false}
+    invariants:
+      - "Ein Nachweis wird nur durch Nutzereingabe angelegt."
+      - "measure_key verweist, falls gesetzt, auf eine vorgesehene Maßnahme einer RR, deren GapAssessment diese Nachweisreferenz in evidence_ids führt; so entsteht die Kette RR → vorgesehene Maßnahme → Nachweis."
+
+  ReportSnapshot:
+    description: "Unveränderliches, sprachneutrales Berichtsmodell einer gespeicherten Revision (ReportModel), aus dem HTML- und PDF-Bericht erzeugt werden."
+    identifier: "report_id"
+    attributes:
+      report_id: {type: "uuid", required: true}
+      assessment_id: {type: "ref:Assessment", required: true}
+      revision: {type: "integer", required: true}
+      created_at: {type: "datetime", required: true}
+      language: {type: "enum:language", required: true}
+      format: {type: "enum:report_format", required: true}
+      report_schema_version: {type: "version", required: true}
+      catalog_versions: {type: "value:CatalogVersionSet", required: true}
+      version_status: {type: "enum:version_status", required: true}
+      content_hash: {type: "string", required: true}
+    invariants:
+      - "Der Snapshot ist nach Erzeugung unveränderlich; er entsteht ausschließlich aus einer gespeicherten Revision und berechnet keine Entscheidung, Anwendbarkeit oder Gap-Status neu."
+      - "content_hash ist SHA-256 über Berichtsmodell, Sprache und report_schema_version ohne Erzeugungszeitpunkt; gleiche Revision, Katalogversionen, Sprache und Schemaversion ergeben denselben content_hash, unabhängig vom Format."
+      - "Katalogtexte (Titel, Anforderungstexte, Quellen, Maßnahmen, Regeln) werden nur bei version_status MATCH aufgelöst; bei MISMATCH oder INCOMPLETE_VERSION_INFO enthält der Bericht nur die gespeicherten Codes und kennzeichnet den Stand als historisch."
+      - "Erzeugung eines Berichts wird als REPORT_CREATED mit Revision, Sprache, Format, Schemaversion und content_hash protokolliert; Berichtsinhalte werden nicht protokolliert."
+
+  AuditEvent:
+    description: "Nur anhängender Protokolleintrag eines fachlichen Ereignisses."
+    identifier: "event_id"
+    attributes:
+      event_id: {type: "uuid", required: true}
+      assessment_id: {type: "ref:Assessment", required: true}
+      revision: {type: "integer", required: true}
+      sequence: {type: "integer", required: true}
+      occurred_at: {type: "datetime", required: true}
+      event_type: {type: "enum:audit_event_type", required: true}
+      subject_id: {type: "string", required: false}
+      details: {type: "list:value:AuditDetail", required: true}
+      catalog_versions: {type: "value:CatalogVersionSet", required: true}
+    invariants:
+      - "Einträge werden nie geändert oder gelöscht; sequence ist je Bewertung fortlaufend ab 1."
+      - "Einträge enthalten keine personenbezogenen Gesundheitsdaten und keine Freitexte (Begründungen, Dokumenttitel, Dokumentkennungen)."
+      - "catalog_versions sind die bei Erfassung geladenen Katalogversionen; die gespeicherten Versionen einer abweichenden Revision stehen in details."
+
+change_history:
+  - version: "0.1"
+    change: "Fachliches Datenmodell angelegt: Assessment, ProductProfile, RuleExecution, DecisionResult, ApplicableRequirement, GapAssessment, EvidenceReference, ReportSnapshot und AuditEvent sowie die Wertobjekte CatalogVersionSet, InputAnswer und SourceReference. SourceReference ist ein aus den Katalogen aufgelöstes Wertobjekt, keine eigene Entität."
+  - version: "0.2"
+    change: "Applicability-Schicht: Statuswert UNDETERMINED in APPLICABILITY_UNRESOLVED umbenannt (gleiche Bedeutung); Enums applicability_reason und tri_state; Wertobjekt EvaluatedPredicate; ApplicableRequirement um reason_code, block, evaluated_predicates, supporting_rule_ids, relevant_inputs und source_of_applicability ergänzt, justification durch reason_code ersetzt; CatalogVersionSet um rr_applicability_version ergänzt; InputAnswer umfasst auch Applicability-Inputs, recorded_at optional."
+  - version: "0.3"
+    change: "AI-Act-Routing: DecisionResult um applicable_from und compliance_flags ergänzt; Attributtyp date; Katalogart RUL_FLAG; applicability_reason um SCOPE_NOT_YET_APPLICABLE und SCOPE_LEGACY_TRANSITION ergänzt; Invariante zu AI_ACT_APPLICABILITY aktualisiert."
+  - version: "0.4"
+    change: "Katalogart RR_MEASURE (vorgesehene Umsetzungsmaßnahme zu genau einer RR mit mindestens einer vorgesehenen Nachweisart) und optionales Attribut EvidenceReference.measure_key mit Invariante ergänzt, damit die Kette RR → Maßnahme → Nachweis nach SR-043 modellierbar ist. Der Maßnahmenkatalog selbst ist noch nicht angelegt und wird separat befüllt; keine weitere Entitätsänderung."
+  - version: "0.5"
+    change: "CatalogVersionSet um rr_measure_version (Version von RR_MEASURE_CATALOG.yaml) als Pflichtattribut ergänzt, damit ein reproduzierter Bewertungsstand eindeutig auf dieselben vorgesehenen Maßnahmen und Nachweisarten zurückgeführt werden kann. Keine weitere Änderung."
+  - version: "0.6"
+    change: "Assessment-/Gap-Kern (Demonstrator D1): Enums gap_result, gap_reason, answer_state, evidence_state und measure_mapping_status mit DE/EN-Bezeichnungen; Entität RequirementResult (genau ein abgeleiteter Gap-Status je RR und Auswertung, Anwendbarkeit und Erfüllung getrennt); GapAssessment an requirement_id statt an applicable_requirement_id gebunden, damit Erfüllungsbewertungen eine Neuberechnung nach SR-040 überdauern; Assessment.fingerprint. gap_status und seine Bedeutung unverändert (SR-012)."
+  - version: "0.7"
+    change: "Persistenter Assessment-Lebenszyklus (Demonstrator D2): Assessment um revision, origin und based_on mit Revisions- und Versionsabgleichsregeln; GapAssessment.stale und answer_state REACTIVATED_REVIEW_REQUIRED mit gap_reason ANSWER_REVIEW_REQUIRED (wieder anwendbare Bewertungen fließen erst nach Bestätigung ein); Enums version_status und revision_origin; audit_event_type um GAP_STATUS_CHANGED, EVIDENCE_UPDATED, EVIDENCE_REMOVED, ASSESSMENT_RECALCULATED, ASSESSMENT_REOPENED und REVISION_CREATED; AuditEvent um revision, sequence und details (Wertobjekt AuditDetail); DE/EN-Bezeichnungen für assessment_state, audit_event_type, version_status und revision_origin. Bestehende Zeilen der Gap-Ableitung unverändert."
+  - version: "0.8"
+    change: "Reporting (Demonstrator D3): ReportSnapshot an das umgesetzte, sprachneutrale Berichtsmodell angepasst (revision, format, report_schema_version, version_status statt Listen einzelner Ergebnis-IDs, die über die Revision erreichbar sind); Enums report_format und report_open_item; DE/EN-Bezeichnungen für decision_area, tri_state, report_format und report_open_item. Keine Änderung fachlicher Semantik."

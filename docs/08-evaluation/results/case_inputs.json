@@ -1,0 +1,278 @@
+{
+ "profile": {
+  "is_software": true,
+  "special_route": "NONE",
+  "data_action_type": "BEYOND_BASIC",
+  "individual_patient_benefit": true,
+  "own_medical_purpose": true,
+  "ivdr_information_purpose": false,
+  "drives_or_influences_device": "NONE",
+  "provides_information_for_diagnostic_or_therapeutic_decisions": true,
+  "decision_impact_death_or_irreversible_deterioration": false,
+  "decision_impact_serious_deterioration_or_surgery": false,
+  "used_for_contraception_or_sti_prevention": false,
+  "therapeutic_with_integrated_diagnostic_function": false,
+  "drives_substance_administration_or_removal_device": false,
+  "further_unmodelled_rule_possibly_applicable": false,
+  "ai_system_status": "YES",
+  "scope_nexus": "PRODUCT_MANUFACTURER",
+  "scope_exclusion": "NONE",
+  "annex_i_product_relation": "AI_SYSTEM_IS_PRODUCT",
+  "third_party_ca_required": "YES",
+  "third_party_ca_only_non_health_safety": "NO",
+  "assessment_date": "2028-09-01",
+  "market_or_service_date": "2028-09-01",
+  "annex_iii_use_case": "NONE",
+  "lay_use": true,
+  "eifu_provision": "NO_EIFU",
+  "investigational_device": false,
+  "custom_made_device": false,
+  "implantable_device": false,
+  "iso13485_clause1_exclusion_claimed": false,
+  "qms_software_used": true,
+  "outsourced_processes": false,
+  "purchasing_performed": true,
+  "software_safety_class": "B",
+  "iec62304_route": "REGULAR_LIFECYCLE",
+  "soup_used": true,
+  "software_change": false,
+  "software_problem_reported": false,
+  "iec62366_ui_route": "REGULAR_ROUTE",
+  "usability_test_planned": true,
+  "training_required_for_safe_use": false,
+  "safety_information_as_risk_control": true
+ },
+ "justification": "Synthetische Fallstudienangabe (Block 6, Szenario laut REFERENCE_ASSESSMENT.yaml)",
+ "answers": [
+  {
+   "requirement_id": "RR-082",
+   "status": "FULFILLED",
+   "evidence": {
+    "evidence_id": "CS-EV-RR-082",
+    "requirement_id": "RR-082",
+    "title": "Fallstudie: Nachweis zu RR-082",
+    "document_identifier": "CS-DOC-RR-082",
+    "document_version": "1.0",
+    "location": null,
+    "measure_key": "MEAS_DOCUMENTED_PROCEDURE"
+   },
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-123",
+   "status": "PARTIALLY_FULFILLED",
+   "evidence": {
+    "evidence_id": "CS-EV-RR-123",
+    "requirement_id": "RR-123",
+    "title": "Fallstudie: Nachweis zu RR-123",
+    "document_identifier": "CS-DOC-RR-123",
+    "document_version": "1.0",
+    "location": null,
+    "measure_key": "MEAS_RECORD"
+   },
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-081",
+   "status": "NOT_FULFILLED",
+   "evidence": null,
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-384",
+   "status": "FULFILLED",
+   "evidence": null,
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-094",
+   "status": "NOT_ASSESSED",
+   "evidence": null,
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-076",
+   "status": "PARTIALLY_FULFILLED",
+   "evidence": null,
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-160",
+   "status": "FULFILLED",
+   "evidence": {
+    "evidence_id": "CS-EV-RR-160",
+    "requirement_id": "RR-160",
+    "title": "Fallstudie: Nachweis zu RR-160",
+    "document_identifier": "CS-DOC-RR-160",
+    "document_version": "1.0",
+    "location": null,
+    "measure_key": null
+   },
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-064",
+   "status": "PARTIALLY_FULFILLED",
+   "evidence": {
+    "evidence_id": "CS-EV-RR-064",
+    "requirement_id": "RR-064",
+    "title": "Fallstudie: Nachweis zu RR-064",
+    "document_identifier": "CS-DOC-RR-064",
+    "document_version": "1.0",
+    "location": null,
+    "measure_key": null
+   },
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-074",
+   "status": "NOT_FULFILLED",
+   "evidence": null,
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-165",
+   "status": "FULFILLED",
+   "evidence": null,
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-096",
+   "status": "NOT_ASSESSED",
+   "evidence": null,
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-135",
+   "status": "PARTIALLY_FULFILLED",
+   "evidence": null,
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-302",
+   "status": "FULFILLED",
+   "evidence": {
+    "evidence_id": "CS-EV-RR-302",
+    "requirement_id": "RR-302",
+    "title": "Fallstudie: Nachweis zu RR-302",
+    "document_identifier": "CS-DOC-RR-302",
+    "document_version": "1.0",
+    "location": null,
+    "measure_key": null
+   },
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-539",
+   "status": "PARTIALLY_FULFILLED",
+   "evidence": {
+    "evidence_id": "CS-EV-RR-539",
+    "requirement_id": "RR-539",
+    "title": "Fallstudie: Nachweis zu RR-539",
+    "document_identifier": "CS-DOC-RR-539",
+    "document_version": "1.0",
+    "location": null,
+    "measure_key": null
+   },
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-172",
+   "status": "NOT_FULFILLED",
+   "evidence": null,
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-448",
+   "status": "FULFILLED",
+   "evidence": null,
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-084",
+   "status": "NOT_ASSESSED",
+   "evidence": null,
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-189",
+   "status": "PARTIALLY_FULFILLED",
+   "evidence": null,
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-892",
+   "status": "FULFILLED",
+   "evidence": {
+    "evidence_id": "CS-EV-RR-892",
+    "requirement_id": "RR-892",
+    "title": "Fallstudie: Nachweis zu RR-892",
+    "document_identifier": "CS-DOC-RR-892",
+    "document_version": "1.0",
+    "location": null,
+    "measure_key": "MEAS_USABILITY_ENGINEERING_FILE"
+   },
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-163",
+   "status": "PARTIALLY_FULFILLED",
+   "evidence": {
+    "evidence_id": "CS-EV-RR-163",
+    "requirement_id": "RR-163",
+    "title": "Fallstudie: Nachweis zu RR-163",
+    "document_identifier": "CS-DOC-RR-163",
+    "document_version": "1.0",
+    "location": null,
+    "measure_key": null
+   },
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-593",
+   "status": "NOT_FULFILLED",
+   "evidence": null,
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-692",
+   "status": "FULFILLED",
+   "evidence": null,
+   "applicable": true
+  },
+  {
+   "requirement_id": "RR-001",
+   "status": "FULFILLED",
+   "evidence": {
+    "evidence_id": "CS-EV-RR-001",
+    "requirement_id": "RR-001",
+    "title": "Fallstudie: Nachweis zu RR-001",
+    "document_identifier": "CS-DOC-RR-001",
+    "document_version": "1.0",
+    "location": null,
+    "measure_key": null
+   },
+   "applicable": false
+  },
+  {
+   "requirement_id": "RR-034",
+   "status": "NOT_FULFILLED",
+   "evidence": null,
+   "applicable": false
+  },
+  {
+   "requirement_id": "RR-205",
+   "status": "PARTIALLY_FULFILLED",
+   "evidence": {
+    "evidence_id": "CS-EV-RR-205",
+    "requirement_id": "RR-205",
+    "title": "Fallstudie: Nachweis zu RR-205",
+    "document_identifier": "CS-DOC-RR-205",
+    "document_version": "1.0",
+    "location": null,
+    "measure_key": "MEAS_LABELLING_AND_INSTRUCTIONS"
+   },
+   "applicable": false
+  }
+ ]
+}
