@@ -14,6 +14,8 @@ RUL-039 bleibt ersetzt mit Rückverknüpfung auf RUL-044 erhalten; nur aktive Re
 
 ## 2. Tatsächlich ausgeführte Prüfung
 
+In den öffentlichen Protokollkopien wurden lokale Benutzerpfade aus Datenschutzgründen gekürzt. Die Prüfergebnisse sind unverändert.
+
 `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest tests.test_annex_iii_transition`: 14 Tests, Exitcode 0, OK. [Originalausgabe](annex-iii-transition-2026-11-04/targeted-tests.txt), [Laufmetadaten](annex-iii-transition-2026-11-04/targeted-tests.json).
 
 TC-062 prüft den Gegenfall, beide Stichtage, alle drei Hochrisiko-Kandidatenpfade, neue/geänderte Systeme, Behördennutzung vor und ab der Frist, fehlende und unklare Angaben, beide parallelen Routen mit getrennten Änderungsmerkmalen, DE/EN-Fragetext und korrekten Stichtag, Hashschutz historischer Kataloge sowie schreibgeschütztes historisches Öffnen und explizite Neubewertung als neue Revision.

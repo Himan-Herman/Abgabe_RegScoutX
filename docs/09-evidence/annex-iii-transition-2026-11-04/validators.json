@@ -1,7 +1,7 @@
 [
   {
     "command": [
-      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "<HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
       "-B",
       "tools/validate_data_model.py"
     ],
@@ -12,7 +12,7 @@
   },
   {
     "command": [
-      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "<HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
       "-B",
       "tools/validate_reference_assessment.py"
     ],
@@ -23,7 +23,7 @@
   },
   {
     "command": [
-      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "<HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
       "-B",
       "tools/validate_rr_applicability.py"
     ],
@@ -34,7 +34,7 @@
   },
   {
     "command": [
-      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "<HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
       "-B",
       "tools/validate_rr_catalog.py"
     ],
@@ -45,7 +45,7 @@
   },
   {
     "command": [
-      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "<HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
       "-B",
       "tools/validate_rr_measures.py"
     ],
@@ -56,7 +56,7 @@
   },
   {
     "command": [
-      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "<HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
       "-B",
       "tools/validate_rul_catalog.py"
     ],
@@ -67,7 +67,7 @@
   },
   {
     "command": [
-      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "<HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
       "-B",
       "tools/validate_sr_catalog.py"
     ],
@@ -78,7 +78,7 @@
   },
   {
     "command": [
-      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "<HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
       "-B",
       "tools/validate_standards_mapping.py"
     ],
@@ -89,7 +89,7 @@
   },
   {
     "command": [
-      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "<HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
       "-B",
       "tools/validate_test_catalog.py"
     ],
@@ -100,7 +100,7 @@
   },
   {
     "command": [
-      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "<HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
       "-B",
       "tools/traceability.py"
     ],
@@ -111,7 +111,7 @@
   },
   {
     "command": [
-      "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+      "<HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
       "-B",
       "tools/derive_case_reference.py",
       "--check"

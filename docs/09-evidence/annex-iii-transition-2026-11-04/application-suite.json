@@ -1,6 +1,6 @@
 {
   "command": [
-    "/Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
+    "<HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python",
     "-B",
     "-m",
     "unittest",

@@ -1,27 +1,27 @@
-COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_data_model.py
+COMMAND: <HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_data_model.py
 EXIT: 0
 Data model validation: PASS
 version: 0.8
 entities: 10
 
-COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_reference_assessment.py
+COMMAND: <HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_reference_assessment.py
 EXIT: 0
 Reference assessment validation: PASS
 sha256: 45cf843e993eb7c9fc17dfeb810541b667087bbbd3effc726188d04f6ad2fc66
 
-COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_rr_applicability.py
+COMMAND: <HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_rr_applicability.py
 EXIT: 0
 RR applicability validation: PASS
 version: 0.5
 requirements: 959 CONDITIONAL=629 NOT_STATED=61 REGULAR=269
 
-COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_rr_catalog.py
+COMMAND: <HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_rr_catalog.py
 EXIT: 0
 RR catalog validation: PASS
 version: 0.26
 requirements: 959
 
-COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_rr_measures.py
+COMMAND: <HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_rr_measures.py
 EXIT: 0
 RR measure catalog validation: PASS
 version: 0.2
@@ -55,32 +55,32 @@ by lifecycle phase:
   Verifikation und Validierung: SOURCE_EXPLICIT=74 PROJECT_DERIVED=202
   Änderung und Wartung: SOURCE_EXPLICIT=198 PROJECT_DERIVED=291
 
-COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_rul_catalog.py
+COMMAND: <HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_rul_catalog.py
 EXIT: 0
 RUL catalog validation: PASS
 version: 0.3
 rules: 47
 
-COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_sr_catalog.py
+COMMAND: <HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_sr_catalog.py
 EXIT: 0
 SR catalog validation: PASS
 version: 0.6
 requirements: 43
 
-COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_standards_mapping.py
+COMMAND: <HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_standards_mapping.py
 EXIT: 0
 Standards mapping validation: PASS
 version: 1.1
 candidates: 594 CROSSWALK_ONLY=2 CROSS_NORM_MERGE=15 EXISTING_RR_SUPPORT=1 NEW_UNIQUE_RR=576
 merges: 6; new RR: 582; relations: 6
 
-COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_test_catalog.py
+COMMAND: <HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/validate_test_catalog.py
 EXIT: 0
 Test catalog validation: PASS
 test cases: 62 AUTOMATED=61 VALIDATOR=1 golden=4
 evidence: 19
 
-COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/traceability.py
+COMMAND: <HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/traceability.py
 EXIT: 0
 Traceability check: PASS
 links: 5396
@@ -114,5 +114,5 @@ RR measure mapping basis: PROJECT_DERIVED 581, SOURCE_EXPLICIT 378
 RR with source, lifecycle phase, measure and evidence type: 959 of 959
 SR per architecture module: APPLICABILITY_ENGINE 10, APPLICATION_API 4, ASSESSMENT_REPOSITORY 3, ASSESSMENT_SERVICE 10, AUDIT_LOG 3, CATALOG_REPOSITORY 7, EVIDENCE_SERVICE 6, GAP_ENGINE 13, I18N 5, PRESENTATION 9, REPORTING 15, REQUIREMENT_SERVICE 5, RULE_ENGINE 14
 
-COMMAND: /Users/himankhorshidi/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/derive_case_reference.py --check
+COMMAND: <HOME>/Desktop/RegScoutX-Masterarbeit/.venv/bin/python -B tools/derive_case_reference.py --check
 EXIT: 0
