@@ -151,7 +151,7 @@ Es gelten unverändert die Lebenszyklusregeln aus [DOCUMENTATION_CONVENTIONS.md]
 ## 10. Versionierung und Prüfung
 
 - `RUL_CATALOG.yaml` führt eine Katalogversion im Format `MAJOR.MINOR` mit Startwert `0.1` und eine `change_history`. Testfälle und Evidenzen nennen die Katalogversion, gegen die sie erzeugt wurden.
-- Die formale Prüfung erfolgt mit `tools/validate_rul_catalog.py` auf der Werkzeugbasis aus [ADR-0001](../decisions/0001-rr-catalog-validation-tooling.md). Ein erfolgreicher Lauf belegt ausschließlich formale und strukturelle Konsistenz, nicht regulatorische Richtigkeit.
+- Die formale Prüfung erfolgt mit `tools/validate_rul_catalog.py` auf der Werkzeugbasis aus ADR-0001 (Entwicklungsarchiv). Ein erfolgreicher Lauf belegt ausschließlich formale und strukturelle Konsistenz, nicht regulatorische Richtigkeit.
 - Regelbasierte Testfälle werden unter `docs/07-testing/` geführt. Permanente `TC`-IDs werden erst mit einer eigenen Vergabestelle für `TC` vergeben.
 
 ## 11. Änderungshistorie

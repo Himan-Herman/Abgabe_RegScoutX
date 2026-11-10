@@ -21,7 +21,7 @@ Die Konvention ist bewusst minimal gehalten: Sie legt nur fest, was für Traceab
 Hinweise zum Format:
 
 - `NNN` ist eine dreistellige, führend mit Nullen aufgefüllte laufende Nummer.
-- ADR verwendet abweichend vier Stellen, um die bereits in [docs/decisions/README.md](../decisions/README.md) festgelegte Dateibenennung `NNNN-kurzer-entscheidungstitel.md` unverändert zu erhalten. Die ID `ADR-0001` entspricht der Datei `0001-...md`.
+- ADR verwendet abweichend vier Stellen, um die bereits in docs/decisions/README.md (Entwicklungsarchiv) festgelegte Dateibenennung `NNNN-kurzer-entscheidungstitel.md` unverändert zu erhalten. Die ID `ADR-0001` entspricht der Datei `0001-...md`.
 - Die Präfixe sind englischsprachige Kurzformen, weil sie kurz, kollisionsfrei und in der Fachliteratur zu Requirements Engineering und Traceability gebräuchlich sind. Die Dokumentationssprache bleibt Deutsch.
 - Maschinelle Erkennung von IDs erfolgt über das Muster `\b(SR|RR|SRC|RUL|TC|EV|ADR)-\d{3,4}\b`. Die Präfixe `SR` und `SRC` sind dadurch eindeutig unterscheidbar.
 - Ablageorte sind vorläufig und folgen der bestehenden Ordnerstruktur unter `docs/`; sie können angepasst werden, ohne dass sich IDs ändern.
@@ -164,7 +164,7 @@ Bei direktem Quellenbezug ist der **präziseste verfügbare Lokator** Pflicht; e
 | `RUL` | ID, Regelzweck, Eingangsgrößen, Bedingung, Ergebnis, Grundlage (verknüpfte `RR`/`SR`; im Sonderfall nach Pfad 2 stattdessen der direkte `SRC`-Lokator), Status |
 | `TC` | ID, Zweck, Vorbedingung, Eingaben, erwartetes Soll-Ergebnis, geprüfte Elemente, Status |
 | `EV` | ID, Bezug (`TC`/Review), Datum, Durchführung, Ist-Ergebnis, Bewertung, verwendete Versionsstände |
-| `ADR` | ID, Titel, Status, Kontext, Alternativen, Entscheidung, Begründung, Konsequenzen, Verknüpfungen (siehe [docs/decisions/README.md](../decisions/README.md)) |
+| `ADR` | ID, Titel, Status, Kontext, Alternativen, Entscheidung, Begründung, Konsequenzen, Verknüpfungen (siehe docs/decisions/README.md (Entwicklungsarchiv)) |
 
 Die im Exposé geforderten Attribute der Traceability-Matrix – Quelle, Lebenszyklusphase, Maßnahme, Nachweisdokument – sind über diese Felder abgedeckt bzw. werden in der Matrix unter `docs/05-traceability/` zusammengeführt.
 
@@ -184,7 +184,7 @@ Bewusst noch **nicht** festgelegt (und erst bei Bedarf zu entscheiden, ggf. per 
 
 - Format weiterer, noch nicht definierter Katalog- und Registerartefakte (Markdown-Tabelle, YAML, CSV o. ä.) – hängt von der späteren Verarbeitung im Demonstrator ab. Für den regulatorischen Anforderungskatalog ist das Format bereits festgelegt: YAML in `RR_CATALOG.yaml`, begründet in [../03-regulatory/RR_EXTRACTION_METHOD.md](../03-regulatory/RR_EXTRACTION_METHOD.md) Abschnitt 10. Für den Entscheidungsregelkatalog gilt ebenfalls YAML in `RUL_CATALOG.yaml`, begründet in [../03-regulatory/RUL_METHOD.md](../03-regulatory/RUL_METHOD.md) Abschnitt 2, für den Systemanforderungskatalog YAML in `SR_CATALOG.yaml` nach [../02-requirements/SYSTEM_REQUIREMENTS.md](../02-requirements/SYSTEM_REQUIREMENTS.md) Abschnitt 2. Führende Vergabestelle für `TC` ist [../07-testing/TC_CATALOG.yaml](../07-testing/TC_CATALOG.yaml), für `EV` der Evidenzindex [../09-evidence/EV_INDEX.yaml](../09-evidence/EV_INDEX.yaml), jeweils YAML ([../07-testing/TEST_STRATEGY.md](../07-testing/TEST_STRATEGY.md)).
 
-Festgelegt mit [ADR-0002](../decisions/0002-logical-architecture-and-traceability.md): Die Traceability-Matrix wird nicht manuell gepflegt, sondern aus den Katalogen abgeleitet; ID-Eindeutigkeit und Verweisintegrität werden werkzeuggestützt geprüft ([../05-traceability/TRACEABILITY_MODEL.md](../05-traceability/TRACEABILITY_MODEL.md)).
+Festgelegt mit ADR-0002 (Entwicklungsarchiv): Die Traceability-Matrix wird nicht manuell gepflegt, sondern aus den Katalogen abgeleitet; ID-Eindeutigkeit und Verweisintegrität werden werkzeuggestützt geprüft ([../05-traceability/TRACEABILITY_MODEL.md](../05-traceability/TRACEABILITY_MODEL.md)).
 
 ## 9. Änderungshistorie
 

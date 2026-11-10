@@ -2,7 +2,7 @@
 
 Version 1.12 · Status: aktiv
 
-Dieses Dokument beschreibt die **logische**, technologieneutrale Modularchitektur von RegScoutX. Die Entscheidung und ihre Alternativen stehen in [ADR-0002](../decisions/0002-logical-architecture-and-traceability.md). Die logische Architektur bleibt technologieneutral; Programmiersprache, Persistenz, Bericht und Benutzeroberfläche sind in eigenen ADRs entschieden ([ADR-0003](../decisions/0003-demonstrator-technology-stack.md) bis [ADR-0007](../decisions/0007-web-application.md); Umsetzung in Abschnitt 8).
+Dieses Dokument beschreibt die **logische**, technologieneutrale Modularchitektur von RegScoutX. Die Entscheidung und ihre Alternativen stehen in ADR-0002 (Entwicklungsarchiv). Die logische Architektur bleibt technologieneutral; Programmiersprache, Persistenz, Bericht und Benutzeroberfläche sind in eigenen ADRs entschieden (ADR-0003 (Entwicklungsarchiv) bis ADR-0007 (Entwicklungsarchiv); Umsetzung in Abschnitt 8).
 
 ---
 
@@ -92,12 +92,12 @@ Das fachliche Datenmodell steht maschinenlesbar in [DATA_MODEL.yaml](DATA_MODEL.
 
 ## 7. Bewusst offene Entscheidungen
 
-- Bereitstellung außerhalb des lokalen Demonstrators (Hosting, Mehrbenutzerbetrieb, Store-Auslieferung); Frontend-Stack und Interaktionskonzept sind mit [ADR-0007](../decisions/0007-web-application.md) und [WEB_APPLICATION.md](WEB_APPLICATION.md) entschieden;
+- Bereitstellung außerhalb des lokalen Demonstrators (Hosting, Mehrbenutzerbetrieb, Store-Auslieferung); Frontend-Stack und Interaktionskonzept sind mit ADR-0007 (Entwicklungsarchiv) und [WEB_APPLICATION.md](WEB_APPLICATION.md) entschieden;
 - Gap-Filter-Regeln als `RUL` nach Pfad 1 ([DOCUMENTATION_CONVENTIONS.md](../00-project/DOCUMENTATION_CONVENTIONS.md) Abschnitt 5): Die Anwendbarkeit bedingter `RR` ist stattdessen maschinenlesbar in [RR_APPLICABILITY.yaml](../03-regulatory/RR_APPLICABILITY.yaml) abgebildet und wird vom `APPLICABILITY_ENGINE` ausgewertet; nicht modellierte Bedingungen bleiben `APPLICABILITY_UNRESOLVED`.
 
 ## 8. Laufzeitumsetzung
 
-Technologie nach [ADR-0003](../decisions/0003-demonstrator-technology-stack.md): Python-Paket `regscoutx/` ohne Framework-Abhängigkeit, Tests unter `tests/`.
+Technologie nach ADR-0003 (Entwicklungsarchiv): Python-Paket `regscoutx/` ohne Framework-Abhängigkeit, Tests unter `tests/`.
 
 | Modul | Umsetzung | Stand |
 | --- | --- | --- |
@@ -106,14 +106,14 @@ Technologie nach [ADR-0003](../decisions/0003-demonstrator-technology-stack.md):
 | `APPLICABILITY_ENGINE` | `regscoutx/applicability_engine.py`; Zuordnung aus `docs/03-regulatory/RR_APPLICABILITY.yaml` über `CATALOG_REPOSITORY`; Herleitung je `RR` über `explain` (SR-042) | umgesetzt |
 | `REQUIREMENT_SERVICE` | `regscoutx/requirement_service.py`; Lesesicht je `RR` mit Texten, Quellen, Lebenszyklusphasen (SR-041) und vorgesehenen Maßnahmen (SR-043) | umgesetzt |
 | `ASSESSMENT_SERVICE` | `regscoutx/assessment_service.py` (zustandsloser Kern: `Assessment`, `ProductProfile`, `AssessmentInput`, `RRResult`, `AssessmentSummary`, Neuberechnung, Differenzen); `regscoutx/assessment_application.py` (Anwendungseinstieg: Lebenszyklus, Revisionen, Versionsabgleich, Audit, Nachweisoperationen); `regscoutx/assessment_codec.py` (Persistenzschema) | umgesetzt (D2) |
-| `ASSESSMENT_REPOSITORY` | `regscoutx/assessment_repository.py` (Schnittstelle, Hülle, Anhängeregel); `regscoutx/json_assessment_repository.py` (lokale JSON-Dateien, [ADR-0005](../decisions/0005-assessment-persistence.md), Format: [PERSISTENCE_FORMAT.md](PERSISTENCE_FORMAT.md)) | umgesetzt (D2) |
+| `ASSESSMENT_REPOSITORY` | `regscoutx/assessment_repository.py` (Schnittstelle, Hülle, Anhängeregel); `regscoutx/json_assessment_repository.py` (lokale JSON-Dateien, ADR-0005 (Entwicklungsarchiv), Format: [PERSISTENCE_FORMAT.md](PERSISTENCE_FORMAT.md)) | umgesetzt (D2) |
 | `GAP_ENGINE` | `regscoutx/gap_engine.py`; `GapAssessment`, Ableitung genau eines Gap-Status je `RR` | umgesetzt (D1) |
 | `EVIDENCE_SERVICE` | `regscoutx/evidence_service.py`; Prüfung, Register, Hinzufügen, Ändern, Entfernen, Abruf und Filter nach Maßnahme nutzerseitiger `EvidenceReference` | umgesetzt (D2, keine Dokumentablage) |
 | `AUDIT_LOG` | `regscoutx/audit_log.py`; nur anhängendes Protokoll je Bewertung, persistiert mit dem Bewertungsdokument | umgesetzt (D2; `REPORT_CREATED` seit D3) |
-| `REPORTING` | `regscoutx/report_model.py` (ReportSource, sprachneutrales ReportModel), `report_document.py` (Gliederung und Texte), `report_html.py`, `report_pdf.py` (Renderer), `report_service.py` (Fassade); Konzept: [REPORTING.md](REPORTING.md), Entscheidung: [ADR-0006](../decisions/0006-reporting-and-pdf.md) | umgesetzt (D3) |
+| `REPORTING` | `regscoutx/report_model.py` (ReportSource, sprachneutrales ReportModel), `report_document.py` (Gliederung und Texte), `report_html.py`, `report_pdf.py` (Renderer), `report_service.py` (Fassade); Konzept: [REPORTING.md](REPORTING.md), Entscheidung: ADR-0006 (Entwicklungsarchiv) | umgesetzt (D3) |
 | `I18N` | `regscoutx/i18n.py` mit `regscoutx/resources/i18n/de.json`, `en.json`; Code-Bezeichnungen aus `enum_labels`, Themen und Phasen aus dem Vokabular | umgesetzt für den Bericht (D3) |
 | `I18N` (Oberfläche) | dieselben Ressourcen unter dem Präfix `ui.`; Auslieferung als Sprachpaket über `APPLICATION_API` | umgesetzt (D4) |
-| `APPLICATION_API` | `regscoutx/web_api.py` (Routen, Fehlercodes), `regscoutx/web_server.py` (lokaler Server, Composition Root); Sichten `regscoutx/questionnaire.py` und `regscoutx/assessment_views.py` gehören zu `ASSESSMENT_SERVICE`; Entscheidung: [ADR-0007](../decisions/0007-web-application.md) | umgesetzt (D4) |
+| `APPLICATION_API` | `regscoutx/web_api.py` (Routen, Fehlercodes), `regscoutx/web_server.py` (lokaler Server, Composition Root); Sichten `regscoutx/questionnaire.py` und `regscoutx/assessment_views.py` gehören zu `ASSESSMENT_SERVICE`; Entscheidung: ADR-0007 (Entwicklungsarchiv) | umgesetzt (D4) |
 | `PRESENTATION` | `web/` (React, TypeScript, Vite; Shared Product Core, Domain UI, Experience Profile); Konzept: [WEB_APPLICATION.md](WEB_APPLICATION.md), Leitlinie: [UI_UX_DESIGN_SYSTEM.md](UI_UX_DESIGN_SYSTEM.md) | umgesetzt (D4) |
 
 **Semantik der Engine** (ausschließlich aus [RUL_METHOD.md](../03-regulatory/RUL_METHOD.md) und dem Katalog, keine regulatorischen Inhalte im Code):
@@ -138,7 +138,7 @@ Technologie nach [ADR-0003](../decisions/0003-demonstrator-technology-stack.md):
 - Anforderungstexte werden nicht gelesen; das Ergebnis ist unabhängig von `requirement_text` (geprüft in `tests/test_applicability_engine.py`).
 - `explain` stellt je `RR` Anwendbarkeit, Begründungscode, Block, Prädikate, Eingaben, herangezogene Entscheidungsergebnisse mit ihren `RUL` und die Quellenlokatoren aus der bestehenden Trace-Struktur zusammen; es findet keine neue Bewertung statt.
 
-**Semantik von `ASSESSMENT_SERVICE` und `GAP_ENGINE`** (Entscheidung: [ADR-0004](../decisions/0004-assessment-gap-core.md)):
+**Semantik von `ASSESSMENT_SERVICE` und `GAP_ENGINE`** (Entscheidung: ADR-0004 (Entwicklungsarchiv)):
 
 - Ein `Assessment` fixiert das `CatalogVersionSet` und enthält Produktprofil, Erfüllungsbewertungen (`GapAssessment`), Nachweisreferenzen, Regelläufe, Entscheidungsergebnisse, genau ein `RRResult` je `RR` und Summen. Das Ergebnisschema ist [DATA_MODEL.yaml](DATA_MODEL.yaml); `schema_version` ist dessen Version im `CatalogVersionSet`.
 - Das `ProductProfile` ist flach. Jeder Schlüssel ist eine Applicability-Eingabe oder gehört zu genau einem Einstiegspunkt (Schlüsselmenge aller von dort erreichbaren, nicht abgeleiteten Regeln); ein Einstiegspunkt wird ausgewertet, wenn das Profil mindestens einen seiner Schlüssel enthält, sonst bleibt der Bereich `NOT_EVALUATED`. Unbekannte Schlüssel werden abgewiesen.
@@ -163,7 +163,7 @@ Technologie nach [ADR-0003](../decisions/0003-demonstrator-technology-stack.md):
 - Reproduzierbarkeit: `Assessment.fingerprint` ist SHA-256 über die kanonische fachliche Form; Assessment-ID, Zeitpunkte (`created_at`, `assessed_at`, Audit), Sprache, Zustand und `AssessmentChange` gehen nicht ein.
 - Sichtbare Bezeichnungen der Ausgabecodes stehen zentral in `enum_labels` von [DATA_MODEL.yaml](DATA_MODEL.yaml); der Kern liefert nur Codes und Katalogtexte.
 
-**Anwendungseinstieg und Persistenz** (Entscheidung: [ADR-0005](../decisions/0005-assessment-persistence.md)):
+**Anwendungseinstieg und Persistenz** (Entscheidung: ADR-0005 (Entwicklungsarchiv)):
 
 - `AssessmentApplicationService` ist der einzige Zugang späterer Adapter: anlegen, öffnen, Versionen prüfen, Profil ändern, Erfüllungsbewertung setzen/bestätigen, Nachweisreferenz hinzufügen/ändern/entfernen/zuordnen, neu berechnen, abschließen, wieder öffnen, mit aktuellem Katalogstand neu bewerten, Revisionen und Audit lesen. Er hängt nur von der Schnittstelle `AssessmentRepository` ab; die Implementierung wird von außen übergeben.
 - Revisionen: nur die letzte Revision ist änderbar und nur im Zustand `DRAFT`; jede Änderung wertet vollständig neu aus und legt die Vorher/Nachher-Differenz (`AssessmentChange`: Eingaben, Anwendbarkeit, Gap-Status, de-/reaktivierte Bewertungen, Nachweisreferenzen) in der Revision und zusammengefasst im Audit ab. `finalise` setzt `FINALISED` (nicht bei offenen Bestätigungen); `reopen` erzeugt eine neue `DRAFT`-Revision; gespeicherte Revisionen bleiben unverändert (Anhängeregel im Repository).
@@ -171,13 +171,13 @@ Technologie nach [ADR-0003](../decisions/0003-demonstrator-technology-stack.md):
 - Wieder anwendbare Bewertungen: Das System markiert eine Bewertung als `stale`, sobald ihre `RR` nicht anwendbar ist. Wird die `RR` wieder anwendbar, ist die Bewertung `REACTIVATED_REVIEW_REQUIRED`, fließt nicht ein (`NOT_ASSESSED`/`ANSWER_REVIEW_REQUIRED`) und wird erst durch `confirm_gap_assessment` oder eine neue Bewertung wieder `ACTIVE`.
 - Audit: jede Operation erzeugt Ereignisse mit Revision, fortlaufender Nummer, Zeitpunkt (Metadatum), betroffener Kennung und strukturierten Codes; Begründungen, Dokumenttitel und -kennungen werden nicht protokolliert.
 
-**Reporting und Sprachausgabe** (Entscheidung: [ADR-0006](../decisions/0006-reporting-and-pdf.md), Konzept: [REPORTING.md](REPORTING.md)):
+**Reporting und Sprachausgabe** (Entscheidung: ADR-0006 (Entwicklungsarchiv), Konzept: [REPORTING.md](REPORTING.md)):
 
 - `AssessmentApplicationService.create_report` bzw. `report_model` bilden aus einer gespeicherten Revision eine `ReportSource`; bei `MATCH` wird die Revision vorher gegen eine Neuauswertung geprüft. `REPORTING` baut daraus das sprachneutrale, unveränderliche `ReportModel` (`ReportSnapshot`), `ReportComposer` das formatneutrale Dokument mit allen sichtbaren Texten, die Renderer HTML bzw. PDF. Nichts wird neu berechnet.
 - Katalogtexte nur bei `MATCH`; historische Stände zeigen Codes und einen Hinweis. `content_hash` ist unabhängig von Format und Zeitpunkt. Nach Erfolg `REPORT_CREATED` im Audit; Renderer-Fehler werden als `ReportGenerationError` gemeldet und ändern weder Bewertung noch Audit (SR-036).
 - Renderer importieren nur Dokumentblöcke; ReportLab nur in `report_pdf.py` (statisch geprüft in `tests/test_architecture.py`).
 
-**Web-Anwendung und Anwendungs-API** (Entscheidung: [ADR-0007](../decisions/0007-web-application.md), Konzept: [WEB_APPLICATION.md](WEB_APPLICATION.md)):
+**Web-Anwendung und Anwendungs-API** (Entscheidung: ADR-0007 (Entwicklungsarchiv), Konzept: [WEB_APPLICATION.md](WEB_APPLICATION.md)):
 
 - Der adaptive Fragebogen (`questionnaire.py`) leitet Fragen, Folgefragen mit Auslöser (Regel, Frage, Antwort), zulässige Werte mit Folge je Wert (Ergebnis, Prüfpunkt, Folgeregel), Stichtage von Datumsfragen, Segmentstatus und nicht mehr verwendete Angaben ausschließlich aus RUL-Katalog, Applicability-Zuordnung und gespeicherter Auswertung ab. Applicability-Eingaben werden gefragt, sobald eine Anforderung ein Prädikat mit dieser Eingabe auswertet; der Grund nennt die betroffenen Blöcke mit Anzahl.
 - Die Sichten (`assessment_views.py`) verdichten gespeicherte Ergebnisse und das D3-`ReportModel` zu Regulatory Spine, Blockzuständen, Anforderungsdetail mit Herleitung und Compliance-Matrix (Themencluster × Lebenszyklusphase); sie entscheiden nichts neu.
@@ -197,9 +197,9 @@ Technologie nach [ADR-0003](../decisions/0003-demonstrator-technology-stack.md):
 | 1.4 | Abschnitt 1: Verweis auf die wissenschaftliche Herleitung der bestehenden Entscheidungen aus dem Stand der Technik; Abschnitt 7: Grundlage des offenen Interaktionskonzepts benannt. Keine Architekturänderung. |
 | 1.5 | Abschnitt 8: `REQUIREMENT_SERVICE` teilweise umgesetzt, `explain` des `APPLICABILITY_ENGINE`, gemeinsamer Domain-Kern mit `ID_NAMESPACE` (Abhängigkeit `APPLICABILITY_ENGINE` → `RULE_ENGINE` entfernt) und statische Prüfung der Abhängigkeitsregeln. Keine Änderung der Module oder Abhängigkeitsregeln. |
 | 1.6 | Abschnitt 3: `CATALOG_REPOSITORY` lädt zusätzlich `RR_APPLICABILITY` und `RR_MEASURE_CATALOG`; deren Versionen sind Teil des `CatalogVersionSet` (DATA_MODEL 0.5). Keine Änderung an Modulen oder Abhängigkeiten. |
-| 1.7 | Demonstrator D1: `ASSESSMENT_SERVICE`, `GAP_ENGINE`, `EVIDENCE_SERVICE` und `AUDIT_LOG` umgesetzt; Abschnitt 4: `ASSESSMENT_SERVICE` darf zusätzlich `CATALOG_REPOSITORY` und `REQUIREMENT_SERVICE` nutzen ([ADR-0004](../decisions/0004-assessment-gap-core.md)); Abschnitt 8: Semantik und Ableitungstabelle des Gap-Status, Neuberechnung, Fingerprint; Applicability-Domainobjekte im gemeinsamen Kern. |
-| 1.8 | Demonstrator D2: Modul `ASSESSMENT_REPOSITORY` (Schnittstelle und lokale JSON-Dateipersistenz, [ADR-0005](../decisions/0005-assessment-persistence.md)); `ASSESSMENT_SERVICE` darf davon abhängen; Anwendungseinstieg mit Revisionen, Versionsabgleich und Audit; Lebenszyklus wieder anwendbarer Bewertungen; offene Entscheidung „Persistenz“ aus Abschnitt 7 geschlossen. |
+| 1.7 | Demonstrator D1: `ASSESSMENT_SERVICE`, `GAP_ENGINE`, `EVIDENCE_SERVICE` und `AUDIT_LOG` umgesetzt; Abschnitt 4: `ASSESSMENT_SERVICE` darf zusätzlich `CATALOG_REPOSITORY` und `REQUIREMENT_SERVICE` nutzen (ADR-0004 (Entwicklungsarchiv)); Abschnitt 8: Semantik und Ableitungstabelle des Gap-Status, Neuberechnung, Fingerprint; Applicability-Domainobjekte im gemeinsamen Kern. |
+| 1.8 | Demonstrator D2: Modul `ASSESSMENT_REPOSITORY` (Schnittstelle und lokale JSON-Dateipersistenz, ADR-0005 (Entwicklungsarchiv)); `ASSESSMENT_SERVICE` darf davon abhängen; Anwendungseinstieg mit Revisionen, Versionsabgleich und Audit; Lebenszyklus wieder anwendbarer Bewertungen; offene Entscheidung „Persistenz“ aus Abschnitt 7 geschlossen. |
 | 1.9 | Verweis auf die führende UI/UX-Leitlinie [UI_UX_DESIGN_SYSTEM.md](UI_UX_DESIGN_SYSTEM.md) (Version 1.1); keine Änderung an Modulen, Abhängigkeiten oder Semantik. |
-| 1.10 | Demonstrator D3: `REPORTING` und `I18N` umgesetzt ([ADR-0006](../decisions/0006-reporting-and-pdf.md), [REPORTING.md](REPORTING.md)); offene Entscheidung „Berichtsformat“ geschlossen; keine Änderung der Abhängigkeitsregeln. |
-| 1.11 | Demonstrator D4: Modul `APPLICATION_API` (lokaler HTTP-Adapter und Composition Root, [ADR-0007](../decisions/0007-web-application.md)); `PRESENTATION` hängt nur noch von `APPLICATION_API` und `I18N` ab; Fragebogen und Sichten als Teil von `ASSESSMENT_SERVICE`; SHA-256 der UI/UX-Leitlinie 1.1 dokumentiert; offene Entscheidung „Frontend-Stack und Interaktionskonzept“ geschlossen. |
+| 1.10 | Demonstrator D3: `REPORTING` und `I18N` umgesetzt (ADR-0006 (Entwicklungsarchiv), [REPORTING.md](REPORTING.md)); offene Entscheidung „Berichtsformat“ geschlossen; keine Änderung der Abhängigkeitsregeln. |
+| 1.11 | Demonstrator D4: Modul `APPLICATION_API` (lokaler HTTP-Adapter und Composition Root, ADR-0007 (Entwicklungsarchiv)); `PRESENTATION` hängt nur noch von `APPLICATION_API` und `I18N` ab; Fragebogen und Sichten als Teil von `ASSESSMENT_SERVICE`; SHA-256 der UI/UX-Leitlinie 1.1 dokumentiert; offene Entscheidung „Frontend-Stack und Interaktionskonzept“ geschlossen. |
 | 1.12 | Einleitung und Abschnitt 7 an den umgesetzten Stand angeglichen (Technologie in ADR-0003 bis ADR-0007; Anwendbarkeit bedingter `RR` über `RR_APPLICABILITY`); Stand von `AUDIT_LOG` in Abschnitt 8 berichtigt. Keine Änderung an Modulen, Abhängigkeiten oder Semantik. |

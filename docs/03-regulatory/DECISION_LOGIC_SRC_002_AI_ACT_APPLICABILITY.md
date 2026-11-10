@@ -7,7 +7,7 @@ Version 1.1 · Status: aktiv · Fortschreibung: 04.11.2026
 | Merkmal | Angabe |
 | --- | --- |
 | Quelle | `SRC-002` — AI Act, konsolidierte Fassung `CELEX 02024R1689-20260727`, Stand 27.07.2026, einschließlich Verordnung (EU) 2026/1744 |
-| Grundlage | finale Research-Inputs A (Art. 2, Art. 3 Nr. 1, Art. 6 Abs. 1 und 1a–1c, Anhang I Abschnitt A Nr. 11, Art. 111 Abs. 2, Art. 113), B (Art. 6 Abs. 2, Anhang III) und C (Art. 6 Abs. 3 und 4, Art. 49 Abs. 2) |
+| Grundlage | finale Rechercheunterlagen A (Art. 2, Art. 3 Nr. 1, Art. 6 Abs. 1 und 1a–1c, Anhang I Abschnitt A Nr. 11, Art. 111 Abs. 2, Art. 113), B (Art. 6 Abs. 2, Anhang III) und C (Art. 6 Abs. 3 und 4, Art. 49 Abs. 2) |
 | Ergebnisartefakt | [RUL_CATALOG.yaml](RUL_CATALOG.yaml) Version 0.3, 20 aktive AI-Act-Regeln (`RUL-027` bis `RUL-047` ohne ersetzte `RUL-039`), nach [RUL_METHOD.md](RUL_METHOD.md) Version 1.2 |
 | Anwendbarkeit der `RR` | [RR_APPLICABILITY.yaml](RR_APPLICABILITY.yaml) Version 0.5, Block `AI_ACT_HIGH_RISK` (`RR-001` bis `RR-115`) |
 | Neue `RR` | keine |

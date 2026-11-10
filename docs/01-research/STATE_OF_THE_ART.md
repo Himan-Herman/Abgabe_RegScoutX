@@ -110,7 +110,7 @@ Die Aussage „Es gibt keine Lösung für MDR und EU AI Act bei KI-Medizinproduk
 
 ## 5. Vergleichsmatrix
 
-**Legende:** `ja` = in der untersuchten offiziellen Dokumentation explizit beschrieben · `teilw.` = angrenzende oder unvollständige Funktion öffentlich beschrieben · `n.ö.n.` = nicht öffentlich nachgewiesen (kein Schluss auf technische Nichtexistenz). Wo der Research-Input eine Zwischen- oder Freitextangabe enthält, wird konservativ der nächstniedrigere Legendenwert geführt und die Originalangabe in Klammern ergänzt. Keine Scores, keine Rangfolge.
+**Legende:** `ja` = in der untersuchten offiziellen Dokumentation explizit beschrieben · `teilw.` = angrenzende oder unvollständige Funktion öffentlich beschrieben · `n.ö.n.` = nicht öffentlich nachgewiesen (kein Schluss auf technische Nichtexistenz). Wo die Rechercheausgabe eine Zwischen- oder Freitextangabe enthält, wird konservativ der nächstniedrigere Legendenwert geführt und die Originalangabe in Klammern ergänzt. Keine Scores, keine Rangfolge.
 
 ### 5.1 Interaktion und Entscheidungslogik
 
@@ -284,7 +284,7 @@ Die drei verbleibenden Teilaspekte sind im [Interaktionskonzept](../04-architect
 
 ## 9. Wissenschaftliche Herleitung bestehender Architektur- und Interaktionsentscheidungen
 
-Die folgenden Entscheidungen bestehen bereits ([ARCHITECTURE.md](../04-architecture/ARCHITECTURE.md), [ADR-0002](../decisions/0002-logical-architecture-and-traceability.md), [SR_CATALOG.yaml](../02-requirements/SR_CATALOG.yaml)); der Stand der Technik begründet sie nachträglich. Es wird keine neue Architektur eingeführt.
+Die folgenden Entscheidungen bestehen bereits ([ARCHITECTURE.md](../04-architecture/ARCHITECTURE.md), ADR-0002 (Entwicklungsarchiv), [SR_CATALOG.yaml](../02-requirements/SR_CATALOG.yaml)); der Stand der Technik begründet sie nachträglich. Es wird keine neue Architektur eingeführt.
 
 | Bestehende Entscheidung | Fundstelle im Projekt | Begründung aus dem Stand der Technik |
 | --- | --- | --- |
@@ -298,7 +298,7 @@ Die folgenden Entscheidungen bestehen bereits ([ARCHITECTURE.md](../04-architect
 | Lebenszyklusbezug der Anforderungen | `lifecycle_phases` im `RR`-Katalog | Traceability über Entwicklungs- und Wartungsphasen [L15]; Ausweisung nach SR-041 |
 | Evidence Mapping | SR-015, SR-017, SR-018; `EvidenceReference` | Verknüpfung von Anforderungen mit Nachweisen [L15]; vorgesehene Maßnahme und Nachweisart nach SR-043 (`RR_MEASURE`) |
 
-**Interaktionskonzept:** Dieses Dokument liefert die wissenschaftliche Grundlage des Interaktionskonzepts (Abschnitte 2, 3 und 8): regelgesteuerte adaptive Frageführung als bestehender Kern, eine fachlich strukturierte Segmentierung mit Übersicht und Rücknavigation als begründbare, aber nicht zwingend belegte Ergänzung, sichtbare Auslöser bedingter Fragen, vorab erklärte Eingabebedingungen und keine Dialogoberfläche als primäres Interaktionsmodell. Zum Zeitpunkt der Recherche war die konkrete Gestaltung offen; sie ist mit Demonstrator D4 entschieden und umgesetzt ([ADR-0007](../decisions/0007-web-application.md), [WEB_APPLICATION.md](../04-architecture/WEB_APPLICATION.md), Abschnitt 8.5).
+**Interaktionskonzept:** Dieses Dokument liefert die wissenschaftliche Grundlage des Interaktionskonzepts (Abschnitte 2, 3 und 8): regelgesteuerte adaptive Frageführung als bestehender Kern, eine fachlich strukturierte Segmentierung mit Übersicht und Rücknavigation als begründbare, aber nicht zwingend belegte Ergänzung, sichtbare Auslöser bedingter Fragen, vorab erklärte Eingabebedingungen und keine Dialogoberfläche als primäres Interaktionsmodell. Zum Zeitpunkt der Recherche war die konkrete Gestaltung offen; sie ist mit Demonstrator D4 entschieden und umgesetzt (ADR-0007 (Entwicklungsarchiv), [WEB_APPLICATION.md](../04-architecture/WEB_APPLICATION.md), Abschnitt 8.5).
 
 ---
 
@@ -365,17 +365,17 @@ Alle Angaben: Hersteller-/Anbieterdokumentation, Abruf 27.08.2026, zeitabhängig
 | --- | --- | --- | --- | --- |
 | P01 | Leida AI | Automated compliance for medical devices | https://leida.ai/ | MDR/AI Act, Requirements, Source Traceability, Evidence, Lifecycle |
 | P02 | Mia-Care | P4SaMD Regulatory Coverage | https://docs.mia-care.io/docs/p4samd/regulatory-coverage/ | SaMD, MDR, AI Act, Lifecycle, Traceability |
-| P03 | Mia-Care | Brownfield Import Overview (Handbook Products) | https://docs.mia-care.io/docs/p4samd/handbook/products/ (wie im Research zitiert) | sechsstufiger Guided Wizard, Gap-Analyse; zusätzlich P4SaMD Overview (URL im Research-Input nicht angegeben) |
+| P03 | Mia-Care | Brownfield Import Overview (Handbook Products) | https://docs.mia-care.io/docs/p4samd/handbook/products/ (wie in der Rechercheausgabe zitiert) | sechsstufiger Guided Wizard, Gap-Analyse; zusätzlich P4SaMD Overview (URL in der Rechercheausgabe nicht angegeben) |
 | P04 | DLG:MDR (MDRAIR Ready) | Regulatory Decision Support for Health AI under EU MDR and the EU AI Act | https://www.mdraiready.eu/ | MDR+AI-Act-Interaktion, Reasoning, Source Trace, Evidence Gaps |
 | P05 | CertHub | KI-Konformitätsprüfung & Gap-Analyse | https://www.certhub.de/de/ai-conformity-checker | MDR-Gap-Analyse, Audit-/TechDoc-Prüfung (EU AI Act n.ö.n.) |
-| P06 | Complear | Complear OS Platform; AI Governance Solutions | https://complear.com/health/platform/ (AI Governance Solutions: URL im Research-Input nicht angegeben) | agentische Compliance, MDR, AI Act, Human-in-the-Loop |
+| P06 | Complear | Complear OS Platform; AI Governance Solutions | https://complear.com/health/platform/ (AI Governance Solutions: URL in der Rechercheausgabe nicht angegeben) | agentische Compliance, MDR, AI Act, Human-in-the-Loop |
 | P07 | MoniDoseQMS | Built for the EU AI Act / EU AI Act Module Suite (Veröffentlichung April/Mai 2026) | https://monidoseqms.com/news/built-for-the-eu-ai-act | Integration AI Act mit Device-QMS/Evidence |
-| P08 | MoniDoseQMS | Startseite (Seitentitel im Research-Input nicht angegeben) | https://monidoseqms.com/ | Matrixangaben zur Interaktion |
+| P08 | MoniDoseQMS | Startseite (Seitentitel in der Rechercheausgabe nicht angegeben) | https://monidoseqms.com/ | Matrixangaben zur Interaktion |
 | P09 | Rimsys | Medical Device Standards and GSPR Managed in One Platform | https://www.rimsys.io/solutions/standards-essential-principles | RIM, Standards/GSPR, Change Impact, Lifecycle Trace |
 | P10 | Greenlight Guru | Medical Device Design Control Software | https://www.greenlight.guru/design-control-software | Design Controls, Risk, Traceability, Evidence |
 | P11 | Jama Software | Medical Device Requirements Management Software | https://www.jamasoftware.com/solutions/medtech/ | Requirements/Risk/V&V Traceability, EU MDR, IEC 62304 |
 | P12 | Credo AI | Vendor Compliance | https://www.credo.ai/solutions/vendor-compliance | AI Act, Evidence, Assessments, Reporting |
-| P13 | Credo AI | Regulatory Alignment | URL im Research-Input nicht angegeben | AI Act, Evidence, Assessments, Reporting |
+| P13 | Credo AI | Regulatory Alignment | URL in der Rechercheausgabe nicht angegeben | AI Act, Evidence, Assessments, Reporting |
 
 ---
 

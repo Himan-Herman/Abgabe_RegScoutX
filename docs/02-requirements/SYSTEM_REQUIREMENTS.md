@@ -90,7 +90,7 @@ Das Pflichtfeld „Version“ nach [DOCUMENTATION_CONVENTIONS.md](../00-project/
 ## 7. Versionierung und Prüfung
 
 - `SR_CATALOG.yaml` führt eine Katalogversion im Format `MAJOR.MINOR` mit Startwert `0.1` und eine `change_history`.
-- Die formale Prüfung erfolgt mit `tools/validate_sr_catalog.py` auf der Werkzeugbasis aus [ADR-0001](../decisions/0001-rr-catalog-validation-tooling.md). Ein erfolgreicher Lauf belegt ausschließlich formale Konsistenz.
+- Die formale Prüfung erfolgt mit `tools/validate_sr_catalog.py` auf der Werkzeugbasis aus ADR-0001 (Entwicklungsarchiv). Ein erfolgreicher Lauf belegt ausschließlich formale Konsistenz.
 
 ## 8. Änderungshistorie
 

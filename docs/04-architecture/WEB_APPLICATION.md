@@ -2,7 +2,7 @@
 
 Version 1.1 · Status: aktiv · Stand: 29.09.2026 (Demonstrator D4, Korrektur aus Block 6)
 
-Dieses Dokument beschreibt Interaktionskonzept, Informationsarchitektur, Komponenten, Tokens, Zustände, Barrierefreiheit, Sprachen, Sicherheit und Abhängigkeiten der Web-Oberfläche (`PRESENTATION`, Verzeichnis `web/`) und ihrer lokalen Anwendungs-API (`APPLICATION_API`). Verbindliche Leitlinie ist [UI_UX_DESIGN_SYSTEM.md](UI_UX_DESIGN_SYSTEM.md) (Version 1.1); die Technologieentscheidung steht in [ADR-0007](../decisions/0007-web-application.md), die Modulregeln in [ARCHITECTURE.md](ARCHITECTURE.md). Dieses Dokument trifft keine regulatorischen Aussagen; alle fachlichen Inhalte stammen aus den versionierten Katalogen und dem Kern.
+Dieses Dokument beschreibt Interaktionskonzept, Informationsarchitektur, Komponenten, Tokens, Zustände, Barrierefreiheit, Sprachen, Sicherheit und Abhängigkeiten der Web-Oberfläche (`PRESENTATION`, Verzeichnis `web/`) und ihrer lokalen Anwendungs-API (`APPLICATION_API`). Verbindliche Leitlinie ist [UI_UX_DESIGN_SYSTEM.md](UI_UX_DESIGN_SYSTEM.md) (Version 1.1); die Technologieentscheidung steht in ADR-0007 (Entwicklungsarchiv), die Modulregeln in [ARCHITECTURE.md](ARCHITECTURE.md). Dieses Dokument trifft keine regulatorischen Aussagen; alle fachlichen Inhalte stammen aus den versionierten Katalogen und dem Kern.
 
 ---
 
@@ -173,7 +173,7 @@ Schriften: IBM Plex Sans Variable (Roman, Italic) und IBM Plex Mono (Regular, Me
 | Kontrollierte Auswahl ohne optimistische Anzeige | Auswahl sprang bis zur Kernantwort zurück; stattdessen Anzeige der gewählten Antwort bis zur Antwort des Kerns, bei Fehler Rückkehr zum gespeicherten Wert |
 | `unsafe-inline` in der CSP für die Stilregel von React Aria | schwächt den Schutz; stattdessen Regel als eigene Datei mit der erwarteten Kennung |
 
-Technologische Alternativen: [ADR-0007](../decisions/0007-web-application.md) Abschnitt 4.
+Technologische Alternativen: ADR-0007 (Entwicklungsarchiv) Abschnitt 4.
 
 ## 16. Screenshots (Designevidenz)
 
