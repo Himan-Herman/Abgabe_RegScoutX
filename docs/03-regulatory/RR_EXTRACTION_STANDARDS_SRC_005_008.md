@@ -420,7 +420,7 @@ Bedingung und Adressat wie adjudiziert (Legende Abschnitt 6 und 8). `—` bzw. `
 | `ISO13485-RR-133` | `SRC-005#Abschnitt 8.2.2` | O | – | `NEW_UNIQUE_RR` | `RR-544` |
 | `ISO13485-RR-134-A` | `SRC-005#Abschnitt 8.2.2` | O | jeweiliger Fall tritt ein | `NEW_UNIQUE_RR` | `RR-545` |
 | `ISO13485-RR-134-B` | `SRC-005#Abschnitt 8.2.2` | O | jeweiliger Fall tritt ein | `NEW_UNIQUE_RR` | `RR-546` |
-| `ISO13485-RR-135` | `SRC-005#Abschnitt 8.2.2` | O | externe Tätigkeit hat beigetragen | `NEW_UNIQUE_RR` | `RR-547` |
+| `ISO13485-RR-135` | `SRC-005#Abschnitt 8.2.2` | O |  | `NEW_UNIQUE_RR` | `RR-547` |
 | `ISO13485-RR-136` | `SRC-005#Abschnitt 8.2.2` | O | – | `NEW_UNIQUE_RR` | `RR-548` |
 | `ISO13485-RR-137` | `SRC-005#Abschnitt 8.2.3` | O | regulatorische Meldepflicht | `NEW_UNIQUE_RR` | `RR-549` |
 | `ISO13485-RR-138` | `SRC-005#Abschnitt 8.2.3` | O | Meldung/Verfahren einschlägig | `NEW_UNIQUE_RR` | `RR-550` |
