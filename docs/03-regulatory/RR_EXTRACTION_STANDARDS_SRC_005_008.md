@@ -16,7 +16,7 @@ Version 1.1 · Status: aktiv
 | Controlled Vocabulary | [CONTROLLED_VOCABULARY.md](CONTROLLED_VOCABULARY.md) Version 1.0 |
 | Coverage-Plan | [COVERAGE_PLAN.md](COVERAGE_PLAN.md) Version 1.48, Abschnitte 10.37 und 10.38 |
 
-Grundlage ist die abgeschlossene externe Research-Adjudikation aus Block 3 (Einzeladjudikation je Norm, Atomisierungs-QC für `SRC-005`, normübergreifende Deduplizierung). Die Adjudikation wurde **unverändert** übernommen: keine erneute Normextraktion, keine neue regulatorische Interpretation, keine erneute Deduplizierung. Temp-IDs (`ISO13485-RR-NNN`, `ISO14971-RR-NNN`, `IEC62304-RR-NNN`, `IEC62366-RR-NNN`, `NORM-MERGE-NN`) sind ausschließlich Evidenzkennungen; permanente IDs werden nur in [RR_CATALOG.yaml](RR_CATALOG.yaml) vergeben.
+Grundlage ist die abgeschlossene Research-Adjudikation aus Block 3 (Einzeladjudikation je Norm, Atomisierungs-QC für `SRC-005`, normübergreifende Deduplizierung). Die Adjudikation wurde **unverändert** übernommen: keine erneute Normextraktion, keine neue regulatorische Interpretation, keine erneute Deduplizierung. Temp-IDs (`ISO13485-RR-NNN`, `ISO14971-RR-NNN`, `IEC62304-RR-NNN`, `IEC62366-RR-NNN`, `NORM-MERGE-NN`) sind ausschließlich Evidenzkennungen; permanente IDs werden nur in [RR_CATALOG.yaml](RR_CATALOG.yaml) vergeben.
 
 **Kein Normvolltext im Repository.** Dieses Dokument und die Zuordnungsdatei enthalten ausschließlich wissenschaftlich erforderliche Metadaten, kontrollierte Paraphrasen, Lokatoren sowie Coverage- und Evidenzangaben. Weder die lizenzierten Normvolltexte noch das Research-Handoff-Dokument sind Bestandteil des Repositorys; das Handoff ist kein Lizenzersatz.
 
