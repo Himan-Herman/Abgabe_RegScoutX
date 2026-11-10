@@ -104,7 +104,7 @@ Alle Produktangaben sind **Hersteller-/Anbieterdokumentation** (`H`), Abruf 27.0
 
 ### 4.4 Ergebnis der Lösungsanalyse
 
-Die Aussage „Es gibt keine Lösung für MDR und EU AI Act bei KI-Medizinprodukten“ ist für den untersuchten Stand September 2026 nicht haltbar. Mehrere öffentlich dokumentierte Lösungen adressieren beide Regime oder wesentliche Teile davon, insbesondere **Leida AI, Mia-Care P4SaMD, DLG:MDR, Complear OS und MoniDoseQMS**: DLG:MDR analysiert MDR und AI Act ausdrücklich gemeinsam, MoniDoseQMS beschreibt eine gemeinsame QMS-/Evidence-Integration, P4SaMD unterstützt beide Rahmenwerke für SaMD, Leida und Complear führen beide Regime in ihren Plattformen. CertHub wird in diese Aufzählung nicht einbezogen (EU AI Act n.ö.n.). Die belastbare Forschungslücke liegt daher eine Ebene tiefer (Abschnitt 6).
+Die Aussage „Es gibt keine Lösung für MDR und EU AI Act bei KI-Medizinprodukten“ ist für den untersuchten Stand vom 27.08.2026 nicht haltbar. Mehrere öffentlich dokumentierte Lösungen adressieren beide Regime oder wesentliche Teile davon, insbesondere **Leida AI, Mia-Care P4SaMD, DLG:MDR, Complear OS und MoniDoseQMS**: DLG:MDR analysiert MDR und AI Act ausdrücklich gemeinsam, MoniDoseQMS beschreibt eine gemeinsame QMS-/Evidence-Integration, P4SaMD unterstützt beide Rahmenwerke für SaMD, Leida und Complear führen beide Regime in ihren Plattformen. CertHub wird in diese Aufzählung nicht einbezogen (EU AI Act n.ö.n.). Die belastbare Forschungslücke liegt daher eine Ebene tiefer (Abschnitt 6).
 
 ---
 
