@@ -325,8 +325,8 @@ Die folgenden Entscheidungen bestehen bereits ([ARCHITECTURE.md](../04-architect
 3. `n.ö.n.` ist strikt von `nicht vorhanden` zu unterscheiden; Deterministik und Reproduzierbarkeit kommerzieller Systeme sind aus öffentlicher Dokumentation nicht beurteilbar.
 4. Ein Teil der HCI-Evidenz stammt aus Befragungs-, Clinical-Trial- oder Health-IT-Kontexten; die Übertragung auf RegScoutX ist Designinferenz (`D`), kein direkter Nachweis für MDR-/AI-Act-Gap-Analyse.
 5. Das im Exposé genannte Beispiel geführter, dialogbasierter Systeme im Steuerbereich wurde in dieser Recherche nicht gesondert untersucht.
-6. Für die schriftliche Arbeit empfiehlt die Research-Antwort, die zitierten Produktseiten mit Abrufdatum und gegebenenfalls Screenshots als Evidenzstand zu sichern; dies ist außerhalb des Repositorys vorzunehmen.
-7. Für die Seiten P4SaMD Overview (P03), Complear AI Governance Solutions (P06) und Credo AI Regulatory Alignment (P13) nennt die Research-Antwort keine eigene URL, für P08 keinen Seitentitel; dies ist in Abschnitt 12.2 gekennzeichnet.
+6. Die Rechercheausgabe vom 27.08.2026 empfiehlt, die zitierten Produktseiten mit Abrufdatum und gegebenenfalls Screenshots außerhalb des Repositorys zu sichern.
+7. In der Rechercheausgabe fehlen eigene URLs für P4SaMD Overview (P03), Complear AI Governance Solutions (P06) und Credo AI Regulatory Alignment (P13) sowie der Seitentitel für P08. Abschnitt 12.2 kennzeichnet diese Lücken.
 
 ---
 
