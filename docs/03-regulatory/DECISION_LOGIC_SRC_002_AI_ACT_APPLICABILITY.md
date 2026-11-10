@@ -12,7 +12,7 @@ Version 1.1 · Status: aktiv · Fortschreibung: 04.11.2026
 | Anwendbarkeit der `RR` | [RR_APPLICABILITY.yaml](RR_APPLICABILITY.yaml) Version 0.5, Block `AI_ACT_HIGH_RISK` (`RR-001` bis `RR-115`) |
 | Neue `RR` | keine |
 
-Die Erstfassung 1.0 übernahm vorhandene Rechercheergebnisse ohne neue Recherche oder Adjudikation. Der begrenzte Quellenabgleich zur Korrektur 1.1 ist in Abschnitt 6 offengelegt. `SRC-003` wird nicht operationalisiert; die dort als überholt gekennzeichneten Aussagen zu Art. 6 und zu den Anwendungsterminen ([CROSSWALK_SRC_003_MDR_AI_ACT.md](CROSSWALK_SRC_003_MDR_AI_ACT.md) Abschnitt 9) sind durch den hier verwendeten Primärrechtsstand ersetzt. Primary Legal Anchor aller neuen `RUL` ist ausschließlich `SRC-002`; Guidance-Anker werden nicht geführt, weil für diese Regeln keine Guidance adjudiziert ist.
+Die Erstfassung 1.0 übernahm vorhandene Rechercheergebnisse ohne neue Recherche oder Adjudikation. Der begrenzte Quellenabgleich zur Korrektur 1.1 ist in Abschnitt 6 offengelegt. `SRC-003` wird nicht operationalisiert; die dort als überholt gekennzeichneten Aussagen zu Art. 6 und zu den Anwendungsterminen (CROSSWALK_SRC_003_MDR_AI_ACT.md (Entwicklungsarchiv; nicht im Abgabepaket) Abschnitt 9) sind durch den hier verwendeten Primärrechtsstand ersetzt. Primary Legal Anchor aller neuen `RUL` ist ausschließlich `SRC-002`; Guidance-Anker werden nicht geführt, weil für diese Regeln keine Guidance adjudiziert ist.
 
 ## 2. Source Verification
 

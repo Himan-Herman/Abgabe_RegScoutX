@@ -6,7 +6,7 @@ Dieses Dokument beschreibt die **logische**, technologieneutrale Modularchitektu
 
 ---
 
-Für `PRESENTATION` und alle sichtbaren Komponenten ist [UI_UX_DESIGN_SYSTEM.md](UI_UX_DESIGN_SYSTEM.md) (Version 1.1, byte-genau übernommen; SHA-256 `794df31d5950fdcb95ac56769fda2d210394ed82241d73a1f91cceb06042417c`) die führende, verbindliche UI/UX- und Frontend-Architekturleitlinie; sie ändert keine fachliche Semantik und keine Abhängigkeitsregel.
+Für `PRESENTATION` und alle sichtbaren Komponenten ist UI_UX_DESIGN_SYSTEM.md (Entwicklungsarchiv; nicht im Abgabepaket) (Version 1.1, byte-genau übernommen; SHA-256 `794df31d5950fdcb95ac56769fda2d210394ed82241d73a1f91cceb06042417c`) die führende, verbindliche UI/UX- und Frontend-Architekturleitlinie; sie ändert keine fachliche Semantik und keine Abhängigkeitsregel.
 
 ## 1. Leitprinzipien
 
@@ -106,15 +106,15 @@ Technologie nach ADR-0003 (Entwicklungsarchiv): Python-Paket `regscoutx/` ohne F
 | `APPLICABILITY_ENGINE` | `regscoutx/applicability_engine.py`; Zuordnung aus `docs/03-regulatory/RR_APPLICABILITY.yaml` über `CATALOG_REPOSITORY`; Herleitung je `RR` über `explain` (SR-042) | umgesetzt |
 | `REQUIREMENT_SERVICE` | `regscoutx/requirement_service.py`; Lesesicht je `RR` mit Texten, Quellen, Lebenszyklusphasen (SR-041) und vorgesehenen Maßnahmen (SR-043) | umgesetzt |
 | `ASSESSMENT_SERVICE` | `regscoutx/assessment_service.py` (zustandsloser Kern: `Assessment`, `ProductProfile`, `AssessmentInput`, `RRResult`, `AssessmentSummary`, Neuberechnung, Differenzen); `regscoutx/assessment_application.py` (Anwendungseinstieg: Lebenszyklus, Revisionen, Versionsabgleich, Audit, Nachweisoperationen); `regscoutx/assessment_codec.py` (Persistenzschema) | umgesetzt (D2) |
-| `ASSESSMENT_REPOSITORY` | `regscoutx/assessment_repository.py` (Schnittstelle, Hülle, Anhängeregel); `regscoutx/json_assessment_repository.py` (lokale JSON-Dateien, ADR-0005 (Entwicklungsarchiv), Format: [PERSISTENCE_FORMAT.md](PERSISTENCE_FORMAT.md)) | umgesetzt (D2) |
+| `ASSESSMENT_REPOSITORY` | `regscoutx/assessment_repository.py` (Schnittstelle, Hülle, Anhängeregel); `regscoutx/json_assessment_repository.py` (lokale JSON-Dateien, ADR-0005 (Entwicklungsarchiv), Format: PERSISTENCE_FORMAT.md (Entwicklungsarchiv; nicht im Abgabepaket)) | umgesetzt (D2) |
 | `GAP_ENGINE` | `regscoutx/gap_engine.py`; `GapAssessment`, Ableitung genau eines Gap-Status je `RR` | umgesetzt (D1) |
 | `EVIDENCE_SERVICE` | `regscoutx/evidence_service.py`; Prüfung, Register, Hinzufügen, Ändern, Entfernen, Abruf und Filter nach Maßnahme nutzerseitiger `EvidenceReference` | umgesetzt (D2, keine Dokumentablage) |
 | `AUDIT_LOG` | `regscoutx/audit_log.py`; nur anhängendes Protokoll je Bewertung, persistiert mit dem Bewertungsdokument | umgesetzt (D2; `REPORT_CREATED` seit D3) |
-| `REPORTING` | `regscoutx/report_model.py` (ReportSource, sprachneutrales ReportModel), `report_document.py` (Gliederung und Texte), `report_html.py`, `report_pdf.py` (Renderer), `report_service.py` (Fassade); Konzept: [REPORTING.md](REPORTING.md), Entscheidung: ADR-0006 (Entwicklungsarchiv) | umgesetzt (D3) |
+| `REPORTING` | `regscoutx/report_model.py` (ReportSource, sprachneutrales ReportModel), `report_document.py` (Gliederung und Texte), `report_html.py`, `report_pdf.py` (Renderer), `report_service.py` (Fassade); Konzept: REPORTING.md (Entwicklungsarchiv; nicht im Abgabepaket), Entscheidung: ADR-0006 (Entwicklungsarchiv) | umgesetzt (D3) |
 | `I18N` | `regscoutx/i18n.py` mit `regscoutx/resources/i18n/de.json`, `en.json`; Code-Bezeichnungen aus `enum_labels`, Themen und Phasen aus dem Vokabular | umgesetzt für den Bericht (D3) |
 | `I18N` (Oberfläche) | dieselben Ressourcen unter dem Präfix `ui.`; Auslieferung als Sprachpaket über `APPLICATION_API` | umgesetzt (D4) |
 | `APPLICATION_API` | `regscoutx/web_api.py` (Routen, Fehlercodes), `regscoutx/web_server.py` (lokaler Server, Composition Root); Sichten `regscoutx/questionnaire.py` und `regscoutx/assessment_views.py` gehören zu `ASSESSMENT_SERVICE`; Entscheidung: ADR-0007 (Entwicklungsarchiv) | umgesetzt (D4) |
-| `PRESENTATION` | `web/` (React, TypeScript, Vite; Shared Product Core, Domain UI, Experience Profile); Konzept: [WEB_APPLICATION.md](WEB_APPLICATION.md), Leitlinie: [UI_UX_DESIGN_SYSTEM.md](UI_UX_DESIGN_SYSTEM.md) | umgesetzt (D4) |
+| `PRESENTATION` | `web/` (React, TypeScript, Vite; Shared Product Core, Domain UI, Experience Profile); Konzept: [WEB_APPLICATION.md](WEB_APPLICATION.md), Leitlinie: UI_UX_DESIGN_SYSTEM.md (Entwicklungsarchiv; nicht im Abgabepaket) | umgesetzt (D4) |
 
 **Semantik der Engine** (ausschließlich aus [RUL_METHOD.md](../03-regulatory/RUL_METHOD.md) und dem Katalog, keine regulatorischen Inhalte im Code):
 
@@ -171,7 +171,7 @@ Technologie nach ADR-0003 (Entwicklungsarchiv): Python-Paket `regscoutx/` ohne F
 - Wieder anwendbare Bewertungen: Das System markiert eine Bewertung als `stale`, sobald ihre `RR` nicht anwendbar ist. Wird die `RR` wieder anwendbar, ist die Bewertung `REACTIVATED_REVIEW_REQUIRED`, fließt nicht ein (`NOT_ASSESSED`/`ANSWER_REVIEW_REQUIRED`) und wird erst durch `confirm_gap_assessment` oder eine neue Bewertung wieder `ACTIVE`.
 - Audit: jede Operation erzeugt Ereignisse mit Revision, fortlaufender Nummer, Zeitpunkt (Metadatum), betroffener Kennung und strukturierten Codes; Begründungen, Dokumenttitel und -kennungen werden nicht protokolliert.
 
-**Reporting und Sprachausgabe** (Entscheidung: ADR-0006 (Entwicklungsarchiv), Konzept: [REPORTING.md](REPORTING.md)):
+**Reporting und Sprachausgabe** (Entscheidung: ADR-0006 (Entwicklungsarchiv), Konzept: REPORTING.md (Entwicklungsarchiv; nicht im Abgabepaket)):
 
 - `AssessmentApplicationService.create_report` bzw. `report_model` bilden aus einer gespeicherten Revision eine `ReportSource`; bei `MATCH` wird die Revision vorher gegen eine Neuauswertung geprüft. `REPORTING` baut daraus das sprachneutrale, unveränderliche `ReportModel` (`ReportSnapshot`), `ReportComposer` das formatneutrale Dokument mit allen sichtbaren Texten, die Renderer HTML bzw. PDF. Nichts wird neu berechnet.
 - Katalogtexte nur bei `MATCH`; historische Stände zeigen Codes und einen Hinweis. `content_hash` ist unabhängig von Format und Zeitpunkt. Nach Erfolg `REPORT_CREATED` im Audit; Renderer-Fehler werden als `ReportGenerationError` gemeldet und ändern weder Bewertung noch Audit (SR-036).
@@ -199,7 +199,7 @@ Technologie nach ADR-0003 (Entwicklungsarchiv): Python-Paket `regscoutx/` ohne F
 | 1.6 | Abschnitt 3: `CATALOG_REPOSITORY` lädt zusätzlich `RR_APPLICABILITY` und `RR_MEASURE_CATALOG`; deren Versionen sind Teil des `CatalogVersionSet` (DATA_MODEL 0.5). Keine Änderung an Modulen oder Abhängigkeiten. |
 | 1.7 | Demonstrator D1: `ASSESSMENT_SERVICE`, `GAP_ENGINE`, `EVIDENCE_SERVICE` und `AUDIT_LOG` umgesetzt; Abschnitt 4: `ASSESSMENT_SERVICE` darf zusätzlich `CATALOG_REPOSITORY` und `REQUIREMENT_SERVICE` nutzen (ADR-0004 (Entwicklungsarchiv)); Abschnitt 8: Semantik und Ableitungstabelle des Gap-Status, Neuberechnung, Fingerprint; Applicability-Domainobjekte im gemeinsamen Kern. |
 | 1.8 | Demonstrator D2: Modul `ASSESSMENT_REPOSITORY` (Schnittstelle und lokale JSON-Dateipersistenz, ADR-0005 (Entwicklungsarchiv)); `ASSESSMENT_SERVICE` darf davon abhängen; Anwendungseinstieg mit Revisionen, Versionsabgleich und Audit; Lebenszyklus wieder anwendbarer Bewertungen; offene Entscheidung „Persistenz“ aus Abschnitt 7 geschlossen. |
-| 1.9 | Verweis auf die führende UI/UX-Leitlinie [UI_UX_DESIGN_SYSTEM.md](UI_UX_DESIGN_SYSTEM.md) (Version 1.1); keine Änderung an Modulen, Abhängigkeiten oder Semantik. |
-| 1.10 | Demonstrator D3: `REPORTING` und `I18N` umgesetzt (ADR-0006 (Entwicklungsarchiv), [REPORTING.md](REPORTING.md)); offene Entscheidung „Berichtsformat“ geschlossen; keine Änderung der Abhängigkeitsregeln. |
+| 1.9 | Verweis auf die führende UI/UX-Leitlinie UI_UX_DESIGN_SYSTEM.md (Entwicklungsarchiv; nicht im Abgabepaket) (Version 1.1); keine Änderung an Modulen, Abhängigkeiten oder Semantik. |
+| 1.10 | Demonstrator D3: `REPORTING` und `I18N` umgesetzt (ADR-0006 (Entwicklungsarchiv), REPORTING.md (Entwicklungsarchiv; nicht im Abgabepaket)); offene Entscheidung „Berichtsformat“ geschlossen; keine Änderung der Abhängigkeitsregeln. |
 | 1.11 | Demonstrator D4: Modul `APPLICATION_API` (lokaler HTTP-Adapter und Composition Root, ADR-0007 (Entwicklungsarchiv)); `PRESENTATION` hängt nur noch von `APPLICATION_API` und `I18N` ab; Fragebogen und Sichten als Teil von `ASSESSMENT_SERVICE`; SHA-256 der UI/UX-Leitlinie 1.1 dokumentiert; offene Entscheidung „Frontend-Stack und Interaktionskonzept“ geschlossen. |
 | 1.12 | Einleitung und Abschnitt 7 an den umgesetzten Stand angeglichen (Technologie in ADR-0003 bis ADR-0007; Anwendbarkeit bedingter `RR` über `RR_APPLICABILITY`); Stand von `AUDIT_LOG` in Abschnitt 8 berichtigt. Keine Änderung an Modulen, Abhängigkeiten oder Semantik. |

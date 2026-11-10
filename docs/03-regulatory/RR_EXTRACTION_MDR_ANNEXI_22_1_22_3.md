@@ -269,7 +269,7 @@ Nr. 22.3 verlangt „soweit angemessen" / `where appropriate` ein Verfahren, mit
 - Die normativen Qualifikationen bleiben in beiden Sprachfassungen erhalten: „so gering wie möglich" / `as far as possible`, „soweit angemessen" / `where appropriate`, „gegebenenfalls" / `if applicable`, „erforderlichenfalls" / `if necessary`.
 - Die normative Stärke wurde nicht verändert; es wurden keine Inhalte ergänzt.
 - Für „angemessen" in Nr. 22.3 wurden keine Entscheidungskriterien ergänzt (Abschnitt 6.6).
-- Es wurden keine Inhalte aus IEC 62366-1 (`SRC-008`), anderen Normen oder Kandidaten des [Standards-Landscape-Audits](../01-research/MEDICAL_DEVICE_STANDARDS_LANDSCAPE_AUDIT.md) übernommen.
+- Es wurden keine Inhalte aus IEC 62366-1 (`SRC-008`), anderen Normen oder Kandidaten des Standards-Landscape-Audits (Entwicklungsarchiv; nicht im Abgabepaket) übernommen.
 
 ---
 
@@ -517,7 +517,7 @@ Der in [RR_EXTRACTION_MDR_ANNEXI_5.md](RR_EXTRACTION_MDR_ANNEXI_5.md) Abschnitt 
 | --- | --- |
 | `SRC-001#Anh.I/Nr.23.1` | trotz unmittelbarer Nachbarschaft im MDR-Text nicht extrahiert; bleibt separat `geplant` |
 | `SRC-008` — IEC 62366-1 und andere Normen | nicht extrahiert; keine Norminhalte verwendet |
-| Kandidaten des [Standards-Landscape-Audits](../01-research/MEDICAL_DEVICE_STANDARDS_LANDSCAPE_AUDIT.md) | nicht registriert und nicht verwendet |
+| Kandidaten des Standards-Landscape-Audits (Entwicklungsarchiv; nicht im Abgabepaket) | nicht registriert und nicht verwendet |
 
 Keiner dieser Punkte ist ein zurückgestellter Fall oder ein Blocker für den Abschluss von Nr. 22.1 bis Nr. 22.3.
 

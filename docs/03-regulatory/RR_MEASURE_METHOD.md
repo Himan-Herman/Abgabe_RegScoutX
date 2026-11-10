@@ -2,7 +2,7 @@
 
 Version 1.0 · Status: aktiv · Stand: 29.09.2026 · gilt für [RR_MEASURE_CATALOG.yaml](RR_MEASURE_CATALOG.yaml) ab Version 0.2
 
-Dieses Dokument legt fest, wie jeder regulatorischen Anforderung (`RR`) eine vorgesehene Umsetzungsmaßnahme und eine vorgesehene Nachweisart zugeordnet wird. Es schließt die Kette **Anforderung → Quelle → Lebenszyklusphase → Maßnahme → Nachweisdokument** der Traceability-Matrix nach [EXPOSE_SCOPE.md](../00-project/EXPOSE_SCOPE.md) Abschnitt 4 (Befund B-1 des Thesis-Audits, [FINAL_THESIS_AUDIT.md](../10-thesis/FINAL_THESIS_AUDIT.md)). Es erzeugt **keine** neue regulatorische Anforderung und ändert weder `RR`, `RUL`, `SR`, Anwendbarkeit noch Evaluationsergebnisse. Die Systemanforderung ist SR-043; die Datenstruktur `RR_MEASURE` steht in [DATA_MODEL.yaml](../04-architecture/DATA_MODEL.yaml).
+Dieses Dokument legt fest, wie jeder regulatorischen Anforderung (`RR`) eine vorgesehene Umsetzungsmaßnahme und eine vorgesehene Nachweisart zugeordnet wird. Es schließt die Kette **Anforderung → Quelle → Lebenszyklusphase → Maßnahme → Nachweisdokument** der Traceability-Matrix nach [EXPOSE_SCOPE.md](../00-project/EXPOSE_SCOPE.md) Abschnitt 4 (Befund B-1 des Thesis-Audits, FINAL_THESIS_AUDIT.md (Entwicklungsarchiv; nicht im Abgabepaket)). Es erzeugt **keine** neue regulatorische Anforderung und ändert weder `RR`, `RUL`, `SR`, Anwendbarkeit noch Evaluationsergebnisse. Die Systemanforderung ist SR-043; die Datenstruktur `RR_MEASURE` steht in [DATA_MODEL.yaml](../04-architecture/DATA_MODEL.yaml).
 
 ---
 

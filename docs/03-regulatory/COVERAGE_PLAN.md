@@ -592,7 +592,7 @@ Nach der Statusdefinition aus Abschnitt 10.1 ist `SRC-002#Art.72` damit vollstä
 
 ### 10.11 Statusabschluss `SRC-002` Art. 4a Abs. 1
 
-- Die vollständige systematische `0 / 1 / n`-Prüfung ist in [RR_EXTRACTION_ART4A.md](RR_EXTRACTION_ART4A.md) Version 1.0 dokumentiert; 0 operative Fundstellen blieben ohne Entscheidung.
+- Die vollständige systematische `0 / 1 / n`-Prüfung ist in RR_EXTRACTION_ART4A.md (Entwicklungsarchiv; nicht im Abgabepaket) Version 1.0 dokumentiert; 0 operative Fundstellen blieben ohne Entscheidung.
 - Ergebnis: 0 neue Gap-`RR`, 11 atomare regulatorische Pflichten außerhalb des Gap-Themen-Scope, 0 ungelöste und 0 zurückgestellte Fälle, 0 Cross-Source-Deduplizierungen.
 - Das Ergebnis von 0 Gap-`RR` ist **kein** Coverage-Defizit: Der Quellenbereich wurde vollständig atomisiert und erst anschließend gegen den eingefrorenen Gap-Themen-Scope klassifiziert.
 - Die 11 Atome sind regulatorisch relevant, liegen aber wegen ihres primären Datenschutz-, Privacy-, Security-, Zugriffs-, Speicherbegrenzungs- oder Verarbeitungsdokumentationsgegenstands außerhalb des definierten Gap-Themenkorpus. Grundlage ist das bestehende Exclusion Criterion E-5 in Abschnitt 3 in Verbindung mit [CONTROLLED_VOCABULARY.md](CONTROLLED_VOCABULARY.md) Abschnitt 5; eine neue Exclusion Rule wird nicht eingeführt.
@@ -1028,7 +1028,7 @@ Die Sprachfassungsdivergenz „fehlerfrei" / `accurately` / `correctement` in Nr
 | --- | --- |
 | `SRC-001#Anh.I/Nr.23.1` | bleibt separat `geplant`; der in Abschnitt 10.16 vorgemerkte Abgleich mit `RR-164` bleibt bestehen |
 | `SRC-008` — IEC 62366-1 | nicht extrahiert; keine Norminhalte vorweggenommen |
-| Kandidaten des [Standards-Landscape-Audits](../01-research/MEDICAL_DEVICE_STANDARDS_LANDSCAPE_AUDIT.md) | nicht registriert und nicht verwendet |
+| Kandidaten des Standards-Landscape-Audits (Entwicklungsarchiv; nicht im Abgabepaket) | nicht registriert und nicht verwendet |
 
 Nach der Statusdefinition aus Abschnitt 10.1 ist `SRC-001#Anh.I/Nr.22.1` bis `Nr.22.3` damit vollständig geprüft und das Ergebnis dokumentiert; der Bearbeitungsstatus wird deshalb auf `abgeschlossen` gesetzt. Priorität, erwartetes Themencluster und Trigger bleiben unverändert.
 
@@ -1094,7 +1094,7 @@ Der in Abschnitt 10.16 vorgemerkte und in den Abschnitten 10.20 und 10.21 bestä
 | `SRC-001#Anh.I/Nr.23.2` bis `Nr.23.3` | nicht Teil der Coverage und nicht vorweggenommen; Nr. 23.2 nur interner Kontext zu `RR-196` |
 | `SRC-001#Anh.I/Nr.23.4` — ausgewählte Buchstaben | nicht vorweggenommen; bleibt `geplant` |
 | Durchführungsverordnung (EU) 2021/2226 | nicht registriert und nicht extrahiert |
-| `SRC-005` bis `SRC-008`, harmonisierte Normen und Gemeinsame Spezifikationen, Kandidaten des [Standards-Landscape-Audits](../01-research/MEDICAL_DEVICE_STANDARDS_LANDSCAPE_AUDIT.md) | keine Norminhalte vorweggenommen |
+| `SRC-005` bis `SRC-008`, harmonisierte Normen und Gemeinsame Spezifikationen, Kandidaten des Standards-Landscape-Audits (Entwicklungsarchiv; nicht im Abgabepaket) | keine Norminhalte vorweggenommen |
 
 Nach der Statusdefinition aus Abschnitt 10.1 ist `SRC-001#Anh.I/Nr.23.1` damit vollständig geprüft und das Ergebnis dokumentiert; der Bearbeitungsstatus wird deshalb auf `abgeschlossen` gesetzt. Priorität, erwartete Themencluster und Trigger bleiben unverändert.
 
@@ -1174,7 +1174,7 @@ Es werden keine weiteren Quellen registriert.
 | `RR-200` | unverändert; Primary bleibt `SRC-001#Anh.I/Nr.23.1/Buchst.f`; kein Supplementary-Locator ergänzt; die Beziehung ist als SOURCE_DEPENDENCY in der bestehenden Evidenz und in dieser Change Control dokumentiert |
 | `SRC-001` bis `SRC-008` | inhaltlich unverändert |
 | Extraktionsnachweise | unverändert |
-| [MEDICAL_DEVICE_STANDARDS_LANDSCAPE_AUDIT.md](../01-research/MEDICAL_DEVICE_STANDARDS_LANDSCAPE_AUDIT.md) | unverändert; die dortigen Nummernvorschläge waren nicht reserviert, und der Audit vergibt keine `SRC`-IDs. Spätere tatsächliche `SRC`-IDs für Normenkandidaten verschieben sich entsprechend. |
+| MEDICAL_DEVICE_STANDARDS_LANDSCAPE_AUDIT.md (Entwicklungsarchiv; nicht im Abgabepaket) | unverändert; die dortigen Nummernvorschläge waren nicht reserviert, und der Audit vergibt keine `SRC`-IDs. Spätere tatsächliche `SRC`-IDs für Normenkandidaten verschieben sich entsprechend. |
 | übrige Quellenbereiche, insbesondere `SRC-001#Anh.I/Nr.23.4` und `SRC-001#Art.83` ff. | unverändert; `SRC-001#Anh.I/Nr.23.4` bleibt `geplant` |
 | Normen-Coverage | unverändert |
 
@@ -1326,7 +1326,7 @@ Nach der Statusdefinition aus Abschnitt 10.1 sind `SRC-001#Art.85` und `SRC-001#
 
 ### 10.32 Abschluss `SRC-003` (AIB 2025-1 / MDCG 2025-6)
 
-- Crosswalk- und Interpretationsprüfung von `SRC-003` gegen den stabilisierten Rechtsakt-Korpus `RR-001` bis `RR-377` abgeschlossen. Evidenz: [CROSSWALK_SRC_003_MDR_AI_ACT.md](CROSSWALK_SRC_003_MDR_AI_ACT.md) Version 1.0 mit 25 Crosswalk-Einträgen (`EXPLANATORY`, `CROSSWALK`, `INTERPRETATIVE`, `PROCESS_ALIGNMENT`; alle zusätzlich `NO_NEW_REQUIREMENT`).
+- Crosswalk- und Interpretationsprüfung von `SRC-003` gegen den stabilisierten Rechtsakt-Korpus `RR-001` bis `RR-377` abgeschlossen. Evidenz: CROSSWALK_SRC_003_MDR_AI_ACT.md (Entwicklungsarchiv; nicht im Abgabepaket) Version 1.0 mit 25 Crosswalk-Einträgen (`EXPLANATORY`, `CROSSWALK`, `INTERPRETATIVE`, `PROCESS_ALIGNMENT`; alle zusätzlich `NO_NEW_REQUIREMENT`).
 - 0 neue `RR`; keine bestehende `RR` geändert; [RR_CATALOG.yaml](RR_CATALOG.yaml) bleibt Version 0.24 mit 377 `RR`. Keine Guidance-Aussage wird als rechtsverbindliche Anforderung geführt.
 - Gemeinsame Evidenz ≠ normative Deduplizierung: Process Alignment für QMS, Risikomanagement, technische Dokumentation, Konformitätsbewertung und PMS unterstützt gemeinsame Prozesse und Evidenzartefakte, begründet aber keine Zusammenführung von `RR`; 0 Deduplizierungen.
 - Aktuelles Primärrecht hat Vorrang vor veralteten Guidance-Aussagen: Q2/Q4, Q27/Q28, Q31 und Q34 sind als `STALE/SUPERSEDED_GUIDANCE` gegenüber `SRC-002` im Stand 27.07.2026 dokumentiert und werden nicht als aktueller Rechtsstand operationalisiert.
@@ -1403,7 +1403,7 @@ Methode ([RR_EXTRACTION_METHOD.md](RR_EXTRACTION_METHOD.md)) und Controlled Voca
 
 ### 10.40 Maßnahmenkatalog `RR_MEASURE` (Block 5)
 
-- [RR_MEASURE_CATALOG.yaml](RR_MEASURE_CATALOG.yaml) Version 0.1 ordnet allen 959 `RR` einen Mapping-Status zu (457 `MAPPED`, 502 `REVIEW_REQUIRED`); 15 generische Maßnahmen mit vorgesehenen Nachweisarten, regelbasiert aus explizitem Wortlaut. Methode und Grenzen: [../07-testing/TEST_STRATEGY.md](../07-testing/TEST_STRATEGY.md) Abschnitt 4.
+- [RR_MEASURE_CATALOG.yaml](RR_MEASURE_CATALOG.yaml) Version 0.1 ordnet allen 959 `RR` einen Mapping-Status zu (457 `MAPPED`, 502 `REVIEW_REQUIRED`); 15 generische Maßnahmen mit vorgesehenen Nachweisarten, regelbasiert aus explizitem Wortlaut. Methode und Grenzen: ../07-testing/TEST_STRATEGY.md (Entwicklungsarchiv; nicht im Abgabepaket) Abschnitt 4.
 - Impact-Prüfung: keine neue oder geänderte `RR`, keine Änderung an Quellen, Quellenbereichen, Stopping Rule oder Applicability. Der Katalog ist Katalogdatenbestand zu SR-043, keine regulatorische Extraktion.
 
 ### 10.41 Maßnahmenkatalog `RR_MEASURE` Version 0.2 (Post-Evaluation)
@@ -1517,7 +1517,7 @@ Nach dem ersten vollständig abgearbeiteten Core-Quellenbereich erfolgt ein kont
 | 1.39 | Klassenspezifischer MDR-PMS-Berichtsblock `SRC-001#Art.85` (Klasse I) und `SRC-001#Art.86` (Klasse IIa, IIb oder III) zur systematischen `0 / 1 / n`-Prüfung eröffnet (Abschnitt 10.29); Bearbeitungsstatus jeweils von `geplant` auf `in Prüfung` gesetzt. Prioritäten, Cluster, Trigger und Scope-Begründungen unverändert. Keine Extraktion, keine `RR`, keine Scope-Änderung. |
 | 1.40 | Klassenspezifischer MDR-PMS-Berichtsblock `SRC-001#Art.85` und `SRC-001#Art.86` nach systematischer `0 / 1 / n`-Prüfung abgeschlossen (Abschnitt 10.30). 28 potenzielle Einheiten; 25 neue Gap-`RR` als `RR-353` bis `RR-377` in [RR_CATALOG.yaml](RR_CATALOG.yaml) Version 0.24 integriert, alle conditional; 3 0-`RR`-Entscheidungen. Theme 25 × Post-Market-Monitoring, Lifecycle 25 × Post-Market-Überwachung. 0 ungelöste Fälle, 0 vollständige Deduplizierungen; bestehende `RR` unverändert. Keine Scope-Änderung. |
 | 1.41 | Prüfung von `SRC-003` (AIB 2025-1 / MDCG 2025-6) als Interplay-, Crosswalk- und Interpretationsquelle gegen den stabilisierten Rechtsakt-Korpus eröffnet (Abschnitt 10.31); Bearbeitungsstatus `in Prüfung` in Abschnitt 9.7 ergänzt. Quellenrolle Ebene B unverändert; keine Gleichstellung mit rechtsverbindlichen Anforderungen; keine `RR`, keine Extraktion, keine Scope-Änderung. |
-| 1.42 | Crosswalk- und Interpretationsprüfung von `SRC-003` (AIB 2025-1 / MDCG 2025-6) abgeschlossen (Abschnitt 10.32); Bearbeitungsstatus in Abschnitt 9.7 auf `abgeschlossen` gesetzt. Evidenz [CROSSWALK_SRC_003_MDR_AI_ACT.md](CROSSWALK_SRC_003_MDR_AI_ACT.md) Version 1.0: 25 Crosswalk-Einträge, 0 neue `RR`, 0 geänderte `RR`, 0 Deduplizierungen, 0 blockierende Unresolveds. Gemeinsame Evidenz ≠ normative Deduplizierung; Q2/Q4, Q27/Q28, Q31 und Q34 als `STALE/SUPERSEDED_GUIDANCE` gegenüber `SRC-002` dokumentiert; aktuelles Primärrecht hat Vorrang. `SOURCES.md` 1.4 nur Lokator `SRC-003#Einleitung`. Quellenrolle Ebene B, Methode, Vocabulary und Scope unverändert. |
+| 1.42 | Crosswalk- und Interpretationsprüfung von `SRC-003` (AIB 2025-1 / MDCG 2025-6) abgeschlossen (Abschnitt 10.32); Bearbeitungsstatus in Abschnitt 9.7 auf `abgeschlossen` gesetzt. Evidenz CROSSWALK_SRC_003_MDR_AI_ACT.md (Entwicklungsarchiv; nicht im Abgabepaket) Version 1.0: 25 Crosswalk-Einträge, 0 neue `RR`, 0 geänderte `RR`, 0 Deduplizierungen, 0 blockierende Unresolveds. Gemeinsame Evidenz ≠ normative Deduplizierung; Q2/Q4, Q27/Q28, Q31 und Q34 als `STALE/SUPERSEDED_GUIDANCE` gegenüber `SRC-002` dokumentiert; aktuelles Primärrecht hat Vorrang. `SOURCES.md` 1.4 nur Lokator `SRC-003#Einleitung`. Quellenrolle Ebene B, Methode, Vocabulary und Scope unverändert. |
 | 1.43 | Prüfung von `SRC-004` (MDCG 2019-11 Rev. 1) als Ebene-B-Guidance für Software-Qualifikation, MDR/IVDR-Abgrenzung, MDSW-Klassifikation, MDR Anhang VIII Regel 11 und spätere `RUL`-/Entscheidungslogik eröffnet (Abschnitt 10.33); Bearbeitungsstatus `in Prüfung` in Abschnitt 9.7 ergänzt. Keine eigenständige Gap-`RR`-Quelle; keine `RR`, keine `RUL`, keine Extraktion; Rollen-, Scope- und übrige Coverage-Bereiche unverändert. |
 | 1.44 | `SRC-004` (MDCG 2019-11 Rev. 1) als Guidance-Schicht der regelbasierten Entscheidungslogik abgeschlossen (Abschnitt 10.34); Bearbeitungsstatus in Abschnitt 9.7 auf `abgeschlossen` gesetzt. Qualifikation, MDR/IVDR-Abgrenzung, Regel 11 und zusätzliche MDR-Regeln, Module und Change Reassessment analysiert; 26 `RUL` (`RUL-001` bis `RUL-026`) in `RUL_CATALOG.yaml` 0.1 nach `RUL_METHOD.md` 1.0 angelegt; 0 neue `RR`. Scope-wirksame Aufnahme von `SRC-010` (IVDR, konsolidierte Fassung 10.01.2025) als Ebene-A-Quelle mit Nutzungsart `unterstützend`, ausschließlich `SRC-010#Art.2/Nr.2` als Primärrechtsanker der Abgrenzungs-`RUL` (neuer Abschnitt 9.10; Quellenrollentabelle Abschnitt 4 und Source-to-Theme-Matrix Abschnitt 8 ergänzt). Keine IVDR-Gap-Coverage; übrige Coverage-Bereiche unverändert. |
 | 1.45 | Governance-Präzisierung (Abschnitt 10.35): Abschnitt 4.3 Nr. 1 lässt die Aufnahme einer Quelle auch dann zu, wenn sie für eine freigegebene regelbasierte Applicability-, Qualification-, Classification- oder Boundary-Logik als notwendiger Primärrechtsanker benötigt wird; eine solche Aufnahme autorisiert keine Gap-/`RR`-Extraktion. Keine neue Quelle oder Quellenkategorie, keine Änderung der Ebenen, Nutzungsarten oder Coverage-Bereiche; `SRC-010` unverändert. |

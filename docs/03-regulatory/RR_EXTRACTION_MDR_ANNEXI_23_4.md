@@ -225,7 +225,7 @@ Die Out-of-Scope-Einordnung ist keine Aussage über regulatorische Irrelevanz f�
 | übrige Buchstaben von `SRC-001#Anh.I/Nr.23.4` | nicht aktiviert, nicht geprüft, nicht extrahiert |
 | `SRC-001#Anh.I/Nr.23.2`, `Nr.23.3` | nicht Teil der Coverage |
 | `SRC-001#Anh.I/Nr.17.4` | außerhalb des initialen Gap-Coverage; nicht importiert |
-| Normen und Kandidaten des [Standards-Landscape-Audits](../01-research/MEDICAL_DEVICE_STANDARDS_LANDSCAPE_AUDIT.md) | keine Inhalte verwendet |
+| Normen und Kandidaten des Standards-Landscape-Audits (Entwicklungsarchiv; nicht im Abgabepaket) | keine Inhalte verwendet |
 
 ---
 

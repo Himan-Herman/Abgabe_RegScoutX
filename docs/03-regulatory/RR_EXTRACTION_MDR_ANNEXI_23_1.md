@@ -712,7 +712,7 @@ Für alle 22 Kandidaten gilt: Supplementary keine; `uncertainty` null; Katalogst
 | `SRC-001#Anh.I/Nr.23.2` bis `Nr.23.4` | nicht extrahiert und nicht vorweggenommen; Nr. 23.2 nur interner Kontext zu `M23_1-N`; Nr. 23.4 bleibt `geplant` |
 | Durchführungsverordnung (EU) 2021/2226 | nicht registriert, nicht extrahiert; ausschließlich externe normative Abhängigkeit zu `M23_1-R` |
 | harmonisierte Normen und Gemeinsame Spezifikationen zu Symbolen und Farben | nicht ausgewählt, nicht extrahiert; externe Evidenz für `M23_1-U` und `M23_1-V` |
-| `SRC-005` bis `SRC-008` sowie Kandidaten des [Standards-Landscape-Audits](../01-research/MEDICAL_DEVICE_STANDARDS_LANDSCAPE_AUDIT.md) | keine Norminhalte verwendet |
+| `SRC-005` bis `SRC-008` sowie Kandidaten des Standards-Landscape-Audits (Entwicklungsarchiv; nicht im Abgabepaket) | keine Norminhalte verwendet |
 
 Keiner dieser Punkte ist ein zurückgestellter Fall oder ein Blocker für den Abschluss von Nr. 23.1.
 

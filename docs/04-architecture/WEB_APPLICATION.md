@@ -2,7 +2,7 @@
 
 Version 1.1 · Status: aktiv · Stand: 29.09.2026 (Demonstrator D4, Korrektur aus Block 6)
 
-Dieses Dokument beschreibt Interaktionskonzept, Informationsarchitektur, Komponenten, Tokens, Zustände, Barrierefreiheit, Sprachen, Sicherheit und Abhängigkeiten der Web-Oberfläche (`PRESENTATION`, Verzeichnis `web/`) und ihrer lokalen Anwendungs-API (`APPLICATION_API`). Verbindliche Leitlinie ist [UI_UX_DESIGN_SYSTEM.md](UI_UX_DESIGN_SYSTEM.md) (Version 1.1); die Technologieentscheidung steht in ADR-0007 (Entwicklungsarchiv), die Modulregeln in [ARCHITECTURE.md](ARCHITECTURE.md). Dieses Dokument trifft keine regulatorischen Aussagen; alle fachlichen Inhalte stammen aus den versionierten Katalogen und dem Kern.
+Dieses Dokument beschreibt Interaktionskonzept, Informationsarchitektur, Komponenten, Tokens, Zustände, Barrierefreiheit, Sprachen, Sicherheit und Abhängigkeiten der Web-Oberfläche (`PRESENTATION`, Verzeichnis `web/`) und ihrer lokalen Anwendungs-API (`APPLICATION_API`). Verbindliche Leitlinie ist UI_UX_DESIGN_SYSTEM.md (Entwicklungsarchiv; nicht im Abgabepaket) (Version 1.1); die Technologieentscheidung steht in ADR-0007 (Entwicklungsarchiv), die Modulregeln in [ARCHITECTURE.md](ARCHITECTURE.md). Dieses Dokument trifft keine regulatorischen Aussagen; alle fachlichen Inhalte stammen aus den versionierten Katalogen und dem Kern.
 
 ---
 
