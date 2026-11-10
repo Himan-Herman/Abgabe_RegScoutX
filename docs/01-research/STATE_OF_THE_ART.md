@@ -270,7 +270,7 @@ Jede neue `SR` verweist in `derived_from` auf den Exposé-Abschnitt und auf `STA
 
 ### 8.5 Umsetzung im Interaktionskonzept (Demonstrator D4)
 
-Die drei verbleibenden Teilaspekte sind mit dem umgesetzten Interaktionskonzept ([WEB_APPLICATION.md](../04-architecture/WEB_APPLICATION.md), [ADR-0007](../decisions/0007-web-application.md)) geschlossen. Die Umsetzung liegt im Kern (`regscoutx/questionnaire.py`, abgeleitet aus RUL-Katalog und Applicability-Zuordnung), die Oberfläche stellt nur dar. Keine `SR` wurde geändert; der Status beruht auf Implementierung und Test, nicht auf einer neuen Anforderung.
+Die drei verbleibenden Teilaspekte sind im [Interaktionskonzept](../04-architecture/WEB_APPLICATION.md) umgesetzt. Die Umsetzung liegt im Kern (`regscoutx/questionnaire.py`, abgeleitet aus RUL-Katalog und Applicability-Zuordnung), die Oberfläche stellt nur dar. Keine `SR` wurde geändert; der Status beruht auf Implementierung und Test, nicht auf einer neuen Anforderung.
 
 | DI | vorher | nachher | Umsetzung | Prüfung |
 | --- | --- | --- | --- | --- |
