@@ -4,7 +4,7 @@ Version 1.5 · Status: aktiv · Recherchestand: 27.08.2026
 
 Dieses Dokument ist die führende Dokumentation des Stands der Technik nach [EXPOSE_SCOPE.md](../00-project/EXPOSE_SCOPE.md) Abschnitt 3 und Arbeitsplan-Phase 1. Es leitet daraus Design Implications ab und bildet sie auf die bestehenden Systemanforderungen ([SR_CATALOG.yaml](../02-requirements/SR_CATALOG.yaml)) und die Architektur ([ARCHITECTURE.md](../04-architecture/ARCHITECTURE.md)) ab.
 
-**Provenienz:** Grundlage ist die externe Research-Antwort aus Block 4 vom 27.08.2026 einschließlich ihres vorrangigen Korrekturhinweises (CertHub, Abschnitt 4.2). Die Research-Antwort ist nicht Bestandteil des Repositorys. Inhalte wurden nicht neu recherchiert; es wurden keine Literaturangaben, DOIs oder Produkteigenschaften ergänzt.
+Grundlage war eine vorliegende Rechercheausgabe vom 27.08.2026.
 
 **Kennungen:** Literatur (`L01` bis `L18`), Produktquellen (`P01` bis `P13`) und Design Implications (`DI-001` bis `DI-012`) sind lokale Kennungen dieses Dokuments und keine projektweiten ID-Klassen. Fachliteratur erhält **keine** `SRC`-ID; `SRC` bezeichnet im Projekt ausschließlich die regulatorischen Quellen aus [SOURCES.md](../03-regulatory/SOURCES.md).
 
