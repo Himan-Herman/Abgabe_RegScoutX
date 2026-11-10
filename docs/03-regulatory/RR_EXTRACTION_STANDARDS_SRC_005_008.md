@@ -149,7 +149,7 @@ Kriterium: Jede `RR` muss als einzelner Gap-Sollzustand ohne vorherige `RR` vers
 | `RR-675` | `ISO14971-RR-091` | „dieses Informationssystem“ | das System zur aktiven Sammlung und Überprüfung relevanter Produktions-/Post-Production-Informationen | `RR-674` | angepasst |
 | `RR-676` | `ISO14971-RR-092` | „dieses Informationssystem“ | wie `RR-675` | `RR-674` | angepasst |
 | `RR-711` | `IEC62304-RR-021` | „diesen Lückenschließungsplan“ | den Plan zur Erzeugung identifizierter fehlender Ergebnisse | `RR-710` | bereits explizit, unverändert |
-| `RR-759` | `IEC62304-RR-069` | „diese Schnittstellenarchitektur“ | die Architektur für interne und Softwareschnittstellen | `RR-758` | angepasst |
+| `RR-759` | `IEC62304-RR-069` | „diese Schnittstellenarchitektur“ | Architektur der Schnittstellen innerhalb und außerhalb des Softwaresystems | `RR-758` | angepasst |
 | `RR-827` | `IEC62304-RR-137` | „solche Änderungsanforderungen“ | Änderungsanforderungen an freigegebener Software | `RR-826` | bereits explizit, unverändert |
 | `RR-832` | `IEC62304-RR-142` | „diese erforderlichen Entwicklungsaktivitäten“ | die wegen einer Änderung zu wiederholenden Clause-5-Aktivitäten | `RR-831` | angepasst |
 | `RR-894` | `IEC62366-RR-023` | „dabei“ | bei der Ermittlung benutzungsbezogener Gefährdungen und Gefährdungssituationen | `RR-893` | angepasst |
