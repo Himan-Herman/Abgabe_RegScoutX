@@ -177,7 +177,7 @@ Technologische Alternativen: [ADR-0007](../decisions/0007-web-application.md) Ab
 
 ## 16. Screenshots (Designevidenz)
 
-Erzeugt mit `RX_SCREENSHOTS=1 npx playwright test e2e/screenshots.spec.ts` aus synthetischen Testdaten (`web/e2e/seed.py`, Vorführbewertung mit Referenzprofil TC-036 und synthetischen Erfüllungsangaben); Ablage [../09-evidence/screenshots/D4/](../09-evidence/screenshots/D4/):
+Erzeugt mit `RX_SCREENSHOTS=1 npx playwright test e2e/screenshots.spec.ts` aus synthetischen Testdaten (`web/e2e/seed.py`, Vorführbewertung mit Referenzprofil TC-036 und synthetischen Erfüllungsangaben). Die D4-Screenshots sind im Entwicklungsarchiv aufbewahrt und nicht Teil des Abgabepakets:
 
 | Datei | Inhalt |
 | --- | --- |

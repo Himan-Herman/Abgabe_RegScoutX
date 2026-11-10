@@ -4,7 +4,7 @@ Version 1.0 · Status: aktiv · Datum: 27.09.2026
 
 Durchführung: gezielte Screenshots der Web-Anwendung mit `RX_SCREENSHOTS=1 npx playwright test e2e/screenshots.spec.ts` (3 Tests, alle bestanden) gegen die gebaute Oberfläche und den lokalen Server mit synthetischen Testdaten (`web/e2e/seed.py`: Vorführbewertung mit dem Profil des Referenzfalls TC-036 und synthetischen Erfüllungsangaben je Themencluster; keine fachliche Aussage). Viewport 1440 × 900 bzw. 390 × 844 mit doppelter Pixeldichte; Animationen deaktiviert, Fokus entfernt. Umgebung wie EV-009.
 
-Ablage: [screenshots/D4/](screenshots/D4/); Inhalt je Datei in [WEB_APPLICATION.md](../04-architecture/WEB_APPLICATION.md) Abschnitt 16.
+Die D4-Screenshots sind im Entwicklungsarchiv aufbewahrt und nicht Teil des Abgabepakets. Inhalt je Datei: [WEB_APPLICATION.md](../04-architecture/WEB_APPLICATION.md), Abschnitt 16.
 
 | Aspekt | Screenshot | Sichtbefund |
 | --- | --- | --- |
